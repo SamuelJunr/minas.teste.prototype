@@ -9,7 +9,8 @@ namespace minas.teste.prototype.MVVM.Model.Abstract
     public abstract class FlowBase
     {
         private const double gpmPerLpm = 0.264172052; // 1 LPM = ~0.264172 GPM (baseado no galão americano)
-        private double flowRateInLpm; // Armazena o valor internamente em LPM
+        private double flowRateInLpm;// Armazena o valor internamente em LPM
+        private double flowRateInGpm;// Armazena o valor internamente em GPM
 
         public double Lpm
         {
@@ -19,8 +20,8 @@ namespace minas.teste.prototype.MVVM.Model.Abstract
 
         public double Gpm
         {
-            get => flowRateInLpm * gpmPerLpm;
-            set => flowRateInLpm = value / gpmPerLpm;
+            get => flowRateInGpm;
+            set => flowRateInGpm = value;
         }
 
         // Métodos de conversão estáticos
