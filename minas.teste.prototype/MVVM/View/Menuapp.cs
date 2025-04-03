@@ -59,7 +59,7 @@ namespace minas.teste.prototype
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Configuracao form4 = new Configuracao();
+            configuracao form4 = new configuracao();
             form4.Show();
 
             this.FormClosing -= Menuapp_FormClosing;
@@ -68,8 +68,8 @@ namespace minas.teste.prototype
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Conexao form5 = new Conexao();
-            form5.Show();
+            //Conexao form5 = new Conexao();
+            //form5.Show();
 
             this.FormClosing -= Menuapp_FormClosing;
             this.Close();

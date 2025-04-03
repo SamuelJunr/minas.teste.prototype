@@ -1,84 +1,102 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using minas.teste.prototype.MVVM.ViewModel;
+using minas.teste.prototype.Service;
 
 namespace minas.teste.prototype.MVVM.View
 {
-    public partial class Conexao : Form
+    public partial class conexao: Form
     {
-        private conexao_arduino_VM _arduino;
-        private int _contadorCliques = 0;
-
-        public Conexao()
+        private SerialManager _serialManager;
+        public conexao()
         {
             InitializeComponent();
+            InitializeSerialManager();
+            ConfigureUI();
         }
 
-        private void Conexao_Load(object sender, EventArgs e)
+        private void InitializeSerialManager()
         {
-            _arduino = new conexao_arduino_VM(textBox1); // txtDados = TextBox da UI
+            _serialManager = new SerialManager();
+            _serialManager.DataReceived += SerialManager_DataReceived;
+            _serialManager.ConnectionStatusChanged += SerialManager_ConnectionStatusChanged;
+            _serialManager.ErrorOccurred += SerialManager_ErrorOccurred;
+        }
 
-            // Tenta detectar e conectar automaticamente
-            string portaDetectada = _arduino.DetectarPortaArduino();
-            if (_arduino.Conectar(portaDetectada)) // Modificado para receber porta
+        private void ConfigureUI()
+        {
+            // Configuração inicial dos controles
+            cmbBaudRate.DataSource = SerialManager.CommonBaudRates;
+            cmbBaudRate.SelectedItem = 9600;
+            RefreshPortsList();
+        }
+
+        private void RefreshPortsList()
+        {
+            cmbPorts.DataSource = null;
+            _serialManager.RefreshPorts();
+            cmbPorts.DataSource = _serialManager.AvailablePorts;
+        }
+
+        private void SerialManager_DataReceived(object sender, string data)
+        {
+            txtReceivedData.AppendText($"[{DateTime.Now:T}] Recebido: {data}{Environment.NewLine}");
+        }
+
+        private void SerialManager_ConnectionStatusChanged(object sender, bool isConnected)
+        {
+            btnConnect.Text = isConnected ? "Desconectar" : "Conectar";
+            cmbPorts.Enabled = !isConnected;
+            cmbBaudRate.Enabled = !isConnected;
+        }
+
+        private void SerialManager_ErrorOccurred(object sender, string errorMessage)
+        {
+            MessageBox.Show(errorMessage, "Erro na Comunicação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            if (cmbPorts.SelectedItem == null) return;
+
+            if (_serialManager.IsConnected)
             {
-                lblStatus.Text = "PORTA ABERTA";
-                cuiTextBox22.Content = "RECEBENDO DADOS";
-                cuiTextBox21.Content = portaDetectada; // Atualiza a textbox com a porta
-                pictureBox1.Image = Properties.Resources.on;
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                _serialManager.Disconnect();
             }
             else
             {
-                lblStatus.Text = "PORTA FECHADA";
-                cuiTextBox21.Content = "Nenhuma porta detectada";
-                pictureBox1.Image = Properties.Resources.off;
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                var port = cmbPorts.SelectedItem.ToString();
+                var baudRate = (int)cmbBaudRate.SelectedItem;
+                _serialManager.Connect(port, baudRate);
             }
         }
 
-        private void txtPorta_TextChanged(object sender, EventArgs e)
+        private void btnSend_Click(object sender, EventArgs e)
         {
-            // Se necessário, implemente lógica de alteração de porta
-        }
-
-        
-
-        
-        private void cuiTextBox21_ContentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bitButton1_Click(object sender, EventArgs e)
-        {
-            bool receber;
-
-            if (_contadorCliques == 0)
+            if (!string.IsNullOrWhiteSpace(txtSendData.Text))
             {
-                // Primeiro clique - ativa recebimento
-                receber = true;
-                _arduino.ToggleRecebimento(receber);
-                _contadorCliques++;
+                _serialManager.SendData(txtSendData.Text);
+                txtReceivedData.AppendText($"[{DateTime.Now:T}] Enviado: {txtSendData.Text}{Environment.NewLine}");
+                txtSendData.Clear();
             }
-            else
-            {
-                // Cliques subsequentes - desativa recebimento
-                receber = false;
-                _arduino.ToggleRecebimento(receber);
-                cuiTextBox22.Content = "RECEBIMENTO PAUSADO";
-                _contadorCliques = 0; // Zera o contador
-            }
-
-            
         }
 
-        private void Conexao_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            Menuapp menuForm = new Menuapp();
-            menuForm.Show();
-            this.Close();
-            _arduino.Desconectar();
+            RefreshPortsList();
         }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            _serialManager.Dispose();
+            base.OnFormClosing(e);
+        }
+
     }
 }

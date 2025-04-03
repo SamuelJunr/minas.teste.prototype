@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
@@ -64,6 +65,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.aGauge1 = new System.Windows.Forms.AGauge();
             this.aGauge2 = new System.Windows.Forms.AGauge();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -132,7 +142,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(69, 20);
             this.textBox1.TabIndex = 20;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -145,7 +154,7 @@
             // textBox3
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(172, 14);
+            this.textBox3.Location = new System.Drawing.Point(159, 19);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(69, 20);
             this.textBox3.TabIndex = 23;
@@ -191,7 +200,6 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(69, 20);
             this.textBox10.TabIndex = 30;
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // button1
             // 
@@ -201,7 +209,6 @@
             this.button1.TabIndex = 31;
             this.button1.Text = "Gravar";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -255,7 +262,7 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(172, 14);
+            this.textBox11.Location = new System.Drawing.Point(158, 19);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(69, 20);
             this.textBox11.TabIndex = 23;
@@ -301,7 +308,7 @@
             this.button4.TabIndex = 40;
             this.button4.Text = "Retornar";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -311,6 +318,7 @@
             this.button5.TabIndex = 41;
             this.button5.Text = "Teste";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel1
             // 
@@ -351,7 +359,6 @@
             this.label1.Size = new System.Drawing.Size(26, 15);
             this.label1.TabIndex = 48;
             this.label1.Text = "PSI";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -403,7 +410,6 @@
             this.aGauge1.TabIndex = 47;
             this.aGauge1.Text = "aGauge1";
             this.aGauge1.Value = 0F;
-            this.aGauge1.ContextMenuStripChanged += new System.EventHandler(this.button1_Click_1);
             // 
             // aGauge2
             // 
@@ -445,15 +451,95 @@
             this.aGauge2.Size = new System.Drawing.Size(277, 186);
             this.aGauge2.TabIndex = 46;
             this.aGauge2.Text = "aGauge2";
-            this.aGauge2.Value = 0F;
+            this.aGauge2.Value = 1F;
             // 
-            // Bombas
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // textBox4
+            // 
+            this.textBox4.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textBox4.Location = new System.Drawing.Point(15, 102);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(196, 20);
+            this.textBox4.TabIndex = 50;
+            // 
+            // textBox12
+            // 
+            this.textBox12.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textBox12.Location = new System.Drawing.Point(15, 167);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(196, 20);
+            this.textBox12.TabIndex = 51;
+            // 
+            // textBox13
+            // 
+            this.textBox13.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textBox13.Location = new System.Drawing.Point(270, 102);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(196, 20);
+            this.textBox13.TabIndex = 52;
+            // 
+            // textBox14
+            // 
+            this.textBox14.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textBox14.Location = new System.Drawing.Point(270, 167);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(196, 20);
+            this.textBox14.TabIndex = 53;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(267, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 15);
+            this.label3.TabIndex = 54;
+            this.label3.Text = "Ordem de Serviço";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(267, 138);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 15);
+            this.label4.TabIndex = 55;
+            this.label4.Text = "Nota Fiscal";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 138);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 15);
+            this.label5.TabIndex = 56;
+            this.label5.Text = "Responsável";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 15);
+            this.label6.TabIndex = 57;
+            this.label6.Text = "Empresa";
+            // 
+            // Tela_Bombas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1058, 649);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox14);
+            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.aGauge1);
@@ -464,9 +550,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Bombas";
+            this.Name = "Tela_Bombas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.Bombas_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tela_Bombas_FormClosing);
+            this.Load += new System.EventHandler(this.Tela_Bombas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -518,5 +605,14 @@
         private System.Windows.Forms.AGauge aGauge1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

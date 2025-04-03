@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using minas.teste.prototype.Service;
 
 namespace minas.teste.prototype
 {
@@ -23,6 +24,7 @@ namespace minas.teste.prototype
                 // Se clicar em "OK" ou no "X" da MessageBox, fecha a aplicação
                 if (result == DialogResult.OK)
                 {
+                    ApplicationSession.Instance.SaveSession(); // Corrigido para usar a instância
                     Application.Exit();
                 }
                 // Se clicar em "Cancelar", mantém o formulário aberto
@@ -35,13 +37,11 @@ namespace minas.teste.prototype
 
         public static void ExibirMensagemBoasVindas()
         {
-
-
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("Bem-vindo(a) ao Supervisório SK4!");
             sb.AppendLine(); // Linha em branco
-            //sb.AppendLine($"Olá, {nomeUsuario}!");
+                             //sb.AppendLine($"Olá, {nomeUsuario}!");
             sb.AppendLine($"Você está utilizando a versão: {Properties.Resources.ResourceManager.GetString("versaoAplicacao")}");
             sb.AppendLine(); // Linha em branco
             sb.AppendLine("Esperamos que você tenha uma ótima experiência.");
@@ -50,6 +50,5 @@ namespace minas.teste.prototype
             string titulo = "Boas-Vindas";
             MessageBox.Show(mensagem, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
     }
 }

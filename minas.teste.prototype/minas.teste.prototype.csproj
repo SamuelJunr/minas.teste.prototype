@@ -178,7 +178,9 @@
     <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.0.4.976, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.provider.dynamic_cdecl.2.0.4\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -272,12 +274,17 @@
     <Compile Include="Botaoinicio.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MVVM\ViewModel\conexao_arduino_VM.cs" />
     <Compile Include="MVVM\View\Banco_de_dados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MVVM\View\Banco_de_dados.Designer.cs">
       <DependentUpon>Banco_de_dados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\conexao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\conexao.Designer.cs">
+      <DependentUpon>conexao.cs</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Tela_Bombas.cs">
       <SubType>Form</SubType>
@@ -285,15 +292,8 @@
     <Compile Include="MVVM\View\Tela_Bombas.Designer.cs">
       <DependentUpon>Tela_Bombas.cs</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Repository\Backup\BackupService.cs" />
     <Compile Include="MVVM\Repository\Concret\Bombas_repository.cs" />
     <Compile Include="MVVM\Repository\Context\ApplicationDbContext.cs" />
-    <Compile Include="MVVM\View\Conexao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MVVM\View\Conexao.Designer.cs">
-      <DependentUpon>Conexao.cs</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\View\Configuracao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,7 +319,6 @@
     <Compile Include="MVVM\Model\Concrete\Temperatura_bomba.cs" />
     <Compile Include="MVVM\Model\Concrete\Vazao_bomba.cs" />
     <Compile Include="MVVM\Repository\Concret\RepositoryCore.cs" />
-    <Compile Include="MVVM\ViewModel\BombasVM.cs" />
     <Compile Include="MVVM\Repository\Abstract\IRepositoryCore.cs" />
     <Compile Include="MVVM\View\Tela_Cilindros.cs">
       <SubType>Form</SubType>
@@ -357,9 +356,18 @@
     <Compile Include="MVVM\View\Tutorial.Designer.cs">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Estilo\Estilo.cs" />
     <Compile Include="Service\ApplicationSession.cs" />
     <Compile Include="Service\ArduinoChartDataProvider.cs" />
+    <Compile Include="Service\ArduinoPortFinder.cs" />
+    <Compile Include="Service\InformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\InformationForm.Designer.cs">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service\ModuloSession.cs" />
+    <Compile Include="Service\SerialManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="MVVM\View\TelaInicial.cs">
       <SubType>Form</SubType>
@@ -369,8 +377,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MVVM\View\Conexao.resx">
-      <DependentUpon>Conexao.cs</DependentUpon>
+    <EmbeddedResource Include="MVVM\View\conexao.resx">
+      <DependentUpon>conexao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Configuracao.resx">
       <DependentUpon>Configuracao.cs</DependentUpon>
@@ -383,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\Tela_Cilindros.resx">
+      <DependentUpon>Tela_Cilindros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -410,7 +421,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resource\Imagem\" />
+    <Folder Include="MVVM\Repository\Backup\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -454,6 +465,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medidor1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\porta-vga1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

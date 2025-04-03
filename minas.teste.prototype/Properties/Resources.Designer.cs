@@ -121,6 +121,24 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Supervisório SK4 | Conexão.
+        /// </summary>
+        internal static string ConectTitle {
+            get {
+                return ResourceManager.GetString("ConectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Spervisório SK4 | Configurações.
+        /// </summary>
+        internal static string ConfigureTitle {
+            get {
+                return ResourceManager.GetString("ConfigureTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
         internal static byte[] direcao {
@@ -190,6 +208,16 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap medidor {
+            get {
+                object obj = ResourceManager.GetObject("medidor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
         internal static byte[] minas_teste {
@@ -220,21 +248,31 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
-        internal static System.Drawing.Bitmap off {
+        internal static byte[] off {
             get {
                 object obj = ResourceManager.GetObject("off", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] on {
+            get {
+                object obj = ResourceManager.GetObject("on", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap on {
+        internal static System.Drawing.Bitmap porta_vga {
             get {
-                object obj = ResourceManager.GetObject("on", resourceCulture);
+                object obj = ResourceManager.GetObject("porta-vga", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

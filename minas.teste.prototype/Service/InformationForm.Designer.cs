@@ -1,6 +1,6 @@
-﻿namespace minas.teste.prototype.MVVM.View
+﻿namespace minas.teste.prototype.Service
 {
-    partial class Tela_Cilindros
+    partial class InformationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Tela_Cilindros
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Tela_Cilindros";
-            this.ResumeLayout(false);
-
+            this.Text = "InformationForm";
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using minas.teste.prototype.Service;
 
 namespace minas.teste.prototype
 {
@@ -16,10 +17,23 @@ namespace minas.teste.prototype
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TelaInicial());
+
+            var finder = new ArduinoPortFinder();
+            bool arduinoEncontrado = finder.FindArduino();
+
+            // Criação do modal
+            using (var infoForm = new InformationForm(arduinoEncontrado, finder.ConnectedPort))
+            {
+                infoForm.ShowDialog();
+                Application.Run(new TelaInicial(finder.ConnectedPort));
+            }
+
+           
+                
+            
         }
 
-       
+
     }
 }
 

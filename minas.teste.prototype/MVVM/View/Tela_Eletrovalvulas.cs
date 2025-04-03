@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using minas.teste.prototype.Estilo;
 
 namespace minas.teste.prototype.MVVM.View
 {
@@ -15,6 +16,7 @@ namespace minas.teste.prototype.MVVM.View
         public Tela_Eletrovalvulas()
         {
             InitializeComponent();
+            EstiloFormulario.AplicarEstiloBasico(this);
         }
     }
 }

@@ -15,8 +15,10 @@ namespace minas.teste.prototype
 {
     public partial class TelaInicial: Form
     {
-        public TelaInicial()
+        private string _portaArduino;
+        public TelaInicial(string porta)
         {
+            _portaArduino = porta;
             InitializeComponent();
             var appSession = ApplicationSession.Instance;
         }
@@ -48,5 +50,9 @@ namespace minas.teste.prototype
             Text = Properties.Resources.ResourceManager.GetString("MainFormTitle");
            
         }
+
+        
+
+
     }
 }

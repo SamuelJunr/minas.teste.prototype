@@ -1,96 +1,168 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO.Ports;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using minas.teste.prototype.Service;
+//using MultiSensorMonitor;
 
 namespace minas.teste.prototype
 {
+    
     public partial class Tela_Bombas : Form
     {
-        private ArduinoChartDataProvider _dataProvider;
-        private Label lblA;
-        private Label lblB;
-        private Label lblC;
+        private apresentacao fechar_box;
+        private string _serialDataIn;
+        public string DataSensorA { get; private set; }
+        public string DataSensorB { get; private set; }
+        public string DataSensorC { get; private set; }
 
         public Tela_Bombas()
         {
             InitializeComponent();
-            lblA = new Label();
-            lblB = new Label();
-            lblC = new Label();
-            _dataProvider = new ArduinoChartDataProvider(chart1, lblA, lblB, lblC);
+            fechar_box = new apresentacao();
         }
 
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                serialPort1.PortName = "COM3";
+                serialPort1.BaudRate = 9600;
+                serialPort1.ReadTimeout = 100;
+                serialPort1.WriteTimeout = 100;
+                serialPort1.Open();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void Bombas_Load(object sender, EventArgs e)
+        private void Tela_Bombas_Load(object sender, EventArgs e)
         {
             Text = Properties.Resources.ResourceManager.GetString("MainFormTitle");
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            _dataProvider.StartMonitoring();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            _dataProvider.StopReading();
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             Menuapp menuForm = new Menuapp();
             menuForm.Show();
-            this.Close();
+            Close();
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            _serialDataIn = serialPort1.ReadLine();
+            Invoke(new Action(() => ProcessSerialData(_serialDataIn)));
+        }
+
+        public void ProcessSerialData(string serialData)
+        {
+            _serialDataIn = serialData;
+            ResetValues();
+            ParseData();
+            UpdateUI();
+            // UpdateProgressBarDataSensorA(); // Atualiza a ProgressBar
+        }
+
+        private void ResetValues()
+        {
+            DataSensorA = string.Empty;
+            DataSensorB = string.Empty;
+            DataSensorC = string.Empty;
+        }
+
+        private void ParseData()
+        {
+            var segments = _serialDataIn.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var segment in segments)
+            {
+                if (segment.Length < 1) continue;
+
+                switch (segment[0])
+                {
+                    case 'A' when segment.Length > 1:
+                        DataSensorA = segment.Substring(1);
+                        break;
+                    case 'B' when segment.Length > 1:
+                        DataSensorB = segment.Substring(1);
+                        break;
+                    case 'C' when segment.Length > 1:
+                        DataSensorC = segment.Substring(1);
+                        break;
+                    default:
+                        LogError($"Formato inválido: {segment}");
+                        break;
+                }
+            }
+        }
+
+        private void UpdateUI()
+        {
+            UpdateTextBoxSafe(textBox1, DataSensorA);
+            UpdateTextBoxSafe(textBox2, DataSensorB);
+            UpdateTextBoxSafe(textBox3, DataSensorC);
+        }
+
+        private void UpdateTextBoxSafe(TextBox textBox, string value)
+        {
+            if (textBox.InvokeRequired)
+            {
+                textBox.Invoke(new Action(() => textBox.Text = value));
+            }
+            else
+            {
+                textBox.Text = value;
+            }
+        }
+
+        private void LogError(string message)
+        {
+            Debug.WriteLine($"Erro: {message}");
+        }
+
+        //private void UpdateProgressBarDataSensorA()
+        //{
+        //    if (int.TryParse(DataSensorA, out int value))
+        //    {
+        //        if (progressBar1.InvokeRequired)
+        //        {
+        //            progressBar1.Invoke(new Action(() =>
+        //            {
+        //                progressBar1.Value = Math.Max(progressBar1.Minimum, Math.Min(progressBar1.Maximum, value));
+        //            })); 
+        //        }
+        //        else
+        //        {
+        //            progressBar1.Value = Math.Max(progressBar1.Minimum, Math.Min(progressBar1.Maximum, value));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Lida com casos em que DataSensorA não é um inteiro válido.
+        //        Debug.WriteLine($"Aviso: DataSensorA '{DataSensorA}' não é um inteiro válido.");
+        //    }
+        //}
+
+        private void aGauge1_ValueInRangeChanged(object sender, ValueInRangeChangedEventArgs e)
+        {
+
+        }
+
+        private void aGauge2_ValueInRangeChanged(object sender, ValueInRangeChangedEventArgs e)
+        {
+
+        }
+
+        private void Tela_Bombas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fechar_box.apresentacao_FormClosing(sender, e);
         }
     }
 }
