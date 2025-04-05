@@ -51,7 +51,7 @@
             this.cuiButton2 = new CuoreUI.Controls.cuiButton();
             this.cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             this.cuiLabel2 = new CuoreUI.Controls.cuiLabel();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.nn = new System.IO.Ports.SerialPort(this.components);
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -301,6 +301,7 @@
             this.cuiButton1.Size = new System.Drawing.Size(130, 102);
             this.cuiButton1.TabIndex = 3;
             this.cuiButton1.TextOffset = new System.Drawing.Point(0, 0);
+            this.cuiButton1.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // cuiButton2
             // 
@@ -374,6 +375,8 @@
             this.Controls.Add(this.metroPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "conexao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.metroPanel1.ResumeLayout(false);
@@ -403,6 +406,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private System.Windows.Forms.Label label1;
-        private System.IO.Ports.SerialPort serialPort1;
+        private System.IO.Ports.SerialPort nn;
     }
 }

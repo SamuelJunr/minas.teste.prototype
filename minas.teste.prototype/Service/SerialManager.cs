@@ -15,6 +15,8 @@ namespace minas.teste.prototype.Service
     {
         300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200
     };
+        private bool _isConnected;
+        public bool IsConnected => _isConnected;
 
         // Eventos
         public event EventHandler<string> DataReceived;
@@ -53,10 +55,12 @@ namespace minas.teste.prototype.Service
 
                 _serialPort.DataReceived += HandleDataReceived;
                 _serialPort.Open();
+                _isConnected = true;
                 OnConnectionStatusChanged(true);
             }
             catch (Exception ex)
             {
+                _isConnected = false;
                 OnErrorOccurred($"Erro na conexão: {ex.Message}");
             }
         }
@@ -65,11 +69,13 @@ namespace minas.teste.prototype.Service
         {
             try
             {
-                if (_serialPort?.IsOpen == true)
+                if (_serialPort != null)
                 {
                     _serialPort.Close();
                     _serialPort.DataReceived -= HandleDataReceived;
                     _serialPort.Dispose();
+                    _serialPort = null;
+                    _isConnected = false;
                     OnConnectionStatusChanged(false);
                 }
             }

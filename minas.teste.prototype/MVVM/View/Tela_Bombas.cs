@@ -164,5 +164,10 @@ namespace minas.teste.prototype
         {
             fechar_box.apresentacao_FormClosing(sender, e);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

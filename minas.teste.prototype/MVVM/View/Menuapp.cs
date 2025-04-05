@@ -68,8 +68,8 @@ namespace minas.teste.prototype
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Conexao form5 = new Conexao();
-            //form5.Show();
+            conexao form5 = new conexao();
+            form5.Show();
 
             this.FormClosing -= Menuapp_FormClosing;
             this.Close();

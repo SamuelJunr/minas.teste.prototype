@@ -11,14 +11,16 @@ using minas.teste.prototype.Service;
 
 namespace minas.teste.prototype.MVVM.View
 {
-    public partial class conexao: Form
+    public partial class conexao : Form
     {
         private SerialManager _serialManager;
+
         public conexao()
         {
             InitializeComponent();
             InitializeSerialManager();
             ConfigureUI();
+
         }
 
         private void InitializeSerialManager()
@@ -28,32 +30,31 @@ namespace minas.teste.prototype.MVVM.View
             _serialManager.ConnectionStatusChanged += SerialManager_ConnectionStatusChanged;
             _serialManager.ErrorOccurred += SerialManager_ErrorOccurred;
         }
-
         private void ConfigureUI()
         {
             // Configuração inicial dos controles
-            cmbBaudRate.DataSource = SerialManager.CommonBaudRates;
-            cmbBaudRate.SelectedItem = 9600;
+            comboBox2.DataSource = SerialManager.CommonBaudRates;
+            comboBox2.SelectedItem = 9600;
             RefreshPortsList();
         }
 
         private void RefreshPortsList()
         {
-            cmbPorts.DataSource = null;
+            comboBox1.DataSource = null;
             _serialManager.RefreshPorts();
-            cmbPorts.DataSource = _serialManager.AvailablePorts;
+            comboBox1.DataSource = _serialManager.AvailablePorts;
         }
 
         private void SerialManager_DataReceived(object sender, string data)
         {
-            txtReceivedData.AppendText($"[{DateTime.Now:T}] Recebido: {data}{Environment.NewLine}");
+            cuiTextBox21.Content = ($"[{DateTime.Now:T}] Recebido: {data}{Environment.NewLine}");
         }
 
         private void SerialManager_ConnectionStatusChanged(object sender, bool isConnected)
         {
-            btnConnect.Text = isConnected ? "Desconectar" : "Conectar";
-            cmbPorts.Enabled = !isConnected;
-            cmbBaudRate.Enabled = !isConnected;
+            label1.Text = isConnected ? "Desconectar" : "Conectar";
+            comboBox1.Enabled = !isConnected;
+            comboBox2.Enabled = !isConnected;
         }
 
         private void SerialManager_ErrorOccurred(object sender, string errorMessage)
@@ -62,8 +63,9 @@ namespace minas.teste.prototype.MVVM.View
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
+        
         {
-            if (cmbPorts.SelectedItem == null) return;
+            if (comboBox1.SelectedItem == null) return;
 
             if (_serialManager.IsConnected)
             {
@@ -71,32 +73,12 @@ namespace minas.teste.prototype.MVVM.View
             }
             else
             {
-                var port = cmbPorts.SelectedItem.ToString();
-                var baudRate = (int)cmbBaudRate.SelectedItem;
+                var port = comboBox1.SelectedItem.ToString();
+                var baudRate = (int)comboBox2.SelectedItem;
                 _serialManager.Connect(port, baudRate);
             }
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtSendData.Text))
-            {
-                _serialManager.SendData(txtSendData.Text);
-                txtReceivedData.AppendText($"[{DateTime.Now:T}] Enviado: {txtSendData.Text}{Environment.NewLine}");
-                txtSendData.Clear();
-            }
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            RefreshPortsList();
-        }
-
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            _serialManager.Dispose();
-            base.OnFormClosing(e);
-        }
 
     }
 }
