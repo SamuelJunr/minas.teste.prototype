@@ -16,7 +16,12 @@ namespace minas.teste.prototype
     public partial class Tela_Bombas : Form
     {
         private apresentacao fechar_box;
+
+        private bool _fechamentoForcado = false;
+
         private string _serialDataIn;
+
+        private HoraDia _Tempo;
         public string DataSensorA { get; private set; }
         public string DataSensorB { get; private set; }
         public string DataSensorC { get; private set; }
@@ -25,6 +30,7 @@ namespace minas.teste.prototype
         {
             InitializeComponent();
             fechar_box = new apresentacao();
+            _Tempo = new HoraDia(label13);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -46,13 +52,14 @@ namespace minas.teste.prototype
         private void Tela_Bombas_Load(object sender, EventArgs e)
         {
             Text = Properties.Resources.ResourceManager.GetString("MainFormTitle");
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Menuapp menuForm = new Menuapp();
-            menuForm.Show();
-            Close();
+            _fechamentoForcado = true; // Indica que é um fechamento controlado
+            Menuapp.Instance.Show();
+            this.Close();
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -106,8 +113,8 @@ namespace minas.teste.prototype
         private void UpdateUI()
         {
             UpdateTextBoxSafe(textBox1, DataSensorA);
-            UpdateTextBoxSafe(textBox2, DataSensorB);
-            UpdateTextBoxSafe(textBox3, DataSensorC);
+            //UpdateTextBoxSafe(textBox2, DataSensorB);
+            //UpdateTextBoxSafe(textBox3, DataSensorC);
         }
 
         private void UpdateTextBoxSafe(TextBox textBox, string value)
@@ -162,12 +169,27 @@ namespace minas.teste.prototype
 
         private void Tela_Bombas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            fechar_box.apresentacao_FormClosing(sender, e);
+            if (serialPort1.IsOpen)
+                serialPort1.Close();
+
+            // Só encerra a aplicação se não for um fechamento controlado
+            if (!_fechamentoForcado)
+            {
+                fechar_box.apresentacao_FormClosing(sender, e);
+            }
+            else
+                Menuapp.Instance.Show();
+
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
 
         }
+
+        
+
+
+
     }
 }

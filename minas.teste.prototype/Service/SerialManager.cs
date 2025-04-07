@@ -24,10 +24,11 @@ namespace minas.teste.prototype.Service
         public event EventHandler<string> ErrorOccurred;
 
         private SerialPort _serialPort;
-        private SynchronizationContext _context = SynchronizationContext.Current;
-
+        private SynchronizationContext _context;
         public SerialManager()
         {
+            // Garantir que o contexto seja capturado corretamente
+            _context = SynchronizationContext.Current ?? new SynchronizationContext();
             RefreshPorts();
         }
 
@@ -104,8 +105,11 @@ namespace minas.teste.prototype.Service
         {
             try
             {
-                var data = _serialPort.ReadLine();
-                SafeInvoke(() => DataReceived?.Invoke(this, data));
+                var data = _serialPort.ReadExisting();
+                if (!string.IsNullOrEmpty(data))
+                {
+                    SafeInvoke(() => DataReceived?.Invoke(this, data));
+                }
             }
             catch (Exception ex)
             {
@@ -115,10 +119,14 @@ namespace minas.teste.prototype.Service
 
         private void SafeInvoke(Action action)
         {
-            if (_context != null)
+            if (_context != null && _context != SynchronizationContext.Current)
+            {
                 _context.Post(_ => action(), null);
+            }
             else
+            {
                 action();
+            }
         }
 
         private void OnConnectionStatusChanged(bool isConnected)

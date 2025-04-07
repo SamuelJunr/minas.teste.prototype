@@ -279,12 +279,6 @@
     <Compile Include="MVVM\View\conexao.Designer.cs">
       <DependentUpon>conexao.cs</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Tela_Bombas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MVVM\View\Tela_Bombas.Designer.cs">
-      <DependentUpon>Tela_Bombas.cs</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\Repository\Concret\Bombas_repository.cs" />
     <Compile Include="MVVM\Repository\Context\ApplicationDbContext.cs" />
     <Compile Include="MVVM\View\Configuracao.cs">
@@ -313,6 +307,18 @@
     <Compile Include="MVVM\Model\Concrete\Vazao_bomba.cs" />
     <Compile Include="MVVM\Repository\Concret\RepositoryCore.cs" />
     <Compile Include="MVVM\Repository\Abstract\IRepositoryCore.cs" />
+    <Compile Include="MVVM\View\TelaStatusGeral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\TelaStatusGeral.Designer.cs">
+      <DependentUpon>TelaStatusGeral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Tela_Bombas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\Tela_Bombas.Designer.cs">
+      <DependentUpon>Tela_Bombas.cs</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Tela_Cilindros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,8 @@
     <Compile Include="Service\ApplicationSession.cs" />
     <Compile Include="Service\ArduinoChartDataProvider.cs" />
     <Compile Include="Service\ArduinoPortFinder.cs" />
+    <Compile Include="Service\Cronometro.cs" />
+    <Compile Include="Service\HoraDia.cs" />
     <Compile Include="Service\InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +369,7 @@
     </Compile>
     <Compile Include="Service\ModuloSession.cs" />
     <Compile Include="Service\SerialManager.cs" />
+    <Compile Include="Service\TimeSK4forms.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="MVVM\View\TelaInicial.cs">
       <SubType>Form</SubType>
@@ -370,20 +379,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MVVM\View\conexao.resx">
-      <DependentUpon>conexao.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Configuracao.resx">
       <DependentUpon>Configuracao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MVVM\View\Tela_Bombas.resx">
-      <DependentUpon>Tela_Bombas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Menuapp.resx">
       <DependentUpon>Menuapp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\Tela_Bombas.resx">
+      <DependentUpon>Tela_Bombas.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Tela_Cilindros.resx">
       <DependentUpon>Tela_Cilindros.cs</DependentUpon>
