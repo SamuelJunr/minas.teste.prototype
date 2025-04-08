@@ -1,18 +1,15 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO.Ports;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
+using Microsoft.Extensions.Logging;
+using minas.teste.prototype.MVVM.Model.Abstract;
 using minas.teste.prototype.Service;
 //using MultiSensorMonitor;
 
 namespace minas.teste.prototype
 {
-    
+
     public partial class Tela_Bombas : Form
     {
         private apresentacao fechar_box;
@@ -22,15 +19,15 @@ namespace minas.teste.prototype
         private string _serialDataIn;
 
         private HoraDia _Tempo;
-        public string DataSensorA { get; private set; }
-        public string DataSensorB { get; private set; }
-        public string DataSensorC { get; private set; }
+        private object txtLogEventos;
+        private const int MAX_LOG_LINES_DISPLAY = 500;
 
         public Tela_Bombas()
         {
             InitializeComponent();
             fechar_box = new apresentacao();
             _Tempo = new HoraDia(label13);
+            LoggerTelas.LogMessageAdded += Logger_LogMessageAdded;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -52,9 +49,47 @@ namespace minas.teste.prototype
         private void Tela_Bombas_Load(object sender, EventArgs e)
         {
             Text = Properties.Resources.ResourceManager.GetString("MainFormTitle");
-            
-        }
 
+        }
+        private void Logger_LogMessageAdded(object sender, LogEventArgs e)
+        {
+            // IMPORTANTE: Verificar se a atualização precisa ser feita na thread da UI
+            if (txtLogEventos.InvokeRequired)
+            {
+                // Chama a si mesmo (ou um método dedicado) na thread da UI de forma assíncrona
+                txtLogEventos.BeginInvoke(new Action(() => UpdateLogDisplay(e.Message)));
+            }
+            else
+            {
+                // Já está na thread da UI, pode atualizar diretamente
+                UpdateLogDisplay(e.Message);
+            }
+        }
+        private void UpdateLogDisplay(string logEntry)
+        {
+            try
+            {
+                // Adiciona a entrada (já formatada pelo Logger) e a quebra de linha
+                txtLogEventos.AppendText(logEntry + Environment.NewLine);
+
+                // Gerenciamento do tamanho do *TextBox*
+                if (txtLogEventos.Lines.Length > MAX_LOG_LINES_DISPLAY)
+                {
+                    var limitedLines = txtLogEventos.Lines
+                                        .Skip(txtLogEventos.Lines.Length - MAX_LOG_LINES_DISPLAY)
+                                        .ToArray();
+                    txtLogEventos.Lines = limitedLines;
+                }
+
+                // Rolagem automática
+                txtLogEventos.SelectionStart = txtLogEventos.Text.Length;
+                txtLogEventos.ScrollToCaret();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro ao atualizar display do log: {ex.Message}");
+            }
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             _fechamentoForcado = true; // Indica que é um fechamento controlado
@@ -157,15 +192,7 @@ namespace minas.teste.prototype
         //    }
         //}
 
-        private void aGauge1_ValueInRangeChanged(object sender, ValueInRangeChangedEventArgs e)
-        {
-
-        }
-
-        private void aGauge2_ValueInRangeChanged(object sender, ValueInRangeChangedEventArgs e)
-        {
-
-        }
+        
 
         private void Tela_Bombas_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -186,9 +213,6 @@ namespace minas.teste.prototype
         {
 
         }
-
-        
-
 
 
     }

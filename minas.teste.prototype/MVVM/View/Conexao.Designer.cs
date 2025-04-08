@@ -313,7 +313,7 @@
             this.Controls.Add(this.cuiButton1);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            
  
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
  

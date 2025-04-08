@@ -61,6 +61,69 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _10311715_ilustracao_contorno_icone_icone_de_agua_bomba_de_agua_vetor {
+            get {
+                object obj = ResourceManager.GetObject("10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _10311715_ilustracao_contorno_icone_icone_de_agua_bomba_de_agua_vetor_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-pre" +
+                        "view", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14837433_de_contorno_do_icone_da_bomba_da_industria_sistema_motor_vetor {
+            get {
+                object obj = ResourceManager.GetObject("14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14837433_de_contorno_do_icone_da_bomba_da_industria_sistema_motor_vetor_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-" +
+                        "preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14988722_de_contorno_do_icone_do_manometro_de_pressao_manometro_vetor {
+            get {
+                object obj = ResourceManager.GetObject("14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _14988722_de_contorno_do_icone_do_manometro_de_pressao_manometro_vetor_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor-removebg-pr" +
+                        "eview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
         internal static byte[] bomba {
@@ -270,6 +333,26 @@ namespace minas.teste.prototype.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pilotagembomba {
+            get {
+                object obj = ResourceManager.GetObject("pilotagembomba", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pilotagembomba_removebg_preview__1_ {
+            get {
+                object obj = ResourceManager.GetObject("pilotagembomba-removebg-preview (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap porta_vga {
             get {
                 object obj = ResourceManager.GetObject("porta-vga", resourceCulture);
@@ -283,6 +366,46 @@ namespace minas.teste.prototype.Properties {
         internal static System.Drawing.Bitmap servocon02 {
             get {
                 object obj = ResourceManager.GetObject("servocon02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap termometro {
+            get {
+                object obj = ResourceManager.GetObject("termometro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap termometro_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("termometro-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vazãobomba {
+            get {
+                object obj = ResourceManager.GetObject("vazãobomba", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vazãobomba_removebg_preview__1_ {
+            get {
+                object obj = ResourceManager.GetObject("vazãobomba-removebg-preview (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

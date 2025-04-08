@@ -117,81 +117,117 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cilindro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="componentes01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\componentes01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConectTitle" xml:space="preserve">
+    <value>Supervisório SK4 | Conexão</value>
+  </data>
   <data name="versaoAplicacao" xml:space="preserve">
     <value>1.0.0</value>
     <comment>controle de versão</comment>
   </data>
-  <data name="MainFormTitle" xml:space="preserve">
-    <value>Supervisório SK4 | Minas Teste</value>
-    <comment>titulo principal das forms</comment>
+  <data name="pilotagembomba-removebg-preview (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pilotagembomba-removebg-preview (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="eletrovalvula" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\eletrovalvula01.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="bomba300X300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="termometro-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\termometro-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="direcao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\servocon02.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="vazãobomba-removebg-preview (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vazãobomba-removebg-preview (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="termometro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\termometro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="motor01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\motor01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vazãobomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vazãobomba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\logomarca\logo2.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="eletrovalvula01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\eletrovalvula01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minas.teste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\icon\minas.teste.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>icone padrão</comment>
   </data>
-  <data name="motor01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\motor01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\logomarca\logo2.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="logotipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\logomarca\logotipo.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cilindro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="motor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\motor01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="direcao" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\servocon02.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\logomarca\logo1.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="componentes01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\componentes01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bomba300X300" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="servocon02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\servocon02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="comandos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\componentes01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="eletrovalvula01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\eletrovalvula01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cilindro01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="off" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="on" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MainFormTitle" xml:space="preserve">
+    <value>Supervisório SK4 | Minas Teste</value>
+    <comment>titulo principal das forms</comment>
+  </data>
+  <data name="servocon02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\servocon02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ConfigureTitle" xml:space="preserve">
     <value>Spervisório SK4 | Configurações</value>
     <comment>titulo da tela de configurações</comment>
   </data>
+  <data name="logotipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\logomarca\logotipo.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\logomarca\logo1.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="comandos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\componentes01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pilotagembomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pilotagembomba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eletrovalvula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\eletrovalvula01.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cilindro01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="medidor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\medidor1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="motor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\motor01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="porta-vga" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\porta-vga1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ConectTitle" xml:space="preserve">
-    <value>Supervisório SK4 | Conexão</value>
+  <data name="bomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
