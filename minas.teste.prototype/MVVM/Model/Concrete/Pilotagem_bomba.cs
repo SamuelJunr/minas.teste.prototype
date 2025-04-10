@@ -18,6 +18,8 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
 
         public int ValveId { get; set; }
 
+
+
         public Pilotagem_bomba(double pressure, double voltage)
             : base(pressure, voltage) { }
 

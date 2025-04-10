@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minas.teste.prototype", "minas.teste.prototype\minas.teste.prototype.csproj", "{FBF3BB4A-3BF5-4461-8F5D-161A25904274}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaBombas.Teste", "TelaBombas.Teste\TelaBombas.Teste.csproj", "{E2B50C97-3000-49AC-87AB-665E4B0D43D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FBF3BB4A-3BF5-4461-8F5D-161A25904274}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBF3BB4A-3BF5-4461-8F5D-161A25904274}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBF3BB4A-3BF5-4461-8F5D-161A25904274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2B50C97-3000-49AC-87AB-665E4B0D43D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B50C97-3000-49AC-87AB-665E4B0D43D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B50C97-3000-49AC-87AB-665E4B0D43D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B50C97-3000-49AC-87AB-665E4B0D43D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

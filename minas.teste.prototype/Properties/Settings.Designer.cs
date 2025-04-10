@@ -22,5 +22,29 @@ namespace minas.teste.prototype.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TipoSensorSelecionado {
+            get {
+                return ((string)(this["TipoSensorSelecionado"]));
+            }
+            set {
+                this["TipoSensorSelecionado"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PortaCOMSelecionada {
+            get {
+                return ((string)(this["PortaCOMSelecionada"]));
+            }
+            set {
+                this["PortaCOMSelecionada"] = value;
+            }
+        }
     }
 }

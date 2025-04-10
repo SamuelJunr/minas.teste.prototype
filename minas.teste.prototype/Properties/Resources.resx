@@ -121,6 +121,9 @@
   <data name="cilindro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="rotacao_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\rotacao_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="componentes01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\componentes01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -131,11 +134,17 @@
     <value>1.0.0</value>
     <comment>controle de versão</comment>
   </data>
-  <data name="pilotagembomba-removebg-preview (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pilotagembomba-removebg-preview (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dreno_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\dreno_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="bomba300X300" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vazao_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\vazao_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="vazao_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\vazao_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -143,8 +152,17 @@
   <data name="termometro-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\termometro-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="comandos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\componentes01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="direcao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\servocon02.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pilotagem_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\pilotagem_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pressao_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\pressao_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="vazãobomba-removebg-preview (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vazãobomba-removebg-preview (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -152,11 +170,32 @@
   <data name="termometro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\termometro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rotacao_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\rotacao_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="motor01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\motor01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pressao_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\pressao_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="termometro_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\termometro_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="vazãobomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vazãobomba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dreno_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\dreno_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pilotagem_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\pilotagem_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="termometro_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\termometro_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\logomarca\logo2.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -164,15 +203,24 @@
   <data name="eletrovalvula01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\eletrovalvula01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="vazao_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\vazao_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="minas.teste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\icon\minas.teste.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     <comment>icone padrão</comment>
   </data>
-  <data name="14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rotacao_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\rotacao_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="off" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="medidor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medidor1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pressao_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\pressao_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>Supervisório SK4 | Minas Teste</value>
@@ -188,14 +236,20 @@
   <data name="logotipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\logomarca\logotipo.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="porta-vga" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\porta-vga1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pilotagem_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\pilotagem_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\logomarca\logo1.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="comandos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\componentes01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\14988722-de-contorno-do-icone-do-manometro-de-pressao-manometro-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -206,11 +260,11 @@
   <data name="eletrovalvula" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\eletrovalvula01.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="termometro_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\termometro_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="cilindro01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="medidor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\medidor1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="motor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\motor01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -218,8 +272,8 @@
   <data name="on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="porta-vga" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\porta-vga1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pilotagembomba-removebg-preview (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pilotagembomba-removebg-preview (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -227,7 +281,10 @@
   <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dreno_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\dreno_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

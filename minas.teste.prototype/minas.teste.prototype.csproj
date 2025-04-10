@@ -67,6 +67,9 @@
     <Reference Include="Bunifu.UI.WinForms, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.8.0.0\lib\net48\Bunifu.UI.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.5.1.1\lib\net462\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
@@ -160,6 +163,15 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.31.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.31\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.3.8.3\lib\net462\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.3.8.3\lib\net462\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.20.72.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.20.72\lib\net462\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -192,6 +204,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -263,7 +276,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\Model\Abstract\ConnectionSettingsBase.cs" />
     <Compile Include="MVVM\Model\Abstract\LogEventArgs.cs" />
+    <Compile Include="MVVM\Model\Concrete\ConnectionSettingsApplication.cs" />
+    <Compile Include="MVVM\Model\Concrete\SensorCalibracoes.cs" />
+    <Compile Include="MVVM\Repository\Concret\SensorCalibracaoesRepository.cs" />
     <Compile Include="MVVM\ViewModel\apresentacao.cs" />
     <Compile Include="Botaoinicio.cs">
       <SubType>Component</SubType>
@@ -384,6 +401,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teste\Tela_Bomba\TestDataGenerator.cs" />
+    <EmbeddedResource Include="MVVM\View\Conexao.resx">
+      <DependentUpon>conexao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Configuracao.resx">
       <DependentUpon>Configuracao.cs</DependentUpon>
     </EmbeddedResource>
@@ -508,6 +529,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\MSTest.Analyzers.3.8.3\analyzers\dotnet\cs\MSTest.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\MSTest.Analyzers.3.8.3\analyzers\dotnet\cs\MSTest.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -18,5 +18,7 @@ namespace minas.teste.prototype.MVVM.View
             InitializeComponent();
             EstiloFormulario.AplicarEstiloBasico(this);
         }
+
+        
     }
 }

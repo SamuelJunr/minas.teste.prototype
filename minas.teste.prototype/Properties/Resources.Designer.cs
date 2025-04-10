@@ -214,6 +214,36 @@ namespace minas.teste.prototype.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
+        internal static byte[] dreno_by {
+            get {
+                object obj = ResourceManager.GetObject("dreno_by", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] dreno_off {
+            get {
+                object obj = ResourceManager.GetObject("dreno_off", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] dreno_on {
+            get {
+                object obj = ResourceManager.GetObject("dreno_on", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
         internal static byte[] eletrovalvula {
             get {
                 object obj = ResourceManager.GetObject("eletrovalvula", resourceCulture);
@@ -311,12 +341,12 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Byte[].
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] off {
+        internal static System.Drawing.Bitmap off {
             get {
                 object obj = ResourceManager.GetObject("off", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -326,6 +356,36 @@ namespace minas.teste.prototype.Properties {
         internal static byte[] on {
             get {
                 object obj = ResourceManager.GetObject("on", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] pilotagem_by {
+            get {
+                object obj = ResourceManager.GetObject("pilotagem_by", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] pilotagem_off {
+            get {
+                object obj = ResourceManager.GetObject("pilotagem_off", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] pilotagem_on {
+            get {
+                object obj = ResourceManager.GetObject("pilotagem_on", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -361,6 +421,66 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] pressao_by {
+            get {
+                object obj = ResourceManager.GetObject("pressao_by", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] pressao_off {
+            get {
+                object obj = ResourceManager.GetObject("pressao_off", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] pressao_on {
+            get {
+                object obj = ResourceManager.GetObject("pressao_on", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] rotacao_by {
+            get {
+                object obj = ResourceManager.GetObject("rotacao_by", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] rotacao_off {
+            get {
+                object obj = ResourceManager.GetObject("rotacao_off", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] rotacao_on {
+            get {
+                object obj = ResourceManager.GetObject("rotacao_on", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap servocon02 {
@@ -381,12 +501,72 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] termometro_by {
+            get {
+                object obj = ResourceManager.GetObject("termometro_by", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] termometro_off {
+            get {
+                object obj = ResourceManager.GetObject("termometro_off", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] termometro_on {
+            get {
+                object obj = ResourceManager.GetObject("termometro_on", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap termometro_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("termometro-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] vazao_by {
+            get {
+                object obj = ResourceManager.GetObject("vazao_by", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] vazao_off {
+            get {
+                object obj = ResourceManager.GetObject("vazao_off", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] vazao_on {
+            get {
+                object obj = ResourceManager.GetObject("vazao_on", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

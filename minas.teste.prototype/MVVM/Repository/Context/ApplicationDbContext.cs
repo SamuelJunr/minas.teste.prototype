@@ -18,6 +18,7 @@ namespace minas.teste.prototype.MVVM.Repository
         public DbSet<Pilotagem_bomba> Valves { get; set; }
         public DbSet<Dreno_bomba> Drains { get; set; }
         public DbSet<Temperatura_bomba> Temperatures { get; set; }
+        public DbSet<SensorCalibracoes> SensorCalibracoes { get; set; }
 
         private const string DatabaseName = "supervisory_SYSMT_data.db";
 
@@ -47,6 +48,34 @@ namespace minas.teste.prototype.MVVM.Repository
             this.Database.ExecuteSqlRaw("PRAGMA journal_mode=WAL;");
             this.Database.ExecuteSqlRaw("PRAGMA foreign_keys=ON;");
         }
+        public void EnsureDatabaseCreatedAndMigrated()
+        {
+            var databasePath = Path.Combine(Directory.GetCurrentDirectory(), DatabaseName);
+            bool dbExisted = File.Exists(databasePath);
+
+            // Garante que o modelo do banco de dados seja criado SE não existir
+            // Ou aplica migrações pendentes se o banco já existir e você usar Migrations
+            this.Database.EnsureCreated(); // Ou this.Database.Migrate(); se usar Migrations
+
+            if (!dbExisted || !IsDatabaseInitialized()) // Verifica se precisa inicializar
+            {
+                InitializeDatabase();
+            }
+        }
+        private bool IsDatabaseInitialized()
+        {
+            try
+            {
+                // Tenta verificar uma configuração ou tabela que a inicialização garante
+                var journalMode = this.Database.ExecuteSqlRaw("PRAGMA journal_mode;");
+                // Se não lançar exceção, provavelmente está ok (pode refinar a verificação)
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configuração global para todas as entidades
@@ -73,6 +102,7 @@ namespace minas.teste.prototype.MVVM.Repository
             modelBuilder.Entity<Dreno_bomba>().Property(p => p.Timestamp).HasDefaultValueSql("CURRENT_TIMESTAMP");
             modelBuilder.Entity<Rotacao_bomba>().Property(p => p.Timestamp).HasDefaultValueSql("CURRENT_TIMESTAMP");
             modelBuilder.Entity<Temperatura_bomba>().Property(p => p.Timestamp).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            modelBuilder.Entity<SensorCalibracoes>().Property(p => p.Timestamp).HasDefaultValueSql("CURRENT_TIMESTAMP");
         }
 
    

@@ -12,13 +12,27 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
     public class Dreno_bomba : DrainBase
     {
         [Key]
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public DateTime Timestamp { get; set; } = DateTime.Now;
-        public Dreno_bomba(double flowRate) : base(flowRate)
+
+        public Dreno_bomba(double flowRate, bool isInGpm) : base(flowRate)
         {
             DrainType = "Dreno Principal";
             Diameter = 200;
             Material = "Aço Inox";
+            if (isInGpm)
+            {
+                Gpm = flowRate;
+            }
+            else
+            {
+                Lpm = flowRate;
+            }
+        }
+
+        // Removed unused parameter 'v' to resolve IDE0060
+        public Dreno_bomba() : base(0)
+        {
         }
 
         public override double CalculateFlowVelocity()
