@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(conexao));
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cuiButton1 = new CuoreUI.Controls.cuiButton();
             this.cuiButton2 = new CuoreUI.Controls.cuiButton();
             this.cuiLabel1 = new CuoreUI.Controls.cuiLabel();
@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cuiButton3 = new CuoreUI.Controls.cuiButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.metroPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -90,20 +91,6 @@
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 27;
-            // 
-            // textBox1
-            // 
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
-            this.textBox1.BackColor = System.Drawing.SystemColors.InfoText;
-            this.textBox1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.textBox1.Location = new System.Drawing.Point(4, 4);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.MaxLength = 40000;
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(381, 295);
-            this.textBox1.TabIndex = 2;
             // 
             // cuiButton1
             // 
@@ -343,6 +330,16 @@
             this.cuiButton3.TextOffset = new System.Drawing.Point(0, 0);
             this.cuiButton3.Click += new System.EventHandler(this.cuiButton3_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.textBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.textBox1.Location = new System.Drawing.Point(15, 17);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(364, 274);
+            this.textBox1.TabIndex = 2;
+            // 
             // conexao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -357,6 +354,7 @@
             this.Controls.Add(this.cuiButton1);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -381,8 +379,6 @@
         private CuoreUI.Controls.cuiButton cuiButton2;
         private CuoreUI.Controls.cuiLabel cuiLabel1;
         private CuoreUI.Controls.cuiLabel cuiLabel2;
-        
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
@@ -393,5 +389,6 @@
  
         private System.Windows.Forms.Panel panel1;
         private CuoreUI.Controls.cuiButton cuiButton3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

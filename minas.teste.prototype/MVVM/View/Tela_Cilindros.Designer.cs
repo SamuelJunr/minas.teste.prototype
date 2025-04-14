@@ -75,12 +75,12 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.cuiButton3 = new CuoreUI.Controls.cuiButton();
             this.cuiButton2 = new CuoreUI.Controls.cuiButton();
             this.cuiButton1 = new CuoreUI.Controls.cuiButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelCronometro = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -88,9 +88,9 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.pnlEsquerdo.SuspendLayout();
             this.cuiGroupBox6.SuspendLayout();
@@ -110,14 +110,14 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -689,13 +689,6 @@
             this.textBox3.Size = new System.Drawing.Size(64, 22);
             this.textBox3.TabIndex = 4;
             // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(19, 19);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(218, 56);
-            this.trackBar1.TabIndex = 3;
-            // 
             // cuiButton3
             // 
             this.cuiButton3.CheckButton = false;
@@ -825,6 +818,13 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(19, 19);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(218, 56);
+            this.trackBar1.TabIndex = 3;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -834,7 +834,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 486F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 306F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 316F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 322F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.labelCronometro, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
@@ -855,7 +855,7 @@
             this.labelCronometro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCronometro.AutoSize = true;
             this.labelCronometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.labelCronometro.Location = new System.Drawing.Point(1244, 34);
+            this.labelCronometro.Location = new System.Drawing.Point(1241, 34);
             this.labelCronometro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCronometro.Name = "labelCronometro";
             this.labelCronometro.Size = new System.Drawing.Size(0, 32);
@@ -866,7 +866,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(170, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(164, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 84);
             this.pictureBox1.TabIndex = 0;
@@ -881,15 +881,16 @@
             this.button4.Location = new System.Drawing.Point(7, 7);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(131, 86);
+            this.button4.Size = new System.Drawing.Size(125, 86);
             this.button4.TabIndex = 40;
             this.button4.Text = "Retornar";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Retornar_Click);
             // 
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(296, 7);
+            this.textBox2.Location = new System.Drawing.Point(290, 7);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -902,7 +903,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.label13.Location = new System.Drawing.Point(930, 34);
+            this.label13.Location = new System.Drawing.Point(924, 34);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(0, 32);
@@ -916,6 +917,26 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(458, 100);
             this.panel4.TabIndex = 66;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.trackBar1);
+            this.groupBox7.Location = new System.Drawing.Point(204, 5);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(243, 83);
+            this.groupBox7.TabIndex = 12;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Vazão da Bomba";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.metroTextBox1);
+            this.groupBox6.Location = new System.Drawing.Point(3, 3);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(195, 85);
+            this.groupBox6.TabIndex = 11;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Pressão Manual";
             // 
             // metroTextBox1
             // 
@@ -932,26 +953,6 @@
             this.metroTextBox1.Text = "metroTextBox1";
             this.metroTextBox1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBox1.UseStyleColors = false;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.metroTextBox1);
-            this.groupBox6.Location = new System.Drawing.Point(3, 3);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(195, 85);
-            this.groupBox6.TabIndex = 11;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Pressão Manual";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.trackBar1);
-            this.groupBox7.Location = new System.Drawing.Point(204, 5);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(243, 83);
-            this.groupBox7.TabIndex = 12;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Vazão da Bomba";
             // 
             // Tela_Cilindros
             // 
@@ -970,6 +971,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Tela_Cilindros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tela_Cilindros_FormClosing);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.pnlEsquerdo.ResumeLayout(false);
@@ -995,16 +997,16 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

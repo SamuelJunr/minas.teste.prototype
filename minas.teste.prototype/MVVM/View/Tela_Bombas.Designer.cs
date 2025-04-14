@@ -40,46 +40,49 @@ namespace minas.teste.prototype
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_Bombas));
             this.button4 = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.sensor_Temp_C = new System.Windows.Forms.TextBox();
             this.Btn_Grava_Temperatura = new CodeArtEng.Gauge.InputGauge.BitButton();
             this.label23 = new System.Windows.Forms.Label();
-            this.sensor_Temp_C = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.sensor_rotacao_RPM = new System.Windows.Forms.TextBox();
             this.Btn_Grava_rotacao = new CodeArtEng.Gauge.InputGauge.BitButton();
             this.label21 = new System.Windows.Forms.Label();
-            this.sensor_rotacao_RPM = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.sensor_Vazao_BAR = new System.Windows.Forms.TextBox();
+            this.sensor_Vazao_PSI = new System.Windows.Forms.TextBox();
             this.Btn_Grava_vazao = new CodeArtEng.Gauge.InputGauge.BitButton();
             this.label22 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.sensor_Vazao_BAR = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
-            this.sensor_Vazao_PSI = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.sensor_Press_BAR = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.sensor_Press_BAR = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
-            this.sensor_Press_PSI = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
             this.panel7 = new System.Windows.Forms.Panel();
             this.Btn_Grava_pressao = new CodeArtEng.Gauge.InputGauge.BitButton();
+            this.sensor_Press_PSI = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.sensor_lpm_DR = new System.Windows.Forms.TextBox();
+            this.sensor_gpm_DR = new System.Windows.Forms.TextBox();
             this.Btn_Grava_dreno = new CodeArtEng.Gauge.InputGauge.BitButton();
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.sensor_gpm_DR = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
-            this.sensor_lpm_DR = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -91,17 +94,21 @@ namespace minas.teste.prototype
             this.panel3 = new System.Windows.Forms.Panel();
             this.cuiButton3 = new CuoreUI.Controls.cuiButton();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.sensor_bar_PL = new System.Windows.Forms.TextBox();
+            this.sensor_psi_PL = new System.Windows.Forms.TextBox();
             this.Btn_Grava_pilotagem = new CodeArtEng.Gauge.InputGauge.BitButton();
-            this.sensor_lpm_PL = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
-            this.sensor_gpm_PL = new CodeArtEng.Gauge.PanelGauges.SegmentedDisplay();
             this.label14 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Grafico1 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Grafico2 = new System.Windows.Forms.TabPage();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelCronometro = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -132,9 +139,13 @@ namespace minas.teste.prototype
             this.tableLayoutPanel7.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.Grafico1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.Grafico2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
@@ -151,11 +162,11 @@ namespace minas.teste.prototype
             this.button4.Location = new System.Drawing.Point(7, 7);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(112, 86);
+            this.button4.Size = new System.Drawing.Size(131, 86);
             this.button4.TabIndex = 40;
             this.button4.Text = "Retornar";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Retornar_Click);
             // 
             // serialPort1
             // 
@@ -167,7 +178,7 @@ namespace minas.teste.prototype
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.74074F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.25926F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 679F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 0);
@@ -198,7 +209,7 @@ namespace minas.teste.prototype
             this.tableLayoutPanel4.Controls.Add(this.label9, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel9, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(737, 5);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(725, 5);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
@@ -214,10 +225,10 @@ namespace minas.teste.prototype
             this.tableLayoutPanel12.ColumnCount = 3;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.10126F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.89874F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel12.Controls.Add(this.sensor_Temp_C, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.Btn_Grava_Temperatura, 0, 1);
             this.tableLayoutPanel12.Controls.Add(this.label23, 2, 0);
-            this.tableLayoutPanel12.Controls.Add(this.sensor_Temp_C, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.panel9, 0, 0);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(327, 324);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
@@ -226,6 +237,16 @@ namespace minas.teste.prototype
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.01762F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(299, 227);
             this.tableLayoutPanel12.TabIndex = 9;
+            // 
+            // sensor_Temp_C
+            // 
+            this.sensor_Temp_C.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_Temp_C.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_Temp_C.Location = new System.Drawing.Point(115, 3);
+            this.sensor_Temp_C.Multiline = true;
+            this.sensor_Temp_C.Name = "sensor_Temp_C";
+            this.sensor_Temp_C.Size = new System.Drawing.Size(108, 77);
+            this.sensor_Temp_C.TabIndex = 16;
             // 
             // Btn_Grava_Temperatura
             // 
@@ -236,7 +257,7 @@ namespace minas.teste.prototype
             this.Btn_Grava_Temperatura.Name = "Btn_Grava_Temperatura";
             this.Btn_Grava_Temperatura.ResetValue = 0D;
             this.Btn_Grava_Temperatura.ScaleFactor = 1D;
-            this.Btn_Grava_Temperatura.Size = new System.Drawing.Size(107, 90);
+            this.Btn_Grava_Temperatura.Size = new System.Drawing.Size(106, 90);
             this.Btn_Grava_Temperatura.TabIndex = 15;
             this.Btn_Grava_Temperatura.Title = "Gravar";
             this.Btn_Grava_Temperatura.Unit = "";
@@ -249,28 +270,11 @@ namespace minas.teste.prototype
             // 
             this.label23.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(256, 102);
+            this.label23.Location = new System.Drawing.Point(255, 102);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(21, 16);
             this.label23.TabIndex = 14;
             this.label23.Text = "Cº";
-            // 
-            // sensor_Temp_C
-            // 
-            this.sensor_Temp_C.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_Temp_C.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_Temp_C.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Temp_C.Location = new System.Drawing.Point(116, 25);
-            this.sensor_Temp_C.Name = "sensor_Temp_C";
-            this.sensor_Temp_C.ResetValue = 0D;
-            this.sensor_Temp_C.ScaleFactor = 1D;
-            this.sensor_Temp_C.Size = new System.Drawing.Size(104, 68);
-            this.sensor_Temp_C.TabIndex = 4;
-            this.sensor_Temp_C.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_Temp_C.Title = "";
-            this.sensor_Temp_C.Unit = "PSI";
-            this.sensor_Temp_C.Value = 0D;
-            this.sensor_Temp_C.Load += new System.EventHandler(this.sensor_Temp_C_Load);
             // 
             // panel9
             // 
@@ -278,7 +282,7 @@ namespace minas.teste.prototype
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel9.Location = new System.Drawing.Point(3, 3);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(107, 112);
+            this.panel9.Size = new System.Drawing.Size(106, 112);
             this.panel9.TabIndex = 9;
             // 
             // tableLayoutPanel11
@@ -286,10 +290,10 @@ namespace minas.teste.prototype
             this.tableLayoutPanel11.ColumnCount = 3;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.67901F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.32099F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel11.Controls.Add(this.sensor_rotacao_RPM, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.Btn_Grava_rotacao, 0, 1);
             this.tableLayoutPanel11.Controls.Add(this.label21, 2, 0);
-            this.tableLayoutPanel11.Controls.Add(this.sensor_rotacao_RPM, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.panel6, 0, 0);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(6, 324);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -298,6 +302,16 @@ namespace minas.teste.prototype
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.80952F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(298, 228);
             this.tableLayoutPanel11.TabIndex = 9;
+            // 
+            // sensor_rotacao_RPM
+            // 
+            this.sensor_rotacao_RPM.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_rotacao_RPM.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_rotacao_RPM.Location = new System.Drawing.Point(108, 3);
+            this.sensor_rotacao_RPM.Multiline = true;
+            this.sensor_rotacao_RPM.Name = "sensor_rotacao_RPM";
+            this.sensor_rotacao_RPM.Size = new System.Drawing.Size(108, 77);
+            this.sensor_rotacao_RPM.TabIndex = 16;
             // 
             // Btn_Grava_rotacao
             // 
@@ -308,7 +322,7 @@ namespace minas.teste.prototype
             this.Btn_Grava_rotacao.Name = "Btn_Grava_rotacao";
             this.Btn_Grava_rotacao.ResetValue = 0D;
             this.Btn_Grava_rotacao.ScaleFactor = 1D;
-            this.Btn_Grava_rotacao.Size = new System.Drawing.Size(101, 92);
+            this.Btn_Grava_rotacao.Size = new System.Drawing.Size(99, 92);
             this.Btn_Grava_rotacao.TabIndex = 15;
             this.Btn_Grava_rotacao.Title = "Gravar";
             this.Btn_Grava_rotacao.Unit = "";
@@ -318,28 +332,11 @@ namespace minas.teste.prototype
             // 
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(247, 100);
+            this.label21.Location = new System.Drawing.Point(246, 100);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(37, 16);
             this.label21.TabIndex = 14;
             this.label21.Text = "RPM";
-            // 
-            // sensor_rotacao_RPM
-            // 
-            this.sensor_rotacao_RPM.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_rotacao_RPM.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_rotacao_RPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_rotacao_RPM.Location = new System.Drawing.Point(110, 25);
-            this.sensor_rotacao_RPM.Name = "sensor_rotacao_RPM";
-            this.sensor_rotacao_RPM.ResetValue = 0D;
-            this.sensor_rotacao_RPM.ScaleFactor = 1D;
-            this.sensor_rotacao_RPM.Size = new System.Drawing.Size(97, 65);
-            this.sensor_rotacao_RPM.TabIndex = 4;
-            this.sensor_rotacao_RPM.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_rotacao_RPM.Title = "";
-            this.sensor_rotacao_RPM.Unit = "PSI";
-            this.sensor_rotacao_RPM.Value = 0D;
-            this.sensor_rotacao_RPM.Load += new System.EventHandler(this.sensor_rotacao_RPM_Load);
             // 
             // panel6
             // 
@@ -347,7 +344,7 @@ namespace minas.teste.prototype
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(101, 110);
+            this.panel6.Size = new System.Drawing.Size(99, 110);
             this.panel6.TabIndex = 4;
             // 
             // tableLayoutPanel10
@@ -356,11 +353,11 @@ namespace minas.teste.prototype
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.85597F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.14403F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel10.Controls.Add(this.sensor_Vazao_BAR, 1, 1);
+            this.tableLayoutPanel10.Controls.Add(this.sensor_Vazao_PSI, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.Btn_Grava_vazao, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.label22, 2, 1);
             this.tableLayoutPanel10.Controls.Add(this.label19, 2, 0);
-            this.tableLayoutPanel10.Controls.Add(this.sensor_Vazao_BAR, 1, 1);
-            this.tableLayoutPanel10.Controls.Add(this.sensor_Vazao_PSI, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.panel8, 0, 0);
             this.tableLayoutPanel10.Location = new System.Drawing.Point(327, 39);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -370,6 +367,26 @@ namespace minas.teste.prototype
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.40322F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(299, 248);
             this.tableLayoutPanel10.TabIndex = 11;
+            // 
+            // sensor_Vazao_BAR
+            // 
+            this.sensor_Vazao_BAR.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_Vazao_BAR.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_Vazao_BAR.Location = new System.Drawing.Point(112, 99);
+            this.sensor_Vazao_BAR.Multiline = true;
+            this.sensor_Vazao_BAR.Name = "sensor_Vazao_BAR";
+            this.sensor_Vazao_BAR.Size = new System.Drawing.Size(108, 77);
+            this.sensor_Vazao_BAR.TabIndex = 18;
+            // 
+            // sensor_Vazao_PSI
+            // 
+            this.sensor_Vazao_PSI.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_Vazao_PSI.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_Vazao_PSI.Location = new System.Drawing.Point(112, 3);
+            this.sensor_Vazao_PSI.Multiline = true;
+            this.sensor_Vazao_PSI.Name = "sensor_Vazao_PSI";
+            this.sensor_Vazao_PSI.Size = new System.Drawing.Size(108, 77);
+            this.sensor_Vazao_PSI.TabIndex = 17;
             // 
             // Btn_Grava_vazao
             // 
@@ -405,40 +422,6 @@ namespace minas.teste.prototype
             this.label19.Size = new System.Drawing.Size(37, 16);
             this.label19.TabIndex = 12;
             this.label19.Text = "GPM";
-            // 
-            // sensor_Vazao_BAR
-            // 
-            this.sensor_Vazao_BAR.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_Vazao_BAR.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_Vazao_BAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Vazao_BAR.Location = new System.Drawing.Point(112, 106);
-            this.sensor_Vazao_BAR.Name = "sensor_Vazao_BAR";
-            this.sensor_Vazao_BAR.ResetValue = 0D;
-            this.sensor_Vazao_BAR.ScaleFactor = 1D;
-            this.sensor_Vazao_BAR.Size = new System.Drawing.Size(112, 68);
-            this.sensor_Vazao_BAR.TabIndex = 11;
-            this.sensor_Vazao_BAR.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_Vazao_BAR.Title = "";
-            this.sensor_Vazao_BAR.Unit = "PSI";
-            this.sensor_Vazao_BAR.Value = 0D;
-            this.sensor_Vazao_BAR.Load += new System.EventHandler(this.sensor_Vazao_BAR_Load);
-            // 
-            // sensor_Vazao_PSI
-            // 
-            this.sensor_Vazao_PSI.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_Vazao_PSI.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_Vazao_PSI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Vazao_PSI.Location = new System.Drawing.Point(112, 13);
-            this.sensor_Vazao_PSI.Name = "sensor_Vazao_PSI";
-            this.sensor_Vazao_PSI.ResetValue = 0D;
-            this.sensor_Vazao_PSI.ScaleFactor = 1D;
-            this.sensor_Vazao_PSI.Size = new System.Drawing.Size(112, 70);
-            this.sensor_Vazao_PSI.TabIndex = 9;
-            this.sensor_Vazao_PSI.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_Vazao_PSI.Title = "";
-            this.sensor_Vazao_PSI.Unit = "PSI";
-            this.sensor_Vazao_PSI.Value = 0D;
-            this.sensor_Vazao_PSI.Load += new System.EventHandler(this.sensor_Vazao_PSI_Load);
             // 
             // panel8
             // 
@@ -498,13 +481,13 @@ namespace minas.teste.prototype
             this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.71545F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.28455F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel9.Controls.Add(this.sensor_Press_BAR, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.label20, 2, 1);
             this.tableLayoutPanel9.Controls.Add(this.label17, 2, 0);
-            this.tableLayoutPanel9.Controls.Add(this.sensor_Press_BAR, 1, 1);
-            this.tableLayoutPanel9.Controls.Add(this.sensor_Press_PSI, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.panel7, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.Btn_Grava_pressao, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.sensor_Press_PSI, 1, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 39);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
@@ -514,11 +497,21 @@ namespace minas.teste.prototype
             this.tableLayoutPanel9.Size = new System.Drawing.Size(298, 248);
             this.tableLayoutPanel9.TabIndex = 10;
             // 
+            // sensor_Press_BAR
+            // 
+            this.sensor_Press_BAR.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_Press_BAR.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_Press_BAR.Location = new System.Drawing.Point(107, 98);
+            this.sensor_Press_BAR.Multiline = true;
+            this.sensor_Press_BAR.Name = "sensor_Press_BAR";
+            this.sensor_Press_BAR.Size = new System.Drawing.Size(108, 77);
+            this.sensor_Press_BAR.TabIndex = 16;
+            // 
             // label20
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(249, 169);
+            this.label20.Location = new System.Drawing.Point(247, 169);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(35, 16);
             this.label20.TabIndex = 13;
@@ -528,45 +521,11 @@ namespace minas.teste.prototype
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(252, 79);
+            this.label17.Location = new System.Drawing.Point(251, 79);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(28, 16);
             this.label17.TabIndex = 11;
             this.label17.Text = "PSI";
-            // 
-            // sensor_Press_BAR
-            // 
-            this.sensor_Press_BAR.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_Press_BAR.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_Press_BAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Press_BAR.Location = new System.Drawing.Point(108, 108);
-            this.sensor_Press_BAR.Name = "sensor_Press_BAR";
-            this.sensor_Press_BAR.ResetValue = 0D;
-            this.sensor_Press_BAR.ScaleFactor = 1D;
-            this.sensor_Press_BAR.Size = new System.Drawing.Size(106, 63);
-            this.sensor_Press_BAR.TabIndex = 10;
-            this.sensor_Press_BAR.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_Press_BAR.Title = "";
-            this.sensor_Press_BAR.Unit = "PSI";
-            this.sensor_Press_BAR.Value = 0D;
-            this.sensor_Press_BAR.Load += new System.EventHandler(this.sensor_Press_BAR_Load);
-            // 
-            // sensor_Press_PSI
-            // 
-            this.sensor_Press_PSI.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_Press_PSI.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_Press_PSI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Press_PSI.Location = new System.Drawing.Point(108, 14);
-            this.sensor_Press_PSI.Name = "sensor_Press_PSI";
-            this.sensor_Press_PSI.ResetValue = 0D;
-            this.sensor_Press_PSI.ScaleFactor = 1D;
-            this.sensor_Press_PSI.Size = new System.Drawing.Size(106, 67);
-            this.sensor_Press_PSI.TabIndex = 8;
-            this.sensor_Press_PSI.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_Press_PSI.Title = "";
-            this.sensor_Press_PSI.Unit = "PSI";
-            this.sensor_Press_PSI.Value = 0D;
-            this.sensor_Press_PSI.Load += new System.EventHandler(this.sensor_Press_PSI_Load);
             // 
             // panel7
             // 
@@ -574,7 +533,7 @@ namespace minas.teste.prototype
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel7.Location = new System.Drawing.Point(3, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(99, 89);
+            this.panel7.Size = new System.Drawing.Size(98, 89);
             this.panel7.TabIndex = 7;
             // 
             // Btn_Grava_pressao
@@ -586,11 +545,21 @@ namespace minas.teste.prototype
             this.Btn_Grava_pressao.Name = "Btn_Grava_pressao";
             this.Btn_Grava_pressao.ResetValue = 0D;
             this.Btn_Grava_pressao.ScaleFactor = 1D;
-            this.Btn_Grava_pressao.Size = new System.Drawing.Size(99, 77);
+            this.Btn_Grava_pressao.Size = new System.Drawing.Size(98, 77);
             this.Btn_Grava_pressao.TabIndex = 14;
             this.Btn_Grava_pressao.Title = "Gravar";
             this.Btn_Grava_pressao.Unit = "";
             this.Btn_Grava_pressao.Load += new System.EventHandler(this.Btn_Grava_pressao_Load);
+            // 
+            // sensor_Press_PSI
+            // 
+            this.sensor_Press_PSI.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_Press_PSI.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_Press_PSI.Location = new System.Drawing.Point(107, 3);
+            this.sensor_Press_PSI.Multiline = true;
+            this.sensor_Press_PSI.Name = "sensor_Press_PSI";
+            this.sensor_Press_PSI.Size = new System.Drawing.Size(108, 77);
+            this.sensor_Press_PSI.TabIndex = 15;
             // 
             // tableLayoutPanel5
             // 
@@ -616,7 +585,7 @@ namespace minas.teste.prototype
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(260, 558);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(256, 558);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // tableLayoutPanel8
@@ -624,20 +593,40 @@ namespace minas.teste.prototype
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.51208F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.48792F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tableLayoutPanel8.Controls.Add(this.sensor_lpm_DR, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.sensor_gpm_DR, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.Btn_Grava_dreno, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.label18, 2, 1);
             this.tableLayoutPanel8.Controls.Add(this.label16, 2, 0);
-            this.tableLayoutPanel8.Controls.Add(this.sensor_gpm_DR, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.sensor_lpm_DR, 1, 1);
             this.tableLayoutPanel8.Controls.Add(this.panel5, 0, 0);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(6, 207);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.19048F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.80952F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(248, 162);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(244, 162);
             this.tableLayoutPanel8.TabIndex = 8;
+            // 
+            // sensor_lpm_DR
+            // 
+            this.sensor_lpm_DR.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_lpm_DR.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_lpm_DR.Location = new System.Drawing.Point(73, 85);
+            this.sensor_lpm_DR.Multiline = true;
+            this.sensor_lpm_DR.Name = "sensor_lpm_DR";
+            this.sensor_lpm_DR.Size = new System.Drawing.Size(89, 74);
+            this.sensor_lpm_DR.TabIndex = 17;
+            // 
+            // sensor_gpm_DR
+            // 
+            this.sensor_gpm_DR.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.sensor_gpm_DR.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_gpm_DR.Location = new System.Drawing.Point(73, 3);
+            this.sensor_gpm_DR.Multiline = true;
+            this.sensor_gpm_DR.Name = "sensor_gpm_DR";
+            this.sensor_gpm_DR.Size = new System.Drawing.Size(89, 76);
+            this.sensor_gpm_DR.TabIndex = 16;
             // 
             // Btn_Grava_dreno
             // 
@@ -648,7 +637,7 @@ namespace minas.teste.prototype
             this.Btn_Grava_dreno.Name = "Btn_Grava_dreno";
             this.Btn_Grava_dreno.ResetValue = 0D;
             this.Btn_Grava_dreno.ScaleFactor = 1D;
-            this.Btn_Grava_dreno.Size = new System.Drawing.Size(67, 70);
+            this.Btn_Grava_dreno.Size = new System.Drawing.Size(64, 70);
             this.Btn_Grava_dreno.TabIndex = 11;
             this.Btn_Grava_dreno.Title = "Gravar";
             this.Btn_Grava_dreno.Unit = "";
@@ -658,7 +647,7 @@ namespace minas.teste.prototype
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(193, 146);
+            this.label18.Location = new System.Drawing.Point(187, 146);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(34, 16);
             this.label18.TabIndex = 9;
@@ -668,45 +657,11 @@ namespace minas.teste.prototype
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(191, 66);
+            this.label16.Location = new System.Drawing.Point(186, 66);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(37, 16);
             this.label16.TabIndex = 5;
             this.label16.Text = "GPM";
-            // 
-            // sensor_gpm_DR
-            // 
-            this.sensor_gpm_DR.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_gpm_DR.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_gpm_DR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_gpm_DR.Location = new System.Drawing.Point(76, 8);
-            this.sensor_gpm_DR.Name = "sensor_gpm_DR";
-            this.sensor_gpm_DR.ResetValue = 0D;
-            this.sensor_gpm_DR.ScaleFactor = 1D;
-            this.sensor_gpm_DR.Size = new System.Drawing.Size(93, 65);
-            this.sensor_gpm_DR.TabIndex = 4;
-            this.sensor_gpm_DR.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_gpm_DR.Title = "";
-            this.sensor_gpm_DR.Unit = "PSI";
-            this.sensor_gpm_DR.Value = 0D;
-            this.sensor_gpm_DR.Load += new System.EventHandler(this.sensor_gpm_DR_Load);
-            // 
-            // sensor_lpm_DR
-            // 
-            this.sensor_lpm_DR.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_lpm_DR.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_lpm_DR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_lpm_DR.Location = new System.Drawing.Point(76, 90);
-            this.sensor_lpm_DR.Name = "sensor_lpm_DR";
-            this.sensor_lpm_DR.ResetValue = 0D;
-            this.sensor_lpm_DR.ScaleFactor = 1D;
-            this.sensor_lpm_DR.Size = new System.Drawing.Size(93, 64);
-            this.sensor_lpm_DR.TabIndex = 3;
-            this.sensor_lpm_DR.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_lpm_DR.Title = "";
-            this.sensor_lpm_DR.Unit = "BAR";
-            this.sensor_lpm_DR.Value = 0D;
-            this.sensor_lpm_DR.Load += new System.EventHandler(this.sensor_lpm_DR_Load);
             // 
             // panel5
             // 
@@ -715,7 +670,7 @@ namespace minas.teste.prototype
             this.panel5.Controls.Add(this.panel11);
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(67, 76);
+            this.panel5.Size = new System.Drawing.Size(64, 76);
             this.panel5.TabIndex = 2;
             // 
             // panel11
@@ -730,7 +685,7 @@ namespace minas.teste.prototype
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.6F);
-            this.label10.Location = new System.Drawing.Point(81, 3);
+            this.label10.Location = new System.Drawing.Point(79, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 24);
             this.label10.TabIndex = 7;
@@ -741,7 +696,7 @@ namespace minas.teste.prototype
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.6F);
-            this.label11.Location = new System.Drawing.Point(97, 180);
+            this.label11.Location = new System.Drawing.Point(95, 180);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 21);
             this.label11.TabIndex = 4;
@@ -752,7 +707,7 @@ namespace minas.teste.prototype
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.6F);
-            this.label12.Location = new System.Drawing.Point(82, 375);
+            this.label12.Location = new System.Drawing.Point(80, 375);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(96, 25);
             this.label12.TabIndex = 3;
@@ -765,7 +720,7 @@ namespace minas.teste.prototype
             this.panel2.Location = new System.Drawing.Point(7, 412);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(246, 62);
+            this.panel2.Size = new System.Drawing.Size(242, 62);
             this.panel2.TabIndex = 2;
             // 
             // cuiButton2
@@ -789,7 +744,7 @@ namespace minas.teste.prototype
             this.cuiButton2.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiButton2.ImageOffset = new System.Drawing.Point(0, 0);
             this.cuiButton2.ImageTint = System.Drawing.Color.White;
-            this.cuiButton2.Location = new System.Drawing.Point(131, 4);
+            this.cuiButton2.Location = new System.Drawing.Point(127, 7);
             this.cuiButton2.Margin = new System.Windows.Forms.Padding(4);
             this.cuiButton2.Name = "cuiButton2";
             this.cuiButton2.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
@@ -800,7 +755,7 @@ namespace minas.teste.prototype
             this.cuiButton2.PressedImageTint = System.Drawing.Color.White;
             this.cuiButton2.PressedOutline = System.Drawing.Color.Empty;
             this.cuiButton2.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton2.Size = new System.Drawing.Size(112, 48);
+            this.cuiButton2.Size = new System.Drawing.Size(112, 45);
             this.cuiButton2.TabIndex = 3;
             this.cuiButton2.TextOffset = new System.Drawing.Point(0, 0);
             this.cuiButton2.Click += new System.EventHandler(this.btnParar_Click);
@@ -826,7 +781,7 @@ namespace minas.teste.prototype
             this.cuiButton1.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.cuiButton1.ImageTint = System.Drawing.Color.White;
-            this.cuiButton1.Location = new System.Drawing.Point(4, 4);
+            this.cuiButton1.Location = new System.Drawing.Point(4, 7);
             this.cuiButton1.Margin = new System.Windows.Forms.Padding(4);
             this.cuiButton1.Name = "cuiButton1";
             this.cuiButton1.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
@@ -846,7 +801,7 @@ namespace minas.teste.prototype
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel3.Controls.Add(this.cuiButton3);
-            this.panel3.Location = new System.Drawing.Point(49, 487);
+            this.panel3.Location = new System.Drawing.Point(47, 487);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(161, 49);
@@ -893,20 +848,41 @@ namespace minas.teste.prototype
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel7.Controls.Add(this.sensor_bar_PL, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.sensor_psi_PL, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.Btn_Grava_pilotagem, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.sensor_lpm_PL, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel4, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label15, 2, 1);
-            this.tableLayoutPanel7.Controls.Add(this.sensor_gpm_PL, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.label14, 2, 0);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(6, 33);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(248, 141);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(244, 141);
             this.tableLayoutPanel7.TabIndex = 6;
+            // 
+            // sensor_bar_PL
+            // 
+            this.sensor_bar_PL.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_bar_PL.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_bar_PL.Location = new System.Drawing.Point(70, 75);
+            this.sensor_bar_PL.Multiline = true;
+            this.sensor_bar_PL.Name = "sensor_bar_PL";
+            this.sensor_bar_PL.Size = new System.Drawing.Size(90, 63);
+            this.sensor_bar_PL.TabIndex = 17;
+            // 
+            // sensor_psi_PL
+            // 
+            this.sensor_psi_PL.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_psi_PL.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_psi_PL.Location = new System.Drawing.Point(70, 3);
+            this.sensor_psi_PL.Multiline = true;
+            this.sensor_psi_PL.Name = "sensor_psi_PL";
+            this.sensor_psi_PL.Size = new System.Drawing.Size(90, 66);
+            this.sensor_psi_PL.TabIndex = 16;
+            this.sensor_psi_PL.Text = "0";
             // 
             // Btn_Grava_pilotagem
             // 
@@ -917,28 +893,11 @@ namespace minas.teste.prototype
             this.Btn_Grava_pilotagem.Name = "Btn_Grava_pilotagem";
             this.Btn_Grava_pilotagem.ResetValue = 0D;
             this.Btn_Grava_pilotagem.ScaleFactor = 1D;
-            this.Btn_Grava_pilotagem.Size = new System.Drawing.Size(64, 63);
+            this.Btn_Grava_pilotagem.Size = new System.Drawing.Size(61, 63);
             this.Btn_Grava_pilotagem.TabIndex = 12;
             this.Btn_Grava_pilotagem.Title = "Gravar";
             this.Btn_Grava_pilotagem.Unit = "";
             this.Btn_Grava_pilotagem.Load += new System.EventHandler(this.Btn_Grava_pilotagem_Load);
-            // 
-            // sensor_lpm_PL
-            // 
-            this.sensor_lpm_PL.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_lpm_PL.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_lpm_PL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_lpm_PL.Location = new System.Drawing.Point(73, 75);
-            this.sensor_lpm_PL.Name = "sensor_lpm_PL";
-            this.sensor_lpm_PL.ResetValue = 0D;
-            this.sensor_lpm_PL.ScaleFactor = 1D;
-            this.sensor_lpm_PL.Size = new System.Drawing.Size(94, 63);
-            this.sensor_lpm_PL.TabIndex = 5;
-            this.sensor_lpm_PL.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_lpm_PL.Title = "";
-            this.sensor_lpm_PL.Unit = "BAR";
-            this.sensor_lpm_PL.Value = 0D;
-            this.sensor_lpm_PL.Load += new System.EventHandler(this.sensor_lpm_PL_Load);
             // 
             // panel4
             // 
@@ -947,7 +906,7 @@ namespace minas.teste.prototype
             this.panel4.Controls.Add(this.panel10);
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(64, 66);
+            this.panel4.Size = new System.Drawing.Size(61, 66);
             this.panel4.TabIndex = 2;
             // 
             // panel10
@@ -961,34 +920,17 @@ namespace minas.teste.prototype
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(191, 125);
+            this.label15.Location = new System.Drawing.Point(186, 125);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 16);
             this.label15.TabIndex = 6;
             this.label15.Text = "BAR";
             // 
-            // sensor_gpm_PL
-            // 
-            this.sensor_gpm_PL.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.sensor_gpm_PL.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sensor_gpm_PL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_gpm_PL.Location = new System.Drawing.Point(73, 3);
-            this.sensor_gpm_PL.Name = "sensor_gpm_PL";
-            this.sensor_gpm_PL.ResetValue = 0D;
-            this.sensor_gpm_PL.ScaleFactor = 1D;
-            this.sensor_gpm_PL.Size = new System.Drawing.Size(94, 66);
-            this.sensor_gpm_PL.TabIndex = 2;
-            this.sensor_gpm_PL.Theme = CodeArtEng.Gauge.GaugeTheme.Dark;
-            this.sensor_gpm_PL.Title = "";
-            this.sensor_gpm_PL.Unit = "PSI";
-            this.sensor_gpm_PL.Value = 0D;
-            this.sensor_gpm_PL.Load += new System.EventHandler(this.sensor_gpm_PL_Load);
-            // 
             // label14
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(195, 56);
+            this.label14.Location = new System.Drawing.Point(189, 56);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(28, 16);
             this.label14.TabIndex = 0;
@@ -996,12 +938,87 @@ namespace minas.teste.prototype
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.tabControl1);
             this.panel12.Controls.Add(this.flowLayoutPanel1);
-            this.panel12.Controls.Add(this.chart1);
-            this.panel12.Location = new System.Drawing.Point(275, 6);
+            this.panel12.Location = new System.Drawing.Point(271, 6);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(453, 556);
+            this.panel12.Size = new System.Drawing.Size(445, 556);
             this.panel12.TabIndex = 2;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.Grafico1);
+            this.tabControl1.Controls.Add(this.Grafico2);
+            this.tabControl1.Location = new System.Drawing.Point(8, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(439, 263);
+            this.tabControl1.TabIndex = 2;
+            // 
+            // Grafico1
+            // 
+            this.Grafico1.Controls.Add(this.chart1);
+            this.Grafico1.Location = new System.Drawing.Point(4, 25);
+            this.Grafico1.Name = "Grafico1";
+            this.Grafico1.Padding = new System.Windows.Forms.Padding(3);
+            this.Grafico1.Size = new System.Drawing.Size(431, 234);
+            this.Grafico1.TabIndex = 0;
+            this.Grafico1.Text = "Grafico 1";
+            this.Grafico1.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(6, 3);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.LegendText = "vazão";
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.LegendText = "Pressão ";
+            series2.Name = "Series6";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(419, 225);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            title1.Name = "Vazão X Pressão";
+            this.chart1.Titles.Add(title1);
+            // 
+            // Grafico2
+            // 
+            this.Grafico2.Controls.Add(this.chart3);
+            this.Grafico2.Location = new System.Drawing.Point(4, 25);
+            this.Grafico2.Name = "Grafico2";
+            this.Grafico2.Padding = new System.Windows.Forms.Padding(3);
+            this.Grafico2.Size = new System.Drawing.Size(431, 234);
+            this.Grafico2.TabIndex = 1;
+            this.Grafico2.Text = "Grafico 2";
+            this.Grafico2.UseVisualStyleBackColor = true;
+            // 
+            // chart3
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart3.Legends.Add(legend2);
+            this.chart3.Location = new System.Drawing.Point(6, 0);
+            this.chart3.Name = "chart3";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart3.Series.Add(series3);
+            this.chart3.Size = new System.Drawing.Size(424, 232);
+            this.chart3.TabIndex = 0;
+            this.chart3.Text = "chart3";
             // 
             // flowLayoutPanel1
             // 
@@ -1022,43 +1039,16 @@ namespace minas.teste.prototype
             this.dataGridView1.Size = new System.Drawing.Size(467, 0);
             this.dataGridView1.TabIndex = 0;
             // 
-            // chart1
-            // 
-            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(5, 3);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.LegendText = "vazão";
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.LegendText = "Pressão ";
-            series2.Name = "Series6";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(478, 257);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            title1.Name = "Vazão X Pressão";
-            this.chart1.Titles.Add(title1);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 486F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 309F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 447F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 325F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 353F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.labelCronometro, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
@@ -1079,7 +1069,7 @@ namespace minas.teste.prototype
             this.labelCronometro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCronometro.AutoSize = true;
             this.labelCronometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.labelCronometro.Location = new System.Drawing.Point(1230, 34);
+            this.labelCronometro.Location = new System.Drawing.Point(1225, 34);
             this.labelCronometro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCronometro.Name = "labelCronometro";
             this.labelCronometro.Size = new System.Drawing.Size(0, 32);
@@ -1090,7 +1080,7 @@ namespace minas.teste.prototype
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(145, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(161, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 84);
             this.pictureBox1.TabIndex = 0;
@@ -1099,12 +1089,12 @@ namespace minas.teste.prototype
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(260, 7);
+            this.textBox1.Location = new System.Drawing.Point(274, 7);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox1.Size = new System.Drawing.Size(479, 86);
+            this.textBox1.Size = new System.Drawing.Size(441, 86);
             this.textBox1.TabIndex = 41;
             // 
             // label13
@@ -1112,7 +1102,7 @@ namespace minas.teste.prototype
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.label13.Location = new System.Drawing.Point(900, 34);
+            this.label13.Location = new System.Drawing.Point(883, 34);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(0, 32);
@@ -1149,10 +1139,10 @@ namespace minas.teste.prototype
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 486F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 314F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 346F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 445F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 329F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 485F));
@@ -1180,9 +1170,9 @@ namespace minas.teste.prototype
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1062, 0);
+            this.label5.Location = new System.Drawing.Point(1048, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(340, 15);
+            this.label5.Size = new System.Drawing.Size(354, 15);
             this.label5.TabIndex = 44;
             this.label5.Text = "TESTE";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1193,9 +1183,9 @@ namespace minas.teste.prototype
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(748, 0);
+            this.label6.Location = new System.Drawing.Point(719, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(308, 15);
+            this.label6.Size = new System.Drawing.Size(323, 15);
             this.label6.TabIndex = 43;
             this.label6.Text = "DATA e HORA";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1206,9 +1196,9 @@ namespace minas.teste.prototype
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(262, 0);
+            this.label7.Location = new System.Drawing.Point(274, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(480, 15);
+            this.label7.Size = new System.Drawing.Size(439, 15);
             this.label7.TabIndex = 42;
             this.label7.Text = "NOME  TESTE";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1219,9 +1209,9 @@ namespace minas.teste.prototype
             this.label8.Dock = System.Windows.Forms.DockStyle.Top;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(128, 0);
+            this.label8.Location = new System.Drawing.Point(145, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 15);
+            this.label8.Size = new System.Drawing.Size(123, 15);
             this.label8.TabIndex = 41;
             this.label8.Text = "STATUS GERAL";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1309,9 +1299,13 @@ namespace minas.teste.prototype
             this.tableLayoutPanel7.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.Grafico1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.Grafico2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1366,22 +1360,12 @@ namespace minas.teste.prototype
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label10;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_gpm_PL;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_lpm_DR;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_gpm_DR;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_lpm_PL;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_Vazao_BAR;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_Vazao_PSI;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_Press_BAR;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_Press_PSI;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_Temp_C;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private CodeArtEng.Gauge.PanelGauges.SegmentedDisplay sensor_rotacao_RPM;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -1394,7 +1378,6 @@ namespace minas.teste.prototype
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private CodeArtEng.Gauge.InputGauge.BitButton Btn_Grava_Temperatura;
         private CodeArtEng.Gauge.InputGauge.BitButton Btn_Grava_rotacao;
         private CodeArtEng.Gauge.InputGauge.BitButton Btn_Grava_vazao;
@@ -1405,5 +1388,20 @@ namespace minas.teste.prototype
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox HistoricalEvents;
         private System.Windows.Forms.Label labelCronometro;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Grafico1;
+        private System.Windows.Forms.TabPage Grafico2;
+        private System.Windows.Forms.TextBox sensor_Temp_C;
+        private System.Windows.Forms.TextBox sensor_rotacao_RPM;
+        private System.Windows.Forms.TextBox sensor_Vazao_BAR;
+        private System.Windows.Forms.TextBox sensor_Vazao_PSI;
+        private System.Windows.Forms.TextBox sensor_Press_BAR;
+        private System.Windows.Forms.TextBox sensor_Press_PSI;
+        private System.Windows.Forms.TextBox sensor_lpm_DR;
+        private System.Windows.Forms.TextBox sensor_gpm_DR;
+        private System.Windows.Forms.TextBox sensor_bar_PL;
+        private System.Windows.Forms.TextBox sensor_psi_PL;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

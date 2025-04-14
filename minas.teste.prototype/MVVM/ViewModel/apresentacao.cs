@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using minas.teste.prototype.MVVM.Model.Concrete;
 using minas.teste.prototype.Service;
 
 namespace minas.teste.prototype
@@ -24,7 +25,9 @@ namespace minas.teste.prototype
                 // Se clicar em "OK" ou no "X" da MessageBox, fecha a aplicação
                 if (result == DialogResult.OK)
                 {
+
                     ApplicationSession.Instance.SaveSession(); // Corrigido para usar a instância
+                    ConnectionSettingsApplication.CloseAllConnections();
                     Application.Exit();
                 }
                 // Se clicar em "Cancelar", mantém o formulário aberto

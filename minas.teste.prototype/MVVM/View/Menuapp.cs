@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using minas.teste.prototype.MVVM.Model.Concrete;
 using minas.teste.prototype.MVVM.View;
 
 namespace minas.teste.prototype
@@ -55,8 +56,8 @@ namespace minas.teste.prototype
         {
 
 
-            Tela_Bombas form3 = new Tela_Bombas();
-            form3.Show();
+            Tela_Bombas BombasVV = new Tela_Bombas();
+            BombasVV.Show();
             this.Hide();
 
         }
@@ -70,18 +71,39 @@ namespace minas.teste.prototype
 
         private void button1_Click(object sender, EventArgs e)
         {
-            configuracao form4 = new configuracao();
-            form4.Show();
+            configuracao ConfiguracaoVV = new configuracao();
+            ConfiguracaoVV.Show();
             this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            conexao form5 = new conexao();
-            form5.Show();
+            conexao ConexaoVV = new conexao();
+            ConexaoVV.Show();
             this.Hide();
             
 
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Tela_Cilindros CilindrosVV = new Tela_Cilindros();
+            CilindrosVV.Show();
+            this.Hide();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Tela_Comandos ComandosVV = new Tela_Comandos();
+            ComandosVV.Show();
+            this.Hide();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Tela_Direcao DirecaoVV = new Tela_Direcao();
+            DirecaoVV.Show();
+            this.Hide();
         }
     }
 }

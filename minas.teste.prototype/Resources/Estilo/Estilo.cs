@@ -10,7 +10,7 @@ namespace minas.teste.prototype.Estilo
         {
             form.BackColor = Color.DarkGray;
             form.FormBorderStyle = FormBorderStyle.FixedSingle;
-            form.Size = new Size(1076, 696);
+            form.Size = new Size(1442, 890);
             form.StartPosition = FormStartPosition.CenterParent;
             form.WindowState = FormWindowState.Normal;
             form.Text = Properties.Resources.ResourceManager.GetString("MainFormTitle");

@@ -48,5 +48,12 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
             }
             return false;
         }
+        public static void CloseAllConnections()
+        {
+            if (_persistentSerialManager != null)
+            {
+                PersistentSerialManager.Disconnect();
+            }
+        }
     }
 }

@@ -421,6 +421,18 @@
     <EmbeddedResource Include="MVVM\View\Tela_Cilindros.resx">
       <DependentUpon>Tela_Cilindros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\Tela_Comandos.resx">
+      <DependentUpon>Tela_Comandos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\Tela_Direcao.resx">
+      <DependentUpon>Tela_Direcao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\Tela_Eletrovalvulas.resx">
+      <DependentUpon>Tela_Eletrovalvulas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\Tela_Motor.resx">
+      <DependentUpon>Tela_Motor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

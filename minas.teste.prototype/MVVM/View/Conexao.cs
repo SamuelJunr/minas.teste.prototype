@@ -236,9 +236,7 @@ namespace minas.teste.prototype.MVVM.View
 
         private void conexao_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_serialManager.IsConnected)
-                _serialManager.Disconnect(); 
-
+          
             // Só encerra a aplicação se não for um fechamento controlado
             if (!_fechamentoForcado)
             {

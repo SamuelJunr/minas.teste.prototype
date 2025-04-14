@@ -46,7 +46,7 @@ namespace minas.teste.prototype
         public Tela_Bombas()
         {
             InitializeComponent();  
-            InitializeCustomComponents();
+            
             fechar_box = new apresentacao();
             _Tempo = new HoraDia(label13);
             LoggerTelas.LogMessageAdded += Logger_LogMessageAdded;
@@ -59,17 +59,7 @@ namespace minas.teste.prototype
             VincularCronometroLabel();
         }
 
-        private void InitializeCustomComponents()
-        {
-            // Add the necessary UI initialization logic here.  
-            // This should replicate the functionality of the original InitializeComponent() method.  
-            // Example:  
-            this.Text = "Tela Bombas";
-            this.Size = new System.Drawing.Size(800, 600);
-            // Add other UI components and their properties as needed.  
-        }
-
-             
+                 
 
         private void Tela_Bombas_Load(object sender, EventArgs e)
         {
@@ -366,9 +356,9 @@ namespace minas.teste.prototype
             lock (_currentValues)
             {
                 if (_currentValues.TryGetValue("A", out double aVal))
-                    sensor_gpm_PL.Text = aVal.ToString("F2"); // Formato com 2 casas decimais
+                    sensor_psi_PL.Text = aVal.ToString("F2"); // Formato com 2 casas decimais
                 if (_currentValues.TryGetValue("B", out double bVal))
-                    sensor_lpm_PL.Text = bVal.ToString("F2");
+                    sensor_bar_PL.Text = bVal.ToString("F2");
             }
 
             // Mantém máximo de 300 pontos
@@ -463,7 +453,7 @@ namespace minas.teste.prototype
             dataGridView1.Size = new System.Drawing.Size(460, 284);
             AlterarEstadoPaineis(false);
         }
-        private void button4_Click(object sender, EventArgs e)
+        private void Retornar_Click(object sender, EventArgs e)
         {
             _fechamentoForcado = true; // Indica que é um fechamento controlado
             Menuapp.Instance.Show();
@@ -569,12 +559,11 @@ namespace minas.teste.prototype
 
         private void Tela_Bombas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (serialPort1.IsOpen)
-                serialPort1.Close();
-
+           
             // Só encerra a aplicação se não for um fechamento controlado
             if (!_fechamentoForcado)
             {
+                
                 fechar_box.apresentacao_FormClosing(sender, e);
             }
             else

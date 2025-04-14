@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -131,6 +132,7 @@ namespace minas.teste.prototype.MVVM.View
             // Só encerra a aplicação se não for um fechamento controlado
             if (!_fechamentoForcado)
             {
+                
                 fechar_box.apresentacao_FormClosing(sender, e);
             }
             else
