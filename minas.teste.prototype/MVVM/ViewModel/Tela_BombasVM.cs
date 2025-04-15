@@ -25,6 +25,7 @@ namespace minas.teste.prototype.MVVM.ViewModel
         private System.Windows.Forms.Timer _timerAtualizacao;
         public const string LABEL_CRONOMETRO = "labelCronometro_bomba";
         private HoraDia _Tempo;
+        private SessaoBomba _sessaoBomba;
 
         #region PROPRIEDADES_JANELA
         public void Carregar_configuracao(Form FormView)
@@ -118,15 +119,44 @@ namespace minas.teste.prototype.MVVM.ViewModel
             {
                 stage.BackgroundImage = System.Drawing.Image.FromStream(ms);
             }
+            _sessaoBomba = new SessaoBomba();
+
         }
 
         public void FinalizarTesteBomba(PictureBox stage)
         {
             PararCronometro();
             stage.BackgroundImage = (System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("off");
-           
+            _sessaoBomba.FinalizarSessao();
+            mensagemConfirmacao();
+
+
         }
 
+        public void mensagemConfirmacao()
+        {
+            var resultado = MessageBox.Show(
+           "Deseja salvar todos os dados do teste?",
+           "Confirmação de Salvamento",
+           MessageBoxButtons.YesNo,
+           MessageBoxIcon.Question,
+           MessageBoxDefaultButton.Button1
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                _sessaoBomba.ProcessarSalvamento();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Dados não foram salvos!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+        }
 
         #endregion
 
@@ -170,32 +200,32 @@ namespace minas.teste.prototype.MVVM.ViewModel
             }
             else
             { 
-                var imageBytes = (byte[])Properties.Resources.ResourceManager.GetObject("pilotagem_off");
+                var imageBytes = (byte[])Properties.Resources.ResourceManager.GetObject("pilotagem_by");
                 using (var ms = new MemoryStream(imageBytes))
                 {
                     p1.BackgroundImage = System.Drawing.Image.FromStream(ms);
                 }
-                var imageBytes1 = (byte[])Properties.Resources.ResourceManager.GetObject("dreno_off");
+                var imageBytes1 = (byte[])Properties.Resources.ResourceManager.GetObject("dreno_by");
                 using (var ms = new MemoryStream(imageBytes1))
                 {
                     p2.BackgroundImage = System.Drawing.Image.FromStream(ms);
                 }
-                var imageBytes2 = (byte[])Properties.Resources.ResourceManager.GetObject("pressao_off");
+                var imageBytes2 = (byte[])Properties.Resources.ResourceManager.GetObject("pressao_by");
                 using (var ms = new MemoryStream(imageBytes2))
                 {
                     p3.BackgroundImage = System.Drawing.Image.FromStream(ms);
                 }
-                var imageBytes3 = (byte[])Properties.Resources.ResourceManager.GetObject("rotacao_off");
+                var imageBytes3 = (byte[])Properties.Resources.ResourceManager.GetObject("rotacao_by");
                 using (var ms = new MemoryStream(imageBytes3))
                 {
                     p4.BackgroundImage = System.Drawing.Image.FromStream(ms);
                 }
-                var imageBytes4 = (byte[])Properties.Resources.ResourceManager.GetObject("vazao_off");
+                var imageBytes4 = (byte[])Properties.Resources.ResourceManager.GetObject("vazao_by");
                 using (var ms = new MemoryStream(imageBytes4))
                 {
                     p5.BackgroundImage = System.Drawing.Image.FromStream(ms);
                 }
-                var imageBytes5 = (byte[])Properties.Resources.ResourceManager.GetObject("termometro_off");
+                var imageBytes5 = (byte[])Properties.Resources.ResourceManager.GetObject("termometro_by");
                 using (var ms = new MemoryStream(imageBytes5))
                 {
                     p6.BackgroundImage = System.Drawing.Image.FromStream(ms);
@@ -206,5 +236,38 @@ namespace minas.teste.prototype.MVVM.ViewModel
         #endregion
 
 
+        public void AtualizarVisualizador(DataGridView fonte,List<SensorData> data )
+        {
+            // Configurar o DataGridView se necessário
+            if (fonte.Columns.Count == 0)
+            {
+                fonte.AutoGenerateColumns = false;
+
+                fonte.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Sensor",
+                    HeaderText = "Sensor",
+                    Width = 100
+                });
+
+                fonte.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Valor",
+                    HeaderText = "Valor",
+                    Width = 80
+                });
+
+                fonte.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Medidas",
+                    HeaderText = "Unidade",
+                    Width = 60
+                });
+            }
+
+            // Atualizar a fonte de dados
+            fonte.DataSource = null;
+            fonte.DataSource = data;
+        }
     }
 }

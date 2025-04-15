@@ -277,9 +277,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Model\Abstract\ConnectionSettingsBase.cs" />
+    <Compile Include="MVVM\Model\Abstract\ISessaoTeste.cs" />
     <Compile Include="MVVM\Model\Abstract\LogEventArgs.cs" />
+    <Compile Include="MVVM\Model\Abstract\SessaoTeste.cs" />
+    <Compile Include="MVVM\Model\Abstract\SessaoTesteBase.cs" />
     <Compile Include="MVVM\Model\Concrete\ConnectionSettingsApplication.cs" />
+    <Compile Include="MVVM\Model\Concrete\EtapaData.cs" />
+    <Compile Include="MVVM\Model\Concrete\ResultadoDisplay.cs" />
+    <Compile Include="MVVM\Model\Enum\listsensorBomba.cs" />
     <Compile Include="MVVM\Model\Concrete\SensorCalibracoes.cs" />
+    <Compile Include="MVVM\Model\Concrete\SensorData.cs" />
     <Compile Include="MVVM\Model\Concrete\SessaoBomba.cs" />
     <Compile Include="MVVM\Repository\Concret\SensorCalibracaoesRepository.cs" />
     <Compile Include="MVVM\ViewModel\apresentacao.cs" />
@@ -327,6 +334,12 @@
     <Compile Include="MVVM\Model\Concrete\Vazao_bomba.cs" />
     <Compile Include="MVVM\Repository\Concret\RepositoryCore.cs" />
     <Compile Include="MVVM\Repository\Abstract\IRepositoryCore.cs" />
+    <Compile Include="MVVM\View\RelatorioTestes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\RelatorioTestes.Designer.cs">
+      <DependentUpon>RelatorioTestes.cs</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\TelaStatusGeral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -412,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Menuapp.resx">
       <DependentUpon>Menuapp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\RelatorioTestes.resx">
+      <DependentUpon>RelatorioTestes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>

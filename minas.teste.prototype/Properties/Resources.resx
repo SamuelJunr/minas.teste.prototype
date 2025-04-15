@@ -214,7 +214,7 @@
     <value>..\Resources\imagens\medidas\rotacao_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="off" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="medidor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\medidor1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -230,7 +230,7 @@
     <value>..\Resources\imagens\modulos\servocon02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ConfigureTitle" xml:space="preserve">
-    <value>Spervisório SK4 | Configurações</value>
+    <value>Supervisório SK4 | Configurações</value>
     <comment>titulo da tela de configurações</comment>
   </data>
   <data name="logotipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -284,7 +284,7 @@
   <data name="dreno_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\dreno_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="off" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ReportTitle" xml:space="preserve">
+    <value>Supervisório SK4 | Relatório de Teste</value>
   </data>
 </root>

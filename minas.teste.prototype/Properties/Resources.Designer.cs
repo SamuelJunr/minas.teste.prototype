@@ -193,7 +193,7 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Spervisório SK4 | Configurações.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Supervisório SK4 | Configurações.
         /// </summary>
         internal static string ConfigureTitle {
             get {
@@ -447,6 +447,15 @@ namespace minas.teste.prototype.Properties {
             get {
                 object obj = ResourceManager.GetObject("pressao_on", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Supervisório SK4 | Relatório de Teste.
+        /// </summary>
+        internal static string ReportTitle {
+            get {
+                return ResourceManager.GetString("ReportTitle", resourceCulture);
             }
         }
         
