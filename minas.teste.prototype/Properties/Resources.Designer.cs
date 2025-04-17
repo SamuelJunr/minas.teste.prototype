@@ -607,5 +607,45 @@ namespace minas.teste.prototype.Properties {
                 return ResourceManager.GetString("versaoAplicacao", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_04_17_at_08_54_57 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-04-17 at 08.54.57", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_04_17_at_08_54_57__2_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-04-17 at 08.54.57 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_04_17_at_08_54_57__3_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-04-17 at 08.54.57 (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_04_17_at_08_541 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-04-17 at 08.541", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

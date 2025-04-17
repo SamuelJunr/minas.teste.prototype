@@ -269,5 +269,23 @@ namespace minas.teste.prototype.MVVM.ViewModel
             fonte.DataSource = null;
             fonte.DataSource = data;
         }
+
+
+        public static void TiposdeTesteBombas()
+        {
+            //// Defina os tipos de teste disponíveis
+            //var tiposDeTeste = new Dictionary<string, string>();
+            //{
+            //    ["A"] = "conjunto de teste 1",
+            //    ["B"] = "conjunto de teste 2 ",
+            //    ["C"] = "conjunto de teste 3 "
+                
+            //};
+            //// Exiba os tipos de teste disponíveis
+            //foreach (var tipo in tiposDeTeste)
+            //{
+            //    Console.WriteLine(tipo);
+            //}   
+        }
     }
 }

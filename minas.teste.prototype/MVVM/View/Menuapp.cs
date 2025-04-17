@@ -56,8 +56,12 @@ namespace minas.teste.prototype
         {
 
 
-            Tela_Bombas BombasVV = new Tela_Bombas();
-            BombasVV.Show();
+            //Tela_Bombas BombasVV = new Tela_Bombas();
+            //BombasVV.Show();
+            //this.Hide();
+            
+            TelaBombaCon teste = new TelaBombaCon();
+            teste.Show();
             this.Hide();
 
         }

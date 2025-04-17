@@ -314,6 +314,12 @@
     <Compile Include="MVVM\View\Configuracao.Designer.cs">
       <DependentUpon>Configuracao.cs</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Menuapp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +345,12 @@
     </Compile>
     <Compile Include="MVVM\View\RelatorioTestes.Designer.cs">
       <DependentUpon>RelatorioTestes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\TelaBombaCon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\TelaBombaCon.Designer.cs">
+      <DependentUpon>TelaBombaCon.cs</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\TelaStatusGeral.cs">
       <SubType>Form</SubType>
@@ -423,11 +435,17 @@
     <EmbeddedResource Include="MVVM\View\Configuracao.resx">
       <DependentUpon>Configuracao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Menuapp.resx">
       <DependentUpon>Menuapp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\RelatorioTestes.resx">
       <DependentUpon>RelatorioTestes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\TelaBombaCon.resx">
+      <DependentUpon>TelaBombaCon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>
@@ -562,6 +580,18 @@
   <ItemGroup>
     <Analyzer Include="..\packages\MSTest.Analyzers.3.8.3\analyzers\dotnet\cs\MSTest.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\MSTest.Analyzers.3.8.3\analyzers\dotnet\cs\MSTest.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-04-17 at 08.54.57.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-04-17 at 08.54.57 %282%29.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-04-17 at 08.54.57 %283%29.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-04-17 at 08.54.571.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
