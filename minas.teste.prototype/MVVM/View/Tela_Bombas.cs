@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.IO.Ports;
-using System.Linq;
+﻿using System.Drawing;
+using System;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using Microsoft.Extensions.Logging;
-using minas.teste.prototype.MVVM.Model.Abstract;
 using minas.teste.prototype.MVVM.Model.Concrete;
-using minas.teste.prototype.Service;
 using minas.teste.prototype.MVVM.ViewModel;
+using System.Collections.Generic;
 
 namespace minas.teste.prototype.MVVM.View
 {
     public partial class Tela_Bombas : Form
     {
-        //-------------------------------------//
         //          objetos GLOBAIS          //
         //-------------------------------------//
         private Tela_BombasVM _viewModel;
         private apresentacao _fechar_box;
         private List<SensorData> _dadosSensores = new List<SensorData>();
-        private List<EtapaData> _dadosColetados = new List<EtapaData>(); 
+        private List<EtapaData> _dadosColetados = new List<EtapaData>();
         public Dictionary<string, TextBox> sensorMap;
         public Dictionary<string, string> sensorMapmedida;
-        
+
 
 
 
@@ -101,7 +92,7 @@ namespace minas.teste.prototype.MVVM.View
             _viewModel.VincularRelogioLabel(LabelHorariotela);// configura a imagem de teste ligado ou desligado  
 
         }
-        
+
         #endregion
 
         #region EVENTOS_FECHAMANETO  
@@ -117,8 +108,8 @@ namespace minas.teste.prototype.MVVM.View
 
             // Só encerra a aplicação se não for um fechamento controlado  
             if (!_fechamentoForcado)
-            {  
-                   _fechar_box.apresentacao_FormClosing(sender, e);
+            {
+                _fechar_box.apresentacao_FormClosing(sender, e);
             }
             else
                 Menuapp.Instance.Show();
@@ -130,7 +121,7 @@ namespace minas.teste.prototype.MVVM.View
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             _isMonitoring = true;
-            _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5,panel7, panel6, panel8, panel9);
+            _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel7, panel6, panel8, panel9);
             Inicioteste = DateTime.Now.ToString();
             _viewModel.IniciarTesteBomba(Stage_box_bomba);
 
@@ -173,7 +164,7 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
 
-       
+
         private void unidade_medidapilotagem2_Click(object sender, EventArgs e)
         {
             if (_isMonitoring)
@@ -440,3 +431,4 @@ namespace minas.teste.prototype.MVVM.View
         #endregion
     }
 }
+

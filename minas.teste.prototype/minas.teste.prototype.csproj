@@ -346,23 +346,17 @@
     <Compile Include="MVVM\View\RelatorioTestes.Designer.cs">
       <DependentUpon>RelatorioTestes.cs</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\TelaBombaCon.cs">
+    <Compile Include="MVVM\View\Tela_Bombas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MVVM\View\TelaBombaCon.Designer.cs">
-      <DependentUpon>TelaBombaCon.cs</DependentUpon>
+    <Compile Include="MVVM\View\Tela_Bombas.Designer.cs">
+      <DependentUpon>Tela_Bombas.cs</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\TelaStatusGeral.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MVVM\View\TelaStatusGeral.Designer.cs">
       <DependentUpon>TelaStatusGeral.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\View\Tela_Bombas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MVVM\View\Tela_Bombas.Designer.cs">
-      <DependentUpon>Tela_Bombas.cs</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Tela_Cilindros.cs">
       <SubType>Form</SubType>
@@ -444,14 +438,11 @@
     <EmbeddedResource Include="MVVM\View\RelatorioTestes.resx">
       <DependentUpon>RelatorioTestes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MVVM\View\TelaBombaCon.resx">
-      <DependentUpon>TelaBombaCon.cs</DependentUpon>
+    <EmbeddedResource Include="MVVM\View\Tela_Bombas.resx">
+      <DependentUpon>Tela_Bombas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MVVM\View\Tela_Bombas.resx">
-      <DependentUpon>Tela_Bombas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Tela_Cilindros.resx">
       <DependentUpon>Tela_Cilindros.cs</DependentUpon>

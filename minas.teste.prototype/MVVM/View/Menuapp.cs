@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using minas.teste.prototype.MVVM.Model.Concrete;
 using minas.teste.prototype.MVVM.View;
+using minas.teste.prototype.MVVM.ViewModel;
 
 namespace minas.teste.prototype
 {
@@ -56,13 +57,13 @@ namespace minas.teste.prototype
         {
 
 
-            //Tela_Bombas BombasVV = new Tela_Bombas();
-            //BombasVV.Show();
-            //this.Hide();
-            
-            TelaBombaCon teste = new TelaBombaCon();
-            teste.Show();
+            Tela_Bombas bombasvv = new Tela_Bombas();
+            bombasvv.Show();
             this.Hide();
+
+            //Tela_Bombas teste = new Tela_Bombas();
+            //teste.Show();
+            //this.Hide();
 
         }
 
