@@ -29,22 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            CodeArtEng.Gauge.Themes.ThemeColors themeColors1 = new CodeArtEng.Gauge.Themes.ThemeColors();
+            CodeArtEng.Gauge.Themes.ThemeColors themeColors2 = new CodeArtEng.Gauge.Themes.ThemeColors();
+            CodeArtEng.Gauge.Themes.ThemeColors themeColors3 = new CodeArtEng.Gauge.Themes.ThemeColors();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_Bombas));
             this.painelBase = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -82,8 +69,8 @@
             this.btnrelatoriobomba = new CuoreUI.Controls.cuiButton();
             this.cuiButton5 = new CuoreUI.Controls.cuiButton();
             this.btniniciarteste = new CuoreUI.Controls.cuiButton();
-            this.cuiLabel2 = new CuoreUI.Controls.cuiLabel();
-            this.cuiLabel1 = new CuoreUI.Controls.cuiLabel();
+            this.labMedidas = new CuoreUI.Controls.cuiLabel();
+            this.labControle = new CuoreUI.Controls.cuiLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.unidade_medidasvazao1 = new System.Windows.Forms.Button();
@@ -129,24 +116,22 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.cuiLabel4 = new CuoreUI.Controls.cuiLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cuiLabel3 = new CuoreUI.Controls.cuiLabel();
+            this.labParametro = new CuoreUI.Controls.cuiLabel();
             this.visualizador = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabgraficos = new System.Windows.Forms.TabControl();
-            this.Grafico1 = new System.Windows.Forms.TabPage();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.Grafico2 = new System.Windows.Forms.TabPage();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.metroUserControl1 = new MetroFramework.Controls.MetroUserControl();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.labEtapa = new CuoreUI.Controls.cuiLabel();
+            this.gaugePanel1 = new CodeArtEng.Gauge.PanelGauges.GaugePanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.labminutos = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -168,18 +153,14 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
-            this.cuiLabel5 = new CuoreUI.Controls.cuiLabel();
+            this.labAutoma = new CuoreUI.Controls.cuiLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
             this.mascaraabertura = new CuoreUI.Components.cuiFormAnimator(this.components);
-            this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.labetapas = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.painelBase.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Imagem_minasteste)).BeginInit();
@@ -217,24 +198,18 @@
             this.tableLayoutPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.visualizador)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
-            this.tabgraficos.SuspendLayout();
-            this.Grafico1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.Grafico2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            this.tableLayoutPanel15.SuspendLayout();
+            this.gaugePanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBase
@@ -248,14 +223,14 @@
             this.painelBase.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.painelBase.Controls.Add(this.separador_1, 0, 1);
             this.painelBase.Controls.Add(this.tableLayoutPanel1, 0, 2);
-            this.painelBase.Location = new System.Drawing.Point(9, 10);
-            this.painelBase.Margin = new System.Windows.Forms.Padding(2);
+            this.painelBase.Location = new System.Drawing.Point(12, 12);
+            this.painelBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.painelBase.Name = "painelBase";
             this.painelBase.RowCount = 3;
-            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 185F));
             this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 604F));
-            this.painelBase.Size = new System.Drawing.Size(1438, 806);
+            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 743F));
+            this.painelBase.Size = new System.Drawing.Size(1917, 992);
             this.painelBase.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -266,12 +241,12 @@
             this.tableLayoutPanel2.Controls.Add(this.Imagem_minasteste, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 3);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.57252F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1432, 146);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1909, 181);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // Imagem_minasteste
@@ -281,10 +256,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Imagem_minasteste.BackgroundImage = global::minas.teste.prototype.Properties.Resources.WhatsApp_Image_2025_04_17_at_08_541;
             this.Imagem_minasteste.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Imagem_minasteste.Location = new System.Drawing.Point(2, 2);
-            this.Imagem_minasteste.Margin = new System.Windows.Forms.Padding(2);
+            this.Imagem_minasteste.Location = new System.Drawing.Point(3, 2);
+            this.Imagem_minasteste.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Imagem_minasteste.Name = "Imagem_minasteste";
-            this.Imagem_minasteste.Size = new System.Drawing.Size(383, 142);
+            this.Imagem_minasteste.Size = new System.Drawing.Size(510, 177);
             this.Imagem_minasteste.TabIndex = 1;
             this.Imagem_minasteste.TabStop = false;
             // 
@@ -292,17 +267,17 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.painalFuncaoes, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.painelTitulos, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(389, 2);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(519, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.19048F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1041, 142);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1387, 177);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // painalFuncaoes
@@ -311,30 +286,30 @@
             this.painalFuncaoes.ColumnCount = 4;
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.31102F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.68898F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel2, 3, 0);
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel3, 2, 0);
             this.painalFuncaoes.Controls.Add(this.Stage_box_bomba, 0, 0);
             this.painalFuncaoes.Controls.Add(this.tableLayoutPanel14, 1, 0);
             this.painalFuncaoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painalFuncaoes.Location = new System.Drawing.Point(2, 35);
-            this.painalFuncaoes.Margin = new System.Windows.Forms.Padding(2);
+            this.painalFuncaoes.Location = new System.Drawing.Point(3, 44);
+            this.painalFuncaoes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.painalFuncaoes.Name = "painalFuncaoes";
             this.painalFuncaoes.RowCount = 1;
             this.painalFuncaoes.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.painalFuncaoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 103F));
-            this.painalFuncaoes.Size = new System.Drawing.Size(1037, 105);
+            this.painalFuncaoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 129F));
+            this.painalFuncaoes.Size = new System.Drawing.Size(1381, 131);
             this.painalFuncaoes.TabIndex = 0;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.Controls.Add(this.labelCronometro_bomba);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(906, 4);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1201, 4);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(108, 50);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(144, 62);
             this.flowLayoutPanel2.TabIndex = 48;
             // 
             // labelCronometro_bomba
@@ -342,19 +317,20 @@
             this.labelCronometro_bomba.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelCronometro_bomba.AutoSize = true;
             this.labelCronometro_bomba.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.labelCronometro_bomba.Location = new System.Drawing.Point(3, 0);
+            this.labelCronometro_bomba.Location = new System.Drawing.Point(4, 0);
+            this.labelCronometro_bomba.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCronometro_bomba.Name = "labelCronometro_bomba";
-            this.labelCronometro_bomba.Size = new System.Drawing.Size(0, 29);
+            this.labelCronometro_bomba.Size = new System.Drawing.Size(0, 32);
             this.labelCronometro_bomba.TabIndex = 44;
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel3.Controls.Add(this.LabelHorariotela);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(765, 4);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(1008, 4);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(115, 50);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(153, 62);
             this.flowLayoutPanel3.TabIndex = 47;
             // 
             // LabelHorariotela
@@ -362,9 +338,10 @@
             this.LabelHorariotela.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LabelHorariotela.AutoSize = true;
             this.LabelHorariotela.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.LabelHorariotela.Location = new System.Drawing.Point(3, 0);
+            this.LabelHorariotela.Location = new System.Drawing.Point(4, 0);
+            this.LabelHorariotela.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelHorariotela.Name = "LabelHorariotela";
-            this.LabelHorariotela.Size = new System.Drawing.Size(0, 29);
+            this.LabelHorariotela.Size = new System.Drawing.Size(0, 32);
             this.LabelHorariotela.TabIndex = 43;
             // 
             // Stage_box_bomba
@@ -372,10 +349,10 @@
             this.Stage_box_bomba.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Stage_box_bomba.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.Stage_box_bomba.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stage_box_bomba.Location = new System.Drawing.Point(60, 18);
-            this.Stage_box_bomba.Margin = new System.Windows.Forms.Padding(2);
+            this.Stage_box_bomba.Location = new System.Drawing.Point(77, 23);
+            this.Stage_box_bomba.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Stage_box_bomba.Name = "Stage_box_bomba";
-            this.Stage_box_bomba.Size = new System.Drawing.Size(68, 68);
+            this.Stage_box_bomba.Size = new System.Drawing.Size(91, 84);
             this.Stage_box_bomba.TabIndex = 1;
             this.Stage_box_bomba.TabStop = false;
             // 
@@ -386,12 +363,13 @@
             this.tableLayoutPanel14.Controls.Add(this.HistoricalEvents, 0, 1);
             this.tableLayoutPanel14.Controls.Add(this.dadosentrada1, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(191, 5);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(250, 6);
+            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(566, 95);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(747, 119);
             this.tableLayoutPanel14.TabIndex = 49;
             // 
             // HistoricalEvents
@@ -399,11 +377,11 @@
             this.HistoricalEvents.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.HistoricalEvents.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.HistoricalEvents.BackColor = System.Drawing.SystemColors.InfoText;
-            this.HistoricalEvents.Location = new System.Drawing.Point(2, 49);
-            this.HistoricalEvents.Margin = new System.Windows.Forms.Padding(2);
+            this.HistoricalEvents.Location = new System.Drawing.Point(3, 61);
+            this.HistoricalEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HistoricalEvents.Multiline = true;
             this.HistoricalEvents.Name = "HistoricalEvents";
-            this.HistoricalEvents.Size = new System.Drawing.Size(562, 44);
+            this.HistoricalEvents.Size = new System.Drawing.Size(741, 53);
             this.HistoricalEvents.TabIndex = 49;
             // 
             // dadosentrada1
@@ -412,30 +390,29 @@
             this.dadosentrada1.ColumnCount = 3;
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.34694F));
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.65306F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
             this.dadosentrada1.Controls.Add(this.textBox5, 1, 1);
             this.dadosentrada1.Controls.Add(this.textBox6, 0, 1);
             this.dadosentrada1.Controls.Add(this.label6, 0, 0);
-            this.dadosentrada1.Location = new System.Drawing.Point(2, 2);
-            this.dadosentrada1.Margin = new System.Windows.Forms.Padding(2);
+            this.dadosentrada1.Location = new System.Drawing.Point(3, 2);
+            this.dadosentrada1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dadosentrada1.Name = "dadosentrada1";
             this.dadosentrada1.RowCount = 2;
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.23256F));
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.76744F));
-            this.dadosentrada1.Size = new System.Drawing.Size(562, 43);
+            this.dadosentrada1.Size = new System.Drawing.Size(741, 53);
             this.dadosentrada1.TabIndex = 48;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(427, 1);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(564, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 12);
+            this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
             this.label4.Text = "ORDEM DE SERVIÇO";
             // 
@@ -443,51 +420,49 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(316, 1);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(410, 1);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 12);
+            this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = "CLIENTE";
             // 
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(411, 16);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox4.Location = new System.Drawing.Point(532, 19);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(144, 24);
+            this.textBox4.Size = new System.Drawing.Size(191, 29);
             this.textBox4.TabIndex = 6;
             // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(278, 16);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox5.Location = new System.Drawing.Point(359, 19);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(128, 24);
+            this.textBox5.Size = new System.Drawing.Size(166, 29);
             this.textBox5.TabIndex = 5;
             // 
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(3, 16);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox6.Location = new System.Drawing.Point(4, 19);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(270, 24);
+            this.textBox6.Size = new System.Drawing.Size(348, 29);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(90, 1);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(119, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 12);
+            this.label6.Size = new System.Drawing.Size(118, 15);
             this.label6.TabIndex = 7;
             this.label6.Text = "NOME DO TESTE";
             // 
@@ -499,20 +474,20 @@
             this.painelTitulos.ColumnCount = 4;
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.3609F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.6391F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
             this.painelTitulos.Controls.Add(this.text_status, 0, 0);
             this.painelTitulos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painelTitulos.Location = new System.Drawing.Point(2, 2);
-            this.painelTitulos.Margin = new System.Windows.Forms.Padding(2);
+            this.painelTitulos.Location = new System.Drawing.Point(3, 2);
+            this.painelTitulos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.painelTitulos.Name = "painelTitulos";
             this.painelTitulos.RowCount = 1;
             this.painelTitulos.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.painelTitulos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.painelTitulos.Size = new System.Drawing.Size(1037, 29);
+            this.painelTitulos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.painelTitulos.Size = new System.Drawing.Size(1381, 38);
             this.painelTitulos.TabIndex = 1;
             // 
             // text_teste
@@ -521,10 +496,9 @@
             this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(888, 2);
-            this.text_teste.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.text_teste.Location = new System.Drawing.Point(1171, 2);
             this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(145, 13);
+            this.text_teste.Size = new System.Drawing.Size(205, 16);
             this.text_teste.TabIndex = 45;
             this.text_teste.Text = "TESTE";
             this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -535,10 +509,9 @@
             this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(764, 2);
-            this.text_datahora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.text_datahora.Location = new System.Drawing.Point(1006, 2);
             this.text_datahora.Name = "text_datahora";
-            this.text_datahora.Size = new System.Drawing.Size(118, 13);
+            this.text_datahora.Size = new System.Drawing.Size(157, 16);
             this.text_datahora.TabIndex = 44;
             this.text_datahora.Text = "DATA e HORA";
             this.text_datahora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -549,10 +522,9 @@
             this.text_nometeste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_nometeste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_nometeste.Location = new System.Drawing.Point(190, 2);
-            this.text_nometeste.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.text_nometeste.Location = new System.Drawing.Point(250, 2);
             this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(568, 13);
+            this.text_nometeste.Size = new System.Drawing.Size(748, 16);
             this.text_nometeste.TabIndex = 43;
             this.text_nometeste.Text = "DADOS DO TESTE";
             this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -563,10 +535,9 @@
             this.text_status.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_status.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_status.Location = new System.Drawing.Point(4, 2);
-            this.text_status.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.text_status.Location = new System.Drawing.Point(5, 2);
             this.text_status.Name = "text_status";
-            this.text_status.Size = new System.Drawing.Size(180, 13);
+            this.text_status.Size = new System.Drawing.Size(237, 16);
             this.text_status.TabIndex = 42;
             this.text_status.Text = "STATUS GERAL";
             this.text_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -574,14 +545,14 @@
             // separador_1
             // 
             this.separador_1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.separador_1.Location = new System.Drawing.Point(3, 154);
-            this.separador_1.Margin = new System.Windows.Forms.Padding(2);
+            this.separador_1.Location = new System.Drawing.Point(4, 189);
+            this.separador_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.separador_1.Name = "separador_1";
             this.separador_1.OutlineThickness = 1F;
             this.separador_1.PanelColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
             this.separador_1.PanelOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
             this.separador_1.Rounding = new System.Windows.Forms.Padding(8);
-            this.separador_1.Size = new System.Drawing.Size(1432, 8);
+            this.separador_1.Size = new System.Drawing.Size(1909, 10);
             this.separador_1.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -593,11 +564,12 @@
             this.tableLayoutPanel1.Controls.Add(this.metroPanel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel10, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.metroPanel2, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 168);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 206);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1429, 634);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1905, 780);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // metroPanel1
@@ -610,10 +582,11 @@
             this.metroPanel1.HorizontalScrollbar = false;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel1.HorizontalScrollbarSize = 12;
+            this.metroPanel1.Location = new System.Drawing.Point(4, 4);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(456, 628);
+            this.metroPanel1.Size = new System.Drawing.Size(607, 772);
             this.metroPanel1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel1.StyleManager = null;
             this.metroPanel1.TabIndex = 0;
@@ -621,7 +594,7 @@
             this.metroPanel1.VerticalScrollbar = false;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.VerticalScrollbarSize = 13;
             // 
             // metroPanel3
             // 
@@ -629,8 +602,8 @@
             this.metroPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.metroPanel3.Controls.Add(this.tableLayoutPanel11);
             this.metroPanel3.Controls.Add(this.tableLayoutPanel12);
-            this.metroPanel3.Controls.Add(this.cuiLabel2);
-            this.metroPanel3.Controls.Add(this.cuiLabel1);
+            this.metroPanel3.Controls.Add(this.labMedidas);
+            this.metroPanel3.Controls.Add(this.labControle);
             this.metroPanel3.Controls.Add(this.groupBox2);
             this.metroPanel3.Controls.Add(this.groupBox5);
             this.metroPanel3.Controls.Add(this.Temperatura);
@@ -641,10 +614,11 @@
             this.metroPanel3.HorizontalScrollbar = false;
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel3.HorizontalScrollbarSize = 12;
+            this.metroPanel3.Location = new System.Drawing.Point(4, 4);
+            this.metroPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel3.Name = "metroPanel3";
-            this.metroPanel3.Size = new System.Drawing.Size(446, 618);
+            this.metroPanel3.Size = new System.Drawing.Size(595, 761);
             this.metroPanel3.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel3.StyleManager = null;
             this.metroPanel3.TabIndex = 2;
@@ -652,7 +626,7 @@
             this.metroPanel3.VerticalScrollbar = false;
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel3.VerticalScrollbarSize = 10;
+            this.metroPanel3.VerticalScrollbarSize = 13;
             // 
             // tableLayoutPanel11
             // 
@@ -660,17 +634,18 @@
             this.tableLayoutPanel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tableLayoutPanel11.ColumnCount = 3;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
             this.tableLayoutPanel11.Controls.Add(this.cuiButton3, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.cuiButton2, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.cuiButton4, 0, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 539);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(4, 663);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(440, 76);
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(587, 94);
             this.tableLayoutPanel11.TabIndex = 89;
             // 
             // cuiButton3
@@ -685,7 +660,7 @@
             this.cuiButton3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.cuiButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cuiButton3.ForeColor = System.Drawing.Color.White;
-            this.cuiButton3.HoverBackground = System.Drawing.Color.White;
+            this.cuiButton3.HoverBackground = System.Drawing.Color.DimGray;
             this.cuiButton3.HoveredImageTint = System.Drawing.Color.White;
             this.cuiButton3.HoverForeColor = System.Drawing.Color.White;
             this.cuiButton3.HoverOutline = System.Drawing.Color.Empty;
@@ -694,7 +669,8 @@
             this.cuiButton3.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiButton3.ImageOffset = new System.Drawing.Point(0, 0);
             this.cuiButton3.ImageTint = System.Drawing.Color.White;
-            this.cuiButton3.Location = new System.Drawing.Point(301, 3);
+            this.cuiButton3.Location = new System.Drawing.Point(402, 4);
+            this.cuiButton3.Margin = new System.Windows.Forms.Padding(4);
             this.cuiButton3.Name = "cuiButton3";
             this.cuiButton3.NormalBackground = System.Drawing.Color.Black;
             this.cuiButton3.NormalOutline = System.Drawing.Color.Empty;
@@ -704,7 +680,7 @@
             this.cuiButton3.PressedImageTint = System.Drawing.Color.White;
             this.cuiButton3.PressedOutline = System.Drawing.Color.Empty;
             this.cuiButton3.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton3.Size = new System.Drawing.Size(136, 70);
+            this.cuiButton3.Size = new System.Drawing.Size(181, 86);
             this.cuiButton3.TabIndex = 7;
             this.cuiButton3.TextOffset = new System.Drawing.Point(0, 0);
             this.cuiButton3.Click += new System.EventHandler(this.CloseWindows_Click);
@@ -730,7 +706,8 @@
             this.cuiButton2.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiButton2.ImageOffset = new System.Drawing.Point(0, 0);
             this.cuiButton2.ImageTint = System.Drawing.Color.White;
-            this.cuiButton2.Location = new System.Drawing.Point(150, 3);
+            this.cuiButton2.Location = new System.Drawing.Point(201, 4);
+            this.cuiButton2.Margin = new System.Windows.Forms.Padding(4);
             this.cuiButton2.Name = "cuiButton2";
             this.cuiButton2.NormalBackground = System.Drawing.Color.Gray;
             this.cuiButton2.NormalOutline = System.Drawing.Color.Empty;
@@ -740,7 +717,7 @@
             this.cuiButton2.PressedImageTint = System.Drawing.Color.White;
             this.cuiButton2.PressedOutline = System.Drawing.Color.Empty;
             this.cuiButton2.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton2.Size = new System.Drawing.Size(145, 70);
+            this.cuiButton2.Size = new System.Drawing.Size(193, 86);
             this.cuiButton2.TabIndex = 6;
             this.cuiButton2.TextOffset = new System.Drawing.Point(0, 0);
             // 
@@ -765,7 +742,8 @@
             this.cuiButton4.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiButton4.ImageOffset = new System.Drawing.Point(0, 0);
             this.cuiButton4.ImageTint = System.Drawing.Color.White;
-            this.cuiButton4.Location = new System.Drawing.Point(3, 3);
+            this.cuiButton4.Location = new System.Drawing.Point(4, 4);
+            this.cuiButton4.Margin = new System.Windows.Forms.Padding(4);
             this.cuiButton4.Name = "cuiButton4";
             this.cuiButton4.NormalBackground = System.Drawing.Color.Gray;
             this.cuiButton4.NormalOutline = System.Drawing.Color.Empty;
@@ -775,7 +753,7 @@
             this.cuiButton4.PressedImageTint = System.Drawing.Color.White;
             this.cuiButton4.PressedOutline = System.Drawing.Color.Empty;
             this.cuiButton4.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton4.Size = new System.Drawing.Size(141, 70);
+            this.cuiButton4.Size = new System.Drawing.Size(188, 86);
             this.cuiButton4.TabIndex = 4;
             this.cuiButton4.TextOffset = new System.Drawing.Point(0, 0);
             // 
@@ -785,17 +763,18 @@
             this.tableLayoutPanel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tableLayoutPanel12.ColumnCount = 3;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
             this.tableLayoutPanel12.Controls.Add(this.btnrelatoriobomba, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.cuiButton5, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.btniniciarteste, 0, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 443);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(4, 545);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(440, 76);
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(587, 94);
             this.tableLayoutPanel12.TabIndex = 88;
             // 
             // btnrelatoriobomba
@@ -819,7 +798,8 @@
             this.btnrelatoriobomba.ImageExpand = new System.Drawing.Point(0, 0);
             this.btnrelatoriobomba.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnrelatoriobomba.ImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.Location = new System.Drawing.Point(150, 3);
+            this.btnrelatoriobomba.Location = new System.Drawing.Point(200, 4);
+            this.btnrelatoriobomba.Margin = new System.Windows.Forms.Padding(4);
             this.btnrelatoriobomba.Name = "btnrelatoriobomba";
             this.btnrelatoriobomba.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
             this.btnrelatoriobomba.NormalOutline = System.Drawing.Color.Empty;
@@ -829,7 +809,7 @@
             this.btnrelatoriobomba.PressedImageTint = System.Drawing.Color.White;
             this.btnrelatoriobomba.PressedOutline = System.Drawing.Color.Empty;
             this.btnrelatoriobomba.Rounding = new System.Windows.Forms.Padding(8);
-            this.btnrelatoriobomba.Size = new System.Drawing.Size(144, 70);
+            this.btnrelatoriobomba.Size = new System.Drawing.Size(192, 86);
             this.btnrelatoriobomba.TabIndex = 6;
             this.btnrelatoriobomba.TextOffset = new System.Drawing.Point(0, 0);
             // 
@@ -854,7 +834,8 @@
             this.cuiButton5.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiButton5.ImageOffset = new System.Drawing.Point(0, 0);
             this.cuiButton5.ImageTint = System.Drawing.Color.White;
-            this.cuiButton5.Location = new System.Drawing.Point(300, 3);
+            this.cuiButton5.Location = new System.Drawing.Point(400, 4);
+            this.cuiButton5.Margin = new System.Windows.Forms.Padding(4);
             this.cuiButton5.Name = "cuiButton5";
             this.cuiButton5.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
             this.cuiButton5.NormalOutline = System.Drawing.Color.Empty;
@@ -864,7 +845,7 @@
             this.cuiButton5.PressedImageTint = System.Drawing.Color.White;
             this.cuiButton5.PressedOutline = System.Drawing.Color.Empty;
             this.cuiButton5.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton5.Size = new System.Drawing.Size(137, 70);
+            this.cuiButton5.Size = new System.Drawing.Size(183, 86);
             this.cuiButton5.TabIndex = 5;
             this.cuiButton5.TextOffset = new System.Drawing.Point(0, 0);
             // 
@@ -889,7 +870,8 @@
             this.btniniciarteste.ImageExpand = new System.Drawing.Point(0, 0);
             this.btniniciarteste.ImageOffset = new System.Drawing.Point(0, 0);
             this.btniniciarteste.ImageTint = System.Drawing.Color.White;
-            this.btniniciarteste.Location = new System.Drawing.Point(3, 3);
+            this.btniniciarteste.Location = new System.Drawing.Point(4, 4);
+            this.btniniciarteste.Margin = new System.Windows.Forms.Padding(4);
             this.btniniciarteste.Name = "btniniciarteste";
             this.btniniciarteste.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
             this.btniniciarteste.NormalOutline = System.Drawing.Color.Empty;
@@ -899,37 +881,41 @@
             this.btniniciarteste.PressedImageTint = System.Drawing.Color.White;
             this.btniniciarteste.PressedOutline = System.Drawing.Color.Empty;
             this.btniniciarteste.Rounding = new System.Windows.Forms.Padding(8);
-            this.btniniciarteste.Size = new System.Drawing.Size(141, 70);
+            this.btniniciarteste.Size = new System.Drawing.Size(188, 86);
             this.btniniciarteste.TabIndex = 3;
             this.btniniciarteste.TextOffset = new System.Drawing.Point(0, 0);
             // 
-            // cuiLabel2
+            // labMedidas
             // 
-            this.cuiLabel2.Content = "MÉTRICAS\\ DE\\ BOMBAS";
-            this.cuiLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiLabel2.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.cuiLabel2.Location = new System.Drawing.Point(108, 6);
-            this.cuiLabel2.Name = "cuiLabel2";
-            this.cuiLabel2.Size = new System.Drawing.Size(247, 21);
-            this.cuiLabel2.TabIndex = 87;
+            this.labMedidas.Content = "MÉTRICAS\\ DE\\ BOMBAS";
+            this.labMedidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labMedidas.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labMedidas.Location = new System.Drawing.Point(144, 7);
+            this.labMedidas.Margin = new System.Windows.Forms.Padding(5);
+            this.labMedidas.Name = "labMedidas";
+            this.labMedidas.Size = new System.Drawing.Size(329, 26);
+            this.labMedidas.TabIndex = 87;
             // 
-            // cuiLabel1
+            // labControle
             // 
-            this.cuiLabel1.Content = "CONTROLE";
-            this.cuiLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiLabel1.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.cuiLabel1.Location = new System.Drawing.Point(120, 416);
-            this.cuiLabel1.Name = "cuiLabel1";
-            this.cuiLabel1.Size = new System.Drawing.Size(210, 21);
-            this.cuiLabel1.TabIndex = 86;
+            this.labControle.Content = "CONTROLE";
+            this.labControle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labControle.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labControle.Location = new System.Drawing.Point(160, 512);
+            this.labControle.Margin = new System.Windows.Forms.Padding(5);
+            this.labControle.Name = "labControle";
+            this.labControle.Size = new System.Drawing.Size(280, 26);
+            this.labControle.TabIndex = 86;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(227, 29);
+            this.groupBox2.Location = new System.Drawing.Point(303, 36);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(216, 127);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(288, 156);
             this.groupBox2.TabIndex = 82;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "VAZÃO";
@@ -939,19 +925,19 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel4.Controls.Add(this.unidade_medidasvazao1, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.button5, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.sensor_Vazao_LPM, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.sensor_Vazao_GPM, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel6, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(5, 18);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 22);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(206, 98);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(275, 121);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
             // unidade_medidasvazao1
@@ -959,10 +945,10 @@
             this.unidade_medidasvazao1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidasvazao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidasvazao1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidasvazao1.Location = new System.Drawing.Point(145, 2);
-            this.unidade_medidasvazao1.Margin = new System.Windows.Forms.Padding(2);
+            this.unidade_medidasvazao1.Location = new System.Drawing.Point(190, 2);
+            this.unidade_medidasvazao1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidasvazao1.Name = "unidade_medidasvazao1";
-            this.unidade_medidasvazao1.Size = new System.Drawing.Size(42, 46);
+            this.unidade_medidasvazao1.Size = new System.Drawing.Size(56, 57);
             this.unidade_medidasvazao1.TabIndex = 25;
             this.unidade_medidasvazao1.Text = "GPM";
             this.unidade_medidasvazao1.UseVisualStyleBackColor = true;
@@ -972,10 +958,10 @@
             this.button5.BackColor = System.Drawing.Color.Black;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button5.Location = new System.Drawing.Point(145, 52);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Location = new System.Drawing.Point(190, 64);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(42, 44);
+            this.button5.Size = new System.Drawing.Size(56, 54);
             this.button5.TabIndex = 24;
             this.button5.Text = "LPM";
             this.button5.UseVisualStyleBackColor = true;
@@ -986,11 +972,11 @@
             this.sensor_Vazao_LPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_Vazao_LPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_Vazao_LPM.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Vazao_LPM.Location = new System.Drawing.Point(61, 52);
-            this.sensor_Vazao_LPM.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_Vazao_LPM.Location = new System.Drawing.Point(80, 64);
+            this.sensor_Vazao_LPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Vazao_LPM.Multiline = true;
             this.sensor_Vazao_LPM.Name = "sensor_Vazao_LPM";
-            this.sensor_Vazao_LPM.Size = new System.Drawing.Size(80, 44);
+            this.sensor_Vazao_LPM.Size = new System.Drawing.Size(104, 54);
             this.sensor_Vazao_LPM.TabIndex = 22;
             this.sensor_Vazao_LPM.Tag = "vazão";
             this.sensor_Vazao_LPM.Text = "0";
@@ -1001,11 +987,11 @@
             this.sensor_Vazao_GPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_Vazao_GPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_Vazao_GPM.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Vazao_GPM.Location = new System.Drawing.Point(61, 2);
-            this.sensor_Vazao_GPM.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_Vazao_GPM.Location = new System.Drawing.Point(80, 2);
+            this.sensor_Vazao_GPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Vazao_GPM.Multiline = true;
             this.sensor_Vazao_GPM.Name = "sensor_Vazao_GPM";
-            this.sensor_Vazao_GPM.Size = new System.Drawing.Size(80, 46);
+            this.sensor_Vazao_GPM.Size = new System.Drawing.Size(104, 56);
             this.sensor_Vazao_GPM.TabIndex = 20;
             this.sensor_Vazao_GPM.Tag = "vazão";
             this.sensor_Vazao_GPM.Text = "0";
@@ -1015,27 +1001,29 @@
             this.panel6.BackgroundImage = global::minas.teste.prototype.Properties.Resources.vazãobomba_removebg_preview__1_;
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel6.Controls.Add(this.panel7);
-            this.panel6.Location = new System.Drawing.Point(2, 2);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2);
+            this.panel6.Location = new System.Drawing.Point(3, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(55, 46);
+            this.panel6.Size = new System.Drawing.Size(71, 57);
             this.panel6.TabIndex = 2;
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(74, 56);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2);
+            this.panel7.Location = new System.Drawing.Point(99, 69);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(213, 125);
+            this.panel7.Size = new System.Drawing.Size(284, 154);
             this.panel7.TabIndex = 0;
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.tableLayoutPanel7);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(3, 29);
+            this.groupBox5.Location = new System.Drawing.Point(4, 36);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(218, 127);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(291, 156);
             this.groupBox5.TabIndex = 85;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "PILOTAGEM";
@@ -1045,19 +1033,19 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel7.Controls.Add(this.unidade_medidapilotagem1, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.button2, 2, 1);
             this.tableLayoutPanel7.Controls.Add(this.sensor_bar_PL, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.sensor_psi_PL, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel4, 0, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(5, 15);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(7, 18);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(208, 101);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(277, 124);
             this.tableLayoutPanel7.TabIndex = 7;
             // 
             // unidade_medidapilotagem1
@@ -1065,10 +1053,10 @@
             this.unidade_medidapilotagem1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidapilotagem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidapilotagem1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidapilotagem1.Location = new System.Drawing.Point(147, 2);
-            this.unidade_medidapilotagem1.Margin = new System.Windows.Forms.Padding(2);
+            this.unidade_medidapilotagem1.Location = new System.Drawing.Point(192, 2);
+            this.unidade_medidapilotagem1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidapilotagem1.Name = "unidade_medidapilotagem1";
-            this.unidade_medidapilotagem1.Size = new System.Drawing.Size(47, 46);
+            this.unidade_medidapilotagem1.Size = new System.Drawing.Size(63, 57);
             this.unidade_medidapilotagem1.TabIndex = 22;
             this.unidade_medidapilotagem1.Text = "PSI";
             this.unidade_medidapilotagem1.UseVisualStyleBackColor = true;
@@ -1078,10 +1066,10 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button2.Location = new System.Drawing.Point(147, 53);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(192, 65);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(47, 46);
+            this.button2.Size = new System.Drawing.Size(63, 57);
             this.button2.TabIndex = 21;
             this.button2.Text = "BAR";
             this.button2.UseVisualStyleBackColor = true;
@@ -1092,11 +1080,11 @@
             this.sensor_bar_PL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_bar_PL.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_bar_PL.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_bar_PL.Location = new System.Drawing.Point(62, 53);
-            this.sensor_bar_PL.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_bar_PL.Location = new System.Drawing.Point(81, 65);
+            this.sensor_bar_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_bar_PL.Multiline = true;
             this.sensor_bar_PL.Name = "sensor_bar_PL";
-            this.sensor_bar_PL.Size = new System.Drawing.Size(81, 44);
+            this.sensor_bar_PL.Size = new System.Drawing.Size(105, 54);
             this.sensor_bar_PL.TabIndex = 17;
             this.sensor_bar_PL.Tag = "pilotagem";
             this.sensor_bar_PL.Text = "0";
@@ -1107,11 +1095,11 @@
             this.sensor_psi_PL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_psi_PL.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_psi_PL.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_psi_PL.Location = new System.Drawing.Point(62, 2);
-            this.sensor_psi_PL.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_psi_PL.Location = new System.Drawing.Point(81, 2);
+            this.sensor_psi_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_psi_PL.Multiline = true;
             this.sensor_psi_PL.Name = "sensor_psi_PL";
-            this.sensor_psi_PL.Size = new System.Drawing.Size(81, 46);
+            this.sensor_psi_PL.Size = new System.Drawing.Size(105, 56);
             this.sensor_psi_PL.TabIndex = 16;
             this.sensor_psi_PL.Tag = "pilotagem";
             this.sensor_psi_PL.Text = "0";
@@ -1121,27 +1109,29 @@
             this.panel4.BackgroundImage = global::minas.teste.prototype.Properties.Resources.pilotagembomba_removebg_preview__1_;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel4.Controls.Add(this.panel10);
-            this.panel4.Location = new System.Drawing.Point(2, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Location = new System.Drawing.Point(3, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(56, 47);
+            this.panel4.Size = new System.Drawing.Size(72, 58);
             this.panel4.TabIndex = 2;
             // 
             // panel10
             // 
-            this.panel10.Location = new System.Drawing.Point(74, 56);
-            this.panel10.Margin = new System.Windows.Forms.Padding(2);
+            this.panel10.Location = new System.Drawing.Point(99, 69);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(213, 125);
+            this.panel10.Size = new System.Drawing.Size(284, 154);
             this.panel10.TabIndex = 0;
             // 
             // Temperatura
             // 
             this.Temperatura.Controls.Add(this.tableLayoutPanel9);
             this.Temperatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Temperatura.Location = new System.Drawing.Point(227, 295);
+            this.Temperatura.Location = new System.Drawing.Point(303, 363);
+            this.Temperatura.Margin = new System.Windows.Forms.Padding(4);
             this.Temperatura.Name = "Temperatura";
-            this.Temperatura.Size = new System.Drawing.Size(216, 114);
+            this.Temperatura.Padding = new System.Windows.Forms.Padding(4);
+            this.Temperatura.Size = new System.Drawing.Size(288, 140);
             this.Temperatura.TabIndex = 80;
             this.Temperatura.TabStop = false;
             this.Temperatura.Text = "TEMPERATURA";
@@ -1151,17 +1141,17 @@
             this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel9.Controls.Add(this.unidade_medidatemp, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.sensor_Temp_C, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.panel11, 0, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(5, 12);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(7, 15);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(206, 97);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(275, 119);
             this.tableLayoutPanel9.TabIndex = 12;
             // 
             // unidade_medidatemp
@@ -1169,10 +1159,10 @@
             this.unidade_medidatemp.BackColor = System.Drawing.Color.Black;
             this.unidade_medidatemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidatemp.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidatemp.Location = new System.Drawing.Point(145, 2);
-            this.unidade_medidatemp.Margin = new System.Windows.Forms.Padding(2);
+            this.unidade_medidatemp.Location = new System.Drawing.Point(190, 2);
+            this.unidade_medidatemp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidatemp.Name = "unidade_medidatemp";
-            this.unidade_medidatemp.Size = new System.Drawing.Size(46, 44);
+            this.unidade_medidatemp.Size = new System.Drawing.Size(61, 54);
             this.unidade_medidatemp.TabIndex = 21;
             this.unidade_medidatemp.Text = "C º";
             this.unidade_medidatemp.UseVisualStyleBackColor = true;
@@ -1183,11 +1173,11 @@
             this.sensor_Temp_C.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_Temp_C.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_Temp_C.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Temp_C.Location = new System.Drawing.Point(61, 2);
-            this.sensor_Temp_C.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_Temp_C.Location = new System.Drawing.Point(80, 2);
+            this.sensor_Temp_C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Temp_C.Multiline = true;
             this.sensor_Temp_C.Name = "sensor_Temp_C";
-            this.sensor_Temp_C.Size = new System.Drawing.Size(80, 44);
+            this.sensor_Temp_C.Size = new System.Drawing.Size(104, 54);
             this.sensor_Temp_C.TabIndex = 20;
             this.sensor_Temp_C.Tag = "temperatura";
             this.sensor_Temp_C.Text = "0";
@@ -1197,27 +1187,29 @@
             this.panel11.BackgroundImage = global::minas.teste.prototype.Properties.Resources.termometro_removebg_preview;
             this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel11.Controls.Add(this.panel12);
-            this.panel11.Location = new System.Drawing.Point(2, 2);
-            this.panel11.Margin = new System.Windows.Forms.Padding(2);
+            this.panel11.Location = new System.Drawing.Point(3, 2);
+            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(55, 44);
+            this.panel11.Size = new System.Drawing.Size(71, 54);
             this.panel11.TabIndex = 2;
             // 
             // panel12
             // 
-            this.panel12.Location = new System.Drawing.Point(74, 56);
-            this.panel12.Margin = new System.Windows.Forms.Padding(2);
+            this.panel12.Location = new System.Drawing.Point(99, 69);
+            this.panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(213, 125);
+            this.panel12.Size = new System.Drawing.Size(284, 154);
             this.panel12.TabIndex = 0;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tableLayoutPanel5);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(227, 162);
+            this.groupBox4.Location = new System.Drawing.Point(303, 199);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(216, 127);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(288, 156);
             this.groupBox4.TabIndex = 84;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "DRENO";
@@ -1227,19 +1219,19 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel5.Controls.Add(this.unidade_medidadreno1, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.button1, 2, 1);
             this.tableLayoutPanel5.Controls.Add(this.sensor_lpm_DR, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.sensor_gpm_DR, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(5, 18);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 22);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(206, 98);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(275, 121);
             this.tableLayoutPanel5.TabIndex = 8;
             // 
             // unidade_medidadreno1
@@ -1247,10 +1239,10 @@
             this.unidade_medidadreno1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidadreno1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidadreno1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidadreno1.Location = new System.Drawing.Point(145, 2);
-            this.unidade_medidadreno1.Margin = new System.Windows.Forms.Padding(2);
+            this.unidade_medidadreno1.Location = new System.Drawing.Point(190, 2);
+            this.unidade_medidadreno1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidadreno1.Name = "unidade_medidadreno1";
-            this.unidade_medidadreno1.Size = new System.Drawing.Size(46, 46);
+            this.unidade_medidadreno1.Size = new System.Drawing.Size(61, 57);
             this.unidade_medidadreno1.TabIndex = 25;
             this.unidade_medidadreno1.Text = "GPM";
             this.unidade_medidadreno1.UseVisualStyleBackColor = true;
@@ -1260,10 +1252,10 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button1.Location = new System.Drawing.Point(145, 52);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(190, 64);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(46, 44);
+            this.button1.Size = new System.Drawing.Size(61, 54);
             this.button1.TabIndex = 24;
             this.button1.Text = "LPM";
             this.button1.UseVisualStyleBackColor = true;
@@ -1274,11 +1266,11 @@
             this.sensor_lpm_DR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_lpm_DR.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_lpm_DR.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_lpm_DR.Location = new System.Drawing.Point(61, 52);
-            this.sensor_lpm_DR.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_lpm_DR.Location = new System.Drawing.Point(80, 64);
+            this.sensor_lpm_DR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_lpm_DR.Multiline = true;
             this.sensor_lpm_DR.Name = "sensor_lpm_DR";
-            this.sensor_lpm_DR.Size = new System.Drawing.Size(80, 44);
+            this.sensor_lpm_DR.Size = new System.Drawing.Size(104, 54);
             this.sensor_lpm_DR.TabIndex = 22;
             this.sensor_lpm_DR.Tag = "dreno";
             this.sensor_lpm_DR.Text = "0";
@@ -1289,11 +1281,11 @@
             this.sensor_gpm_DR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_gpm_DR.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_gpm_DR.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_gpm_DR.Location = new System.Drawing.Point(61, 2);
-            this.sensor_gpm_DR.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_gpm_DR.Location = new System.Drawing.Point(80, 2);
+            this.sensor_gpm_DR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_gpm_DR.Multiline = true;
             this.sensor_gpm_DR.Name = "sensor_gpm_DR";
-            this.sensor_gpm_DR.Size = new System.Drawing.Size(80, 46);
+            this.sensor_gpm_DR.Size = new System.Drawing.Size(104, 56);
             this.sensor_gpm_DR.TabIndex = 20;
             this.sensor_gpm_DR.Tag = "dreno";
             this.sensor_gpm_DR.Text = "0";
@@ -1303,27 +1295,29 @@
             this.panel2.BackgroundImage = global::minas.teste.prototype.Properties.Resources._10311715_ilustracao_contorno_icone_icone_de_agua_bomba_de_agua_vetor_removebg_preview;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(2, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(55, 46);
+            this.panel2.Size = new System.Drawing.Size(71, 57);
             this.panel2.TabIndex = 2;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(74, 56);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(99, 69);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(213, 125);
+            this.panel3.Size = new System.Drawing.Size(284, 154);
             this.panel3.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tableLayoutPanel6);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 162);
+            this.groupBox3.Location = new System.Drawing.Point(4, 199);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(218, 127);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(291, 156);
             this.groupBox3.TabIndex = 83;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PRESSÃO";
@@ -1333,19 +1327,19 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel6.Controls.Add(this.unidade_medidapressao1, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.button3, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.sensor_Press_BAR, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.sensor_Press_PSI, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel5, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(5, 18);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(7, 22);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(208, 98);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(277, 121);
             this.tableLayoutPanel6.TabIndex = 9;
             // 
             // unidade_medidapressao1
@@ -1353,10 +1347,10 @@
             this.unidade_medidapressao1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidapressao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidapressao1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidapressao1.Location = new System.Drawing.Point(147, 2);
-            this.unidade_medidapressao1.Margin = new System.Windows.Forms.Padding(2);
+            this.unidade_medidapressao1.Location = new System.Drawing.Point(192, 2);
+            this.unidade_medidapressao1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidapressao1.Name = "unidade_medidapressao1";
-            this.unidade_medidapressao1.Size = new System.Drawing.Size(45, 46);
+            this.unidade_medidapressao1.Size = new System.Drawing.Size(60, 57);
             this.unidade_medidapressao1.TabIndex = 25;
             this.unidade_medidapressao1.Text = "PSI";
             this.unidade_medidapressao1.UseVisualStyleBackColor = true;
@@ -1366,10 +1360,10 @@
             this.button3.BackColor = System.Drawing.Color.Black;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button3.Location = new System.Drawing.Point(147, 52);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(192, 64);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(45, 44);
+            this.button3.Size = new System.Drawing.Size(60, 54);
             this.button3.TabIndex = 24;
             this.button3.Text = "BAR";
             this.button3.UseVisualStyleBackColor = true;
@@ -1380,11 +1374,11 @@
             this.sensor_Press_BAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_Press_BAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_Press_BAR.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Press_BAR.Location = new System.Drawing.Point(62, 52);
-            this.sensor_Press_BAR.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_Press_BAR.Location = new System.Drawing.Point(81, 64);
+            this.sensor_Press_BAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Press_BAR.Multiline = true;
             this.sensor_Press_BAR.Name = "sensor_Press_BAR";
-            this.sensor_Press_BAR.Size = new System.Drawing.Size(81, 44);
+            this.sensor_Press_BAR.Size = new System.Drawing.Size(105, 54);
             this.sensor_Press_BAR.TabIndex = 22;
             this.sensor_Press_BAR.Tag = "pressão";
             this.sensor_Press_BAR.Text = "0";
@@ -1395,11 +1389,11 @@
             this.sensor_Press_PSI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_Press_PSI.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_Press_PSI.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Press_PSI.Location = new System.Drawing.Point(62, 2);
-            this.sensor_Press_PSI.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_Press_PSI.Location = new System.Drawing.Point(81, 2);
+            this.sensor_Press_PSI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Press_PSI.Multiline = true;
             this.sensor_Press_PSI.Name = "sensor_Press_PSI";
-            this.sensor_Press_PSI.Size = new System.Drawing.Size(81, 46);
+            this.sensor_Press_PSI.Size = new System.Drawing.Size(105, 56);
             this.sensor_Press_PSI.TabIndex = 20;
             this.sensor_Press_PSI.Tag = "pressão";
             this.sensor_Press_PSI.Text = "0";
@@ -1409,27 +1403,29 @@
             this.panel5.BackgroundImage = global::minas.teste.prototype.Properties.Resources._14988722_de_contorno_do_icone_do_manometro_de_pressao_manometro_vetor_removebg_preview;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel5.Controls.Add(this.panel8);
-            this.panel5.Location = new System.Drawing.Point(2, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Location = new System.Drawing.Point(3, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(56, 46);
+            this.panel5.Size = new System.Drawing.Size(72, 57);
             this.panel5.TabIndex = 2;
             // 
             // panel8
             // 
-            this.panel8.Location = new System.Drawing.Point(74, 56);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2);
+            this.panel8.Location = new System.Drawing.Point(99, 69);
+            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(213, 125);
+            this.panel8.Size = new System.Drawing.Size(284, 154);
             this.panel8.TabIndex = 0;
             // 
             // rotacao
             // 
             this.rotacao.Controls.Add(this.tableLayoutPanel8);
             this.rotacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rotacao.Location = new System.Drawing.Point(3, 295);
+            this.rotacao.Location = new System.Drawing.Point(4, 363);
+            this.rotacao.Margin = new System.Windows.Forms.Padding(4);
             this.rotacao.Name = "rotacao";
-            this.rotacao.Size = new System.Drawing.Size(218, 114);
+            this.rotacao.Padding = new System.Windows.Forms.Padding(4);
+            this.rotacao.Size = new System.Drawing.Size(291, 140);
             this.rotacao.TabIndex = 81;
             this.rotacao.TabStop = false;
             this.rotacao.Text = "ROTAÇÃO";
@@ -1439,17 +1435,17 @@
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel8.Controls.Add(this.unidade_medidarota, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.sensor_rotacao_RPM, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.panel9, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(10, 12);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(13, 15);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(203, 97);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(271, 119);
             this.tableLayoutPanel8.TabIndex = 11;
             // 
             // unidade_medidarota
@@ -1457,10 +1453,10 @@
             this.unidade_medidarota.BackColor = System.Drawing.Color.Black;
             this.unidade_medidarota.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidarota.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidarota.Location = new System.Drawing.Point(142, 2);
-            this.unidade_medidarota.Margin = new System.Windows.Forms.Padding(2);
+            this.unidade_medidarota.Location = new System.Drawing.Point(186, 2);
+            this.unidade_medidarota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidarota.Name = "unidade_medidarota";
-            this.unidade_medidarota.Size = new System.Drawing.Size(47, 45);
+            this.unidade_medidarota.Size = new System.Drawing.Size(63, 55);
             this.unidade_medidarota.TabIndex = 21;
             this.unidade_medidarota.Text = "RPM";
             this.unidade_medidarota.UseVisualStyleBackColor = true;
@@ -1471,11 +1467,11 @@
             this.sensor_rotacao_RPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_rotacao_RPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_rotacao_RPM.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_rotacao_RPM.Location = new System.Drawing.Point(60, 2);
-            this.sensor_rotacao_RPM.Margin = new System.Windows.Forms.Padding(2);
+            this.sensor_rotacao_RPM.Location = new System.Drawing.Point(78, 2);
+            this.sensor_rotacao_RPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_rotacao_RPM.Multiline = true;
             this.sensor_rotacao_RPM.Name = "sensor_rotacao_RPM";
-            this.sensor_rotacao_RPM.Size = new System.Drawing.Size(78, 45);
+            this.sensor_rotacao_RPM.Size = new System.Drawing.Size(102, 55);
             this.sensor_rotacao_RPM.TabIndex = 20;
             this.sensor_rotacao_RPM.Tag = "rotação";
             this.sensor_rotacao_RPM.Text = "0";
@@ -1485,259 +1481,140 @@
             this.panel9.BackgroundImage = global::minas.teste.prototype.Properties.Resources._14837433_de_contorno_do_icone_da_bomba_da_industria_sistema_motor_vetor_removebg_preview;
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel9.Controls.Add(this.panel13);
-            this.panel9.Location = new System.Drawing.Point(2, 2);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2);
+            this.panel9.Location = new System.Drawing.Point(3, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(54, 45);
+            this.panel9.Size = new System.Drawing.Size(69, 55);
             this.panel9.TabIndex = 2;
             // 
             // panel13
             // 
-            this.panel13.Location = new System.Drawing.Point(74, 56);
-            this.panel13.Margin = new System.Windows.Forms.Padding(2);
+            this.panel13.Location = new System.Drawing.Point(99, 69);
+            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(213, 125);
+            this.panel13.Size = new System.Drawing.Size(284, 154);
             this.panel13.TabIndex = 0;
             // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.ColumnCount = 1;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Controls.Add(this.cuiLabel4, 0, 2);
             this.tableLayoutPanel10.Controls.Add(this.splitContainer1, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.metroUserControl1, 0, 1);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(465, 3);
+            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel15, 0, 2);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(620, 4);
+            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 3;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(731, 628);
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(975, 772);
             this.tableLayoutPanel10.TabIndex = 1;
-            // 
-            // cuiLabel4
-            // 
-            this.cuiLabel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cuiLabel4.Content = "ETAPAS\\ DE\\ \\ TESTE";
-            this.cuiLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiLabel4.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.cuiLabel4.Location = new System.Drawing.Point(232, 430);
-            this.cuiLabel4.Name = "cuiLabel4";
-            this.cuiLabel4.Size = new System.Drawing.Size(267, 21);
-            this.cuiLabel4.TabIndex = 20;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Location = new System.Drawing.Point(4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.cuiLabel3);
+            this.splitContainer1.Panel1.Controls.Add(this.labParametro);
             this.splitContainer1.Panel1.Controls.Add(this.visualizador);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Panel2.Controls.Add(this.tabgraficos);
-            this.splitContainer1.Size = new System.Drawing.Size(725, 405);
-            this.splitContainer1.SplitterDistance = 409;
+            this.splitContainer1.Size = new System.Drawing.Size(967, 498);
+            this.splitContainer1.SplitterDistance = 545;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
-            // cuiLabel3
+            // labParametro
             // 
-            this.cuiLabel3.Content = "PARÂMETROS\\ DE\\ TESTE";
-            this.cuiLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiLabel3.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.cuiLabel3.Location = new System.Drawing.Point(79, 2);
-            this.cuiLabel3.Name = "cuiLabel3";
-            this.cuiLabel3.Size = new System.Drawing.Size(267, 21);
-            this.cuiLabel3.TabIndex = 19;
+            this.labParametro.Content = "PARÂMETROS\\ DE\\ TESTE";
+            this.labParametro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labParametro.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labParametro.Location = new System.Drawing.Point(105, 2);
+            this.labParametro.Margin = new System.Windows.Forms.Padding(5);
+            this.labParametro.Name = "labParametro";
+            this.labParametro.Size = new System.Drawing.Size(356, 26);
+            this.labParametro.TabIndex = 19;
             // 
             // visualizador
             // 
             this.visualizador.AllowUserToOrderColumns = true;
             this.visualizador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.visualizador.Location = new System.Drawing.Point(0, 24);
-            this.visualizador.Margin = new System.Windows.Forms.Padding(2);
+            this.visualizador.Location = new System.Drawing.Point(0, 30);
+            this.visualizador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.visualizador.Name = "visualizador";
             this.visualizador.RowHeadersWidth = 51;
             this.visualizador.RowTemplate.Height = 24;
-            this.visualizador.Size = new System.Drawing.Size(407, 381);
+            this.visualizador.Size = new System.Drawing.Size(543, 469);
             this.visualizador.TabIndex = 1;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 212);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(307, 191);
-            this.tabControl1.TabIndex = 4;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.chart2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(299, 165);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Grafico 1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // chart2
-            // 
-            this.chart2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(4, 4);
-            this.chart2.Margin = new System.Windows.Forms.Padding(2);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.LegendText = "vazão";
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.LegendText = "Pressão ";
-            series2.Name = "Series6";
-            this.chart2.Series.Add(series1);
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(293, 156);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
-            title1.Name = "Vazão X Pressão";
-            this.chart2.Titles.Add(title1);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.chart4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(299, 165);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Grafico 2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // chart4
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart4.Legends.Add(legend2);
-            this.chart4.Location = new System.Drawing.Point(4, 4);
-            this.chart4.Margin = new System.Windows.Forms.Padding(2);
-            this.chart4.Name = "chart4";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart4.Series.Add(series3);
-            this.chart4.Size = new System.Drawing.Size(290, 158);
-            this.chart4.TabIndex = 0;
-            this.chart4.Text = "chart4";
-            // 
-            // tabgraficos
-            // 
-            this.tabgraficos.Controls.Add(this.Grafico1);
-            this.tabgraficos.Controls.Add(this.Grafico2);
-            this.tabgraficos.Location = new System.Drawing.Point(3, 2);
-            this.tabgraficos.Margin = new System.Windows.Forms.Padding(2);
-            this.tabgraficos.Name = "tabgraficos";
-            this.tabgraficos.SelectedIndex = 0;
-            this.tabgraficos.Size = new System.Drawing.Size(307, 206);
-            this.tabgraficos.TabIndex = 3;
-            // 
-            // Grafico1
-            // 
-            this.Grafico1.Controls.Add(this.chart1);
-            this.Grafico1.Location = new System.Drawing.Point(4, 22);
-            this.Grafico1.Margin = new System.Windows.Forms.Padding(2);
-            this.Grafico1.Name = "Grafico1";
-            this.Grafico1.Padding = new System.Windows.Forms.Padding(2);
-            this.Grafico1.Size = new System.Drawing.Size(299, 180);
-            this.Grafico1.TabIndex = 0;
-            this.Grafico1.Text = "Grafico 1";
-            this.Grafico1.UseVisualStyleBackColor = true;
-            // 
-            // chart1
-            // 
-            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(4, 2);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2);
-            this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.LegendText = "vazão";
-            series4.Name = "Series1";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.Legend = "Legend1";
-            series5.LegendText = "Pressão ";
-            series5.Name = "Series6";
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Size = new System.Drawing.Size(292, 174);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
-            title2.Name = "Vazão X Pressão";
-            this.chart1.Titles.Add(title2);
-            // 
-            // Grafico2
-            // 
-            this.Grafico2.Controls.Add(this.chart3);
-            this.Grafico2.Location = new System.Drawing.Point(4, 22);
-            this.Grafico2.Margin = new System.Windows.Forms.Padding(2);
-            this.Grafico2.Name = "Grafico2";
-            this.Grafico2.Padding = new System.Windows.Forms.Padding(2);
-            this.Grafico2.Size = new System.Drawing.Size(299, 180);
-            this.Grafico2.TabIndex = 1;
-            this.Grafico2.Text = "Grafico 2";
-            this.Grafico2.UseVisualStyleBackColor = true;
-            // 
-            // chart3
-            // 
-            chartArea4.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart3.Legends.Add(legend4);
-            this.chart3.Location = new System.Drawing.Point(4, 2);
-            this.chart3.Margin = new System.Windows.Forms.Padding(2);
-            this.chart3.Name = "chart3";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart3.Series.Add(series6);
-            this.chart3.Size = new System.Drawing.Size(296, 174);
-            this.chart3.TabIndex = 0;
-            this.chart3.Text = "chart3";
             // 
             // metroUserControl1
             // 
             this.metroUserControl1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.metroUserControl1.CustomBackground = false;
-            this.metroUserControl1.Location = new System.Drawing.Point(3, 414);
+            this.metroUserControl1.Location = new System.Drawing.Point(4, 510);
+            this.metroUserControl1.Margin = new System.Windows.Forms.Padding(4);
             this.metroUserControl1.Name = "metroUserControl1";
-            this.metroUserControl1.Size = new System.Drawing.Size(725, 10);
+            this.metroUserControl1.Size = new System.Drawing.Size(967, 12);
             this.metroUserControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroUserControl1.StyleManager = null;
             this.metroUserControl1.TabIndex = 1;
             this.metroUserControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 1;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.33643F));
+            this.tableLayoutPanel15.Controls.Add(this.labEtapa, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.gaugePanel1, 0, 1);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 529);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 2;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.75F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.25F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(969, 240);
+            this.tableLayoutPanel15.TabIndex = 2;
+            this.tableLayoutPanel15.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel15_Paint);
+            // 
+            // labEtapa
+            // 
+            this.labEtapa.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labEtapa.Content = "ETAPAS\\ DE\\ \\ TESTE";
+            this.labEtapa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labEtapa.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labEtapa.Location = new System.Drawing.Point(306, 5);
+            this.labEtapa.Margin = new System.Windows.Forms.Padding(5);
+            this.labEtapa.Name = "labEtapa";
+            this.labEtapa.Size = new System.Drawing.Size(356, 23);
+            this.labEtapa.TabIndex = 21;
+            // 
+            // gaugePanel1
+            // 
+            this.gaugePanel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gaugePanel1.Controls.Add(this.dataGridView1);
+            this.gaugePanel1.Controls.Add(this.panel1);
+            this.gaugePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gaugePanel1.Location = new System.Drawing.Point(3, 36);
+            this.gaugePanel1.Name = "gaugePanel1";
+            this.gaugePanel1.Size = new System.Drawing.Size(963, 201);
+            this.gaugePanel1.TabIndex = 22;
+            this.gaugePanel1.UserDefinedColors.Base = themeColors1;
+            this.gaugePanel1.UserDefinedColors.Error = themeColors2;
+            this.gaugePanel1.UserDefinedColors.Warning = themeColors3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.trackBar1);
+            this.panel1.Controls.Add(this.labetapas);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(114, 190);
+            this.panel1.TabIndex = 0;
             // 
             // metroPanel2
             // 
@@ -1749,10 +1626,11 @@
             this.metroPanel2.HorizontalScrollbar = false;
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(1202, 3);
+            this.metroPanel2.HorizontalScrollbarSize = 12;
+            this.metroPanel2.Location = new System.Drawing.Point(1603, 4);
+            this.metroPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(224, 628);
+            this.metroPanel2.Size = new System.Drawing.Size(298, 772);
             this.metroPanel2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel2.StyleManager = null;
             this.metroPanel2.TabIndex = 2;
@@ -1760,7 +1638,7 @@
             this.metroPanel2.VerticalScrollbar = false;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
+            this.metroPanel2.VerticalScrollbarSize = 13;
             // 
             // tableLayoutPanel13
             // 
@@ -1769,27 +1647,104 @@
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Controls.Add(this.groupBox7, 0, 3);
             this.tableLayoutPanel13.Controls.Add(this.groupBox6, 0, 2);
-            this.tableLayoutPanel13.Controls.Add(this.cuiLabel5, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.labAutoma, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.groupBox1, 0, 1);
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 4);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(4, 5);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 4;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 258F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(216, 619);
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 318F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 222F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(288, 762);
             this.tableLayoutPanel13.TabIndex = 2;
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.labminutos);
+            this.groupBox7.Controls.Add(this.button6);
+            this.groupBox7.Controls.Add(this.button4);
+            this.groupBox7.Controls.Add(this.textBox1);
             this.groupBox7.Controls.Add(this.circularProgressBar1);
-            this.groupBox7.Location = new System.Drawing.Point(3, 442);
+            this.groupBox7.Location = new System.Drawing.Point(4, 544);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(210, 170);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox7.Size = new System.Drawing.Size(280, 209);
             this.groupBox7.TabIndex = 24;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Tempo de Execução";
+            // 
+            // labminutos
+            // 
+            this.labminutos.AutoSize = true;
+            this.labminutos.Location = new System.Drawing.Point(188, 19);
+            this.labminutos.Name = "labminutos";
+            this.labminutos.Size = new System.Drawing.Size(53, 16);
+            this.labminutos.TabIndex = 4;
+            this.labminutos.Text = "Minutos";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(178, 154);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(85, 48);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "Limpar";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(178, 100);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(85, 48);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Definir";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(178, 40);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(84, 54);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "0";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // circularProgressBar1
+            // 
+            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.circularProgressBar1.AnimationSpeed = 500;
+            this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.circularProgressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.circularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.circularProgressBar1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.circularProgressBar1.InnerMargin = 2;
+            this.circularProgressBar1.InnerWidth = -1;
+            this.circularProgressBar1.Location = new System.Drawing.Point(8, 36);
+            this.circularProgressBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
+            this.circularProgressBar1.Name = "circularProgressBar1";
+            this.circularProgressBar1.OuterColor = System.Drawing.Color.Gray;
+            this.circularProgressBar1.OuterMargin = -25;
+            this.circularProgressBar1.OuterWidth = 26;
+            this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.circularProgressBar1.ProgressWidth = 25;
+            this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.circularProgressBar1.Size = new System.Drawing.Size(142, 140);
+            this.circularProgressBar1.StartAngle = 270;
+            this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.circularProgressBar1.SubscriptText = ".23";
+            this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.circularProgressBar1.SuperscriptText = "Segundos";
+            this.circularProgressBar1.TabIndex = 0;
+            this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.circularProgressBar1.Value = 68;
             // 
             // groupBox6
             // 
@@ -1813,9 +1768,11 @@
             this.groupBox6.Controls.Add(this.textBox8);
             this.groupBox6.Controls.Add(this.textBox9);
             this.groupBox6.Controls.Add(this.checkedListBox3);
-            this.groupBox6.Location = new System.Drawing.Point(3, 184);
+            this.groupBox6.Location = new System.Drawing.Point(4, 226);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(210, 250);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(280, 308);
             this.groupBox6.TabIndex = 23;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Monitoramento";
@@ -1823,33 +1780,37 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(146, 19);
+            this.label2.Location = new System.Drawing.Point(195, 23);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 38;
             this.label2.Text = "Maximo";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(75, 19);
+            this.label1.Location = new System.Drawing.Point(100, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(50, 16);
             this.label1.TabIndex = 37;
             this.label1.Text = "Minimo";
             // 
             // textBox19
             // 
-            this.textBox19.Location = new System.Drawing.Point(149, 213);
+            this.textBox19.Location = new System.Drawing.Point(199, 262);
+            this.textBox19.Margin = new System.Windows.Forms.Padding(4);
             this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(49, 20);
+            this.textBox19.Size = new System.Drawing.Size(64, 22);
             this.textBox19.TabIndex = 30;
             // 
             // textBox20
             // 
-            this.textBox20.Location = new System.Drawing.Point(78, 213);
+            this.textBox20.Location = new System.Drawing.Point(104, 262);
+            this.textBox20.Margin = new System.Windows.Forms.Padding(4);
             this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(49, 20);
+            this.textBox20.Size = new System.Drawing.Size(64, 22);
             this.textBox20.TabIndex = 29;
             // 
             // checkedListBox8
@@ -1859,23 +1820,26 @@
             this.checkedListBox8.FormattingEnabled = true;
             this.checkedListBox8.Items.AddRange(new object[] {
             "CELSUS"});
-            this.checkedListBox8.Location = new System.Drawing.Point(6, 214);
+            this.checkedListBox8.Location = new System.Drawing.Point(8, 263);
+            this.checkedListBox8.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox8.Name = "checkedListBox8";
-            this.checkedListBox8.Size = new System.Drawing.Size(198, 30);
+            this.checkedListBox8.Size = new System.Drawing.Size(264, 34);
             this.checkedListBox8.TabIndex = 28;
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(149, 177);
+            this.textBox17.Location = new System.Drawing.Point(199, 218);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(4);
             this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(49, 20);
+            this.textBox17.Size = new System.Drawing.Size(64, 22);
             this.textBox17.TabIndex = 27;
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(78, 177);
+            this.textBox18.Location = new System.Drawing.Point(104, 218);
+            this.textBox18.Margin = new System.Windows.Forms.Padding(4);
             this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(49, 20);
+            this.textBox18.Size = new System.Drawing.Size(64, 22);
             this.textBox18.TabIndex = 26;
             // 
             // checkedListBox7
@@ -1885,23 +1849,26 @@
             this.checkedListBox7.FormattingEnabled = true;
             this.checkedListBox7.Items.AddRange(new object[] {
             "RPM"});
-            this.checkedListBox7.Location = new System.Drawing.Point(6, 177);
+            this.checkedListBox7.Location = new System.Drawing.Point(8, 218);
+            this.checkedListBox7.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox7.Name = "checkedListBox7";
-            this.checkedListBox7.Size = new System.Drawing.Size(198, 30);
+            this.checkedListBox7.Size = new System.Drawing.Size(264, 34);
             this.checkedListBox7.TabIndex = 25;
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(149, 143);
+            this.textBox15.Location = new System.Drawing.Point(199, 176);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(4);
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(49, 20);
+            this.textBox15.Size = new System.Drawing.Size(64, 22);
             this.textBox15.TabIndex = 24;
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(78, 143);
+            this.textBox16.Location = new System.Drawing.Point(104, 176);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(4);
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(49, 20);
+            this.textBox16.Size = new System.Drawing.Size(64, 22);
             this.textBox16.TabIndex = 23;
             // 
             // checkedListBox6
@@ -1911,23 +1878,26 @@
             this.checkedListBox6.FormattingEnabled = true;
             this.checkedListBox6.Items.AddRange(new object[] {
             "LPM"});
-            this.checkedListBox6.Location = new System.Drawing.Point(6, 143);
+            this.checkedListBox6.Location = new System.Drawing.Point(8, 176);
+            this.checkedListBox6.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox6.Name = "checkedListBox6";
-            this.checkedListBox6.Size = new System.Drawing.Size(198, 30);
+            this.checkedListBox6.Size = new System.Drawing.Size(264, 34);
             this.checkedListBox6.TabIndex = 22;
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(149, 107);
+            this.textBox12.Location = new System.Drawing.Point(199, 132);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(4);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(49, 20);
+            this.textBox12.Size = new System.Drawing.Size(64, 22);
             this.textBox12.TabIndex = 21;
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(78, 107);
+            this.textBox14.Location = new System.Drawing.Point(104, 132);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(4);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(49, 20);
+            this.textBox14.Size = new System.Drawing.Size(64, 22);
             this.textBox14.TabIndex = 20;
             // 
             // checkedListBox5
@@ -1937,23 +1907,26 @@
             this.checkedListBox5.FormattingEnabled = true;
             this.checkedListBox5.Items.AddRange(new object[] {
             "GPM"});
-            this.checkedListBox5.Location = new System.Drawing.Point(6, 107);
+            this.checkedListBox5.Location = new System.Drawing.Point(8, 132);
+            this.checkedListBox5.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox5.Name = "checkedListBox5";
-            this.checkedListBox5.Size = new System.Drawing.Size(198, 30);
+            this.checkedListBox5.Size = new System.Drawing.Size(264, 34);
             this.checkedListBox5.TabIndex = 19;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(149, 71);
+            this.textBox10.Location = new System.Drawing.Point(199, 87);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(4);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(49, 20);
+            this.textBox10.Size = new System.Drawing.Size(64, 22);
             this.textBox10.TabIndex = 18;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(78, 71);
+            this.textBox11.Location = new System.Drawing.Point(104, 87);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(4);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(49, 20);
+            this.textBox11.Size = new System.Drawing.Size(64, 22);
             this.textBox11.TabIndex = 17;
             // 
             // checkedListBox4
@@ -1963,23 +1936,26 @@
             this.checkedListBox4.FormattingEnabled = true;
             this.checkedListBox4.Items.AddRange(new object[] {
             "BAR"});
-            this.checkedListBox4.Location = new System.Drawing.Point(6, 71);
+            this.checkedListBox4.Location = new System.Drawing.Point(8, 87);
+            this.checkedListBox4.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox4.Name = "checkedListBox4";
-            this.checkedListBox4.Size = new System.Drawing.Size(198, 30);
+            this.checkedListBox4.Size = new System.Drawing.Size(264, 34);
             this.checkedListBox4.TabIndex = 16;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(149, 35);
+            this.textBox8.Location = new System.Drawing.Point(199, 43);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(49, 20);
+            this.textBox8.Size = new System.Drawing.Size(64, 22);
             this.textBox8.TabIndex = 15;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(78, 35);
+            this.textBox9.Location = new System.Drawing.Point(104, 43);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(4);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(49, 20);
+            this.textBox9.Size = new System.Drawing.Size(64, 22);
             this.textBox9.TabIndex = 14;
             // 
             // checkedListBox3
@@ -1989,28 +1965,32 @@
             this.checkedListBox3.FormattingEnabled = true;
             this.checkedListBox3.Items.AddRange(new object[] {
             "PSI"});
-            this.checkedListBox3.Location = new System.Drawing.Point(6, 35);
+            this.checkedListBox3.Location = new System.Drawing.Point(8, 43);
+            this.checkedListBox3.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(198, 30);
+            this.checkedListBox3.Size = new System.Drawing.Size(264, 34);
             this.checkedListBox3.TabIndex = 13;
             // 
-            // cuiLabel5
+            // labAutoma
             // 
-            this.cuiLabel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cuiLabel5.Content = "AUTOMATIZAÇÕES";
-            this.cuiLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiLabel5.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.cuiLabel5.Location = new System.Drawing.Point(3, 3);
-            this.cuiLabel5.Name = "cuiLabel5";
-            this.cuiLabel5.Size = new System.Drawing.Size(210, 25);
-            this.cuiLabel5.TabIndex = 21;
+            this.labAutoma.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labAutoma.Content = "AUTOMATIZAÇÕES";
+            this.labAutoma.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labAutoma.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labAutoma.Location = new System.Drawing.Point(5, 5);
+            this.labAutoma.Margin = new System.Windows.Forms.Padding(5);
+            this.labAutoma.Name = "labAutoma";
+            this.labAutoma.Size = new System.Drawing.Size(277, 28);
+            this.labAutoma.TabIndex = 21;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.checkedListBox1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 34);
+            this.groupBox1.Location = new System.Drawing.Point(4, 42);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 144);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(280, 176);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modelo de Teste";
@@ -2026,79 +2006,11 @@
             "teste 1",
             "teste 2",
             "teste 3"});
-            this.checkedListBox1.Location = new System.Drawing.Point(6, 16);
+            this.checkedListBox1.Location = new System.Drawing.Point(8, 20);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(87, 120);
+            this.checkedListBox1.Size = new System.Drawing.Size(116, 145);
             this.checkedListBox1.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(440, 183);
-            this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 46);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(440, 183);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 46);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(440, 183);
-            this.tabPage5.TabIndex = 3;
-            this.tabPage5.Text = "tabPage5";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 46);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(21, 30);
-            this.tabPage6.TabIndex = 0;
-            this.tabPage6.Text = "tabPage6";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 46);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(21, 30);
-            this.tabPage7.TabIndex = 1;
-            this.tabPage7.Text = "tabPage7";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 46);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(29, 33);
-            this.tabPage8.TabIndex = 0;
-            this.tabPage8.Text = "tabPage8";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Location = new System.Drawing.Point(4, 46);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(29, 33);
-            this.tabPage9.TabIndex = 1;
-            this.tabPage9.Text = "tabPage9";
-            this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // mascaraabertura
             // 
@@ -2109,50 +2021,62 @@
             this.mascaraabertura.TargetForm = this;
             this.mascaraabertura.TargetOpacity = 1D;
             // 
-            // circularProgressBar1
+            // dataGridView1
             // 
-            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.circularProgressBar1.AnimationSpeed = 500;
-            this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.circularProgressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
-            this.circularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.circularProgressBar1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.circularProgressBar1.InnerMargin = 2;
-            this.circularProgressBar1.InnerWidth = -1;
-            this.circularProgressBar1.Location = new System.Drawing.Point(6, 19);
-            this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
-            this.circularProgressBar1.Name = "circularProgressBar1";
-            this.circularProgressBar1.OuterColor = System.Drawing.Color.Gray;
-            this.circularProgressBar1.OuterMargin = -25;
-            this.circularProgressBar1.OuterWidth = 26;
-            this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.circularProgressBar1.ProgressWidth = 25;
-            this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.circularProgressBar1.Size = new System.Drawing.Size(147, 145);
-            this.circularProgressBar1.StartAngle = 270;
-            this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.circularProgressBar1.SubscriptText = ".23";
-            this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.circularProgressBar1.SuperscriptText = "Segundos";
-            this.circularProgressBar1.TabIndex = 0;
-            this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.circularProgressBar1.Value = 68;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(114, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(846, 195);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(12, 46);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(84, 54);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "0";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labetapas
+            // 
+            this.labetapas.AutoSize = true;
+            this.labetapas.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labetapas.Location = new System.Drawing.Point(9, 18);
+            this.labetapas.Name = "labetapas";
+            this.labetapas.Size = new System.Drawing.Size(87, 16);
+            this.labetapas.TabIndex = 5;
+            this.labetapas.Text = "Nº de Etapas";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.LargeChange = 7;
+            this.trackBar1.Location = new System.Drawing.Point(3, 115);
+            this.trackBar1.Maximum = 7;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(102, 56);
+            this.trackBar1.TabIndex = 2;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 7;
             // 
             // Tela_Bombas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1456, 826);
+            this.ClientSize = new System.Drawing.Size(1941, 1017);
             this.Controls.Add(this.painelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Tela_Bombas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaBombaCon";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Tela_Bombas_Load);
             this.painelBase.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Imagem_minasteste)).EndInit();
@@ -2200,26 +2124,22 @@
             this.panel9.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.visualizador)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
-            this.tabgraficos.ResumeLayout(false);
-            this.Grafico1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.Grafico2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.gaugePanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.metroPanel2.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2248,24 +2168,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView visualizador;
-        private System.Windows.Forms.TabControl tabgraficos;
-        private System.Windows.Forms.TabPage Grafico1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.TabPage Grafico2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.TabPage tabPage9;
-        private CuoreUI.Controls.cuiLabel cuiLabel3;
+        private CuoreUI.Controls.cuiLabel labParametro;
         private MetroFramework.Controls.MetroUserControl metroUserControl1;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroPanel metroPanel3;
@@ -2277,8 +2180,8 @@
         private CuoreUI.Controls.cuiButton btnrelatoriobomba;
         private CuoreUI.Controls.cuiButton cuiButton5;
         private CuoreUI.Controls.cuiButton btniniciarteste;
-        private CuoreUI.Controls.cuiLabel cuiLabel2;
-        private CuoreUI.Controls.cuiLabel cuiLabel1;
+        private CuoreUI.Controls.cuiLabel labMedidas;
+        private CuoreUI.Controls.cuiLabel labControle;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button unidade_medidasvazao1;
@@ -2323,9 +2226,8 @@
         private System.Windows.Forms.TextBox sensor_rotacao_RPM;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel13;
-        private CuoreUI.Controls.cuiLabel cuiLabel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private CuoreUI.Controls.cuiLabel cuiLabel5;
+        private CuoreUI.Controls.cuiLabel labAutoma;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -2361,5 +2263,17 @@
         private System.Windows.Forms.CheckedListBox checkedListBox3;
         private CuoreUI.Components.cuiFormAnimator mascaraabertura;
         private CircularProgressBar.CircularProgressBar circularProgressBar1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labminutos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private CuoreUI.Controls.cuiLabel labEtapa;
+        private CodeArtEng.Gauge.PanelGauges.GaugePanel gaugePanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label labetapas;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
