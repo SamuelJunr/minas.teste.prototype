@@ -92,7 +92,7 @@ namespace minas.teste.prototype
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Tela_Cilindros CilindrosVV = new Tela_Cilindros();
+            Tela_CilindrosCon CilindrosVV = new Tela_CilindrosCon();
             CilindrosVV.Show();
             this.Hide();
         }

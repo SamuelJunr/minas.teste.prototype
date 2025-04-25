@@ -53,10 +53,6 @@
             this.cuiGroupBox3 = new CuoreUI.Controls.cuiGroupBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.cuiLabel2 = new CuoreUI.Controls.cuiLabel();
-            this.cuiLabel1 = new CuoreUI.Controls.cuiLabel();
-            this.cuiTextBox23 = new CuoreUI.Controls.cuiTextBox2();
-            this.cuiTextBox22 = new CuoreUI.Controls.cuiTextBox2();
             this.cuiGroupBox2 = new CuoreUI.Controls.cuiGroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cuiGroupBox1 = new CuoreUI.Controls.cuiGroupBox();
@@ -394,23 +390,19 @@
             this.cuiGroupBox3.Content = "Pressão Atual";
             this.cuiGroupBox3.Controls.Add(this.metroButton1);
             this.cuiGroupBox3.Controls.Add(this.pictureBox2);
-            this.cuiGroupBox3.Controls.Add(this.cuiLabel2);
-            this.cuiGroupBox3.Controls.Add(this.cuiLabel1);
-            this.cuiGroupBox3.Controls.Add(this.cuiTextBox23);
-            this.cuiGroupBox3.Controls.Add(this.cuiTextBox22);
             this.cuiGroupBox3.Location = new System.Drawing.Point(3, 96);
             this.cuiGroupBox3.Name = "cuiGroupBox3";
             this.cuiGroupBox3.Padding = new System.Windows.Forms.Padding(4, 19, 4, 4);
             this.cuiGroupBox3.Rounding = new System.Windows.Forms.Padding(4);
-            this.cuiGroupBox3.Size = new System.Drawing.Size(307, 228);
+            this.cuiGroupBox3.Size = new System.Drawing.Size(257, 203);
             this.cuiGroupBox3.TabIndex = 4;
             // 
             // metroButton1
             // 
             this.metroButton1.Highlight = false;
-            this.metroButton1.Location = new System.Drawing.Point(12, 128);
+            this.metroButton1.Location = new System.Drawing.Point(16, 128);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(107, 75);
+            this.metroButton1.Size = new System.Drawing.Size(103, 56);
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroButton1.StyleManager = null;
             this.metroButton1.TabIndex = 5;
@@ -424,74 +416,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(103, 100);
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
-            // 
-            // cuiLabel2
-            // 
-            this.cuiLabel2.Content = "PSI";
-            this.cuiLabel2.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.cuiLabel2.Location = new System.Drawing.Point(250, 165);
-            this.cuiLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cuiLabel2.Name = "cuiLabel2";
-            this.cuiLabel2.Size = new System.Drawing.Size(47, 35);
-            this.cuiLabel2.TabIndex = 3;
-            // 
-            // cuiLabel1
-            // 
-            this.cuiLabel1.Content = "BAR";
-            this.cuiLabel1.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.cuiLabel1.Location = new System.Drawing.Point(250, 63);
-            this.cuiLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cuiLabel1.Name = "cuiLabel1";
-            this.cuiLabel1.Size = new System.Drawing.Size(47, 35);
-            this.cuiLabel1.TabIndex = 2;
-            // 
-            // cuiTextBox23
-            // 
-            this.cuiTextBox23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.cuiTextBox23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cuiTextBox23.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiTextBox23.BorderSize = 1;
-            this.cuiTextBox23.Content = "";
-            this.cuiTextBox23.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.cuiTextBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiTextBox23.ForeColor = System.Drawing.Color.Gray;
-            this.cuiTextBox23.Location = new System.Drawing.Point(130, 122);
-            this.cuiTextBox23.Margin = new System.Windows.Forms.Padding(4);
-            this.cuiTextBox23.Multiline = false;
-            this.cuiTextBox23.Name = "cuiTextBox23";
-            this.cuiTextBox23.Padding = new System.Windows.Forms.Padding(18, 21, 18, 0);
-            this.cuiTextBox23.PasswordChar = false;
-            this.cuiTextBox23.PlaceholderColor = System.Drawing.Color.DimGray;
-            this.cuiTextBox23.PlaceholderText = "";
-            this.cuiTextBox23.Rounding = 8;
-            this.cuiTextBox23.Size = new System.Drawing.Size(112, 60);
-            this.cuiTextBox23.TabIndex = 1;
-            this.cuiTextBox23.TextOffset = new System.Drawing.Size(0, 0);
-            this.cuiTextBox23.UnderlinedStyle = false;
-            // 
-            // cuiTextBox22
-            // 
-            this.cuiTextBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
-            this.cuiTextBox22.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cuiTextBox22.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiTextBox22.BorderSize = 1;
-            this.cuiTextBox22.Content = "";
-            this.cuiTextBox22.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.cuiTextBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiTextBox22.ForeColor = System.Drawing.Color.Gray;
-            this.cuiTextBox22.Location = new System.Drawing.Point(130, 23);
-            this.cuiTextBox22.Margin = new System.Windows.Forms.Padding(4);
-            this.cuiTextBox22.Multiline = false;
-            this.cuiTextBox22.Name = "cuiTextBox22";
-            this.cuiTextBox22.Padding = new System.Windows.Forms.Padding(18, 21, 18, 0);
-            this.cuiTextBox22.PasswordChar = false;
-            this.cuiTextBox22.PlaceholderColor = System.Drawing.Color.DimGray;
-            this.cuiTextBox22.PlaceholderText = "";
-            this.cuiTextBox22.Rounding = 8;
-            this.cuiTextBox22.Size = new System.Drawing.Size(112, 60);
-            this.cuiTextBox22.TabIndex = 0;
-            this.cuiTextBox22.TextOffset = new System.Drawing.Size(0, 0);
-            this.cuiTextBox22.UnderlinedStyle = false;
             // 
             // cuiGroupBox2
             // 
@@ -834,7 +758,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 486F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 306F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 322F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 325F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.labelCronometro, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
@@ -855,7 +779,7 @@
             this.labelCronometro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCronometro.AutoSize = true;
             this.labelCronometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.labelCronometro.Location = new System.Drawing.Point(1241, 34);
+            this.labelCronometro.Location = new System.Drawing.Point(1239, 34);
             this.labelCronometro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCronometro.Name = "labelCronometro";
             this.labelCronometro.Size = new System.Drawing.Size(0, 32);
@@ -866,7 +790,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(164, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(161, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 84);
             this.pictureBox1.TabIndex = 0;
@@ -881,7 +805,7 @@
             this.button4.Location = new System.Drawing.Point(7, 7);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(125, 86);
+            this.button4.Size = new System.Drawing.Size(122, 86);
             this.button4.TabIndex = 40;
             this.button4.Text = "Retornar";
             this.button4.UseVisualStyleBackColor = true;
@@ -890,7 +814,7 @@
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(290, 7);
+            this.textBox2.Location = new System.Drawing.Point(287, 7);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -903,7 +827,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.6F);
-            this.label13.Location = new System.Drawing.Point(924, 34);
+            this.label13.Location = new System.Drawing.Point(921, 34);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(0, 32);
@@ -1037,13 +961,9 @@
         private CuoreUI.Controls.cuiGroupBox cuiGroupBox5;
         private CuoreUI.Controls.cuiGroupBox cuiGroupBox4;
         private CuoreUI.Controls.cuiTextBox2 cuiTextBox24;
-        private CuoreUI.Controls.cuiTextBox2 cuiTextBox23;
-        private CuoreUI.Controls.cuiTextBox2 cuiTextBox22;
         private CuoreUI.Controls.cuiLabel cuiLabel4;
         private CuoreUI.Controls.cuiLabel cuiLabel3;
         private CuoreUI.Controls.cuiTextBox2 cuiTextBox25;
-        private CuoreUI.Controls.cuiLabel cuiLabel2;
-        private CuoreUI.Controls.cuiLabel cuiLabel1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
