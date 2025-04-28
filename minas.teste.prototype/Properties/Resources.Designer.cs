@@ -145,6 +145,16 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1D4y {
+            get {
+                object obj = ResourceManager.GetObject("1D4y", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
         internal static byte[] bomba {
@@ -278,6 +288,36 @@ namespace minas.teste.prototype.Properties {
         internal static System.Drawing.Bitmap eletrovalvula01 {
             get {
                 object obj = ResourceManager.GetObject("eletrovalvula01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap engrena {
+            get {
+                object obj = ResourceManager.GetObject("engrena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] engrenagens {
+            get {
+                object obj = ResourceManager.GetObject("engrenagens", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gears_6122_256 {
+            get {
+                object obj = ResourceManager.GetObject("gears-6122_256", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
