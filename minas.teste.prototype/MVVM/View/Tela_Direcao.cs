@@ -7,16 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using minas.teste.prototype.Estilo;
 
 namespace minas.teste.prototype.MVVM.View
 {
-    public partial class Tela_Direcao: Form
+    public partial class Tela_Direcao : Form
     {
         public Tela_Direcao()
         {
             InitializeComponent();
-            EstiloFormulario.AplicarEstiloBasico(this);
         }
     }
 }

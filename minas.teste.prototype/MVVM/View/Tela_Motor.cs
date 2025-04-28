@@ -7,16 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using minas.teste.prototype.Estilo;
 
 namespace minas.teste.prototype.MVVM.View
 {
-    public partial class Tela_Motor: Form
+    public partial class Tela_Motor : Form
     {
         public Tela_Motor()
         {
             InitializeComponent();
-            EstiloFormulario.AplicarEstiloBasico(this);
         }
     }
 }
