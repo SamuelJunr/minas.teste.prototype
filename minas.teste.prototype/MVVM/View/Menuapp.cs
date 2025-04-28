@@ -86,8 +86,6 @@ namespace minas.teste.prototype
             conexao ConexaoVV = new conexao();
             ConexaoVV.Show();
             this.Hide();
-            
-
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -108,6 +106,20 @@ namespace minas.teste.prototype
         {
             Tela_Direcao DirecaoVV = new Tela_Direcao();
             DirecaoVV.Show();
+            this.Hide();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Tela_Eletrovalvulas EletrovalvulasVV = new Tela_Eletrovalvulas();
+            EletrovalvulasVV.Show();
+            this.Hide();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Tela_Motor MotorVV = new Tela_Motor();
+            MotorVV.Show();
             this.Hide();
         }
     }

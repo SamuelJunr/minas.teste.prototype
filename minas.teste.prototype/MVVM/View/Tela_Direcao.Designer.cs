@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.painelBase = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Imagem_minasteste = new System.Windows.Forms.PictureBox();
@@ -70,13 +71,13 @@
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.cuiButton3 = new CuoreUI.Controls.cuiButton();
+            this.Btn_retornar = new CuoreUI.Controls.cuiButton();
             this.cuiButton2 = new CuoreUI.Controls.cuiButton();
             this.cuiButton4 = new CuoreUI.Controls.cuiButton();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnrelatoriobomba = new CuoreUI.Controls.cuiButton();
             this.cuiButton5 = new CuoreUI.Controls.cuiButton();
             this.btniniciarteste = new CuoreUI.Controls.cuiButton();
+            this.btnrelatoriobomba = new CuoreUI.Controls.cuiButton();
             this.labMedidas = new CuoreUI.Controls.cuiLabel();
             this.labControle = new CuoreUI.Controls.cuiLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -131,6 +132,7 @@
             this.labAutoma = new CuoreUI.Controls.cuiLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkedListBox10 = new System.Windows.Forms.CheckedListBox();
+            this.mascaraabertura = new CuoreUI.Components.cuiFormAnimator(this.components);
             this.painelBase.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Imagem_minasteste)).BeginInit();
@@ -245,7 +247,7 @@
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.31102F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.68898F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel2, 3, 0);
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel3, 2, 0);
             this.painalFuncaoes.Controls.Add(this.Stage_box_bomba, 0, 0);
@@ -264,7 +266,7 @@
             // 
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.Controls.Add(this.labelCronometro_bomba);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(1205, 4);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1203, 4);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(139, 63);
@@ -285,7 +287,7 @@
             // 
             this.flowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel3.Controls.Add(this.LabelHorariotela);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(1002, 4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(999, 4);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(148, 63);
@@ -307,7 +309,7 @@
             this.Stage_box_bomba.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Stage_box_bomba.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.Stage_box_bomba.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stage_box_bomba.Location = new System.Drawing.Point(79, 23);
+            this.Stage_box_bomba.Location = new System.Drawing.Point(78, 23);
             this.Stage_box_bomba.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Stage_box_bomba.Name = "Stage_box_bomba";
             this.Stage_box_bomba.Size = new System.Drawing.Size(86, 85);
@@ -321,13 +323,13 @@
             this.tableLayoutPanel14.Controls.Add(this.HistoricalEvents, 0, 1);
             this.tableLayoutPanel14.Controls.Add(this.dadosentrada1, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(248, 6);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(247, 6);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(741, 119);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(739, 119);
             this.tableLayoutPanel14.TabIndex = 49;
             // 
             // HistoricalEvents
@@ -339,7 +341,7 @@
             this.HistoricalEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HistoricalEvents.Multiline = true;
             this.HistoricalEvents.Name = "HistoricalEvents";
-            this.HistoricalEvents.Size = new System.Drawing.Size(735, 54);
+            this.HistoricalEvents.Size = new System.Drawing.Size(733, 54);
             this.HistoricalEvents.TabIndex = 49;
             // 
             // dadosentrada1
@@ -348,7 +350,7 @@
             this.dadosentrada1.ColumnCount = 3;
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.34694F));
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.65306F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 226F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
@@ -361,14 +363,14 @@
             this.dadosentrada1.RowCount = 2;
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.23256F));
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.76744F));
-            this.dadosentrada1.Size = new System.Drawing.Size(735, 54);
+            this.dadosentrada1.Size = new System.Drawing.Size(733, 54);
             this.dadosentrada1.TabIndex = 48;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(550, 1);
+            this.label4.Location = new System.Drawing.Point(547, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
@@ -378,7 +380,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(392, 1);
+            this.label5.Location = new System.Drawing.Point(389, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
@@ -387,7 +389,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(510, 19);
+            this.textBox4.Location = new System.Drawing.Point(506, 19);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -397,7 +399,7 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(345, 19);
+            this.textBox5.Location = new System.Drawing.Point(342, 19);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
@@ -411,14 +413,14 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(334, 30);
+            this.textBox6.Size = new System.Drawing.Size(331, 30);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(112, 1);
+            this.label6.Location = new System.Drawing.Point(110, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 15);
             this.label6.TabIndex = 7;
@@ -433,7 +435,7 @@
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.3609F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.6391F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
@@ -454,9 +456,9 @@
             this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(1163, 2);
+            this.text_teste.Location = new System.Drawing.Point(1160, 2);
             this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(223, 16);
+            this.text_teste.Size = new System.Drawing.Size(226, 16);
             this.text_teste.TabIndex = 45;
             this.text_teste.Text = "TESTE";
             this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -467,7 +469,7 @@
             this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(997, 2);
+            this.text_datahora.Location = new System.Drawing.Point(994, 2);
             this.text_datahora.Name = "text_datahora";
             this.text_datahora.Size = new System.Drawing.Size(158, 16);
             this.text_datahora.TabIndex = 44;
@@ -482,7 +484,7 @@
             this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_nometeste.Location = new System.Drawing.Point(247, 2);
             this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(742, 16);
+            this.text_nometeste.Size = new System.Drawing.Size(739, 16);
             this.text_nometeste.TabIndex = 43;
             this.text_nometeste.Text = "DADOS DO TESTE";
             this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -832,7 +834,7 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
-            this.tableLayoutPanel11.Controls.Add(this.cuiButton3, 2, 0);
+            this.tableLayoutPanel11.Controls.Add(this.Btn_retornar, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.cuiButton2, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.cuiButton4, 0, 0);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(4, 614);
@@ -844,41 +846,42 @@
             this.tableLayoutPanel11.Size = new System.Drawing.Size(587, 94);
             this.tableLayoutPanel11.TabIndex = 89;
             // 
-            // cuiButton3
+            // Btn_retornar
             // 
-            this.cuiButton3.CheckButton = false;
-            this.cuiButton3.Checked = false;
-            this.cuiButton3.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton3.CheckedForeColor = System.Drawing.Color.White;
-            this.cuiButton3.CheckedImageTint = System.Drawing.Color.White;
-            this.cuiButton3.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton3.Content = "Retornar";
-            this.cuiButton3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.cuiButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cuiButton3.ForeColor = System.Drawing.Color.White;
-            this.cuiButton3.HoverBackground = System.Drawing.Color.DimGray;
-            this.cuiButton3.HoveredImageTint = System.Drawing.Color.White;
-            this.cuiButton3.HoverForeColor = System.Drawing.Color.White;
-            this.cuiButton3.HoverOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.Image = null;
-            this.cuiButton3.ImageAutoCenter = true;
-            this.cuiButton3.ImageExpand = new System.Drawing.Point(0, 0);
-            this.cuiButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton3.ImageTint = System.Drawing.Color.White;
-            this.cuiButton3.Location = new System.Drawing.Point(402, 4);
-            this.cuiButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.cuiButton3.Name = "cuiButton3";
-            this.cuiButton3.NormalBackground = System.Drawing.Color.Black;
-            this.cuiButton3.NormalOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.OutlineThickness = 1.6F;
-            this.cuiButton3.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cuiButton3.PressedForeColor = System.Drawing.Color.White;
-            this.cuiButton3.PressedImageTint = System.Drawing.Color.White;
-            this.cuiButton3.PressedOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton3.Size = new System.Drawing.Size(181, 86);
-            this.cuiButton3.TabIndex = 7;
-            this.cuiButton3.TextOffset = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.CheckButton = false;
+            this.Btn_retornar.Checked = false;
+            this.Btn_retornar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.Btn_retornar.CheckedForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.CheckedImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.Btn_retornar.Content = "Retornar";
+            this.Btn_retornar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Btn_retornar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.Btn_retornar.ForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.HoverBackground = System.Drawing.Color.DimGray;
+            this.Btn_retornar.HoveredImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.HoverForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.HoverOutline = System.Drawing.Color.Empty;
+            this.Btn_retornar.Image = null;
+            this.Btn_retornar.ImageAutoCenter = true;
+            this.Btn_retornar.ImageExpand = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.ImageOffset = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.ImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.Location = new System.Drawing.Point(402, 4);
+            this.Btn_retornar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_retornar.Name = "Btn_retornar";
+            this.Btn_retornar.NormalBackground = System.Drawing.Color.Black;
+            this.Btn_retornar.NormalOutline = System.Drawing.Color.Empty;
+            this.Btn_retornar.OutlineThickness = 1.6F;
+            this.Btn_retornar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Btn_retornar.PressedForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.PressedImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.PressedOutline = System.Drawing.Color.Empty;
+            this.Btn_retornar.Rounding = new System.Windows.Forms.Padding(8);
+            this.Btn_retornar.Size = new System.Drawing.Size(181, 86);
+            this.Btn_retornar.TabIndex = 7;
+            this.Btn_retornar.TextOffset = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.Click += new System.EventHandler(this.CloseWindows_Click);
             // 
             // cuiButton2
             // 
@@ -972,42 +975,6 @@
             this.tableLayoutPanel12.Size = new System.Drawing.Size(587, 94);
             this.tableLayoutPanel12.TabIndex = 88;
             // 
-            // btnrelatoriobomba
-            // 
-            this.btnrelatoriobomba.CheckButton = false;
-            this.btnrelatoriobomba.Checked = false;
-            this.btnrelatoriobomba.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.CheckedForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.CheckedImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.Content = "Relátorio";
-            this.btnrelatoriobomba.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnrelatoriobomba.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnrelatoriobomba.ForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.HoveredImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.HoverForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.HoverOutline = System.Drawing.Color.Empty;
-            this.btnrelatoriobomba.Image = null;
-            this.btnrelatoriobomba.ImageAutoCenter = true;
-            this.btnrelatoriobomba.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnrelatoriobomba.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnrelatoriobomba.ImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.Location = new System.Drawing.Point(200, 4);
-            this.btnrelatoriobomba.Margin = new System.Windows.Forms.Padding(4);
-            this.btnrelatoriobomba.Name = "btnrelatoriobomba";
-            this.btnrelatoriobomba.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.NormalOutline = System.Drawing.Color.Empty;
-            this.btnrelatoriobomba.OutlineThickness = 1.6F;
-            this.btnrelatoriobomba.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.PressedForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.PressedImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.PressedOutline = System.Drawing.Color.Empty;
-            this.btnrelatoriobomba.Rounding = new System.Windows.Forms.Padding(8);
-            this.btnrelatoriobomba.Size = new System.Drawing.Size(192, 86);
-            this.btnrelatoriobomba.TabIndex = 6;
-            this.btnrelatoriobomba.TextOffset = new System.Drawing.Point(0, 0);
-            // 
             // cuiButton5
             // 
             this.cuiButton5.CheckButton = false;
@@ -1080,6 +1047,42 @@
             this.btniniciarteste.TabIndex = 3;
             this.btniniciarteste.TextOffset = new System.Drawing.Point(0, 0);
             // 
+            // btnrelatoriobomba
+            // 
+            this.btnrelatoriobomba.CheckButton = false;
+            this.btnrelatoriobomba.Checked = false;
+            this.btnrelatoriobomba.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnrelatoriobomba.CheckedForeColor = System.Drawing.Color.White;
+            this.btnrelatoriobomba.CheckedImageTint = System.Drawing.Color.White;
+            this.btnrelatoriobomba.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnrelatoriobomba.Content = "Relátorio";
+            this.btnrelatoriobomba.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnrelatoriobomba.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnrelatoriobomba.ForeColor = System.Drawing.Color.White;
+            this.btnrelatoriobomba.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnrelatoriobomba.HoveredImageTint = System.Drawing.Color.White;
+            this.btnrelatoriobomba.HoverForeColor = System.Drawing.Color.White;
+            this.btnrelatoriobomba.HoverOutline = System.Drawing.Color.Empty;
+            this.btnrelatoriobomba.Image = null;
+            this.btnrelatoriobomba.ImageAutoCenter = true;
+            this.btnrelatoriobomba.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnrelatoriobomba.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnrelatoriobomba.ImageTint = System.Drawing.Color.White;
+            this.btnrelatoriobomba.Location = new System.Drawing.Point(200, 4);
+            this.btnrelatoriobomba.Margin = new System.Windows.Forms.Padding(4);
+            this.btnrelatoriobomba.Name = "btnrelatoriobomba";
+            this.btnrelatoriobomba.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnrelatoriobomba.NormalOutline = System.Drawing.Color.Empty;
+            this.btnrelatoriobomba.OutlineThickness = 1.6F;
+            this.btnrelatoriobomba.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnrelatoriobomba.PressedForeColor = System.Drawing.Color.White;
+            this.btnrelatoriobomba.PressedImageTint = System.Drawing.Color.White;
+            this.btnrelatoriobomba.PressedOutline = System.Drawing.Color.Empty;
+            this.btnrelatoriobomba.Rounding = new System.Windows.Forms.Padding(8);
+            this.btnrelatoriobomba.Size = new System.Drawing.Size(192, 86);
+            this.btnrelatoriobomba.TabIndex = 6;
+            this.btnrelatoriobomba.TextOffset = new System.Drawing.Point(0, 0);
+            // 
             // labMedidas
             // 
             this.labMedidas.Content = "MÉTRICAS\\ DE\\ DIREÇÃO";
@@ -1120,7 +1123,7 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel4.Controls.Add(this.panel6, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.button5, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.sensor_Vazao_LPM, 1, 0);
@@ -1157,7 +1160,7 @@
             this.button5.BackColor = System.Drawing.Color.Black;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button5.Location = new System.Drawing.Point(184, 2);
+            this.button5.Location = new System.Drawing.Point(183, 2);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(56, 54);
@@ -1175,7 +1178,7 @@
             this.sensor_Vazao_LPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Vazao_LPM.Multiline = true;
             this.sensor_Vazao_LPM.Name = "sensor_Vazao_LPM";
-            this.sensor_Vazao_LPM.Size = new System.Drawing.Size(101, 54);
+            this.sensor_Vazao_LPM.Size = new System.Drawing.Size(100, 54);
             this.sensor_Vazao_LPM.TabIndex = 22;
             this.sensor_Vazao_LPM.Tag = "vazão";
             this.sensor_Vazao_LPM.Text = "0";
@@ -1198,7 +1201,7 @@
             this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel9.Controls.Add(this.unidade_medidatemp, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.sensor_Temp_C, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.panel11, 0, 0);
@@ -1216,7 +1219,7 @@
             this.unidade_medidatemp.BackColor = System.Drawing.Color.Black;
             this.unidade_medidatemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidatemp.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidatemp.Location = new System.Drawing.Point(184, 2);
+            this.unidade_medidatemp.Location = new System.Drawing.Point(183, 2);
             this.unidade_medidatemp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidatemp.Name = "unidade_medidatemp";
             this.unidade_medidatemp.Size = new System.Drawing.Size(61, 54);
@@ -1234,7 +1237,7 @@
             this.sensor_Temp_C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Temp_C.Multiline = true;
             this.sensor_Temp_C.Name = "sensor_Temp_C";
-            this.sensor_Temp_C.Size = new System.Drawing.Size(101, 54);
+            this.sensor_Temp_C.Size = new System.Drawing.Size(100, 54);
             this.sensor_Temp_C.TabIndex = 20;
             this.sensor_Temp_C.Tag = "temperatura";
             this.sensor_Temp_C.Text = "0";
@@ -1276,7 +1279,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel5.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.button1, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.sensor_lpm_DR, 1, 0);
@@ -1313,7 +1316,7 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button1.Location = new System.Drawing.Point(184, 2);
+            this.button1.Location = new System.Drawing.Point(183, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(61, 54);
@@ -1331,7 +1334,7 @@
             this.sensor_lpm_DR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_lpm_DR.Multiline = true;
             this.sensor_lpm_DR.Name = "sensor_lpm_DR";
-            this.sensor_lpm_DR.Size = new System.Drawing.Size(101, 54);
+            this.sensor_lpm_DR.Size = new System.Drawing.Size(100, 54);
             this.sensor_lpm_DR.TabIndex = 22;
             this.sensor_lpm_DR.Tag = "dreno";
             this.sensor_lpm_DR.Text = "0";
@@ -1354,7 +1357,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel6.Controls.Add(this.unidade_medidapressao1, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.button3, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.sensor_Press_BAR, 1, 1);
@@ -1374,7 +1377,7 @@
             this.unidade_medidapressao1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidapressao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidapressao1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidapressao1.Location = new System.Drawing.Point(186, 2);
+            this.unidade_medidapressao1.Location = new System.Drawing.Point(185, 2);
             this.unidade_medidapressao1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidapressao1.Name = "unidade_medidapressao1";
             this.unidade_medidapressao1.Size = new System.Drawing.Size(60, 57);
@@ -1387,7 +1390,7 @@
             this.button3.BackColor = System.Drawing.Color.Black;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button3.Location = new System.Drawing.Point(186, 64);
+            this.button3.Location = new System.Drawing.Point(185, 64);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(60, 54);
@@ -1405,7 +1408,7 @@
             this.sensor_Press_BAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Press_BAR.Multiline = true;
             this.sensor_Press_BAR.Name = "sensor_Press_BAR";
-            this.sensor_Press_BAR.Size = new System.Drawing.Size(102, 54);
+            this.sensor_Press_BAR.Size = new System.Drawing.Size(101, 54);
             this.sensor_Press_BAR.TabIndex = 22;
             this.sensor_Press_BAR.Tag = "pressão";
             this.sensor_Press_BAR.Text = "0";
@@ -1420,7 +1423,7 @@
             this.sensor_Press_PSI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Press_PSI.Multiline = true;
             this.sensor_Press_PSI.Name = "sensor_Press_PSI";
-            this.sensor_Press_PSI.Size = new System.Drawing.Size(102, 56);
+            this.sensor_Press_PSI.Size = new System.Drawing.Size(101, 56);
             this.sensor_Press_PSI.TabIndex = 20;
             this.sensor_Press_PSI.Tag = "pressão";
             this.sensor_Press_PSI.Text = "0";
@@ -1776,14 +1779,23 @@
             this.checkedListBox10.Size = new System.Drawing.Size(116, 145);
             this.checkedListBox10.TabIndex = 0;
             // 
-            // Tela_DirecaoCon
+            // mascaraabertura
+            // 
+            this.mascaraabertura.AnimateOnStart = true;
+            this.mascaraabertura.Duration = 500;
+            this.mascaraabertura.EasingType = CuoreUI.Drawing.EasingTypes.QuadInOut;
+            this.mascaraabertura.StartOpacity = 0D;
+            this.mascaraabertura.TargetForm = this;
+            this.mascaraabertura.TargetOpacity = 1D;
+            // 
+            // Tela_Direcao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1942, 1002);
             this.Controls.Add(this.painelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Tela_DirecaoCon";
+            this.Name = "Tela_Direcao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela_DirecaoCon";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1884,7 +1896,7 @@
         public MetroFramework.Controls.MetroPanel metroPanel3;
         private MetroFramework.Controls.MetroPanel metroPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private CuoreUI.Controls.cuiButton cuiButton3;
+        private CuoreUI.Controls.cuiButton Btn_retornar;
         private CuoreUI.Controls.cuiButton cuiButton2;
         private CuoreUI.Controls.cuiButton cuiButton4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
@@ -1945,5 +1957,6 @@
         private CuoreUI.Controls.cuiLabel labAutoma;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckedListBox checkedListBox10;
+        private CuoreUI.Components.cuiFormAnimator mascaraabertura;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_Cilindros));
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.labAutoma = new CuoreUI.Controls.cuiLabel();
@@ -55,7 +56,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.cuiButton14 = new CuoreUI.Controls.cuiButton();
+            this.Btn_retornar = new CuoreUI.Controls.cuiButton();
             this.cuiButton15 = new CuoreUI.Controls.cuiButton();
             this.cuiButton16 = new CuoreUI.Controls.cuiButton();
             this.separador_1 = new CuoreUI.Controls.cuiBorder();
@@ -116,6 +117,10 @@
             this.cuiChartLine2 = new CuoreUI.Controls.Charts.cuiChartLine();
             this.cuiLabel9 = new CuoreUI.Controls.cuiLabel();
             this.painelTitulos = new System.Windows.Forms.TableLayoutPanel();
+            this.text_teste = new System.Windows.Forms.Label();
+            this.text_datahora = new System.Windows.Forms.Label();
+            this.text_nometeste = new System.Windows.Forms.Label();
+            this.text_status = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.painelBase = new System.Windows.Forms.TableLayoutPanel();
@@ -135,10 +140,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.text_status = new System.Windows.Forms.Label();
-            this.text_nometeste = new System.Windows.Forms.Label();
-            this.text_datahora = new System.Windows.Forms.Label();
-            this.text_teste = new System.Windows.Forms.Label();
+            this.mascaraabertura = new CuoreUI.Components.cuiFormAnimator(this.components);
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -635,7 +637,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel7.Controls.Add(this.cuiButton14, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.Btn_retornar, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.cuiButton15, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.cuiButton16, 0, 0);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(4, 633);
@@ -647,41 +649,42 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(436, 90);
             this.tableLayoutPanel7.TabIndex = 98;
             // 
-            // cuiButton14
+            // Btn_retornar
             // 
-            this.cuiButton14.CheckButton = false;
-            this.cuiButton14.Checked = false;
-            this.cuiButton14.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton14.CheckedForeColor = System.Drawing.Color.White;
-            this.cuiButton14.CheckedImageTint = System.Drawing.Color.White;
-            this.cuiButton14.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton14.Content = "Retornar";
-            this.cuiButton14.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.cuiButton14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cuiButton14.ForeColor = System.Drawing.Color.White;
-            this.cuiButton14.HoverBackground = System.Drawing.Color.DimGray;
-            this.cuiButton14.HoveredImageTint = System.Drawing.Color.White;
-            this.cuiButton14.HoverForeColor = System.Drawing.Color.White;
-            this.cuiButton14.HoverOutline = System.Drawing.Color.Empty;
-            this.cuiButton14.Image = null;
-            this.cuiButton14.ImageAutoCenter = true;
-            this.cuiButton14.ImageExpand = new System.Drawing.Point(0, 0);
-            this.cuiButton14.ImageOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton14.ImageTint = System.Drawing.Color.White;
-            this.cuiButton14.Location = new System.Drawing.Point(297, 4);
-            this.cuiButton14.Margin = new System.Windows.Forms.Padding(4);
-            this.cuiButton14.Name = "cuiButton14";
-            this.cuiButton14.NormalBackground = System.Drawing.Color.Black;
-            this.cuiButton14.NormalOutline = System.Drawing.Color.Empty;
-            this.cuiButton14.OutlineThickness = 1.6F;
-            this.cuiButton14.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cuiButton14.PressedForeColor = System.Drawing.Color.White;
-            this.cuiButton14.PressedImageTint = System.Drawing.Color.White;
-            this.cuiButton14.PressedOutline = System.Drawing.Color.Empty;
-            this.cuiButton14.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton14.Size = new System.Drawing.Size(135, 82);
-            this.cuiButton14.TabIndex = 7;
-            this.cuiButton14.TextOffset = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.CheckButton = false;
+            this.Btn_retornar.Checked = false;
+            this.Btn_retornar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.Btn_retornar.CheckedForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.CheckedImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.Btn_retornar.Content = "Retornar";
+            this.Btn_retornar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Btn_retornar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.Btn_retornar.ForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.HoverBackground = System.Drawing.Color.DimGray;
+            this.Btn_retornar.HoveredImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.HoverForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.HoverOutline = System.Drawing.Color.Empty;
+            this.Btn_retornar.Image = null;
+            this.Btn_retornar.ImageAutoCenter = true;
+            this.Btn_retornar.ImageExpand = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.ImageOffset = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.ImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.Location = new System.Drawing.Point(297, 4);
+            this.Btn_retornar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_retornar.Name = "Btn_retornar";
+            this.Btn_retornar.NormalBackground = System.Drawing.Color.Black;
+            this.Btn_retornar.NormalOutline = System.Drawing.Color.Empty;
+            this.Btn_retornar.OutlineThickness = 1.6F;
+            this.Btn_retornar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Btn_retornar.PressedForeColor = System.Drawing.Color.White;
+            this.Btn_retornar.PressedImageTint = System.Drawing.Color.White;
+            this.Btn_retornar.PressedOutline = System.Drawing.Color.Empty;
+            this.Btn_retornar.Rounding = new System.Windows.Forms.Padding(8);
+            this.Btn_retornar.Size = new System.Drawing.Size(135, 82);
+            this.Btn_retornar.TabIndex = 7;
+            this.Btn_retornar.TextOffset = new System.Drawing.Point(0, 0);
+            this.Btn_retornar.Click += new System.EventHandler(this.CloseWindows_Click);
             // 
             // cuiButton15
             // 
@@ -1602,7 +1605,7 @@
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.24242F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 746F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
@@ -1617,11 +1620,63 @@
             this.painelTitulos.Size = new System.Drawing.Size(1382, 38);
             this.painelTitulos.TabIndex = 1;
             // 
+            // text_teste
+            // 
+            this.text_teste.AutoSize = true;
+            this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
+            this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_teste.Location = new System.Drawing.Point(1155, 2);
+            this.text_teste.Name = "text_teste";
+            this.text_teste.Size = new System.Drawing.Size(222, 16);
+            this.text_teste.TabIndex = 46;
+            this.text_teste.Text = "TESTE";
+            this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // text_datahora
+            // 
+            this.text_datahora.AutoSize = true;
+            this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
+            this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_datahora.Location = new System.Drawing.Point(990, 2);
+            this.text_datahora.Name = "text_datahora";
+            this.text_datahora.Size = new System.Drawing.Size(157, 16);
+            this.text_datahora.TabIndex = 45;
+            this.text_datahora.Text = "DATA e HORA";
+            this.text_datahora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // text_nometeste
+            // 
+            this.text_nometeste.AutoSize = true;
+            this.text_nometeste.Dock = System.Windows.Forms.DockStyle.Top;
+            this.text_nometeste.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_nometeste.Location = new System.Drawing.Point(242, 2);
+            this.text_nometeste.Name = "text_nometeste";
+            this.text_nometeste.Size = new System.Drawing.Size(740, 16);
+            this.text_nometeste.TabIndex = 44;
+            this.text_nometeste.Text = "DADOS DO TESTE";
+            this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // text_status
+            // 
+            this.text_status.AutoSize = true;
+            this.text_status.Dock = System.Windows.Forms.DockStyle.Top;
+            this.text_status.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.text_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_status.Location = new System.Drawing.Point(5, 2);
+            this.text_status.Name = "text_status";
+            this.text_status.Size = new System.Drawing.Size(229, 16);
+            this.text_status.TabIndex = 42;
+            this.text_status.Text = "STATUS GERAL";
+            this.text_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(527, 1);
+            this.label4.Location = new System.Drawing.Point(525, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
@@ -1631,7 +1686,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(359, 1);
+            this.label5.Location = new System.Drawing.Point(355, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
@@ -1815,7 +1870,7 @@
             this.dadosentrada1.ColumnCount = 3;
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.34694F));
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.65306F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 264F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
@@ -1834,7 +1889,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(470, 19);
+            this.textBox4.Location = new System.Drawing.Point(466, 19);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -1844,11 +1899,11 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(318, 19);
+            this.textBox5.Location = new System.Drawing.Point(315, 19);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(145, 30);
+            this.textBox5.Size = new System.Drawing.Size(144, 30);
             this.textBox5.TabIndex = 5;
             // 
             // textBox6
@@ -1858,79 +1913,36 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(307, 30);
+            this.textBox6.Size = new System.Drawing.Size(304, 30);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(98, 1);
+            this.label6.Location = new System.Drawing.Point(97, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 15);
             this.label6.TabIndex = 7;
             this.label6.Text = "NOME DO TESTE";
             // 
-            // text_status
+            // mascaraabertura
             // 
-            this.text_status.AutoSize = true;
-            this.text_status.Dock = System.Windows.Forms.DockStyle.Top;
-            this.text_status.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.text_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_status.Location = new System.Drawing.Point(5, 2);
-            this.text_status.Name = "text_status";
-            this.text_status.Size = new System.Drawing.Size(234, 16);
-            this.text_status.TabIndex = 42;
-            this.text_status.Text = "STATUS GERAL";
-            this.text_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mascaraabertura.AnimateOnStart = true;
+            this.mascaraabertura.Duration = 500;
+            this.mascaraabertura.EasingType = CuoreUI.Drawing.EasingTypes.QuadInOut;
+            this.mascaraabertura.StartOpacity = 0D;
+            this.mascaraabertura.TargetForm = this;
+            this.mascaraabertura.TargetOpacity = 1D;
             // 
-            // text_nometeste
-            // 
-            this.text_nometeste.AutoSize = true;
-            this.text_nometeste.Dock = System.Windows.Forms.DockStyle.Top;
-            this.text_nometeste.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_nometeste.Location = new System.Drawing.Point(247, 2);
-            this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(740, 16);
-            this.text_nometeste.TabIndex = 44;
-            this.text_nometeste.Text = "DADOS DO TESTE";
-            this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // text_datahora
-            // 
-            this.text_datahora.AutoSize = true;
-            this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
-            this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(995, 2);
-            this.text_datahora.Name = "text_datahora";
-            this.text_datahora.Size = new System.Drawing.Size(157, 16);
-            this.text_datahora.TabIndex = 45;
-            this.text_datahora.Text = "DATA e HORA";
-            this.text_datahora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // text_teste
-            // 
-            this.text_teste.AutoSize = true;
-            this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
-            this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(1160, 2);
-            this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(217, 16);
-            this.text_teste.TabIndex = 46;
-            this.text_teste.Text = "TESTE";
-            this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Tela_CilindrosCon
+            // Tela_Cilindros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1942, 993);
             this.Controls.Add(this.painelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Tela_CilindrosCon";
+            this.Name = "Tela_Cilindros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela_CilindrosCon";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -2012,7 +2024,7 @@
         public System.Windows.Forms.TextBox textBox6;
         public System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private CuoreUI.Controls.cuiButton cuiButton14;
+        private CuoreUI.Controls.cuiButton Btn_retornar;
         private CuoreUI.Controls.cuiButton cuiButton15;
         private CuoreUI.Controls.cuiButton cuiButton16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -2097,5 +2109,6 @@
         public System.Windows.Forms.Label text_nometeste;
         public System.Windows.Forms.Label text_datahora;
         public System.Windows.Forms.Label text_teste;
+        private CuoreUI.Components.cuiFormAnimator mascaraabertura;
     }
 }

@@ -251,8 +251,22 @@ namespace minas.teste.prototype.MVVM.View
         {
             if (string.IsNullOrEmpty(ConnectionSettingsApplication.PortName) || ConnectionSettingsApplication.BaudRate <= 0)
             {
-                MessageBox.Show("Nenhuma configuração salva. Selecione e salve as configurações primeiro.");
+                var result = MessageBox.Show(
+                    "Nenhuma configuração salva.Deseja sair sem Salvar as Configurações Atuais?", "salvar?",
+
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+                
+                if (result == DialogResult.Yes)
+                {
+                    _fechamentoForcado = true; // Indica que é um fechamento controlado
+                    Menuapp.Instance.Show();
+                    this.Close();
+                }
                 return;
+                
+                
             }
             else
             {
