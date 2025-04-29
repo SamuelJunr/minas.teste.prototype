@@ -57,8 +57,8 @@ namespace minas.teste.prototype
         {
 
 
-            Tela_Bombas bombasvv = new Tela_Bombas();
-            bombasvv.Show();
+            Tela_Bombas Bombasvv = new Tela_Bombas();
+            Bombasvv.Show();
             this.Hide();
 
             //Tela_Bombas teste = new Tela_Bombas();
@@ -120,6 +120,13 @@ namespace minas.teste.prototype
         {
             Tela_Motor MotorVV = new Tela_Motor();
             MotorVV.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Tutorial TutorialVV = new Tutorial();
+            TutorialVV.Show();
             this.Hide();
         }
     }

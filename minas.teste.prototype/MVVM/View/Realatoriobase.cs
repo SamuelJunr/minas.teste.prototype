@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace minas.teste.prototype.MVVM.View
 {
-    public partial class RelatorioTestes: Form
+    public partial class Realatoriobase : Form
     {
-        public RelatorioTestes()
+        public Realatoriobase()
         {
             InitializeComponent();
         }
-
-      
     }
 }

@@ -157,6 +157,56 @@ namespace minas.teste.prototype.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
+        internal static byte[] background1 {
+            get {
+                object obj = ResourceManager.GetObject("background1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] background2 {
+            get {
+                object obj = ResourceManager.GetObject("background2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] background3 {
+            get {
+                object obj = ResourceManager.GetObject("background3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] background4 {
+            get {
+                object obj = ResourceManager.GetObject("background4", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] background5 {
+            get {
+                object obj = ResourceManager.GetObject("background5", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
         internal static byte[] bomba {
             get {
                 object obj = ResourceManager.GetObject("bomba", resourceCulture);
@@ -508,6 +558,36 @@ namespace minas.teste.prototype.Properties {
             get {
                 object obj = ResourceManager.GetObject("pressao_on", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printerpage {
+            get {
+                object obj = ResourceManager.GetObject("printerpage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printerpage1 {
+            get {
+                object obj = ResourceManager.GetObject("printerpage1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printpdf {
+            get {
+                object obj = ResourceManager.GetObject("printpdf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

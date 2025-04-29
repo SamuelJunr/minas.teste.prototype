@@ -252,7 +252,7 @@ namespace minas.teste.prototype.MVVM.View
             if (string.IsNullOrEmpty(ConnectionSettingsApplication.PortName) || ConnectionSettingsApplication.BaudRate <= 0)
             {
                 var result = MessageBox.Show(
-                    "Nenhuma configuração salva.Deseja sair sem Salvar as Configurações Atuais?", "salvar?",
+                    "Nenhuma configuração salva. Deseja sair sem Salvar as Configurações Atuais?", "salvar?",
 
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question

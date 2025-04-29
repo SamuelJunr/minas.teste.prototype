@@ -434,6 +434,15 @@ namespace minas.teste.prototype.MVVM.View
         {
 
         }
+
+        private void btnrelatoriobomba_Click(object sender, EventArgs e)
+        {
+            Realatoriobase relatorio = new Realatoriobase();
+            //relatorio.GerarRelatorio(dadosSensores, _dadosColetados, Inicioteste, Fimteste);
+            relatorio.Show();
+            this.Hide();
+
+        }
     }
 }
 
