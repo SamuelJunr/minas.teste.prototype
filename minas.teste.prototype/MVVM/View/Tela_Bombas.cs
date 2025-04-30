@@ -13,10 +13,11 @@ namespace minas.teste.prototype.MVVM.View
         //-------------------------------------//
         private Tela_BombasVM _viewModel;
         private apresentacao _fechar_box;
-        private List<SensorData> _dadosSensores = new List<SensorData>();
         private List<EtapaData> _dadosColetados = new List<EtapaData>();
         public Dictionary<string, TextBox> sensorMap;
         public Dictionary<string, string> sensorMapmedida;
+        private List<string> dadosSensoresSelecionados = new List<string>();
+        public List<SensorData> dadosSensores;
 
 
 
@@ -32,8 +33,8 @@ namespace minas.teste.prototype.MVVM.View
         public string Fimteste;
         private int etapaAtual = 0;
         private const int LIMITE_ETAPAS = 7;
-        private List<string> dadosSensoresSelecionados = new List<string>();
-        public List<SensorData> dadosSensores;
+        public string StatusText;
+        
 
 
 
@@ -90,6 +91,7 @@ namespace minas.teste.prototype.MVVM.View
             _viewModel.Carregar_configuracao(this); // Carrega o estilo do formulário  
             _viewModel.Stage_signal(Stage_box_bomba);
             _viewModel.VincularRelogioLabel(LabelHorariotela);// configura a imagem de teste ligado ou desligado  
+            HistoricalEvents.Text = "AGUARDANDO INÍCIO DO ENSAIO..."; // Carrega o histórico de eventos
 
         }
 
@@ -121,7 +123,7 @@ namespace minas.teste.prototype.MVVM.View
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             _isMonitoring = true;
-            _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel7, panel6, panel8, panel9);
+            _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
             Inicioteste = DateTime.Now.ToString();
             _viewModel.IniciarTesteBomba(Stage_box_bomba);
 
@@ -130,7 +132,7 @@ namespace minas.teste.prototype.MVVM.View
         private void btnParar_Click(object sender, EventArgs e)
         {
             _isMonitoring = false;
-            _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel7, panel6, panel8, panel9);
+            _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
             Fimteste = DateTime.Now.ToString();
             _viewModel.FinalizarTesteBomba(Stage_box_bomba);
 
@@ -443,6 +445,8 @@ namespace minas.teste.prototype.MVVM.View
             this.Hide();
 
         }
+
+        
     }
 }
 

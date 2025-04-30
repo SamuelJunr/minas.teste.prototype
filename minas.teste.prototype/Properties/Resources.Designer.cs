@@ -157,6 +157,26 @@ namespace minas.teste.prototype.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
+        internal static byte[] _return {
+            get {
+                object obj = ResourceManager.GetObject("return", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_go_back_icon_size_512 {
+            get {
+                object obj = ResourceManager.GetObject("arrow-go-back-icon-size_512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
         internal static byte[] background1 {
             get {
                 object obj = ResourceManager.GetObject("background1", resourceCulture);
@@ -285,6 +305,16 @@ namespace minas.teste.prototype.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
+        internal static byte[] database {
+            get {
+                object obj = ResourceManager.GetObject("database", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
         internal static byte[] direcao {
             get {
                 object obj = ResourceManager.GetObject("direcao", resourceCulture);
@@ -368,6 +398,16 @@ namespace minas.teste.prototype.Properties {
         internal static System.Drawing.Bitmap gears_6122_256 {
             get {
                 object obj = ResourceManager.GetObject("gears-6122_256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_database_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-database-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -736,6 +776,16 @@ namespace minas.teste.prototype.Properties {
         internal static System.Drawing.Bitmap vazãobomba_removebg_preview__1_ {
             get {
                 object obj = ResourceManager.GetObject("vazãobomba-removebg-preview (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vecteezy_data_storage_vector_glyph_icon_for_personal_and_commercial_use_29093896 {
+            get {
+                object obj = ResourceManager.GetObject("vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

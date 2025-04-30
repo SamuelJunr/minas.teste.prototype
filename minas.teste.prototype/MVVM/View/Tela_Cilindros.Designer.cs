@@ -40,10 +40,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
-            this.cuiCheckbox6 = new CuoreUI.Controls.cuiCheckbox();
-            this.cuiCheckbox5 = new CuoreUI.Controls.cuiCheckbox();
-            this.cuiCheckbox4 = new CuoreUI.Controls.cuiCheckbox();
-            this.cuiCheckbox3 = new CuoreUI.Controls.cuiCheckbox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -52,7 +48,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.cuiCheckbox2 = new CuoreUI.Controls.cuiCheckbox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -362,10 +357,6 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
             this.tableLayoutPanel4.Controls.Add(this.label14, 1, 4);
             this.tableLayoutPanel4.Controls.Add(this.textBox13, 2, 4);
-            this.tableLayoutPanel4.Controls.Add(this.cuiCheckbox6, 0, 3);
-            this.tableLayoutPanel4.Controls.Add(this.cuiCheckbox5, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.cuiCheckbox4, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.cuiCheckbox3, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBox1, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.textBox2, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.textBox3, 2, 2);
@@ -374,7 +365,6 @@
             this.tableLayoutPanel4.Controls.Add(this.label2, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label3, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.label7, 1, 3);
-            this.tableLayoutPanel4.Controls.Add(this.cuiCheckbox2, 0, 4);
             this.tableLayoutPanel4.Controls.Add(this.button1, 1, 5);
             this.tableLayoutPanel4.Controls.Add(this.pictureBox4, 2, 5);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 41);
@@ -410,90 +400,6 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(126, 51);
             this.textBox13.TabIndex = 27;
-            // 
-            // cuiCheckbox6
-            // 
-            this.cuiCheckbox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cuiCheckbox6.Checked = false;
-            this.cuiCheckbox6.CheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox6.CheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox6.CheckedSymbolColor = System.Drawing.Color.White;
-            this.cuiCheckbox6.Content = "";
-            this.cuiCheckbox6.Location = new System.Drawing.Point(3, 185);
-            this.cuiCheckbox6.MinimumSize = new System.Drawing.Size(16, 16);
-            this.cuiCheckbox6.Name = "cuiCheckbox6";
-            this.cuiCheckbox6.OutlineStyle = true;
-            this.cuiCheckbox6.OutlineThickness = 1F;
-            this.cuiCheckbox6.Rounding = 5;
-            this.cuiCheckbox6.ShowSymbols = true;
-            this.cuiCheckbox6.Size = new System.Drawing.Size(42, 41);
-            this.cuiCheckbox6.TabIndex = 24;
-            this.cuiCheckbox6.UncheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox6.UncheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox6.UncheckedSymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            // 
-            // cuiCheckbox5
-            // 
-            this.cuiCheckbox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cuiCheckbox5.Checked = false;
-            this.cuiCheckbox5.CheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox5.CheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox5.CheckedSymbolColor = System.Drawing.Color.White;
-            this.cuiCheckbox5.Content = "";
-            this.cuiCheckbox5.Location = new System.Drawing.Point(3, 126);
-            this.cuiCheckbox5.MinimumSize = new System.Drawing.Size(16, 16);
-            this.cuiCheckbox5.Name = "cuiCheckbox5";
-            this.cuiCheckbox5.OutlineStyle = true;
-            this.cuiCheckbox5.OutlineThickness = 1F;
-            this.cuiCheckbox5.Rounding = 5;
-            this.cuiCheckbox5.ShowSymbols = true;
-            this.cuiCheckbox5.Size = new System.Drawing.Size(42, 41);
-            this.cuiCheckbox5.TabIndex = 23;
-            this.cuiCheckbox5.UncheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox5.UncheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox5.UncheckedSymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            // 
-            // cuiCheckbox4
-            // 
-            this.cuiCheckbox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cuiCheckbox4.Checked = false;
-            this.cuiCheckbox4.CheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox4.CheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox4.CheckedSymbolColor = System.Drawing.Color.White;
-            this.cuiCheckbox4.Content = "";
-            this.cuiCheckbox4.Location = new System.Drawing.Point(3, 67);
-            this.cuiCheckbox4.MinimumSize = new System.Drawing.Size(16, 16);
-            this.cuiCheckbox4.Name = "cuiCheckbox4";
-            this.cuiCheckbox4.OutlineStyle = true;
-            this.cuiCheckbox4.OutlineThickness = 1F;
-            this.cuiCheckbox4.Rounding = 5;
-            this.cuiCheckbox4.ShowSymbols = true;
-            this.cuiCheckbox4.Size = new System.Drawing.Size(42, 41);
-            this.cuiCheckbox4.TabIndex = 22;
-            this.cuiCheckbox4.UncheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox4.UncheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox4.UncheckedSymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            // 
-            // cuiCheckbox3
-            // 
-            this.cuiCheckbox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cuiCheckbox3.Checked = false;
-            this.cuiCheckbox3.CheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox3.CheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox3.CheckedSymbolColor = System.Drawing.Color.White;
-            this.cuiCheckbox3.Content = "";
-            this.cuiCheckbox3.Location = new System.Drawing.Point(3, 8);
-            this.cuiCheckbox3.MinimumSize = new System.Drawing.Size(16, 16);
-            this.cuiCheckbox3.Name = "cuiCheckbox3";
-            this.cuiCheckbox3.OutlineStyle = true;
-            this.cuiCheckbox3.OutlineThickness = 1F;
-            this.cuiCheckbox3.Rounding = 5;
-            this.cuiCheckbox3.ShowSymbols = true;
-            this.cuiCheckbox3.Size = new System.Drawing.Size(42, 41);
-            this.cuiCheckbox3.TabIndex = 21;
-            this.cuiCheckbox3.UncheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox3.UncheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox3.UncheckedSymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             // 
             // textBox1
             // 
@@ -582,27 +488,6 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Tempo de Teste da Porta B";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cuiCheckbox2
-            // 
-            this.cuiCheckbox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cuiCheckbox2.Checked = false;
-            this.cuiCheckbox2.CheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox2.CheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiCheckbox2.CheckedSymbolColor = System.Drawing.Color.White;
-            this.cuiCheckbox2.Content = "";
-            this.cuiCheckbox2.Location = new System.Drawing.Point(3, 245);
-            this.cuiCheckbox2.MinimumSize = new System.Drawing.Size(16, 16);
-            this.cuiCheckbox2.Name = "cuiCheckbox2";
-            this.cuiCheckbox2.OutlineStyle = true;
-            this.cuiCheckbox2.OutlineThickness = 1F;
-            this.cuiCheckbox2.Rounding = 5;
-            this.cuiCheckbox2.ShowSymbols = true;
-            this.cuiCheckbox2.Size = new System.Drawing.Size(42, 41);
-            this.cuiCheckbox2.TabIndex = 20;
-            this.cuiCheckbox2.UncheckedForeground = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox2.UncheckedOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cuiCheckbox2.UncheckedSymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             // 
             // button1
             // 
@@ -1139,7 +1024,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(182, 46);
+            this.label11.Location = new System.Drawing.Point(200, 46);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 16);
             this.label11.TabIndex = 13;
@@ -1149,7 +1034,7 @@
             // textBox12
             // 
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox12.Location = new System.Drawing.Point(149, 65);
+            this.textBox12.Location = new System.Drawing.Point(161, 65);
             this.textBox12.Multiline = true;
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(99, 82);
@@ -1293,7 +1178,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(136, 46);
+            this.label8.Location = new System.Drawing.Point(146, 46);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 16);
             this.label8.TabIndex = 10;
@@ -1603,9 +1488,9 @@
             this.painelTitulos.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.painelTitulos.ColumnCount = 4;
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.24242F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 746F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 752F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
@@ -1626,9 +1511,9 @@
             this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(1155, 2);
+            this.text_teste.Location = new System.Drawing.Point(1158, 2);
             this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(222, 16);
+            this.text_teste.Size = new System.Drawing.Size(219, 16);
             this.text_teste.TabIndex = 46;
             this.text_teste.Text = "TESTE";
             this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1639,9 +1524,9 @@
             this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(990, 2);
+            this.text_datahora.Location = new System.Drawing.Point(992, 2);
             this.text_datahora.Name = "text_datahora";
-            this.text_datahora.Size = new System.Drawing.Size(157, 16);
+            this.text_datahora.Size = new System.Drawing.Size(158, 16);
             this.text_datahora.TabIndex = 45;
             this.text_datahora.Text = "DATA e HORA";
             this.text_datahora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1652,9 +1537,9 @@
             this.text_nometeste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_nometeste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_nometeste.Location = new System.Drawing.Point(242, 2);
+            this.text_nometeste.Location = new System.Drawing.Point(238, 2);
             this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(740, 16);
+            this.text_nometeste.Size = new System.Drawing.Size(746, 16);
             this.text_nometeste.TabIndex = 44;
             this.text_nometeste.Text = "DADOS DO TESTE";
             this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1667,7 +1552,7 @@
             this.text_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_status.Location = new System.Drawing.Point(5, 2);
             this.text_status.Name = "text_status";
-            this.text_status.Size = new System.Drawing.Size(229, 16);
+            this.text_status.Size = new System.Drawing.Size(225, 16);
             this.text_status.TabIndex = 42;
             this.text_status.Text = "STATUS GERAL";
             this.text_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1676,7 +1561,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(525, 1);
+            this.label4.Location = new System.Drawing.Point(543, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
@@ -1686,7 +1571,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(355, 1);
+            this.label5.Location = new System.Drawing.Point(386, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
@@ -1870,7 +1755,7 @@
             this.dadosentrada1.ColumnCount = 3;
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.34694F));
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.65306F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 264F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 227F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
@@ -1889,21 +1774,21 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(466, 19);
+            this.textBox4.Location = new System.Drawing.Point(503, 19);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(186, 30);
+            this.textBox4.Size = new System.Drawing.Size(220, 30);
             this.textBox4.TabIndex = 6;
             // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(315, 19);
+            this.textBox5.Location = new System.Drawing.Point(340, 19);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(144, 30);
+            this.textBox5.Size = new System.Drawing.Size(156, 30);
             this.textBox5.TabIndex = 5;
             // 
             // textBox6
@@ -1913,14 +1798,14 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(304, 30);
+            this.textBox6.Size = new System.Drawing.Size(329, 30);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(97, 1);
+            this.label6.Location = new System.Drawing.Point(109, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 15);
             this.label6.TabIndex = 7;
@@ -2073,11 +1958,6 @@
         private System.Windows.Forms.Label label12;
         private CuoreUI.Controls.cuiLabel cuiLabel3;
         private System.Windows.Forms.Label label16;
-        private CuoreUI.Controls.cuiCheckbox cuiCheckbox2;
-        private CuoreUI.Controls.cuiCheckbox cuiCheckbox6;
-        private CuoreUI.Controls.cuiCheckbox cuiCheckbox5;
-        private CuoreUI.Controls.cuiCheckbox cuiCheckbox4;
-        private CuoreUI.Controls.cuiCheckbox cuiCheckbox3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox13;
         private CuoreUI.Controls.cuiLabel cuiLabel4;
