@@ -5,7 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
-
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.Extensions.Logging;
@@ -108,6 +108,65 @@ namespace minas.teste.prototype.MVVM.ViewModel
 
         #region VALIDACAO
 
+
+        public void MonitorarDados(
+           string psiPLValor, string psiPLMin, string psiPLMax, bool psiPLAtivo, Panel psiPLPanel,
+           string pressPSIValor, string pressPSIMin, string pressPSIMax, bool pressPSIAtivo, Panel pressPSIPanel,
+           string gpmDRValor, string gpmDRMin, string gpmDRMax, bool gpmDRAtivo, Panel gpmDRPanel,
+           string vazaoGPMValor, string vazaoGPMMin, string vazaoGPMMax, bool vazaoGPMAtivo, Panel vazaoGPMPanel,
+           string pressBARValor, string pressBARMin, string pressBARMax, bool pressBARAtivo, Panel pressBARPanel,
+           string barPLValor, string barPLMin, string barPLMax, bool barPLAtivo, Panel barPLPanel,
+           string rotacaoRPMValor, string rotacaoRPMMin, string rotacaoRPMMax, bool rotacaoRPMAtivo, Panel rotacaoRPMPanel,
+           string vazaoLPMValor, string vazaoLPMMin, string vazaoLPMMax, bool vazaoLPMAtivo, Panel vazaoLPMPanel,
+           string lpmDRValor, string lpmDRMin, string lpmDRMax, bool lpmDRAtivo, Panel lpmDRPanel,
+           string tempCValor, string tempCMin, string tempCMax, bool tempCAtivo, Panel tempCPanel
+       )
+        {
+            VerificarRange("psi_PL", psiPLValor, psiPLMin, psiPLMax, psiPLAtivo, psiPLPanel);
+            VerificarRange("Press_PSI", pressPSIValor, pressPSIMin, pressPSIMax, pressPSIAtivo, pressPSIPanel);
+            VerificarRange("gpm_DR", gpmDRValor, gpmDRMin, gpmDRMax, gpmDRAtivo, gpmDRPanel);
+            VerificarRange("Vazao_GPM", vazaoGPMValor, vazaoGPMMin, vazaoGPMMax, vazaoGPMAtivo, vazaoGPMPanel);
+            VerificarRange("Press_BAR", pressBARValor, pressBARMin, pressBARMax, pressBARAtivo, pressBARPanel);
+            VerificarRange("bar_PL", barPLValor, barPLMin, barPLMax, barPLAtivo, barPLPanel);
+            VerificarRange("rotacao_RPM", rotacaoRPMValor, rotacaoRPMMin, rotacaoRPMMax, rotacaoRPMAtivo, rotacaoRPMPanel);
+            VerificarRange("Vazao_LPM", vazaoLPMValor, vazaoLPMMin, vazaoLPMMax, vazaoLPMAtivo, vazaoLPMPanel);
+            VerificarRange("lpm_DR", lpmDRValor, lpmDRMin, lpmDRMax, lpmDRAtivo, lpmDRPanel);
+            VerificarRange("Temp_C", tempCValor, tempCMin, tempCMax, tempCAtivo, tempCPanel);
+        }
+
+        private void VerificarRange(string sensorNome, string sensorValorTexto, string minValorTexto, string maxValorTexto, bool ativo, Panel panelAlerta)
+        {
+            if (ativo)
+            {
+                if (decimal.TryParse(sensorValorTexto, out decimal valorSensor) &&
+                    decimal.TryParse(minValorTexto, out decimal valorMinimo) &&
+                    decimal.TryParse(maxValorTexto, out decimal valorMaximo))
+                {
+                    if (valorSensor < valorMinimo || valorSensor > valorMaximo)
+                    {
+                        MessageBox.Show($"O valor do sensor {sensorNome} ({valorSensor}) está fora do range [{valorMinimo} - {valorMaximo}].", "Alerta de Monitoramento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        panelAlerta.BackColor = Color.Yellow; // Ou outra cor de destaque
+                    }
+                    else
+                    {
+                        panelAlerta.BackColor = SystemColors.Control; // Volta à cor padrão
+                    }
+                }
+                else if (!string.IsNullOrEmpty(sensorValorTexto) || !string.IsNullOrEmpty(minValorTexto) || !string.IsNullOrEmpty(maxValorTexto))
+                {
+                    MessageBox.Show($"Erro ao converter os valores para o sensor {sensorNome}. Verifique se os campos de valor, mínimo e máximo contêm números válidos.", "Erro de Conversão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    panelAlerta.BackColor = Color.LightCoral; // Indica um erro de conversão
+                }
+                else
+                {
+                    panelAlerta.BackColor = SystemColors.Control; // Se os campos estiverem vazios e o checkbox ativo, não há alerta
+                }
+            }
+            else
+            {
+                panelAlerta.BackColor = SystemColors.Control; // Se o checkbox não estiver ativo, o painel volta à cor padrão
+            }
+        }
         #endregion
 
         #region BOTÕES
@@ -158,7 +217,47 @@ namespace minas.teste.prototype.MVVM.ViewModel
             }
         }
 
+        public bool cabecalhoinicial(TextBox textBox6, TextBox textBox5, TextBox textBox4)
+        {
+            if (string.IsNullOrEmpty(textBox6?.Text) ||
+                string.IsNullOrEmpty(textBox5?.Text) ||
+                string.IsNullOrEmpty(textBox4?.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+        public async Task PiscarLabelsVermelho(Label label1, Label label2, Label label3, int duration)
+        {
+            Color originalColor1 = label1.ForeColor;
+            Color originalColor2 = label2.ForeColor;
+            Color originalColor3 = label3.ForeColor;
+            int interval = 500; // Intervalo de 500 milissegundos (0.5 segundos) para cada troca de cor
+            int steps = duration / interval;
+
+            for (int i = 0; i < steps; i++)
+            {
+                label1.ForeColor = Color.Red;
+                label2.ForeColor = Color.Red;
+                label3.ForeColor = Color.Red;
+                await Task.Delay(interval);
+
+                label1.ForeColor = originalColor1;
+                label2.ForeColor = originalColor2;
+                label3.ForeColor = originalColor3;
+                await Task.Delay(interval);
+            }
+
+            // Garantir que as cores voltem ao original após o período
+            label1.ForeColor = originalColor1;
+            label2.ForeColor = originalColor2;
+            label3.ForeColor = originalColor3;
+        }
+
+
         #endregion
+
+
 
         #region FLAGS 
         public void AlterarEstadoPaineis(bool ativo, Panel p1, Panel p2,Panel p3,Panel p4,Panel p5,Panel p6)

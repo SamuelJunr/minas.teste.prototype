@@ -32,6 +32,13 @@
             CodeArtEng.Gauge.Themes.ThemeColors themeColors1 = new CodeArtEng.Gauge.Themes.ThemeColors();
             CodeArtEng.Gauge.Themes.ThemeColors themeColors2 = new CodeArtEng.Gauge.Themes.ThemeColors();
             CodeArtEng.Gauge.Themes.ThemeColors themeColors3 = new CodeArtEng.Gauge.Themes.ThemeColors();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_Bombas));
             this.painelBase = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -120,8 +127,6 @@
             this.graficos_dados_tab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.cuiChartLine2 = new CuoreUI.Controls.Charts.cuiChartLine();
-            this.cuiChartLine1 = new CuoreUI.Controls.Charts.cuiChartLine();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.cuiChartLine3 = new CuoreUI.Controls.Charts.cuiChartLine();
@@ -148,22 +153,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
-            this.checkedListBox8 = new System.Windows.Forms.CheckedListBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.checkedListBox7 = new System.Windows.Forms.CheckedListBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
-            this.checkedListBox6 = new System.Windows.Forms.CheckedListBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
-            this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.labAutoma = new CuoreUI.Controls.cuiLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
@@ -171,6 +170,14 @@
             this.visualizador = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.checkBox_psi = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.painelBase.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Imagem_minasteste)).BeginInit();
@@ -224,6 +231,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.visualizador)).BeginInit();
             this.tableLayoutPanel18.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBase
@@ -300,8 +309,8 @@
             this.painalFuncaoes.ColumnCount = 4;
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.31102F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.68898F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel2, 3, 0);
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel3, 2, 0);
             this.painalFuncaoes.Controls.Add(this.Stage_box_bomba, 0, 0);
@@ -320,7 +329,7 @@
             // 
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.Controls.Add(this.labelCronometro_bomba);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(1199, 4);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1212, 4);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(144, 62);
@@ -341,7 +350,7 @@
             // 
             this.flowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel3.Controls.Add(this.LabelHorariotela);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(995, 4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(1020, 4);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(153, 62);
@@ -363,7 +372,7 @@
             this.Stage_box_bomba.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Stage_box_bomba.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.Stage_box_bomba.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stage_box_bomba.Location = new System.Drawing.Point(76, 23);
+            this.Stage_box_bomba.Location = new System.Drawing.Point(79, 23);
             this.Stage_box_bomba.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Stage_box_bomba.Name = "Stage_box_bomba";
             this.Stage_box_bomba.Size = new System.Drawing.Size(91, 84);
@@ -377,13 +386,13 @@
             this.tableLayoutPanel14.Controls.Add(this.HistoricalEvents, 0, 1);
             this.tableLayoutPanel14.Controls.Add(this.dadosentrada1, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(247, 6);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(253, 6);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(737, 119);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(754, 119);
             this.tableLayoutPanel14.TabIndex = 49;
             // 
             // HistoricalEvents
@@ -391,20 +400,23 @@
             this.HistoricalEvents.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.HistoricalEvents.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.HistoricalEvents.BackColor = System.Drawing.SystemColors.InfoText;
+            this.HistoricalEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HistoricalEvents.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.HistoricalEvents.Location = new System.Drawing.Point(3, 61);
             this.HistoricalEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HistoricalEvents.Multiline = true;
             this.HistoricalEvents.Name = "HistoricalEvents";
-            this.HistoricalEvents.Size = new System.Drawing.Size(727, 53);
+            this.HistoricalEvents.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.HistoricalEvents.Size = new System.Drawing.Size(744, 53);
             this.HistoricalEvents.TabIndex = 49;
             // 
             // dadosentrada1
             // 
             this.dadosentrada1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.dadosentrada1.ColumnCount = 3;
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.05576F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.94424F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.04301F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.95699F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
@@ -417,14 +429,14 @@
             this.dadosentrada1.RowCount = 2;
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.23256F));
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.76744F));
-            this.dadosentrada1.Size = new System.Drawing.Size(727, 53);
+            this.dadosentrada1.Size = new System.Drawing.Size(748, 53);
             this.dadosentrada1.TabIndex = 48;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(554, 1);
+            this.label4.Location = new System.Drawing.Point(593, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
@@ -434,7 +446,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(400, 1);
+            this.label5.Location = new System.Drawing.Point(467, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
@@ -443,21 +455,21 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(527, 19);
+            this.textBox4.Location = new System.Drawing.Point(583, 19);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(196, 29);
+            this.textBox4.Size = new System.Drawing.Size(161, 29);
             this.textBox4.TabIndex = 6;
             // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(344, 19);
+            this.textBox5.Location = new System.Drawing.Point(421, 19);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(176, 29);
+            this.textBox5.Size = new System.Drawing.Size(155, 29);
             this.textBox5.TabIndex = 5;
             // 
             // textBox6
@@ -467,18 +479,18 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(333, 29);
+            this.textBox6.Size = new System.Drawing.Size(410, 29);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(111, 1);
+            this.label6.Location = new System.Drawing.Point(147, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 15);
+            this.label6.Size = new System.Drawing.Size(123, 15);
             this.label6.TabIndex = 7;
-            this.label6.Text = "NOME DO TESTE";
+            this.label6.Text = "NOME DO ENSAIO";
             // 
             // painelTitulos
             // 
@@ -488,8 +500,8 @@
             this.painelTitulos.ColumnCount = 4;
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.3609F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.6391F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 168F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 203F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
@@ -510,9 +522,9 @@
             this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(1158, 2);
+            this.text_teste.Location = new System.Drawing.Point(1186, 2);
             this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(226, 16);
+            this.text_teste.Size = new System.Drawing.Size(198, 16);
             this.text_teste.TabIndex = 45;
             this.text_teste.Text = "TESTE";
             this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -523,9 +535,9 @@
             this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(993, 2);
+            this.text_datahora.Location = new System.Drawing.Point(1016, 2);
             this.text_datahora.Name = "text_datahora";
-            this.text_datahora.Size = new System.Drawing.Size(157, 16);
+            this.text_datahora.Size = new System.Drawing.Size(162, 16);
             this.text_datahora.TabIndex = 44;
             this.text_datahora.Text = "DATA e HORA";
             this.text_datahora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -536,11 +548,11 @@
             this.text_nometeste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_nometeste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_nometeste.Location = new System.Drawing.Point(246, 2);
+            this.text_nometeste.Location = new System.Drawing.Point(252, 2);
             this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(739, 16);
+            this.text_nometeste.Size = new System.Drawing.Size(756, 16);
             this.text_nometeste.TabIndex = 43;
-            this.text_nometeste.Text = "DADOS DO TESTE";
+            this.text_nometeste.Text = "DADOS DO ENSAIO";
             this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // text_status
@@ -551,7 +563,7 @@
             this.text_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_status.Location = new System.Drawing.Point(5, 2);
             this.text_status.Name = "text_status";
-            this.text_status.Size = new System.Drawing.Size(233, 16);
+            this.text_status.Size = new System.Drawing.Size(239, 16);
             this.text_status.TabIndex = 42;
             this.text_status.Text = "STATUS GERAL";
             this.text_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1572,8 +1584,8 @@
             this.tableLayoutPanel16.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tableLayoutPanel16.ColumnCount = 1;
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.Controls.Add(this.cuiChartLine2, 0, 1);
-            this.tableLayoutPanel16.Controls.Add(this.cuiChartLine1, 0, 0);
+            this.tableLayoutPanel16.Controls.Add(this.chart2, 0, 1);
+            this.tableLayoutPanel16.Controls.Add(this.chart1, 0, 0);
             this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 2;
@@ -1581,66 +1593,6 @@
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.44248F));
             this.tableLayoutPanel16.Size = new System.Drawing.Size(409, 474);
             this.tableLayoutPanel16.TabIndex = 0;
-            // 
-            // cuiChartLine2
-            // 
-            this.cuiChartLine2.AutoMaxValue = false;
-            this.cuiChartLine2.AxisColor = System.Drawing.Color.White;
-            this.cuiChartLine2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cuiChartLine2.ChartLineColor = System.Drawing.Color.Green;
-            this.cuiChartLine2.ChartPadding = 40;
-            this.cuiChartLine2.CustomXAxis = new string[0];
-            this.cuiChartLine2.DataPoints = new float[] {
-        100F,
-        90F,
-        80F,
-        75F,
-        70F,
-        65F,
-        60F};
-            this.cuiChartLine2.DayColor = System.Drawing.Color.White;
-            this.cuiChartLine2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F);
-            this.cuiChartLine2.GradientBackground = true;
-            this.cuiChartLine2.Location = new System.Drawing.Point(4, 239);
-            this.cuiChartLine2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cuiChartLine2.MaxValue = 100F;
-            this.cuiChartLine2.Name = "cuiChartLine2";
-            this.cuiChartLine2.PointColor = System.Drawing.Color.White;
-            this.cuiChartLine2.ShortDates = true;
-            this.cuiChartLine2.Size = new System.Drawing.Size(401, 230);
-            this.cuiChartLine2.TabIndex = 2;
-            this.cuiChartLine2.UseBezier = false;
-            this.cuiChartLine2.UsePercent = true;
-            // 
-            // cuiChartLine1
-            // 
-            this.cuiChartLine1.AutoMaxValue = false;
-            this.cuiChartLine1.AxisColor = System.Drawing.Color.White;
-            this.cuiChartLine1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cuiChartLine1.ChartLineColor = System.Drawing.Color.Green;
-            this.cuiChartLine1.ChartPadding = 40;
-            this.cuiChartLine1.CustomXAxis = new string[0];
-            this.cuiChartLine1.DataPoints = new float[] {
-        100F,
-        90F,
-        80F,
-        75F,
-        70F,
-        65F,
-        60F};
-            this.cuiChartLine1.DayColor = System.Drawing.Color.White;
-            this.cuiChartLine1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F);
-            this.cuiChartLine1.GradientBackground = true;
-            this.cuiChartLine1.Location = new System.Drawing.Point(4, 5);
-            this.cuiChartLine1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cuiChartLine1.MaxValue = 100F;
-            this.cuiChartLine1.Name = "cuiChartLine1";
-            this.cuiChartLine1.PointColor = System.Drawing.Color.White;
-            this.cuiChartLine1.ShortDates = true;
-            this.cuiChartLine1.Size = new System.Drawing.Size(401, 224);
-            this.cuiChartLine1.TabIndex = 1;
-            this.cuiChartLine1.UseBezier = false;
-            this.cuiChartLine1.UsePercent = true;
             // 
             // tabPage2
             // 
@@ -1838,6 +1790,7 @@
             // 
             this.metroPanel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel2.Controls.Add(this.checkBox_psi);
             this.metroPanel2.Controls.Add(this.tableLayoutPanel13);
             this.metroPanel2.CustomBackground = false;
             this.metroPanel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1966,26 +1919,25 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.checkBox6);
+            this.groupBox6.Controls.Add(this.checkBox5);
+            this.groupBox6.Controls.Add(this.checkBox4);
+            this.groupBox6.Controls.Add(this.checkBox3);
+            this.groupBox6.Controls.Add(this.checkBox2);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.label1);
             this.groupBox6.Controls.Add(this.textBox19);
             this.groupBox6.Controls.Add(this.textBox20);
-            this.groupBox6.Controls.Add(this.checkedListBox8);
             this.groupBox6.Controls.Add(this.textBox17);
             this.groupBox6.Controls.Add(this.textBox18);
-            this.groupBox6.Controls.Add(this.checkedListBox7);
             this.groupBox6.Controls.Add(this.textBox15);
             this.groupBox6.Controls.Add(this.textBox16);
-            this.groupBox6.Controls.Add(this.checkedListBox6);
             this.groupBox6.Controls.Add(this.textBox12);
             this.groupBox6.Controls.Add(this.textBox14);
-            this.groupBox6.Controls.Add(this.checkedListBox5);
             this.groupBox6.Controls.Add(this.textBox10);
             this.groupBox6.Controls.Add(this.textBox11);
-            this.groupBox6.Controls.Add(this.checkedListBox4);
             this.groupBox6.Controls.Add(this.textBox8);
             this.groupBox6.Controls.Add(this.textBox9);
-            this.groupBox6.Controls.Add(this.checkedListBox3);
             this.groupBox6.Location = new System.Drawing.Point(4, 226);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
@@ -2031,19 +1983,6 @@
             this.textBox20.Size = new System.Drawing.Size(64, 22);
             this.textBox20.TabIndex = 29;
             // 
-            // checkedListBox8
-            // 
-            this.checkedListBox8.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.checkedListBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox8.FormattingEnabled = true;
-            this.checkedListBox8.Items.AddRange(new object[] {
-            "CELSUS"});
-            this.checkedListBox8.Location = new System.Drawing.Point(8, 263);
-            this.checkedListBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox8.Name = "checkedListBox8";
-            this.checkedListBox8.Size = new System.Drawing.Size(264, 34);
-            this.checkedListBox8.TabIndex = 28;
-            // 
             // textBox17
             // 
             this.textBox17.Location = new System.Drawing.Point(199, 218);
@@ -2059,19 +1998,6 @@
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(64, 22);
             this.textBox18.TabIndex = 26;
-            // 
-            // checkedListBox7
-            // 
-            this.checkedListBox7.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.checkedListBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox7.FormattingEnabled = true;
-            this.checkedListBox7.Items.AddRange(new object[] {
-            "RPM"});
-            this.checkedListBox7.Location = new System.Drawing.Point(8, 218);
-            this.checkedListBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox7.Name = "checkedListBox7";
-            this.checkedListBox7.Size = new System.Drawing.Size(264, 34);
-            this.checkedListBox7.TabIndex = 25;
             // 
             // textBox15
             // 
@@ -2089,19 +2015,6 @@
             this.textBox16.Size = new System.Drawing.Size(64, 22);
             this.textBox16.TabIndex = 23;
             // 
-            // checkedListBox6
-            // 
-            this.checkedListBox6.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.checkedListBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox6.FormattingEnabled = true;
-            this.checkedListBox6.Items.AddRange(new object[] {
-            "LPM"});
-            this.checkedListBox6.Location = new System.Drawing.Point(8, 176);
-            this.checkedListBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox6.Name = "checkedListBox6";
-            this.checkedListBox6.Size = new System.Drawing.Size(264, 34);
-            this.checkedListBox6.TabIndex = 22;
-            // 
             // textBox12
             // 
             this.textBox12.Location = new System.Drawing.Point(199, 132);
@@ -2117,19 +2030,6 @@
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(64, 22);
             this.textBox14.TabIndex = 20;
-            // 
-            // checkedListBox5
-            // 
-            this.checkedListBox5.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.checkedListBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox5.FormattingEnabled = true;
-            this.checkedListBox5.Items.AddRange(new object[] {
-            "GPM"});
-            this.checkedListBox5.Location = new System.Drawing.Point(8, 132);
-            this.checkedListBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox5.Name = "checkedListBox5";
-            this.checkedListBox5.Size = new System.Drawing.Size(264, 34);
-            this.checkedListBox5.TabIndex = 19;
             // 
             // textBox10
             // 
@@ -2147,19 +2047,6 @@
             this.textBox11.Size = new System.Drawing.Size(64, 22);
             this.textBox11.TabIndex = 17;
             // 
-            // checkedListBox4
-            // 
-            this.checkedListBox4.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.checkedListBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox4.FormattingEnabled = true;
-            this.checkedListBox4.Items.AddRange(new object[] {
-            "BAR"});
-            this.checkedListBox4.Location = new System.Drawing.Point(8, 87);
-            this.checkedListBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox4.Name = "checkedListBox4";
-            this.checkedListBox4.Size = new System.Drawing.Size(264, 34);
-            this.checkedListBox4.TabIndex = 16;
-            // 
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(199, 43);
@@ -2175,19 +2062,6 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(64, 22);
             this.textBox9.TabIndex = 14;
-            // 
-            // checkedListBox3
-            // 
-            this.checkedListBox3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.checkedListBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox3.FormattingEnabled = true;
-            this.checkedListBox3.Items.AddRange(new object[] {
-            "PSI"});
-            this.checkedListBox3.Location = new System.Drawing.Point(8, 43);
-            this.checkedListBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(264, 34);
-            this.checkedListBox3.TabIndex = 13;
             // 
             // labAutoma
             // 
@@ -2275,6 +2149,106 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(545, 509);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(403, 228);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // chart2
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(3, 237);
+            this.chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.Points.Add(dataPoint1);
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(403, 234);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "chart2";
+            // 
+            // checkBox_psi
+            // 
+            this.checkBox_psi.AutoSize = true;
+            this.checkBox_psi.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.checkBox_psi.Location = new System.Drawing.Point(15, 271);
+            this.checkBox_psi.Name = "checkBox_psi";
+            this.checkBox_psi.Size = new System.Drawing.Size(50, 20);
+            this.checkBox_psi.TabIndex = 1;
+            this.checkBox_psi.Text = "PSI";
+            this.checkBox_psi.UseVisualStyleBackColor = false;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.checkBox2.Location = new System.Drawing.Point(7, 87);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(57, 20);
+            this.checkBox2.TabIndex = 39;
+            this.checkBox2.Text = "BAR";
+            this.checkBox2.UseVisualStyleBackColor = false;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.checkBox3.Location = new System.Drawing.Point(7, 132);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(59, 20);
+            this.checkBox3.TabIndex = 40;
+            this.checkBox3.Text = "GPM";
+            this.checkBox3.UseVisualStyleBackColor = false;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.checkBox4.Location = new System.Drawing.Point(7, 176);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(56, 20);
+            this.checkBox4.TabIndex = 41;
+            this.checkBox4.Text = "LPM";
+            this.checkBox4.UseVisualStyleBackColor = false;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.checkBox5.Location = new System.Drawing.Point(8, 218);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(59, 20);
+            this.checkBox5.TabIndex = 42;
+            this.checkBox5.Text = "RPM";
+            this.checkBox5.UseVisualStyleBackColor = false;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.checkBox6.Location = new System.Drawing.Point(8, 264);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(103, 25);
+            this.checkBox6.TabIndex = 43;
+            this.checkBox6.Text = "CELSUS";
+            this.checkBox6.UseVisualStyleBackColor = false;
+            // 
             // Tela_Bombas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2347,6 +2321,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             this.tableLayoutPanel13.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -2356,6 +2331,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.visualizador)).EndInit();
             this.tableLayoutPanel18.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2459,22 +2436,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.CheckedListBox checkedListBox8;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.CheckedListBox checkedListBox7;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.CheckedListBox checkedListBox6;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.CheckedListBox checkedListBox5;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.CheckedListBox checkedListBox4;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.CheckedListBox checkedListBox3;
         private CuoreUI.Components.cuiFormAnimator mascaraabertura;
         private CircularProgressBar.CircularProgressBar circularProgressBar1;
         private System.Windows.Forms.Button button6;
@@ -2493,13 +2464,19 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private CuoreUI.Controls.Charts.cuiChartLine cuiChartLine2;
-        private CuoreUI.Controls.Charts.cuiChartLine cuiChartLine1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
         private CuoreUI.Controls.Charts.cuiChartLine cuiChartLine3;
         private CuoreUI.Controls.Charts.cuiChartLine cuiChartLine4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
         private System.Windows.Forms.DataGridView visualizador;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.CheckBox checkBox_psi;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

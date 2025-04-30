@@ -18,6 +18,7 @@ namespace minas.teste.prototype.MVVM.View
         public Dictionary<string, string> sensorMapmedida;
         private List<string> dadosSensoresSelecionados = new List<string>();
         public List<SensorData> dadosSensores;
+        private Timer monitoramentoTimer;
 
 
 
@@ -34,7 +35,10 @@ namespace minas.teste.prototype.MVVM.View
         private int etapaAtual = 0;
         private const int LIMITE_ETAPAS = 7;
         public string StatusText;
-        
+        public string TbNomeCliente { get; set; } //textbox nome cliente
+        public string TbNomeBomba { get; set; } //
+        public string TbOrdemServico { get; set; }
+
 
 
 
@@ -45,6 +49,7 @@ namespace minas.teste.prototype.MVVM.View
         {
             InitializeComponent();
             Inciaizador_listas();
+            InicializarMonitoramento();
             _viewModel = new Tela_BombasVM();
             _fechar_box = new apresentacao();
             dadosSensores = new List<SensorData> { new SensorData() };
@@ -91,7 +96,8 @@ namespace minas.teste.prototype.MVVM.View
             _viewModel.Carregar_configuracao(this); // Carrega o estilo do formulário  
             _viewModel.Stage_signal(Stage_box_bomba);
             _viewModel.VincularRelogioLabel(LabelHorariotela);// configura a imagem de teste ligado ou desligado  
-            HistoricalEvents.Text = "AGUARDANDO INÍCIO DO ENSAIO..."; // Carrega o histórico de eventos
+            HistoricalEvents.Text = "AGUARDANDO INÍCIO DO ENSAIO...";
+            HistoricalEvents.ForeColor = System.Drawing.Color.DarkGreen;// Carrega o histórico de eventos
 
         }
 
@@ -120,8 +126,16 @@ namespace minas.teste.prototype.MVVM.View
         #endregion
 
         #region INCIO_TESTE
-        private void btnIniciar_Click(object sender, EventArgs e)
+        private async void btnIniciar_Click(object sender, EventArgs e)
         {
+            if (!_viewModel.cabecalhoinicial(textBox6, textBox5, textBox4))
+            {
+                MessageBox.Show("Favor preencher os campos obrigatórios em DADOS DE ENSAIO.");
+                // Iniciar o efeito de piscar nos labels
+                await _viewModel.PiscarLabelsVermelho(label6, label5, label4, 1000);
+
+                return;
+            }
             _isMonitoring = true;
             _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
             Inicioteste = DateTime.Now.ToString();
@@ -129,8 +143,47 @@ namespace minas.teste.prototype.MVVM.View
 
         }
 
+        private void InicializarMonitoramento()
+        {
+            monitoramentoTimer = new System.Windows.Forms.Timer();
+            monitoramentoTimer.Interval = 1000; // Intervalo de 1 segundo
+            monitoramentoTimer.Tick += MonitoramentoTimer_Tick;
+            monitoramentoTimer.Start();
+        }
+
+        private void PararMonitoramento()
+        {
+            if (monitoramentoTimer != null && monitoramentoTimer.Enabled)
+            {
+                monitoramentoTimer.Stop();
+                monitoramentoTimer.Dispose();
+                monitoramentoTimer = null;
+            }
+        }
+
+        private void MonitoramentoTimer_Tick(object sender, EventArgs e)
+        {
+            // Obtenha os valores dos controles na View
+            _viewModel.MonitorarDados(
+                sensor_psi_PL.Text, textBox9.Text, textBox8.Text, checkBox_psi.Checked, panel_psi,
+                sensor_Press_PSI.Text, textBox9.Text, textBox8.Text, checkBox_pressao_psi.Checked, panel_pressao_psi,
+                sensor_gpm_DR.Text, textBox14.Text, textBox12.Text, checkBox_vazao_gpm.Checked, panel_vazao_gpm,
+                sensor_Vazao_GPM.Text, textBox14.Text, textBox12.Text, checkBox_vazao_gpm.Checked, panel_vazao_gpm,
+                sensor_Press_BAR.Text, textBox11.Text, textBox10.Text, checkBox_pressao_bar.Checked, panel_pressao_bar,
+                sensor_bar_PL.Text, textBox11.Text, textBox10.Text, checkBox_bar.Checked, panel_bar,
+                sensor_rotacao_RPM.Text, textBox18.Text, textBox17.Text, checkBox_rotacao.Checked, panel_rotacao,
+                sensor_Vazao_LPM.Text, textBox16.Text, textBox15.Text, checkBox_vazao_lpm.Checked, panel_vazao_lpm,
+                sensor_lpm_DR.Text, textBox16.Text, textBox15.Text, checkBox_dreno_lpm.Checked, panel_dreno_lpm,
+                sensor_Temp_C.Text, textBox20.Text, textBox19.Text, checkBox_temperatura.Checked, panel_temperatura
+            );
+        }
+
+        #endregion
+
+        #region FIM_TESTE
         private void btnParar_Click(object sender, EventArgs e)
         {
+            
             _isMonitoring = false;
             _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
             Fimteste = DateTime.Now.ToString();
@@ -431,6 +484,11 @@ namespace minas.teste.prototype.MVVM.View
 
         }
         #endregion
+
+
+        
+
+
 
         private void tableLayoutPanel15_Paint(object sender, PaintEventArgs e)
         {
