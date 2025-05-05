@@ -334,11 +334,11 @@
     <Compile Include="MVVM\Model\Concrete\Vazao_bomba.cs" />
     <Compile Include="MVVM\Repository\Concret\RepositoryCore.cs" />
     <Compile Include="MVVM\Repository\Abstract\IRepositoryCore.cs" />
-    <Compile Include="MVVM\View\Realatoriobase.cs">
+    <Compile Include="MVVM\View\Relatoriobase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MVVM\View\Realatoriobase.Designer.cs">
-      <DependentUpon>Realatoriobase.cs</DependentUpon>
+      <DependentUpon>Relatoriobase.cs</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\RelatorioTestes.cs">
       <SubType>Form</SubType>
@@ -398,6 +398,7 @@
     <Compile Include="Service\ApplicationSession.cs" />
     <Compile Include="Service\ArduinoChartDataProvider.cs" />
     <Compile Include="Service\ArduinoPortFinder.cs" />
+    <Compile Include="Service\controleEtapas.cs" />
     <Compile Include="Service\Cronometro.cs" />
     <Compile Include="Service\HoraDia.cs" />
     <Compile Include="Service\InformationForm.cs">
@@ -432,8 +433,8 @@
     <EmbeddedResource Include="MVVM\View\Menuapp.resx">
       <DependentUpon>Menuapp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MVVM\View\Realatoriobase.resx">
-      <DependentUpon>Realatoriobase.cs</DependentUpon>
+    <EmbeddedResource Include="MVVM\View\Relatoriobase.resx">
+      <DependentUpon>Relatoriobase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\RelatorioTestes.resx">
       <DependentUpon>RelatorioTestes.cs</DependentUpon>

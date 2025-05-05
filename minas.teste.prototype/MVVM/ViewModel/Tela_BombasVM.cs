@@ -110,63 +110,190 @@ namespace minas.teste.prototype.MVVM.ViewModel
 
 
         public void MonitorarDados(
-           string psiPLValor, string psiPLMin, string psiPLMax, bool psiPLAtivo, Panel psiPLPanel,
+           string psiPLValor, string psiPLMin, string psiPLMax, bool psiPLAtivo, Panel psiPLPanel, TextBox historicalEvents,
            string pressPSIValor, string pressPSIMin, string pressPSIMax, bool pressPSIAtivo, Panel pressPSIPanel,
            string gpmDRValor, string gpmDRMin, string gpmDRMax, bool gpmDRAtivo, Panel gpmDRPanel,
            string vazaoGPMValor, string vazaoGPMMin, string vazaoGPMMax, bool vazaoGPMAtivo, Panel vazaoGPMPanel,
            string pressBARValor, string pressBARMin, string pressBARMax, bool pressBARAtivo, Panel pressBARPanel,
-           string barPLValor, string barPLMin, string barPLMax, bool barPLAtivo, Panel barPLPanel,
-           string rotacaoRPMValor, string rotacaoRPMMin, string rotacaoRPMMax, bool rotacaoRPMAtivo, Panel rotacaoRPMPanel,
-           string vazaoLPMValor, string vazaoLPMMin, string vazaoLPMMax, bool vazaoLPMAtivo, Panel vazaoLPMPanel,
+           string barPLValor, string barPLMin, string barPLMax, bool barPLAtivo, Panel barPLPanel, 
+           string rotacaoRPMValor, string rotacaoRPMMin, string rotacaoRPMMax, bool rotacaoRPMAtivo, Panel rotacaoRPMPanel, 
+           string vazaoLPMValor, string vazaoLPMMin, string vazaoLPMMax, bool vazaoLPMAtivo, Panel vazaoLPMPanel, 
            string lpmDRValor, string lpmDRMin, string lpmDRMax, bool lpmDRAtivo, Panel lpmDRPanel,
            string tempCValor, string tempCMin, string tempCMax, bool tempCAtivo, Panel tempCPanel
        )
         {
-            VerificarRange("psi_PL", psiPLValor, psiPLMin, psiPLMax, psiPLAtivo, psiPLPanel);
-            VerificarRange("Press_PSI", pressPSIValor, pressPSIMin, pressPSIMax, pressPSIAtivo, pressPSIPanel);
-            VerificarRange("gpm_DR", gpmDRValor, gpmDRMin, gpmDRMax, gpmDRAtivo, gpmDRPanel);
-            VerificarRange("Vazao_GPM", vazaoGPMValor, vazaoGPMMin, vazaoGPMMax, vazaoGPMAtivo, vazaoGPMPanel);
-            VerificarRange("Press_BAR", pressBARValor, pressBARMin, pressBARMax, pressBARAtivo, pressBARPanel);
-            VerificarRange("bar_PL", barPLValor, barPLMin, barPLMax, barPLAtivo, barPLPanel);
-            VerificarRange("rotacao_RPM", rotacaoRPMValor, rotacaoRPMMin, rotacaoRPMMax, rotacaoRPMAtivo, rotacaoRPMPanel);
-            VerificarRange("Vazao_LPM", vazaoLPMValor, vazaoLPMMin, vazaoLPMMax, vazaoLPMAtivo, vazaoLPMPanel);
-            VerificarRange("lpm_DR", lpmDRValor, lpmDRMin, lpmDRMax, lpmDRAtivo, lpmDRPanel);
-            VerificarRange("Temp_C", tempCValor, tempCMin, tempCMax, tempCAtivo, tempCPanel);
+            VerificarRange("Pilotagem PSI", psiPLValor, psiPLMin, psiPLMax, psiPLAtivo, psiPLPanel, historicalEvents);
+            VerificarRange("Pressão PSI", pressPSIValor, pressPSIMin, pressPSIMax, pressPSIAtivo, pressPSIPanel, historicalEvents);
+            VerificarRange("Dreno GPM", gpmDRValor, gpmDRMin, gpmDRMax, gpmDRAtivo, gpmDRPanel, historicalEvents);
+            VerificarRange("Vazão GPM", vazaoGPMValor, vazaoGPMMin, vazaoGPMMax, vazaoGPMAtivo, vazaoGPMPanel, historicalEvents);
+            VerificarRange("Pressão BAR", pressBARValor, pressBARMin, pressBARMax, pressBARAtivo, pressBARPanel, historicalEvents);
+            VerificarRange("Pilotagem BAR", barPLValor, barPLMin, barPLMax, barPLAtivo, barPLPanel, historicalEvents);
+            VerificarRange("Rotação RPM", rotacaoRPMValor, rotacaoRPMMin, rotacaoRPMMax, rotacaoRPMAtivo, rotacaoRPMPanel, historicalEvents);
+            VerificarRange("Vazão LPM", vazaoLPMValor, vazaoLPMMin, vazaoLPMMax, vazaoLPMAtivo, vazaoLPMPanel, historicalEvents);
+            VerificarRange("Dreno LPM", lpmDRValor, lpmDRMin, lpmDRMax, lpmDRAtivo, lpmDRPanel, historicalEvents);
+            VerificarRange("Temperatura Celsus", tempCValor, tempCMin, tempCMax, tempCAtivo, tempCPanel, historicalEvents);
         }
 
-        private void VerificarRange(string sensorNome, string sensorValorTexto, string minValorTexto, string maxValorTexto, bool ativo, Panel panelAlerta)
+        private void SetPanelImage(Panel panel, string resourceName)
         {
-            if (ativo)
+            if (string.IsNullOrEmpty(resourceName))
             {
-                if (decimal.TryParse(sensorValorTexto, out decimal valorSensor) &&
-                    decimal.TryParse(minValorTexto, out decimal valorMinimo) &&
-                    decimal.TryParse(maxValorTexto, out decimal valorMaximo))
+                panel.BackgroundImage?.Dispose(); // Libera a imagem anterior, se houver
+                panel.BackgroundImage = null;
+                panel.BackColor = SystemColors.Control; // Cor padrão se nenhum recurso for especificado
+                return;
+            }
+
+            try
+            {
+                // Tenta obter o recurso como byte array (mais comum para imagens em Resources)
+                object resourceObject = Properties.Resources.ResourceManager.GetObject(resourceName);
+
+                if (resourceObject is byte[] imageBytes)
                 {
-                    if (valorSensor < valorMinimo || valorSensor > valorMaximo)
+                    using (var ms = new MemoryStream(imageBytes))
                     {
-                        MessageBox.Show($"O valor do sensor {sensorNome} ({valorSensor}) está fora do range [{valorMinimo} - {valorMaximo}].", "Alerta de Monitoramento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        panelAlerta.BackColor = Color.Yellow; // Ou outra cor de destaque
-                    }
-                    else
-                    {
-                        panelAlerta.BackColor = SystemColors.Control; // Volta à cor padrão
+                        panel.BackgroundImage?.Dispose(); // Libera a imagem anterior
+                        panel.BackgroundImage = System.Drawing.Image.FromStream(ms);
                     }
                 }
-                else if (!string.IsNullOrEmpty(sensorValorTexto) || !string.IsNullOrEmpty(minValorTexto) || !string.IsNullOrEmpty(maxValorTexto))
+                // Tenta obter como um objeto Image (menos comum, mas possível)
+                else if (resourceObject is System.Drawing.Image image)
                 {
-                    MessageBox.Show($"Erro ao converter os valores para o sensor {sensorNome}. Verifique se os campos de valor, mínimo e máximo contêm números válidos.", "Erro de Conversão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    panelAlerta.BackColor = Color.LightCoral; // Indica um erro de conversão
+                    panel.BackgroundImage?.Dispose(); // Libera a imagem anterior
+                                                      // Clonar é mais seguro para evitar problemas se o recurso for modificado/liberado em outro lugar
+                    panel.BackgroundImage = (System.Drawing.Image)image.Clone();
                 }
                 else
                 {
-                    panelAlerta.BackColor = SystemColors.Control; // Se os campos estiverem vazios e o checkbox ativo, não há alerta
+                    // Recurso não encontrado ou tipo inválido
+                    panel.BackgroundImage?.Dispose();
+                    panel.BackgroundImage = null;
+                    panel.BackColor = Color.Magenta; // Cor de erro para indicar problema no recurso
+                    Console.WriteLine($"Alerta: Recurso '{resourceName}' não encontrado ou não é uma imagem válida.");
+                    // Ou logar em um arquivo de log
+                }
+            }
+            catch (Exception ex)
+            {
+                // Erro ao carregar ou definir a imagem
+                panel.BackgroundImage?.Dispose();
+                panel.BackgroundImage = null;
+                panel.BackColor = Color.Red; // Cor de erro crítico
+                Console.WriteLine($"Erro ao definir imagem do painel com recurso '{resourceName}': {ex.Message}");
+                // Ou logar em um arquivo de log
+            }
+        }
+
+
+        /// <summary>
+        /// Verifica se o valor de um sensor está dentro do range definido e atualiza
+        /// um painel com uma imagem indicativa (_on para fora do range, _off para dentro/inativo).
+        /// </summary>
+        /// <param name="sensorNome">Nome descritivo do sensor.</param>
+        /// <param name="sensorValorTexto">Valor atual do sensor (como string).</param>
+        /// <param name="minValorTexto">Valor mínimo permitido (como string).</param>
+        /// <param name="maxValorTexto">Valor máximo permitido (como string).</param>
+        /// <param name="ativo">Indica se a verificação para este sensor está ativa.</param>
+        /// <param name="panelAlerta">O painel cuja imagem de fundo será alterada.</param>
+        /// <param name="historicalEvents">TextBox para registrar eventos (ex: valor fora do range).</param>
+        private void VerificarRange(string sensorNome, string sensorValorTexto, string minValorTexto, string maxValorTexto, bool ativo, Panel panelAlerta, TextBox historicalEvents)
+        {
+            string resourceNameOn = null;
+            string resourceNameOff = null;
+
+            // Mapeia o nome do sensor para os nomes dos recursos de imagem
+            // *** IMPORTANTE: Assumindo que existem recursos _on correspondentes ***
+            switch (sensorNome)
+            {
+                case "Pilotagem PSI":
+                    resourceNameOn = "pilotagem_on"; // Assumido
+                    resourceNameOff = "pilotagem_off";
+                    break;
+                case "Pressão PSI":
+                    resourceNameOn = "pressao_on"; // Assumido
+                    resourceNameOff = "pressao_off";
+                    break;
+                case "Dreno GPM":
+                    resourceNameOn = "dreno_on"; // Assumido
+                    resourceNameOff = "dreno_off";
+                    break;
+                case "Vazão GPM":
+                    resourceNameOn = "vazao_on"; // Assumido
+                    resourceNameOff = "vazao_off";
+                    break;
+                case "Pressão BAR":
+                    resourceNameOn = "pressao_on"; // Reutilizando imagem de pressão
+                    resourceNameOff = "pressao_off";
+                    break;
+                case "Pilotagem BAR":
+                    resourceNameOn = "pilotagem_on"; // Reutilizando imagem de pilotagem
+                    resourceNameOff = "pilotagem_off";
+                    break;
+                case "Rotação RPM":
+                    resourceNameOn = "rotacao_on"; // Assumido
+                    resourceNameOff = "rotacao_off";
+                    break;
+                case "Vazão LPM":
+                    resourceNameOn = "vazao_on"; // Reutilizando imagem de vazão
+                    resourceNameOff = "vazao_off";
+                    break;
+                case "Dreno LPM":
+                    resourceNameOn = "dreno_on"; // Reutilizando imagem de dreno
+                    resourceNameOff = "dreno_off";
+                    break;
+                case "Temperatura Celsus": // Corrigido de "Celsus" para "Celsius" se for o caso
+                    resourceNameOn = "termometro_on"; // Assumido
+                    resourceNameOff = "termometro_off";
+                    break;
+                default:
+                    Console.WriteLine($"Aviso: Nome de sensor não mapeado para imagens: '{sensorNome}'");
+                    // Define uma aparência padrão ou de erro se o sensor não for conhecido
+                    SetPanelImage(panelAlerta, null); // Limpa a imagem
+                    panelAlerta.BackColor = Color.Gray; // Indica estado desconhecido/não mapeado
+                    return; // Sai da função se o sensor não for reconhecido
+            }
+
+
+
+            // Tenta converter os valores de string para decimal
+            bool valorOk = decimal.TryParse(sensorValorTexto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal valorSensor);
+            bool minOk = decimal.TryParse(minValorTexto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal valorMinimo);
+            bool maxOk = decimal.TryParse(maxValorTexto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal valorMaximo);
+
+            // Verifica se todas as conversões foram bem-sucedidas
+            if (ativo)
+            {
+                if (valorOk && minOk && maxOk)
+                {
+                    // Verifica se o valor está fora do range permitido
+                    if (valorSensor < valorMinimo || valorSensor > valorMaximo)
+                    {
+                        // Valor fora do range - mostra imagem 'on' e registra evento
+                        SetPanelImage(panelAlerta, resourceNameOff);
+                        // Adiciona ao histórico (usando AppendText para não sobrescrever)
+                        // Adiciona data/hora para melhor rastreamento
+                        historicalEvents.AppendText($"{DateTime.Now:G}: O valor do sensor {sensorNome} ({valorSensor}) está fora do range [{valorMinimo} - {valorMaximo}]." + Environment.NewLine);
+                    }
+                    
+                }
+                else
+                {
+                    // Erro ao converter algum dos valores
+                    // Decide como tratar: mostrar imagem 'off'? Mostrar indicador de erro?
+                    // Opção 1: Mostrar imagem 'off' (estado seguro/indeterminado)
+                    SetPanelImage(panelAlerta, resourceNameOff);
+
                 }
             }
             else
             {
-                panelAlerta.BackColor = SystemColors.Control; // Se o checkbox não estiver ativo, o painel volta à cor padrão
+                SetPanelImage(panelAlerta, resourceNameOn);
             }
+
+            
         }
+
         #endregion
 
         #region BOTÕES
