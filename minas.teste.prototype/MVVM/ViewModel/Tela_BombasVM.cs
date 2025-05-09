@@ -381,6 +381,13 @@ namespace minas.teste.prototype.MVVM.ViewModel
             label3.ForeColor = originalColor3;
         }
 
+        public void LimparCamposEntrada(params TextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.Text = string.Empty;
+            }
+        }
 
         #endregion
 
@@ -467,7 +474,7 @@ namespace minas.teste.prototype.MVVM.ViewModel
             // Configurar o DataGridView se necessário
             if (fonte.Columns.Count == 0)
             {
-                fonte.AutoGenerateColumns = false;
+                fonte.AutoGenerateColumns = true;
 
                 fonte.Columns.Add(new DataGridViewTextBoxColumn()
                 {
@@ -486,14 +493,15 @@ namespace minas.teste.prototype.MVVM.ViewModel
                 fonte.Columns.Add(new DataGridViewTextBoxColumn()
                 {
                     DataPropertyName = "Medidas",
-                    HeaderText = "Unidade",
+                    HeaderText = "Medidas",
                     Width = 60
                 });
             }
 
             // Atualizar a fonte de dados
-            fonte.DataSource = null;
-            fonte.DataSource = data;
+          fonte.DataSource = null;
+          fonte.DataSource = data;
+        
         }
 
 

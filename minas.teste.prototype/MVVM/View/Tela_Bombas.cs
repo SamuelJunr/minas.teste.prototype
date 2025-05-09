@@ -61,7 +61,7 @@ namespace minas.teste.prototype.MVVM.View
             _viewModel = new Tela_BombasVM();
             _fechar_box = new apresentacao();
             _synchronizerNivel = new TextBoxTrackBarSynchronizer(textBox2, trackBar1, 1, 7);
-            dadosSensores = new List<SensorData> { new SensorData() };
+            dadosSensores = new List<SensorData> ();
             timer = new Timer();
             timer.Interval = 1000; // Intervalo de 1 segundo
             timer.Tick += Timer_Tick;
@@ -123,6 +123,12 @@ namespace minas.teste.prototype.MVVM.View
             _viewModel.VincularRelogioLabel(LabelHorariotela);// configura a imagem de teste ligado ou desligado  
             HistoricalEvents.Text = "AGUARDANDO INÍCIO DO ENSAIO...";
             HistoricalEvents.ForeColor = System.Drawing.Color.DarkGreen;// Carrega o histórico de eventos
+            btngravar.Enabled = false;
+            bntFinalizar.Enabled = false;
+            btnreset.Enabled = false;
+            btnrelatoriobomba.Enabled = false;
+            
+
 
         }
 
@@ -151,7 +157,7 @@ namespace minas.teste.prototype.MVVM.View
         #endregion
 
         #region INCIO_TESTE
-        private async void btnIniciar_Click(object sender, EventArgs e)
+        public async void btnIniciar_Click(object sender, EventArgs e)
         {
             if (!_viewModel.cabecalhoinicial(textBox6, textBox5, textBox4))
             {
@@ -164,7 +170,7 @@ namespace minas.teste.prototype.MVVM.View
             _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
             Inicioteste = DateTime.Now.ToString(); // Certifique-se de que Inicioteste é uma string acessível
             _viewModel.IniciarTesteBomba(Stage_box_bomba);
-            trackBar1.Enabled = false;
+            //trackBar1.Enabled = false;
             InicializarMonitoramento();
 
             if (valorDefinidoManualmente)
@@ -180,10 +186,16 @@ namespace minas.teste.prototype.MVVM.View
             else
             {
                 // Se o valor não foi definido, desabilita os botões de controle do teste
-                button4.Enabled = false; // Supondo que button4 seja o botão "Parar" ou similar
-                button6.Enabled = false; // Supondo que button6 seja outro botão de controle
+                //button4.Enabled = false; // Supondo que button4 seja o botão "Parar" ou similar
+                //button6.Enabled = false; // Supondo que button6 seja outro botão de controle
                 MessageBox.Show("O cronômetro não foi definido. O teste não será finalizado automaticamente.", "Aviso");
             }
+            btngravar.Enabled = true;
+            bntFinalizar.Enabled = true;
+            btnreset.Enabled = true;
+            btnrelatoriobomba.Enabled = true;
+            btniniciarteste.Enabled = false;
+            HistoricalEvents.Text = "INICIADO ENSAIO DE BOMBAS";
         }
 
         private void InicializarMonitoramento()
@@ -234,12 +246,95 @@ namespace minas.teste.prototype.MVVM.View
             trackBar1.Enabled = true;
             PararMonitoramento();
             _viewModel.FinalizarTesteBomba(Stage_box_bomba);
-            
+            btngravar.Enabled = false;
+            bntFinalizar.Enabled = false;
+            btnreset.Enabled = false;
+            btnrelatoriobomba.Enabled = false;
+            btniniciarteste.Enabled = true;
+
 
         }
 
 
         #endregion
+
+        #region RESET
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Tem certeza que deseja reiniciar o processo?\nTodos os dados coletados serão perdidos!",
+                "Confirmação de Reinício",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                // Parar todos os processos em andamento
+                timer.Stop();
+                cronometroIniciado = false;
+                _isMonitoring = false;
+
+                // Parar monitoramento e testes
+                PararMonitoramento();
+                _viewModel.FinalizarTesteBomba(Stage_box_bomba);
+
+                // Limpar DataGridViews (adicione todos os seus DataGridViews aqui)
+                dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = null;
+
+                if (visualizador.DataSource != null)
+                {
+                    visualizador.DataSource = null;
+                    visualizador.Rows.Clear();
+                }
+                else
+                {
+                    visualizador.Rows.Clear();
+                }
+
+                // Limpar listas de dados
+                etapaAtual = 1;
+                dadosSensores.Clear();
+                _dadosColetados.Clear();
+                // Resetar variáveis de controle
+                Inicioteste = string.Empty;
+                Fimteste = string.Empty;
+                valorDefinidoManualmente = true;
+
+                // Resetar interface gráfica
+                circularProgressBar1.Value = 0;
+                // _viewModel.LimparCamposEntrada(textBox6, textBox5, textBox4); // Adicione este método no ViewModel se necessário
+
+                _isMonitoring = true;
+                _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
+                Inicioteste = DateTime.Now.ToString(); // Certifique-se de que Inicioteste é uma string acessível
+                _viewModel.IniciarTesteBomba(Stage_box_bomba);
+                //trackBar1.Enabled = false;
+                InicializarMonitoramento();
+
+                if (valorDefinidoManualmente)
+                {
+                    cronometroIniciado = true;
+                    int tempoTotalSegundos = valorDefinido * 60;
+                    circularProgressBar1.Maximum = tempoTotalSegundos;
+                    circularProgressBar1.Minimum = 0;
+                    circularProgressBar1.Value = tempoTotalSegundos;
+                    circularProgressBar1.Invalidate();
+                    timer.Start();
+                }
+
+                MessageBox.Show("Processo reiniciado com sucesso!", "Reinício Completo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Recarregar a configuração inicial
+               
+            }
+        }
+
+
+
+        #endregion
+
+
+
 
         #region BOTÕES_MEDIDAS 
         private void unidade_medidapilotagem1_Click(object sender, EventArgs e)
@@ -744,8 +839,8 @@ namespace minas.teste.prototype.MVVM.View
             dataGridView1.Columns[2].HeaderText = "Pilotagem BAR";
             dataGridView1.Columns[3].HeaderText = "Dreno GPM";
             dataGridView1.Columns[4].HeaderText = "Dreno LPM";
-            dataGridView1.Columns[5].HeaderText = "Pressao PSI";
-            dataGridView1.Columns[6].HeaderText = "Pressao BAR";
+            dataGridView1.Columns[5].HeaderText = "Pressão PSI";
+            dataGridView1.Columns[6].HeaderText = "Pressão BAR";
             dataGridView1.Columns[7].HeaderText = "Rotação RPM";
             dataGridView1.Columns[8].HeaderText = "Vazão GPM";
             dataGridView1.Columns[9].HeaderText = "Vazão LPM";
