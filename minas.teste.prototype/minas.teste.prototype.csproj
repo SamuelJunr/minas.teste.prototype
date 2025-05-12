@@ -282,6 +282,7 @@
     <Compile Include="MVVM\Model\Abstract\SessaoTeste.cs" />
     <Compile Include="MVVM\Model\Abstract\SessaoTesteBase.cs" />
     <Compile Include="MVVM\Model\Concrete\ConnectionSettingsApplication.cs" />
+    <Compile Include="MVVM\Model\Concrete\Datapoint_Bar_Rpm.cs" />
     <Compile Include="MVVM\Model\Concrete\EtapaData.cs" />
     <Compile Include="MVVM\Model\Concrete\ResultadoDisplay.cs" />
     <Compile Include="MVVM\Model\Enum\listsensorBomba.cs" />
@@ -293,6 +294,7 @@
     <Compile Include="Botaoinicio.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MVVM\ViewModel\Grafico_Ax_Cir_Abert_Tbombas.cs" />
     <Compile Include="MVVM\ViewModel\Tela_BombasVM.cs" />
     <Compile Include="MVVM\View\Banco_de_dados.cs">
       <SubType>Form</SubType>

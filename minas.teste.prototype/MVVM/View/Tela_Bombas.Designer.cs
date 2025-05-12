@@ -32,13 +32,13 @@
             CodeArtEng.Gauge.Themes.ThemeColors themeColors1 = new CodeArtEng.Gauge.Themes.ThemeColors();
             CodeArtEng.Gauge.Themes.ThemeColors themeColors2 = new CodeArtEng.Gauge.Themes.ThemeColors();
             CodeArtEng.Gauge.Themes.ThemeColors themeColors3 = new CodeArtEng.Gauge.Themes.ThemeColors();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_Bombas));
             this.painelBase = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -140,8 +140,8 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.cuiChartLine3 = new CuoreUI.Controls.Charts.cuiChartLine();
             this.cuiChartLine4 = new CuoreUI.Controls.Charts.cuiChartLine();
+            this.cuiChartLine3 = new CuoreUI.Controls.Charts.cuiChartLine();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.labParametro = new CuoreUI.Controls.cuiLabel();
             this.visualizador = new System.Windows.Forms.DataGridView();
@@ -178,6 +178,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.mascaraabertura = new CuoreUI.Components.cuiFormAnimator(this.components);
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.cuiChartLine1 = new CuoreUI.Controls.Charts.cuiChartLine();
+            this.cuiChartLine2 = new CuoreUI.Controls.Charts.cuiChartLine();
             this.painelBase.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -233,6 +237,8 @@
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // painelBase
@@ -296,7 +302,7 @@
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.31102F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.68898F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 226F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel2, 3, 0);
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel3, 2, 0);
             this.painalFuncaoes.Controls.Add(this.Stage_box_bomba, 0, 0);
@@ -315,7 +321,7 @@
             // 
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.Controls.Add(this.labelCronometro_bomba);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(1201, 4);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1200, 4);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(144, 62);
@@ -336,7 +342,7 @@
             // 
             this.flowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel3.Controls.Add(this.LabelHorariotela);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(998, 4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(995, 4);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(153, 62);
@@ -358,7 +364,7 @@
             this.Stage_box_bomba.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Stage_box_bomba.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.Stage_box_bomba.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stage_box_bomba.Location = new System.Drawing.Point(76, 23);
+            this.Stage_box_bomba.Location = new System.Drawing.Point(75, 23);
             this.Stage_box_bomba.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Stage_box_bomba.Name = "Stage_box_bomba";
             this.Stage_box_bomba.Size = new System.Drawing.Size(91, 84);
@@ -372,13 +378,13 @@
             this.tableLayoutPanel14.Controls.Add(this.HistoricalEvents, 0, 1);
             this.tableLayoutPanel14.Controls.Add(this.dadosentrada1, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(247, 6);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(246, 6);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(738, 119);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(736, 119);
             this.tableLayoutPanel14.TabIndex = 49;
             // 
             // HistoricalEvents
@@ -393,7 +399,7 @@
             this.HistoricalEvents.Multiline = true;
             this.HistoricalEvents.Name = "HistoricalEvents";
             this.HistoricalEvents.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.HistoricalEvents.Size = new System.Drawing.Size(732, 53);
+            this.HistoricalEvents.Size = new System.Drawing.Size(730, 53);
             this.HistoricalEvents.TabIndex = 49;
             // 
             // dadosentrada1
@@ -402,7 +408,7 @@
             this.dadosentrada1.ColumnCount = 3;
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.04301F));
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.95699F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
@@ -415,14 +421,14 @@
             this.dadosentrada1.RowCount = 2;
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.23256F));
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.76744F));
-            this.dadosentrada1.Size = new System.Drawing.Size(732, 53);
+            this.dadosentrada1.Size = new System.Drawing.Size(730, 53);
             this.dadosentrada1.TabIndex = 48;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(569, 1);
+            this.label4.Location = new System.Drawing.Point(566, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
@@ -432,7 +438,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(440, 1);
+            this.label5.Location = new System.Drawing.Point(437, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
@@ -441,21 +447,21 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(552, 19);
+            this.textBox4.Location = new System.Drawing.Point(548, 19);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(161, 29);
+            this.textBox4.Size = new System.Drawing.Size(178, 29);
             this.textBox4.TabIndex = 6;
             // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(399, 19);
+            this.textBox5.Location = new System.Drawing.Point(396, 19);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(146, 29);
+            this.textBox5.Size = new System.Drawing.Size(145, 29);
             this.textBox5.TabIndex = 5;
             // 
             // textBox6
@@ -465,14 +471,14 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(388, 29);
+            this.textBox6.Size = new System.Drawing.Size(385, 29);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(136, 1);
+            this.label6.Location = new System.Drawing.Point(135, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 15);
             this.label6.TabIndex = 7;
@@ -487,7 +493,7 @@
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.3609F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.6391F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 226F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
@@ -508,9 +514,9 @@
             this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(1163, 2);
+            this.text_teste.Location = new System.Drawing.Point(1160, 2);
             this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(221, 16);
+            this.text_teste.Size = new System.Drawing.Size(224, 16);
             this.text_teste.TabIndex = 45;
             this.text_teste.Text = "TESTE";
             this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -521,7 +527,7 @@
             this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(994, 2);
+            this.text_datahora.Location = new System.Drawing.Point(991, 2);
             this.text_datahora.Name = "text_datahora";
             this.text_datahora.Size = new System.Drawing.Size(161, 16);
             this.text_datahora.TabIndex = 44;
@@ -534,9 +540,9 @@
             this.text_nometeste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_nometeste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_nometeste.Location = new System.Drawing.Point(247, 2);
+            this.text_nometeste.Location = new System.Drawing.Point(246, 2);
             this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(739, 16);
+            this.text_nometeste.Size = new System.Drawing.Size(737, 16);
             this.text_nometeste.TabIndex = 43;
             this.text_nometeste.Text = "DADOS DO ENSAIO";
             this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -549,7 +555,7 @@
             this.text_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_status.Location = new System.Drawing.Point(5, 2);
             this.text_status.Name = "text_status";
-            this.text_status.Size = new System.Drawing.Size(234, 16);
+            this.text_status.Size = new System.Drawing.Size(233, 16);
             this.text_status.TabIndex = 42;
             this.text_status.Text = "STATUS GERAL";
             this.text_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -956,19 +962,19 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel4.Controls.Add(this.unidade_medidasvazao1, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.button5, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.sensor_Vazao_LPM, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.sensor_Vazao_GPM, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel6, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 22);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 18);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(275, 121);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(275, 125);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
             // unidade_medidasvazao1
@@ -976,10 +982,10 @@
             this.unidade_medidasvazao1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidasvazao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidasvazao1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidasvazao1.Location = new System.Drawing.Point(176, 2);
+            this.unidade_medidasvazao1.Location = new System.Drawing.Point(175, 2);
             this.unidade_medidasvazao1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidasvazao1.Name = "unidade_medidasvazao1";
-            this.unidade_medidasvazao1.Size = new System.Drawing.Size(56, 57);
+            this.unidade_medidasvazao1.Size = new System.Drawing.Size(63, 60);
             this.unidade_medidasvazao1.TabIndex = 25;
             this.unidade_medidasvazao1.Text = "GPM";
             this.unidade_medidasvazao1.UseVisualStyleBackColor = true;
@@ -990,10 +996,10 @@
             this.button5.BackColor = System.Drawing.Color.Black;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button5.Location = new System.Drawing.Point(176, 64);
+            this.button5.Location = new System.Drawing.Point(175, 66);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(56, 54);
+            this.button5.Size = new System.Drawing.Size(63, 57);
             this.button5.TabIndex = 24;
             this.button5.Text = "LPM";
             this.button5.UseVisualStyleBackColor = true;
@@ -1005,11 +1011,11 @@
             this.sensor_Vazao_LPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sensor_Vazao_LPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sensor_Vazao_LPM.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Vazao_LPM.Location = new System.Drawing.Point(74, 64);
+            this.sensor_Vazao_LPM.Location = new System.Drawing.Point(74, 66);
             this.sensor_Vazao_LPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Vazao_LPM.Multiline = true;
             this.sensor_Vazao_LPM.Name = "sensor_Vazao_LPM";
-            this.sensor_Vazao_LPM.Size = new System.Drawing.Size(96, 54);
+            this.sensor_Vazao_LPM.Size = new System.Drawing.Size(95, 54);
             this.sensor_Vazao_LPM.TabIndex = 22;
             this.sensor_Vazao_LPM.Tag = "vazão";
             this.sensor_Vazao_LPM.Text = "0";
@@ -1024,7 +1030,7 @@
             this.sensor_Vazao_GPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Vazao_GPM.Multiline = true;
             this.sensor_Vazao_GPM.Name = "sensor_Vazao_GPM";
-            this.sensor_Vazao_GPM.Size = new System.Drawing.Size(96, 56);
+            this.sensor_Vazao_GPM.Size = new System.Drawing.Size(95, 56);
             this.sensor_Vazao_GPM.TabIndex = 20;
             this.sensor_Vazao_GPM.Tag = "vazão";
             this.sensor_Vazao_GPM.Text = "0";
@@ -1037,7 +1043,7 @@
             this.panel6.Location = new System.Drawing.Point(3, 2);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(65, 57);
+            this.panel6.Size = new System.Drawing.Size(65, 60);
             this.panel6.TabIndex = 2;
             // 
             // panel7
@@ -1066,7 +1072,7 @@
             this.tableLayoutPanel7.ColumnCount = 3;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel7.Controls.Add(this.unidade_medidapilotagem1, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.button2, 2, 1);
             this.tableLayoutPanel7.Controls.Add(this.sensor_bar_PL, 1, 1);
@@ -1086,10 +1092,10 @@
             this.unidade_medidapilotagem1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidapilotagem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidapilotagem1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidapilotagem1.Location = new System.Drawing.Point(178, 2);
+            this.unidade_medidapilotagem1.Location = new System.Drawing.Point(177, 2);
             this.unidade_medidapilotagem1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidapilotagem1.Name = "unidade_medidapilotagem1";
-            this.unidade_medidapilotagem1.Size = new System.Drawing.Size(63, 57);
+            this.unidade_medidapilotagem1.Size = new System.Drawing.Size(63, 59);
             this.unidade_medidapilotagem1.TabIndex = 22;
             this.unidade_medidapilotagem1.Text = "PSI";
             this.unidade_medidapilotagem1.UseVisualStyleBackColor = true;
@@ -1100,7 +1106,7 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button2.Location = new System.Drawing.Point(178, 65);
+            this.button2.Location = new System.Drawing.Point(177, 65);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(63, 57);
@@ -1119,7 +1125,7 @@
             this.sensor_bar_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_bar_PL.Multiline = true;
             this.sensor_bar_PL.Name = "sensor_bar_PL";
-            this.sensor_bar_PL.Size = new System.Drawing.Size(97, 54);
+            this.sensor_bar_PL.Size = new System.Drawing.Size(96, 54);
             this.sensor_bar_PL.TabIndex = 17;
             this.sensor_bar_PL.Tag = "pilotagem";
             this.sensor_bar_PL.Text = "0";
@@ -1134,7 +1140,7 @@
             this.sensor_psi_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_psi_PL.Multiline = true;
             this.sensor_psi_PL.Name = "sensor_psi_PL";
-            this.sensor_psi_PL.Size = new System.Drawing.Size(97, 56);
+            this.sensor_psi_PL.Size = new System.Drawing.Size(96, 56);
             this.sensor_psi_PL.TabIndex = 16;
             this.sensor_psi_PL.Tag = "pilotagem";
             this.sensor_psi_PL.Text = "0";
@@ -1147,7 +1153,7 @@
             this.panel4.Location = new System.Drawing.Point(3, 2);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(66, 58);
+            this.panel4.Size = new System.Drawing.Size(66, 59);
             this.panel4.TabIndex = 2;
             // 
             // panel10
@@ -1176,7 +1182,7 @@
             this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel9.Controls.Add(this.unidade_medidatemp, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.sensor_Temp_C, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.panel11, 0, 0);
@@ -1194,10 +1200,10 @@
             this.unidade_medidatemp.BackColor = System.Drawing.Color.Black;
             this.unidade_medidatemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidatemp.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidatemp.Location = new System.Drawing.Point(176, 2);
+            this.unidade_medidatemp.Location = new System.Drawing.Point(175, 2);
             this.unidade_medidatemp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidatemp.Name = "unidade_medidatemp";
-            this.unidade_medidatemp.Size = new System.Drawing.Size(61, 54);
+            this.unidade_medidatemp.Size = new System.Drawing.Size(63, 57);
             this.unidade_medidatemp.TabIndex = 21;
             this.unidade_medidatemp.Text = "C º";
             this.unidade_medidatemp.UseVisualStyleBackColor = true;
@@ -1213,7 +1219,7 @@
             this.sensor_Temp_C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Temp_C.Multiline = true;
             this.sensor_Temp_C.Name = "sensor_Temp_C";
-            this.sensor_Temp_C.Size = new System.Drawing.Size(96, 54);
+            this.sensor_Temp_C.Size = new System.Drawing.Size(95, 54);
             this.sensor_Temp_C.TabIndex = 20;
             this.sensor_Temp_C.Tag = "temperatura";
             this.sensor_Temp_C.Text = "0";
@@ -1226,7 +1232,7 @@
             this.panel11.Location = new System.Drawing.Point(3, 2);
             this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(65, 54);
+            this.panel11.Size = new System.Drawing.Size(65, 57);
             this.panel11.TabIndex = 2;
             // 
             // panel12
@@ -1255,7 +1261,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel5.Controls.Add(this.unidade_medidadreno1, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.button1, 2, 1);
             this.tableLayoutPanel5.Controls.Add(this.sensor_lpm_DR, 1, 1);
@@ -1275,10 +1281,10 @@
             this.unidade_medidadreno1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidadreno1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidadreno1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidadreno1.Location = new System.Drawing.Point(176, 2);
+            this.unidade_medidadreno1.Location = new System.Drawing.Point(175, 2);
             this.unidade_medidadreno1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidadreno1.Name = "unidade_medidadreno1";
-            this.unidade_medidadreno1.Size = new System.Drawing.Size(61, 57);
+            this.unidade_medidadreno1.Size = new System.Drawing.Size(63, 57);
             this.unidade_medidadreno1.TabIndex = 25;
             this.unidade_medidadreno1.Text = "GPM";
             this.unidade_medidadreno1.UseVisualStyleBackColor = true;
@@ -1289,10 +1295,10 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button1.Location = new System.Drawing.Point(176, 64);
+            this.button1.Location = new System.Drawing.Point(175, 64);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 54);
+            this.button1.Size = new System.Drawing.Size(63, 54);
             this.button1.TabIndex = 24;
             this.button1.Text = "LPM";
             this.button1.UseVisualStyleBackColor = true;
@@ -1308,7 +1314,7 @@
             this.sensor_lpm_DR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_lpm_DR.Multiline = true;
             this.sensor_lpm_DR.Name = "sensor_lpm_DR";
-            this.sensor_lpm_DR.Size = new System.Drawing.Size(96, 54);
+            this.sensor_lpm_DR.Size = new System.Drawing.Size(95, 54);
             this.sensor_lpm_DR.TabIndex = 22;
             this.sensor_lpm_DR.Tag = "dreno";
             this.sensor_lpm_DR.Text = "0";
@@ -1323,7 +1329,7 @@
             this.sensor_gpm_DR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_gpm_DR.Multiline = true;
             this.sensor_gpm_DR.Name = "sensor_gpm_DR";
-            this.sensor_gpm_DR.Size = new System.Drawing.Size(96, 56);
+            this.sensor_gpm_DR.Size = new System.Drawing.Size(95, 56);
             this.sensor_gpm_DR.TabIndex = 20;
             this.sensor_gpm_DR.Tag = "dreno";
             this.sensor_gpm_DR.Text = "0";
@@ -1365,7 +1371,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel6.Controls.Add(this.unidade_medidapressao1, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.button3, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.sensor_Press_BAR, 1, 1);
@@ -1385,7 +1391,7 @@
             this.unidade_medidapressao1.BackColor = System.Drawing.Color.Black;
             this.unidade_medidapressao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidapressao1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidapressao1.Location = new System.Drawing.Point(178, 2);
+            this.unidade_medidapressao1.Location = new System.Drawing.Point(177, 2);
             this.unidade_medidapressao1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidapressao1.Name = "unidade_medidapressao1";
             this.unidade_medidapressao1.Size = new System.Drawing.Size(60, 57);
@@ -1399,7 +1405,7 @@
             this.button3.BackColor = System.Drawing.Color.Black;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button3.Location = new System.Drawing.Point(178, 64);
+            this.button3.Location = new System.Drawing.Point(177, 64);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(60, 54);
@@ -1418,7 +1424,7 @@
             this.sensor_Press_BAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Press_BAR.Multiline = true;
             this.sensor_Press_BAR.Name = "sensor_Press_BAR";
-            this.sensor_Press_BAR.Size = new System.Drawing.Size(97, 54);
+            this.sensor_Press_BAR.Size = new System.Drawing.Size(96, 54);
             this.sensor_Press_BAR.TabIndex = 22;
             this.sensor_Press_BAR.Tag = "pressão";
             this.sensor_Press_BAR.Text = "0";
@@ -1433,7 +1439,7 @@
             this.sensor_Press_PSI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_Press_PSI.Multiline = true;
             this.sensor_Press_PSI.Name = "sensor_Press_PSI";
-            this.sensor_Press_PSI.Size = new System.Drawing.Size(97, 56);
+            this.sensor_Press_PSI.Size = new System.Drawing.Size(96, 56);
             this.sensor_Press_PSI.TabIndex = 20;
             this.sensor_Press_PSI.Tag = "pressão";
             this.sensor_Press_PSI.Text = "0";
@@ -1475,7 +1481,7 @@
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.19718F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.80282F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel8.Controls.Add(this.unidade_medidarota, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.sensor_rotacao_RPM, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.panel9, 0, 0);
@@ -1493,10 +1499,10 @@
             this.unidade_medidarota.BackColor = System.Drawing.Color.Black;
             this.unidade_medidarota.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidade_medidarota.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidarota.Location = new System.Drawing.Point(178, 2);
+            this.unidade_medidarota.Location = new System.Drawing.Point(177, 2);
             this.unidade_medidarota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unidade_medidarota.Name = "unidade_medidarota";
-            this.unidade_medidarota.Size = new System.Drawing.Size(63, 55);
+            this.unidade_medidarota.Size = new System.Drawing.Size(63, 57);
             this.unidade_medidarota.TabIndex = 21;
             this.unidade_medidarota.Text = "RPM";
             this.unidade_medidarota.UseVisualStyleBackColor = true;
@@ -1512,7 +1518,7 @@
             this.sensor_rotacao_RPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sensor_rotacao_RPM.Multiline = true;
             this.sensor_rotacao_RPM.Name = "sensor_rotacao_RPM";
-            this.sensor_rotacao_RPM.Size = new System.Drawing.Size(97, 55);
+            this.sensor_rotacao_RPM.Size = new System.Drawing.Size(96, 55);
             this.sensor_rotacao_RPM.TabIndex = 20;
             this.sensor_rotacao_RPM.Tag = "rotação";
             this.sensor_rotacao_RPM.Text = "0";
@@ -1525,7 +1531,7 @@
             this.panel9.Location = new System.Drawing.Point(3, 2);
             this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(66, 55);
+            this.panel9.Size = new System.Drawing.Size(66, 57);
             this.panel9.TabIndex = 2;
             // 
             // panel13
@@ -1694,6 +1700,7 @@
             this.graficos_dados_tab.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.graficos_dados_tab.Controls.Add(this.tabPage1);
             this.graficos_dados_tab.Controls.Add(this.tabPage2);
+            this.graficos_dados_tab.Controls.Add(this.tabPage3);
             this.graficos_dados_tab.Location = new System.Drawing.Point(370, 3);
             this.graficos_dados_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.graficos_dados_tab.Name = "graficos_dados_tab";
@@ -1711,15 +1718,15 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Size = new System.Drawing.Size(594, 475);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Graficos Desempenho";
+            this.tabPage1.Text = "Graficos Ax. de Cir. Aberto";
             // 
             // tableLayoutPanel16
             // 
             this.tableLayoutPanel16.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tableLayoutPanel16.ColumnCount = 1;
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.Controls.Add(this.chart2, 0, 1);
             this.tableLayoutPanel16.Controls.Add(this.chart1, 0, 0);
+            this.tableLayoutPanel16.Controls.Add(this.chart2, 0, 1);
             this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
@@ -1731,37 +1738,37 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(3, 234);
             this.chart2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.Points.Add(dataPoint1);
-            this.chart2.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.Points.Add(dataPoint1);
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(582, 234);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(3, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(582, 228);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -1776,7 +1783,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Size = new System.Drawing.Size(594, 475);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Graficos Eficiência";
+            this.tabPage2.Text = "Graficos Ax. de Cir. Fechado";
             // 
             // tableLayoutPanel17
             // 
@@ -1792,37 +1799,8 @@
             this.tableLayoutPanel17.RowCount = 2;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(613, 473);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(591, 473);
             this.tableLayoutPanel17.TabIndex = 1;
-            // 
-            // cuiChartLine3
-            // 
-            this.cuiChartLine3.AutoMaxValue = false;
-            this.cuiChartLine3.AxisColor = System.Drawing.Color.White;
-            this.cuiChartLine3.ChartLineColor = System.Drawing.Color.Green;
-            this.cuiChartLine3.ChartPadding = 40;
-            this.cuiChartLine3.CustomXAxis = new string[0];
-            this.cuiChartLine3.DataPoints = new float[] {
-        100F,
-        90F,
-        80F,
-        75F,
-        70F,
-        65F,
-        60F};
-            this.cuiChartLine3.DayColor = System.Drawing.Color.White;
-            this.cuiChartLine3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F);
-            this.cuiChartLine3.GradientBackground = true;
-            this.cuiChartLine3.Location = new System.Drawing.Point(4, 241);
-            this.cuiChartLine3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cuiChartLine3.MaxValue = 100F;
-            this.cuiChartLine3.Name = "cuiChartLine3";
-            this.cuiChartLine3.PointColor = System.Drawing.Color.White;
-            this.cuiChartLine3.ShortDates = true;
-            this.cuiChartLine3.Size = new System.Drawing.Size(583, 210);
-            this.cuiChartLine3.TabIndex = 2;
-            this.cuiChartLine3.UseBezier = false;
-            this.cuiChartLine3.UsePercent = true;
             // 
             // cuiChartLine4
             // 
@@ -1848,10 +1826,39 @@
             this.cuiChartLine4.Name = "cuiChartLine4";
             this.cuiChartLine4.PointColor = System.Drawing.Color.White;
             this.cuiChartLine4.ShortDates = true;
-            this.cuiChartLine4.Size = new System.Drawing.Size(586, 219);
+            this.cuiChartLine4.Size = new System.Drawing.Size(583, 219);
             this.cuiChartLine4.TabIndex = 1;
             this.cuiChartLine4.UseBezier = false;
             this.cuiChartLine4.UsePercent = true;
+            // 
+            // cuiChartLine3
+            // 
+            this.cuiChartLine3.AutoMaxValue = false;
+            this.cuiChartLine3.AxisColor = System.Drawing.Color.White;
+            this.cuiChartLine3.ChartLineColor = System.Drawing.Color.Green;
+            this.cuiChartLine3.ChartPadding = 40;
+            this.cuiChartLine3.CustomXAxis = new string[0];
+            this.cuiChartLine3.DataPoints = new float[] {
+        100F,
+        90F,
+        80F,
+        75F,
+        70F,
+        65F,
+        60F};
+            this.cuiChartLine3.DayColor = System.Drawing.Color.White;
+            this.cuiChartLine3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F);
+            this.cuiChartLine3.GradientBackground = true;
+            this.cuiChartLine3.Location = new System.Drawing.Point(4, 241);
+            this.cuiChartLine3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cuiChartLine3.MaxValue = 100F;
+            this.cuiChartLine3.Name = "cuiChartLine3";
+            this.cuiChartLine3.PointColor = System.Drawing.Color.White;
+            this.cuiChartLine3.ShortDates = true;
+            this.cuiChartLine3.Size = new System.Drawing.Size(583, 227);
+            this.cuiChartLine3.TabIndex = 2;
+            this.cuiChartLine3.UseBezier = false;
+            this.cuiChartLine3.UsePercent = true;
             // 
             // flowLayoutPanel1
             // 
@@ -1892,7 +1899,7 @@
             this.visualizador.RowTemplate.Height = 24;
             this.visualizador.RowTemplate.ReadOnly = true;
             this.visualizador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.visualizador.Size = new System.Drawing.Size(358, 468);
+            this.visualizador.Size = new System.Drawing.Size(356, 468);
             this.visualizador.TabIndex = 20;
             // 
             // metroPanel2
@@ -2309,6 +2316,92 @@
             this.mascaraabertura.TargetForm = this;
             this.mascaraabertura.TargetOpacity = 1D;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel19);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(594, 475);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Graficos En, Palh, Cart";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel19.ColumnCount = 1;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.Controls.Add(this.cuiChartLine1, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.cuiChartLine2, 0, 1);
+            this.tableLayoutPanel19.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(2, 1);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 2;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(591, 473);
+            this.tableLayoutPanel19.TabIndex = 2;
+            // 
+            // cuiChartLine1
+            // 
+            this.cuiChartLine1.AutoMaxValue = false;
+            this.cuiChartLine1.AxisColor = System.Drawing.Color.White;
+            this.cuiChartLine1.ChartLineColor = System.Drawing.Color.Green;
+            this.cuiChartLine1.ChartPadding = 40;
+            this.cuiChartLine1.CustomXAxis = new string[0];
+            this.cuiChartLine1.DataPoints = new float[] {
+        100F,
+        90F,
+        80F,
+        75F,
+        70F,
+        65F,
+        60F};
+            this.cuiChartLine1.DayColor = System.Drawing.Color.White;
+            this.cuiChartLine1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F);
+            this.cuiChartLine1.GradientBackground = true;
+            this.cuiChartLine1.Location = new System.Drawing.Point(4, 5);
+            this.cuiChartLine1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cuiChartLine1.MaxValue = 100F;
+            this.cuiChartLine1.Name = "cuiChartLine1";
+            this.cuiChartLine1.PointColor = System.Drawing.Color.White;
+            this.cuiChartLine1.ShortDates = true;
+            this.cuiChartLine1.Size = new System.Drawing.Size(583, 219);
+            this.cuiChartLine1.TabIndex = 1;
+            this.cuiChartLine1.UseBezier = false;
+            this.cuiChartLine1.UsePercent = true;
+            // 
+            // cuiChartLine2
+            // 
+            this.cuiChartLine2.AutoMaxValue = false;
+            this.cuiChartLine2.AxisColor = System.Drawing.Color.White;
+            this.cuiChartLine2.ChartLineColor = System.Drawing.Color.Green;
+            this.cuiChartLine2.ChartPadding = 40;
+            this.cuiChartLine2.CustomXAxis = new string[0];
+            this.cuiChartLine2.DataPoints = new float[] {
+        100F,
+        90F,
+        80F,
+        75F,
+        70F,
+        65F,
+        60F};
+            this.cuiChartLine2.DayColor = System.Drawing.Color.White;
+            this.cuiChartLine2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F);
+            this.cuiChartLine2.GradientBackground = true;
+            this.cuiChartLine2.Location = new System.Drawing.Point(4, 241);
+            this.cuiChartLine2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cuiChartLine2.MaxValue = 100F;
+            this.cuiChartLine2.Name = "cuiChartLine2";
+            this.cuiChartLine2.PointColor = System.Drawing.Color.White;
+            this.cuiChartLine2.ShortDates = true;
+            this.cuiChartLine2.Size = new System.Drawing.Size(583, 227);
+            this.cuiChartLine2.TabIndex = 2;
+            this.cuiChartLine2.UseBezier = false;
+            this.cuiChartLine2.UsePercent = true;
+            // 
             // Tela_Bombas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2393,6 +2486,8 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel19.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2538,5 +2633,9 @@
         private System.Windows.Forms.CheckBox checkBox_lpm;
         private System.Windows.Forms.CheckBox checkBox_gpm;
         private System.Windows.Forms.CheckBox checkBox_bar;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private CuoreUI.Controls.Charts.cuiChartLine cuiChartLine1;
+        private CuoreUI.Controls.Charts.cuiChartLine cuiChartLine2;
     }
 }

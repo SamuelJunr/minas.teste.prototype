@@ -13,7 +13,6 @@ using minas.teste.prototype.Estilo;
 using minas.teste.prototype.MVVM.Model.Abstract;
 using minas.teste.prototype.MVVM.Model.Concrete;
 using minas.teste.prototype.Service;
-
 using static System.Net.Mime.MediaTypeNames;
 using Panel = System.Windows.Forms.Panel;
 
@@ -26,6 +25,7 @@ namespace minas.teste.prototype.MVVM.ViewModel
         public const string LABEL_CRONOMETRO = "labelCronometro_bomba";
         private HoraDia _Tempo;
         private SessaoBomba _sessaoBomba;
+        public event EventHandler<Datapoint_Bar_Rpm> Chart1Data;
 
         #region PROPRIEDADES_JANELA
         public void Carregar_configuracao(Form FormView)
@@ -391,7 +391,16 @@ namespace minas.teste.prototype.MVVM.ViewModel
 
         #endregion
 
+        #region GRAFICOS
+        public void ProcessChartData(double rotation, double pressure)
+        {
+            // Aqui você poderia adicionar lógica de validação ou transformação antes
+            // de enviar os dados para o gráfico, se necessário.
 
+            // Dispara o evento NewChartData com os dados recebidos
+            Chart1Data?.Invoke(this, new Datapoint_Bar_Rpm(rotation, pressure));
+        }
+        #endregion
 
         #region FLAGS 
         public void AlterarEstadoPaineis(bool ativo, Panel p1, Panel p2,Panel p3,Panel p4,Panel p5,Panel p6)
