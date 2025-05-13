@@ -295,6 +295,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MVVM\ViewModel\Grafico_Ax_Cir_Abert_Tbombas.cs" />
+    <Compile Include="MVVM\ViewModel\SimulatedDrainDataGenerator.cs" />
+    <Compile Include="MVVM\ViewModel\SimulatedSensorDataGenerator.cs" />
     <Compile Include="MVVM\ViewModel\Tela_BombasVM.cs" />
     <Compile Include="MVVM\View\Banco_de_dados.cs">
       <SubType>Form</SubType>

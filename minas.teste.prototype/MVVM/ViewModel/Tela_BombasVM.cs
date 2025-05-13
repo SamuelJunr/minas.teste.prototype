@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -26,6 +27,25 @@ namespace minas.teste.prototype.MVVM.ViewModel
         private HoraDia _Tempo;
         private SessaoBomba _sessaoBomba;
         public event EventHandler<Datapoint_Bar_Rpm> Chart1Data;
+
+        // --- Chart Data Logic Fields ---
+        private double _previousRotationRpm = double.NaN;
+        private const double RotationTolerance = 10.0; // Tolerance for considering rotation constant (adjust as needed)
+
+        // Data structure for chart points (Pressure in Bar, Flow in Lpm)
+        public struct Datapoint_Bar_Lpm
+        {
+            public double PressureBar { get; set; }
+            public double FlowLpm { get; set; }
+
+            public Datapoint_Bar_Lpm(double pressureBar, double flowLpm)
+            {
+                PressureBar = pressureBar;
+                FlowLpm = flowLpm;
+            }
+        }
+        // --- End Chart Data Logic Fields ---
+
 
         #region PROPRIEDADES_JANELA
         public void Carregar_configuracao(Form FormView)
@@ -392,6 +412,38 @@ namespace minas.teste.prototype.MVVM.ViewModel
         #endregion
 
         #region GRAFICOS
+
+        // Method to provide chart data with rotation check
+        public Datapoint_Bar_Lpm? GetChartDataIfRotationConstant(string pressureBarText, string vazaoLpmText, string rotacaoRpmText)
+        {
+            // Use InvariantCulture for parsing to handle decimal points consistently
+            if (double.TryParse(pressureBarText, NumberStyles.Any, CultureInfo.InvariantCulture, out double pressureBar) &&
+                double.TryParse(vazaoLpmText, NumberStyles.Any, CultureInfo.InvariantCulture, out double flowLpm) &&
+                double.TryParse(rotacaoRpmText, NumberStyles.Any, CultureInfo.InvariantCulture, out double currentRotationRpm))
+            {
+                // Check if rotation is constant (within tolerance) or if it's the first reading
+                if (double.IsNaN(_previousRotationRpm) || Math.Abs(currentRotationRpm - _previousRotationRpm) <= RotationTolerance)
+                {
+                    _previousRotationRpm = currentRotationRpm; // Update previous rotation
+                    return new Datapoint_Bar_Lpm(pressureBar, flowLpm); // Provide data
+                }
+                else
+                {
+                    // Rotation is not constant, do not provide data for the chart
+                    _previousRotationRpm = currentRotationRpm; // Update previous rotation even if not constant for check in next tick
+                    return null;
+                }
+            }
+            // Parsing failed for one or more values
+            _previousRotationRpm = double.NaN; // Reset previous rotation on parsing error
+            return null;
+        }
+
+        // Method to reset the chart data logic state (e.g., on chart clear/reset)
+        public void ResetChartDataLogic()
+        {
+            _previousRotationRpm = double.NaN;
+        }
         public void ProcessChartData(double rotation, double pressure)
         {
             // Aqui você poderia adicionar lógica de validação ou transformação antes
