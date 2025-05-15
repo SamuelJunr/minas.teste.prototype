@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using minas.teste.prototype.MVVM.Repository.Context;
 using minas.teste.prototype.Service;
 
 namespace minas.teste.prototype
@@ -28,12 +29,21 @@ namespace minas.teste.prototype
                 Application.Run(new TelaInicial(finder.ConnectedPort));
             }
 
-           
-                
-            
+            // Configuração do HostBuilder para injeção de dependência
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddDbContext<AppDbContext>(options =>
+                        options.UseSqlite("Data Source=supervisory_SYSMT_data.db")); // Substitua pelo seu connection string
+                })
+                .Build();
+
+            // Opcional: Inicializar o banco de dados
+            using (var scope = host.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                dbContext.Database.EnsureCreated();
+            }
         }
-
-
     }
 }
-

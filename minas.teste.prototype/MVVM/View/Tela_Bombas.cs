@@ -1110,6 +1110,257 @@ namespace minas.teste.prototype.MVVM.View
         #endregion
 
         #region RESET
+        //private void btnReset_Click(object sender, EventArgs e)
+        //{
+        //    DialogResult result = MessageBox.Show(
+        //        "Tem certeza que deseja reiniciar o processo?\nTodos os dados coletados serão perdidos!",
+        //        "Confirmação de Reinício",
+        //        MessageBoxButtons.YesNo,
+        //        MessageBoxIcon.Warning);
+
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        // Parar todos os processos em andamento
+        //        timer.Stop(); // Para o timer do cronômetro
+        //        cronometroIniciado = false;
+        //        _isMonitoring = false;
+
+        //        // Parar monitoramento e testes
+        //        PararMonitoramento(); // Stops monitoramentoTimer
+
+        //        // Reinicia o contador de tempo para o Chart 5
+        //        _timeCounterSeconds = 0;
+
+        //        // --- Simulated Data Generators Stop and Reset ---
+        //        _dataGenerator.Stop(); // Para a geração de dados simulados para chart1, chart4, chart5, chart6
+        //        _dataGenerator.Reset(); // Reseta os valores simulados para chart1, chart4, chart5, chart6
+        //        _drainDataGenerator.Stop(); // Para a geração de dados simulados para chart2, chart3
+        //        _drainDataGenerator.Reset(); // Reseta os valores simulados para chart2, chart3
+
+        //        // Limpa os TextBoxes dos sensores simulados
+        //        sensor_psi_PL.Text = string.Empty;
+        //        sensor_bar_PL.Text = string.Empty;
+        //        sensor_gpm_DR.Text = string.Empty;
+        //        sensor_lpm_DR.Text = string.Empty;
+        //        sensor_Press_PSI.Text = string.Empty;
+        //        sensor_Press_BAR.Text = string.Empty;
+        //        sensor_rotacao_RPM.Text = string.Empty;
+        //        sensor_Vazao_GPM.Text = string.Empty;
+        //        sensor_Vazao_LPM.Text = string.Empty;
+        //        sensor_Temp_C.Text = string.Empty;
+        //        // --- End Simulated Data Generators Stop and Reset ---
+
+
+        //        _viewModel.FinalizarTesteBomba(Stage_box_bomba);
+
+        //        // Limpar DataGridViews (adicione todos os seus DataGridViews aqui)
+        //        dataGridView1.Rows.Clear();
+        //        dataGridView1.DataSource = null;
+
+        //        if (visualizador.DataSource != null)
+        //        {
+        //            visualizador.DataSource = null;
+        //            visualizador.Rows.Clear();
+        //        }
+        //        else
+        //        {
+        //            visualizador.Rows.Clear();
+        //        }
+
+        //        // Limpar listas de dados
+        //        etapaAtual = 1;
+        //        dadosSensores.Clear();
+        //        _dadosColetados.Clear();
+        //        // Resetar variáveis de controle
+        //        Inicioteste = string.Empty;
+        //        Fimteste = string.Empty;
+        //        valorDefinidoManualmente = true;
+
+        //        // Resetar interface gráfica
+        //        circularProgressBar1.Value = 0;
+        //        // _viewModel.LimparCamposEntrada(textBox6, textBox5, textBox4); // Adicione este método no ViewModel se necessário
+
+        //        // --- Chart 1 Reset ---
+        //        // Remove e recria a série para limpar o gráfico.
+        //        string chart1SeriesName = "Pre.x Vaz.";
+        //        if (chart1.Series.IsUniqueName(chart1SeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart1.Series.Remove(chart1.Series[chart1SeriesName]);
+        //        }
+        //        if (chart1.Series.IsUniqueName(chart1SeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series performanceSeries = new Series(chart1SeriesName);
+        //            performanceSeries.ChartType = SeriesChartType.FastLine;
+        //            performanceSeries.Color = Color.Blue;
+        //            performanceSeries.BorderWidth = 2;
+        //            chart1.Series.Add(performanceSeries);
+        //        }
+        //        _viewModel.ResetChartDataLogic(); // Reset the previous rotation in VM (para chart1)
+        //        // --- End Chart 1 Reset ---
+
+        //        // --- Chart 2 Reset ---
+        //        // Remove e recria a série para limpar o gráfico.
+        //        string chart2SeriesName = "Vaz.In.X Rot";
+        //        if (chart2.Series.IsUniqueName(chart2SeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart2.Series.Remove(chart2.Series[chart2SeriesName]);
+        //        }
+        //        if (chart2.Series.IsUniqueName(chart2SeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series drainRotationSeries = new Series(chart2SeriesName);
+        //            drainRotationSeries.ChartType = SeriesChartType.FastLine;
+        //            drainRotationSeries.Color = Color.Red;
+        //            drainRotationSeries.BorderWidth = 2;
+        //            chart2.Series.Add(drainRotationSeries);
+        //        }
+        //        // Não há lógica de rotação constante específica para o chart2 no VM, então não há ResetChartDataLogic para ele.
+        //        // --- End Chart 2 Reset ---
+
+        //        // --- Chart 3 Reset ---
+        //        // Remove e recria a série para limpar o gráfico.
+        //        string chart3SeriesName = "Vaz. x Pres.";
+        //        if (chart3.Series.IsUniqueName(chart3SeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart3.Series.Remove(chart3.Series[chart3SeriesName]);
+        //        }
+        //        if (chart3.Series.IsUniqueName(chart3SeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series drainPressureSeries = new Series(chart3SeriesName);
+        //            drainPressureSeries.ChartType = SeriesChartType.FastLine;
+        //            drainPressureSeries.Color = Color.Orange;
+        //            drainPressureSeries.BorderWidth = 2;
+        //            chart3.Series.Add(drainPressureSeries);
+        //        }
+        //        // --- End Chart 3 Reset ---
+
+        //        // --- Chart 4 Reset ---
+        //        // Remove e recria as séries para limpar o gráfico de eficiência.
+        //        string chart4GlobalSeriesName = "Rend. Global";
+        //        if (chart4.Series.IsUniqueName(chart4GlobalSeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart4.Series.Remove(chart4.Series[chart4GlobalSeriesName]);
+        //        }
+        //        if (chart4.Series.IsUniqueName(chart4GlobalSeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series globalEfficiencySeries = new Series(chart4GlobalSeriesName);
+        //            globalEfficiencySeries.ChartType = SeriesChartType.FastLine;
+        //            globalEfficiencySeries.Color = Color.Green;
+        //            globalEfficiencySeries.BorderWidth = 2;
+        //            chart4.Series.Add(globalEfficiencySeries);
+        //        }
+
+        //        string chart4VolumetricSeriesName = "Ef. Volumetrica";
+        //        if (chart4.Series.IsUniqueName(chart4VolumetricSeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart4.Series.Remove(chart4.Series[chart4VolumetricSeriesName]);
+        //        }
+        //        if (chart4.Series.IsUniqueName(chart4VolumetricSeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series volumetricEfficiencySeries = new Series(chart4VolumetricSeriesName);
+        //            volumetricEfficiencySeries.ChartType = SeriesChartType.FastLine;
+        //            volumetricEfficiencySeries.Color = Color.Purple;
+        //            volumetricEfficiencySeries.BorderWidth = 2;
+        //            chart4.Series.Add(volumetricEfficiencySeries);
+        //        }
+        //        // Não há lógica de reset específica do VM para chart4 neste momento.
+        //        // --- End Chart 4 Reset ---
+
+        //        // --- Chart 5 Reset ---
+        //        // Remove e recria as séries para limpar o gráfico de rampa.
+        //        string chart5TemperatureSeriesName = "Temperatura";
+        //        if (chart5.Series.IsUniqueName(chart5TemperatureSeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart5.Series.Remove(chart5.Series[chart5TemperatureSeriesName]);
+        //        }
+        //        if (chart5.Series.IsUniqueName(chart5TemperatureSeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series temperatureSeries = new Series(chart5TemperatureSeriesName);
+        //            temperatureSeries.ChartType = SeriesChartType.FastLine;
+        //            temperatureSeries.Color = Color.Blue;
+        //            temperatureSeries.BorderWidth = 2;
+        //            temperatureSeries.YAxisType = AxisType.Primary; // Mapeia para o Eixo Y Primário (Temperatura)
+        //            chart5.Series.Add(temperatureSeries);
+        //        }
+
+        //        string chart5PressureSeriesName = "Pressão Rampa";
+        //        if (chart5.Series.IsUniqueName(chart5PressureSeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart5.Series.Remove(chart5.Series[chart5PressureSeriesName]);
+        //        }
+        //        if (chart5.Series.IsUniqueName(chart5PressureSeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series pressureRampSeries = new Series(chart5PressureSeriesName);
+        //            pressureRampSeries.ChartType = SeriesChartType.FastLine;
+        //            pressureRampSeries.Color = Color.Red;
+        //            pressureRampSeries.BorderWidth = 2;
+        //            pressureRampSeries.YAxisType = AxisType.Secondary; // Mapeia para o Eixo Y Secundário (Pressão/Vazão)
+        //            chart5.Series.Add(pressureRampSeries);
+        //        }
+
+        //        string chart5FlowSeriesName = "Vazão Rampa";
+        //        if (chart5.Series.IsUniqueName(chart5FlowSeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart5.Series.Remove(chart5.Series[chart5FlowSeriesName]);
+        //        }
+        //        if (chart5.Series.IsUniqueName(chart5FlowSeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series flowRampSeries = new Series(chart5FlowSeriesName);
+        //            flowRampSeries.ChartType = SeriesChartType.FastLine;
+        //            flowRampSeries.Color = Color.Green;
+        //            flowRampSeries.BorderWidth = 2;
+        //            flowRampSeries.YAxisType = AxisType.Secondary; // Mapeia para o Eixo Y Secundário (Pressão/Vazão)
+        //            chart5.Series.Add(flowRampSeries);
+        //        }
+        //        // --- End Chart 5 Reset ---
+
+        //        // --- Chart 6 Reset ---
+        //        // Remove e recria a série para limpar o gráfico de vazão real.
+        //        string chart6RealFlowSeriesName = "Vazão Real";
+        //        if (chart6.Series.IsUniqueName(chart6RealFlowSeriesName)) // Verifica se a série existe antes de tentar remover
+        //        {
+        //            chart6.Series.Remove(chart6.Series[chart6RealFlowSeriesName]);
+        //        }
+        //        if (chart6.Series.IsUniqueName(chart6RealFlowSeriesName)) // Agora IsUniqueName deve ser true
+        //        {
+        //            Series realFlowSeries = new Series(chart6RealFlowSeriesName);
+        //            realFlowSeries.ChartType = SeriesChartType.FastLine;
+        //            realFlowSeries.Color = Color.Blue;
+        //            realFlowSeries.BorderWidth = 2;
+        //            chart6.Series.Add(realFlowSeries);
+        //        }
+        //        // --- End Chart 6 Reset ---
+
+
+        //        // Reinicia o processo como se o botão Iniciar fosse clicado novamente (sem a validação inicial)
+        //        _isMonitoring = true;
+        //        _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
+        //        Inicioteste = DateTime.Now.ToString();
+        //        _viewModel.IniciarTesteBomba(Stage_box_bomba);
+        //        //trackBar1.Enabled = false;
+        //        InicializarMonitoramento(); // Starts monitoramentoTimer
+
+        //        // --- Simulated Data Generators Start ---
+        //        _dataGenerator.Start(); // Inicia a geração de dados simulados novamente para chart1, chart4, chart5, chart6
+        //        _drainDataGenerator.Start(); // Inicia a geração de dados simulados novamente para chart2, chart3
+        //        // --- End Simulated Data Generators Start ---
+
+        //        if (valorDefinidoManualmente)
+        //        {
+        //            cronometroIniciado = true;
+        //            int tempoTotalSegundos = valorDefinido * 60;
+        //            circularProgressBar1.Maximum = tempoTotalSegundos;
+        //            circularProgressBar1.Minimum = 0;
+        //            circularProgressBar1.Value = tempoTotalSegundos;
+        //            circularProgressBar1.Invalidate();
+        //            timer.Start(); // Inicia o timer do cronômetro
+        //        }
+
+        //        MessageBox.Show("Processo reiniciado com sucesso!", "Reinício Completo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        // Recarregar a configuração inicial
+
+        //    }
+        //}
+
         private void btnReset_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -1121,247 +1372,94 @@ namespace minas.teste.prototype.MVVM.View
             if (result == DialogResult.Yes)
             {
                 // Parar todos os processos em andamento
-                timer.Stop(); // Para o timer do cronômetro
+                timer.Stop();
                 cronometroIniciado = false;
                 _isMonitoring = false;
 
-                // Parar monitoramento e testes
-                PararMonitoramento(); // Stops monitoramentoTimer
+                // Parar monitoramento e geradores
+                PararMonitoramento();
+                _dataGenerator.Stop();
+                _drainDataGenerator.Stop();
 
-                // Reinicia o contador de tempo para o Chart 5
+                // Reiniciar contadores e variáveis
                 _timeCounterSeconds = 0;
+                etapaAtual = 1;
+                dadosSensores.Clear();
+                _dadosColetados.Clear();
+                Inicioteste = string.Empty;
+                Fimteste = string.Empty;
 
-                // --- Simulated Data Generators Stop and Reset ---
-                _dataGenerator.Stop(); // Para a geração de dados simulados para chart1, chart4, chart5, chart6
-                _dataGenerator.Reset(); // Reseta os valores simulados para chart1, chart4, chart5, chart6
-                _drainDataGenerator.Stop(); // Para a geração de dados simulados para chart2, chart3
-                _drainDataGenerator.Reset(); // Reseta os valores simulados para chart2, chart3
-
-                // Limpa os TextBoxes dos sensores simulados
-                sensor_psi_PL.Text = string.Empty;
-                sensor_bar_PL.Text = string.Empty;
-                sensor_gpm_DR.Text = string.Empty;
-                sensor_lpm_DR.Text = string.Empty;
-                sensor_Press_PSI.Text = string.Empty;
-                sensor_Press_BAR.Text = string.Empty;
-                sensor_rotacao_RPM.Text = string.Empty;
-                sensor_Vazao_GPM.Text = string.Empty;
-                sensor_Vazao_LPM.Text = string.Empty;
-                sensor_Temp_C.Text = string.Empty;
-                // --- End Simulated Data Generators Stop and Reset ---
-
-
-                _viewModel.FinalizarTesteBomba(Stage_box_bomba);
-
-                // Limpar DataGridViews (adicione todos os seus DataGridViews aqui)
+                // Limpar DataGridViews
                 dataGridView1.Rows.Clear();
-                dataGridView1.DataSource = null;
-
                 if (visualizador.DataSource != null)
                 {
-                    visualizador.DataSource = null;
-                    visualizador.Rows.Clear();
+                    // Se estiver vinculado a uma lista, limpe a lista e atualize o DataSource
+                    var list = visualizador.DataSource as List<SensorData>;
+                    if (list != null)
+                    {
+                        list.Clear();
+                        // Força o DataGridView a atualizar
+                        visualizador.DataSource = null;
+                        visualizador.DataSource = list;
+                    }
+                    else
+                    {
+                        // Se não for uma lista, apenas desvincule
+                        visualizador.DataSource = null;
+                    }
                 }
                 else
                 {
                     visualizador.Rows.Clear();
                 }
 
-                // Limpar listas de dados
-                etapaAtual = 1;
-                dadosSensores.Clear();
-                _dadosColetados.Clear();
-                // Resetar variáveis de controle
-                Inicioteste = string.Empty;
-                Fimteste = string.Empty;
-                valorDefinidoManualmente = true;
 
-                // Resetar interface gráfica
-                circularProgressBar1.Value = 0;
-                // _viewModel.LimparCamposEntrada(textBox6, textBox5, textBox4); // Adicione este método no ViewModel se necessário
+                // Resetar ProgressBar para o valor definido
+                if (valorDefinidoManualmente)
+                {
+                    circularProgressBar1.Maximum = valorDefinido * 60;
+                    circularProgressBar1.Value = valorDefinido * 60;
+                }
+                else
+                {
+                    circularProgressBar1.Value = 0;
+                }
+                circularProgressBar1.Invalidate();
 
-                // --- Chart 1 Reset ---
-                // Remove e recria a série para limpar o gráfico.
-                string chart1SeriesName = "Pre.x Vaz.";
-                if (chart1.Series.IsUniqueName(chart1SeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart1.Series.Remove(chart1.Series[chart1SeriesName]);
-                }
-                if (chart1.Series.IsUniqueName(chart1SeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series performanceSeries = new Series(chart1SeriesName);
-                    performanceSeries.ChartType = SeriesChartType.FastLine;
-                    performanceSeries.Color = Color.Blue;
-                    performanceSeries.BorderWidth = 2;
-                    chart1.Series.Add(performanceSeries);
-                }
-                _viewModel.ResetChartDataLogic(); // Reset the previous rotation in VM (para chart1)
-                // --- End Chart 1 Reset ---
+                // Limpar gráficos (limpar pontos das séries)
+                foreach (var series in chart1.Series)
+                    series.Points.Clear();
+                foreach (var series in chart2.Series)
+                    series.Points.Clear();
+                foreach (var series in chart3.Series)
+                    series.Points.Clear();
+                foreach (var series in chart4.Series)
+                    series.Points.Clear();
+                foreach (var series in chart5.Series)
+                    series.Points.Clear();
+                foreach (var series in chart6.Series)
+                    series.Points.Clear();
 
-                // --- Chart 2 Reset ---
-                // Remove e recria a série para limpar o gráfico.
-                string chart2SeriesName = "Vaz.In.X Rot";
-                if (chart2.Series.IsUniqueName(chart2SeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart2.Series.Remove(chart2.Series[chart2SeriesName]);
-                }
-                if (chart2.Series.IsUniqueName(chart2SeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series drainRotationSeries = new Series(chart2SeriesName);
-                    drainRotationSeries.ChartType = SeriesChartType.FastLine;
-                    drainRotationSeries.Color = Color.Red;
-                    drainRotationSeries.BorderWidth = 2;
-                    chart2.Series.Add(drainRotationSeries);
-                }
-                // Não há lógica de rotação constante específica para o chart2 no VM, então não há ResetChartDataLogic para ele.
-                // --- End Chart 2 Reset ---
-
-                // --- Chart 3 Reset ---
-                // Remove e recria a série para limpar o gráfico.
-                string chart3SeriesName = "Vaz. x Pres.";
-                if (chart3.Series.IsUniqueName(chart3SeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart3.Series.Remove(chart3.Series[chart3SeriesName]);
-                }
-                if (chart3.Series.IsUniqueName(chart3SeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series drainPressureSeries = new Series(chart3SeriesName);
-                    drainPressureSeries.ChartType = SeriesChartType.FastLine;
-                    drainPressureSeries.Color = Color.Orange;
-                    drainPressureSeries.BorderWidth = 2;
-                    chart3.Series.Add(drainPressureSeries);
-                }
-                // --- End Chart 3 Reset ---
-
-                // --- Chart 4 Reset ---
-                // Remove e recria as séries para limpar o gráfico de eficiência.
-                string chart4GlobalSeriesName = "Rend. Global";
-                if (chart4.Series.IsUniqueName(chart4GlobalSeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart4.Series.Remove(chart4.Series[chart4GlobalSeriesName]);
-                }
-                if (chart4.Series.IsUniqueName(chart4GlobalSeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series globalEfficiencySeries = new Series(chart4GlobalSeriesName);
-                    globalEfficiencySeries.ChartType = SeriesChartType.FastLine;
-                    globalEfficiencySeries.Color = Color.Green;
-                    globalEfficiencySeries.BorderWidth = 2;
-                    chart4.Series.Add(globalEfficiencySeries);
-                }
-
-                string chart4VolumetricSeriesName = "Ef. Volumetrica";
-                if (chart4.Series.IsUniqueName(chart4VolumetricSeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart4.Series.Remove(chart4.Series[chart4VolumetricSeriesName]);
-                }
-                if (chart4.Series.IsUniqueName(chart4VolumetricSeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series volumetricEfficiencySeries = new Series(chart4VolumetricSeriesName);
-                    volumetricEfficiencySeries.ChartType = SeriesChartType.FastLine;
-                    volumetricEfficiencySeries.Color = Color.Purple;
-                    volumetricEfficiencySeries.BorderWidth = 2;
-                    chart4.Series.Add(volumetricEfficiencySeries);
-                }
-                // Não há lógica de reset específica do VM para chart4 neste momento.
-                // --- End Chart 4 Reset ---
-
-                // --- Chart 5 Reset ---
-                // Remove e recria as séries para limpar o gráfico de rampa.
-                string chart5TemperatureSeriesName = "Temperatura";
-                if (chart5.Series.IsUniqueName(chart5TemperatureSeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart5.Series.Remove(chart5.Series[chart5TemperatureSeriesName]);
-                }
-                if (chart5.Series.IsUniqueName(chart5TemperatureSeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series temperatureSeries = new Series(chart5TemperatureSeriesName);
-                    temperatureSeries.ChartType = SeriesChartType.FastLine;
-                    temperatureSeries.Color = Color.Blue;
-                    temperatureSeries.BorderWidth = 2;
-                    temperatureSeries.YAxisType = AxisType.Primary; // Mapeia para o Eixo Y Primário (Temperatura)
-                    chart5.Series.Add(temperatureSeries);
-                }
-
-                string chart5PressureSeriesName = "Pressão Rampa";
-                if (chart5.Series.IsUniqueName(chart5PressureSeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart5.Series.Remove(chart5.Series[chart5PressureSeriesName]);
-                }
-                if (chart5.Series.IsUniqueName(chart5PressureSeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series pressureRampSeries = new Series(chart5PressureSeriesName);
-                    pressureRampSeries.ChartType = SeriesChartType.FastLine;
-                    pressureRampSeries.Color = Color.Red;
-                    pressureRampSeries.BorderWidth = 2;
-                    pressureRampSeries.YAxisType = AxisType.Secondary; // Mapeia para o Eixo Y Secundário (Pressão/Vazão)
-                    chart5.Series.Add(pressureRampSeries);
-                }
-
-                string chart5FlowSeriesName = "Vazão Rampa";
-                if (chart5.Series.IsUniqueName(chart5FlowSeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart5.Series.Remove(chart5.Series[chart5FlowSeriesName]);
-                }
-                if (chart5.Series.IsUniqueName(chart5FlowSeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series flowRampSeries = new Series(chart5FlowSeriesName);
-                    flowRampSeries.ChartType = SeriesChartType.FastLine;
-                    flowRampSeries.Color = Color.Green;
-                    flowRampSeries.BorderWidth = 2;
-                    flowRampSeries.YAxisType = AxisType.Secondary; // Mapeia para o Eixo Y Secundário (Pressão/Vazão)
-                    chart5.Series.Add(flowRampSeries);
-                }
-                // --- End Chart 5 Reset ---
-
-                // --- Chart 6 Reset ---
-                // Remove e recria a série para limpar o gráfico de vazão real.
-                string chart6RealFlowSeriesName = "Vazão Real";
-                if (chart6.Series.IsUniqueName(chart6RealFlowSeriesName)) // Verifica se a série existe antes de tentar remover
-                {
-                    chart6.Series.Remove(chart6.Series[chart6RealFlowSeriesName]);
-                }
-                if (chart6.Series.IsUniqueName(chart6RealFlowSeriesName)) // Agora IsUniqueName deve ser true
-                {
-                    Series realFlowSeries = new Series(chart6RealFlowSeriesName);
-                    realFlowSeries.ChartType = SeriesChartType.FastLine;
-                    realFlowSeries.Color = Color.Blue;
-                    realFlowSeries.BorderWidth = 2;
-                    chart6.Series.Add(realFlowSeries);
-                }
-                // --- End Chart 6 Reset ---
-
-
-                // Reinicia o processo como se o botão Iniciar fosse clicado novamente (sem a validação inicial)
+                // Reiniciar o processo
                 _isMonitoring = true;
                 _viewModel.AlterarEstadoPaineis(_isMonitoring, panel4, panel5, panel2, panel6, panel11, panel9);
-                Inicioteste = DateTime.Now.ToString();
-                _viewModel.IniciarTesteBomba(Stage_box_bomba);
-                //trackBar1.Enabled = false;
-                InicializarMonitoramento(); // Starts monitoramentoTimer
+                InicializarMonitoramento();
 
-                // --- Simulated Data Generators Start ---
-                _dataGenerator.Start(); // Inicia a geração de dados simulados novamente para chart1, chart4, chart5, chart6
-                _drainDataGenerator.Start(); // Inicia a geração de dados simulados novamente para chart2, chart3
-                // --- End Simulated Data Generators Start ---
+                // Reiniciar geradores de dados
+                _dataGenerator.Start();
+                _drainDataGenerator.Start();
 
+                // Reiniciar cronômetro se necessário
                 if (valorDefinidoManualmente)
                 {
                     cronometroIniciado = true;
-                    int tempoTotalSegundos = valorDefinido * 60;
-                    circularProgressBar1.Maximum = tempoTotalSegundos;
-                    circularProgressBar1.Minimum = 0;
-                    circularProgressBar1.Value = tempoTotalSegundos;
-                    circularProgressBar1.Invalidate();
-                    timer.Start(); // Inicia o timer do cronômetro
+                    timer.Start();
                 }
 
-                MessageBox.Show("Processo reiniciado com sucesso!", "Reinício Completo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Recarregar a configuração inicial
-
+                MessageBox.Show("Processo reiniciado com sucesso!", "Reinício Completo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
 
         #endregion
 

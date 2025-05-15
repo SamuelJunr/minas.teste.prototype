@@ -1,0 +1,32 @@
+sensor_psi_PL - pilotagem psi  
+sensor_bar_PL - pilotagem bar
+sensor_gpm_DR - dreno gpm
+sensor_lpm_DR - dreno lpm
+sensor_Press_PSI - pressao psi
+sensor_Press_BAR - pressao bar
+sensor_rotacao_RPM - rotação rpm
+sensor_Vazao_GPM - vazao gpm
+sensor_Vazao_LPM - vazão lpm
+sensor_Temp_C - temperatura celsus
+
+
+verificar se os dados dos sensores  estão dentro dos valores mínimos e máximos  texbox9 mínimo e textbox8 maximo
+checkBox_psi
+
+verificar se os dados dos sensores  estão dentro dos valores mínimos e máximos  texbox14 mínimo e textbox12 maximo
+checkBox_gpm  
+ 
+
+verificar se os dados dos sensores  estão dentro dos valores mínimos e máximos  texbox11 mínimo e textbox10 maximo
+checkBox_bar
+
+verificar se os dados dos sensores  estão dentro dos valores mínimos e máximos  texbox18 mínimo e textbox17 maximo
+checkBox_rotacao
+
+verificar se os dados dos sensores  estão dentro dos valores mínimos e máximos  texbox16 mínimo e textbox15 maximo
+checkBox_lpm
+
+verificar se os dados dos sensores  estão dentro dos valores mínimos e máximos  texbox20 mínimo e textbox19 maximo  
+checkBox_temperatura 
+
+
