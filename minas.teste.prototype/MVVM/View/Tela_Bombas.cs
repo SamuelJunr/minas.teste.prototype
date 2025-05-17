@@ -11,6 +11,7 @@ using static minas.teste.prototype.MVVM.ViewModel.Tela_BombasVM;
 using System.Linq;
 using System.Text; // Adicionado para StringBuilder
 using System.Collections.Concurrent; // Considerado para async mais robusto, mas usando buffer simples por agora
+using System.Diagnostics; // Adicionado para Debug.WriteLine
 
 
 namespace minas.teste.prototype.MVVM.View
@@ -60,9 +61,9 @@ namespace minas.teste.prototype.MVVM.View
         private Dictionary<string, string> _serialDataKeys = new Dictionary<string, string>()
         {
             {"P1", "Pressao Principal"},
-            {"fluxo1", "Vazao Principal"},     // CORRIGIDO: fluxo1 -> fluxol
-            {"Piloto1", "Pilotagem"},      // CORRIGIDO: Piloto1 -> Pilotol
-            {"dreno1", "Vazao Dreno"},       // CORRIGIDO: dreno1 -> drenol
+            {"fluxo1", "Vazao Principal"},       // De fluxol → fluxo1
+            {"Piloto1", "Pilotagem"},            // De Pilotol → Piloto1
+            {"dreno1", "Vazao Dreno"},           // De drenol → dreno1
             {"RPM", "Rotacao"},
             {"temp", "Temperatura"}
         };
@@ -123,7 +124,7 @@ namespace minas.teste.prototype.MVVM.View
             _updateTimer = new Timer();
             // *** ALTERAÇÃO: Intervalo para 1 SEGUNDO (1000 ms) ***
             _updateTimer.Interval = 1000; // 1 segundo para atualizações da UI
-            // Este timer irá processar o buffer acumulado e atualizar a UI.
+            // Este timer irá AGORA processar o buffer acumulado e atualizar a UI.
             _updateTimer.Tick += UpdateTimer_Tick;
 
 
@@ -390,14 +391,15 @@ namespace minas.teste.prototype.MVVM.View
         public void Inciaizador_listas()
         {
             // Inicializa sensorMap para mapear chaves de dados serial para TextBoxes
-            sensorMap = new Dictionary<string, TextBox>();
-            sensorMap.Add("Pilotol", sensor_bar_PL);  // CORRIGIDO: Piloto1 -> Pilotol
-            sensorMap.Add("drenol", sensor_lpm_DR);   // CORRIGIDO: dreno1 -> drenol
-            sensorMap.Add("P1", sensor_Press_BAR);
-            sensorMap.Add("RPM", sensor_rotacao_RPM);
-            sensorMap.Add("fluxol", sensor_Vazao_LPM); // CORRIGIDO: fluxo1 -> fluxol
-            sensorMap.Add("temp", sensor_Temp_C);    // Mapeia chave serial para textbox Temperatura
-
+            sensorMap = new Dictionary<string, TextBox>()
+            {
+                {"Piloto1", sensor_bar_PL},   // Mapeia Piloto1 → sensor_bar_PL
+                {"dreno1", sensor_lpm_DR},    // Mapeia dreno1 → sensor_lpm_DR
+                {"P1", sensor_Press_BAR},
+                {"RPM", sensor_rotacao_RPM},
+                {"fluxo1", sensor_Vazao_LPM}, // Mapeia fluxo1 → sensor_Vazao_LPM
+                {"temp", sensor_Temp_C}
+            };
             // Inicializa sensorMapmedida - descreve a unidade do valor *bruto* serial
             // Isso é útil para saber a unidade da leitura direta, antes das conversões para exibição
             sensorMapmedida = new Dictionary<string, string>();
@@ -712,6 +714,8 @@ namespace minas.teste.prototype.MVVM.View
         // Este método é chamado em uma thread secundária fornecida pela porta serial.
         private void SerialManager_DataReceived(object sender, string data)
         {
+            Debug.WriteLine($"[RAW] Dados recebidos: {data}");
+
             if (string.IsNullOrEmpty(data)) return;
 
             // Anexa os dados recebidos ao buffer
@@ -737,27 +741,23 @@ namespace minas.teste.prototype.MVVM.View
                 string bufferContent = serialDataBuffer.ToString();
                 int newlineIndex;
 
-                // Processa todas as mensagens completas encontradas no buffer.
-                // Assumimos que cada mensagem termina com um caractere de nova linha ('\n').
+                // Processa até a última newline encontrada
                 while ((newlineIndex = bufferContent.IndexOf('\n')) != -1)
                 {
-                    // Extrai uma mensagem completa (incluindo a nova linha)
                     string completeMessage = bufferContent.Substring(0, newlineIndex + 1);
-
-                    // Remove a mensagem processada do início do buffer
                     serialDataBuffer.Remove(0, newlineIndex + 1);
-
-                    // Envia a mensagem completa para ser parseada e armazenada.
-                    // Esta chamada deve ser segura para threads se atualizar variáveis compartilhadas.
                     ParseAndStoreSensorData(completeMessage);
-
-                    // Atualiza bufferContent para o restante do buffer para a próxima iteração do while
                     bufferContent = serialDataBuffer.ToString();
                 }
-                // Após o loop, partes de mensagens incompletas permanecem no buffer.
+
+                // Processa dados restantes (sem newline no final)
+                if (bufferContent.Length > 0)
+                {
+                    ParseAndStoreSensorData(bufferContent);
+                    serialDataBuffer.Clear();
+                }
             }
         }
-
 
         /// <summary>
         /// Parseia uma única string de dados serial (mensagem completa) no formato KEY:VALUE|...
@@ -767,69 +767,33 @@ namespace minas.teste.prototype.MVVM.View
         // Renomeado e ligeiramente modificado ProcessSerialDataString para ParseAndStoreSensorData
         private void ParseAndStoreSensorData(string data)
         {
-            if (string.IsNullOrEmpty(data)) return;
-
-            // Remove espaços em branco e caracteres de fim de linha da mensagem
-            string cleanedData = data.Trim();
+            string cleanedData = data.Trim().Replace("\r", "").Replace("\n", "");
             if (string.IsNullOrEmpty(cleanedData)) return;
 
-
-            // Dicionários temporários para armazenar valores desta mensagem específica
-            var tempNumericReadings = new Dictionary<string, double>();
-            var tempRawData = new Dictionary<string, string>();
-
-            // Divide a mensagem limpa pelo separador de pares '|'
             string[] sensorReadings = cleanedData.Split('|');
-
             foreach (string reading in sensorReadings)
             {
                 string[] parts = reading.Split(':');
-                // Verifica se a parte tem exatamente duas subpartes (chave e valor)
                 if (parts.Length == 2)
                 {
                     string key = parts[0].Trim();
                     string valueString = parts[1].Trim();
 
-                    // Verifica se a chave está na nossa lista de chaves esperadas para processamento
                     if (_serialDataKeys.ContainsKey(key))
                     {
-                        // Armazena o valor bruto
-                        tempRawData[key] = valueString;
+                        // Log para debug (remova após testes)
+                        Debug.WriteLine($"[PARSE] Key: {key}, Value: {valueString}");
 
-                        // Tenta parsear o valor numérico
-                        // Usa InvariantCulture para lidar com pontos decimais de forma consistente (ex: "0.00")
                         if (double.TryParse(valueString, NumberStyles.Any, CultureInfo.InvariantCulture, out double numericValue))
                         {
-                            tempNumericReadings[key] = numericValue;
+                            _currentNumericSensorReadings[key] = numericValue;
                         }
                         else
                         {
-                            // Lida com erros de parseamento - loga um aviso nos eventos históricos
-                            // O log é feito de forma segura para a thread da UI.
-                            LogHistoricalEvent($"AVISO - Falha ao converter valor numérico para '{key}': '{valueString}'");
-                            // Opcional: manter o valor anterior ou definir um padrão em caso de erro.
-                            // Isso exigiria ler de _currentNumericSensorReadings antes de limpar.
-                            // Por simplicidade, se o parse falhar, a chave não será adicionada a tempNumericReadings,
-                            // e o valor anterior em _currentNumericSensorReadings persistirá até uma nova leitura válida.
+                            LogHistoricalEvent($"Valor inválido para {key}: {valueString}");
                         }
                     }
                 }
-                // Partes que não seguem o formato KEY:VALUE ou com chaves não esperadas são simplesmente ignoradas.
-            }
-
-            // Atualiza os dicionários principais (_currentNumericSensorReadings e _latestRawSensorData)
-            // que são lidos pelo timer de atualização da UI.
-            // É MAIS SEGURO atualizar estes dicionários compartilhados na thread da UI usando Invoke.
-            if (this.InvokeRequired)
-            {
-                this.Invoke((MethodInvoker)delegate {
-                    UpdateSensorReadingDictionaries(tempNumericReadings, tempRawData);
-                });
-            }
-            else
-            {
-                // Se já estiver na thread da UI (menos comum para DataReceived)
-                UpdateSensorReadingDictionaries(tempNumericReadings, tempRawData);
             }
         }
 
@@ -846,6 +810,8 @@ namespace minas.teste.prototype.MVVM.View
 
             _currentNumericSensorReadings.Clear();
             foreach (var item in numericReadings) _currentNumericSensorReadings[item.Key] = item.Value;
+
+            Debug.WriteLine($"[UpdateSensorReadingDictionaries] Dicionário numérico atualizado com {_currentNumericSensorReadings.Count} entradas."); // Log de debug
 
             // Opcional: Logar recebimento bem-sucedido (evitar logs muito frequentes)
             // LogHistoricalEvent("Dados serial processados."); // Muito frequente a cada segundo
@@ -869,6 +835,7 @@ namespace minas.teste.prototype.MVVM.View
             {
                 _updateTimer.Start();
                 LogHistoricalEvent("Timer de atualização da UI iniciado (intervalo: 1 segundo).");
+                Debug.WriteLine("[StartUpdateTimer] Timer de atualização da UI iniciado."); // Log de debug
             }
         }
 
@@ -881,6 +848,7 @@ namespace minas.teste.prototype.MVVM.View
             {
                 _updateTimer.Stop();
                 LogHistoricalEvent("Timer de atualização da UI parado.");
+                Debug.WriteLine("[StopUpdateTimer] Timer de atualização da UI parado."); // Log de debug
             }
         }
 
@@ -889,6 +857,7 @@ namespace minas.teste.prototype.MVVM.View
         {
             // Este método roda na thread da UI.
             // Atualiza os TextBoxes e gráficos com os últimos dados processados.
+            Debug.WriteLine("[UpdateTimer_Tick] Tick do timer de atualização. Chamando UpdateDisplay."); // Log de debug
             UpdateDisplay();
 
             // Incrementa o contador de tempo para o Chart 5 (Rampa) a cada segundo agora
@@ -911,11 +880,13 @@ namespace minas.teste.prototype.MVVM.View
             if (this.InvokeRequired)
             {
                 this.Invoke((MethodInvoker)delegate {
+                    Debug.WriteLine("[UpdateDisplay] InvokeRequired = true. Invocando UpdateTextBoxes."); // Log de debug
                     UpdateTextBoxes();
                 });
             }
             else
             {
+                Debug.WriteLine("[UpdateDisplay] InvokeRequired = false. Chamando UpdateTextBoxes diretamente."); // Log de debug
                 UpdateTextBoxes();
             }
         }
@@ -927,14 +898,18 @@ namespace minas.teste.prototype.MVVM.View
         /// </summary>
         private void UpdateTextBoxes()
         {
+            Debug.WriteLine("[UpdateTextBoxes] Iniciando atualização dos TextBoxes."); // Log de debug
+            Debug.WriteLine($"[UpdateTextBoxes] Conteúdo de _currentNumericSensorReadings: {string.Join(", ", _currentNumericSensorReadings.Select(kvp => $"{kvp.Key}: {kvp.Value}"))}"); // Log de debug
+
             // Atualiza TextBoxes com base nos valores em _currentNumericSensorReadings
             // Aplica conversões conforme especificado pelo usuário
 
             // Usa TryGetValue para acessar os dados de forma segura e evitar exceções
             // Pilotol (valor bruto assumido para exibição em BAR, convertido para PSI)
             // CORRIGIDO: Chave "Pilotol" estava com espaço extra ou digitada incorretamente
-            if (_currentNumericSensorReadings.TryGetValue("Piloto1", out double piloto1Value))
+            if (_currentNumericSensorReadings.TryGetValue("Piloto1", out double piloto1Value)) // CORRIGIDO
             {
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'Pilotol' encontrada com valor: {piloto1Value}"); // Log de debug
                 // Exibe em BAR (assumindo que o valor bruto já representa BAR ou uma unidade proporcional)
                 sensor_bar_PL.Text = piloto1Value.ToString("F2", CultureInfo.InvariantCulture);
                 // Converte BAR para PSI usando o fator 14.5 (conforme a nota do usuário)
@@ -947,6 +922,7 @@ namespace minas.teste.prototype.MVVM.View
             }
             else
             {
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'Piloto1' NÃO encontrada."); // Log de debug
                 // Define como "N/A" se a chave não for encontrada
                 sensor_bar_PL.Text = "N/A";
                 sensor_psi_PL.Text = "N/A";
@@ -954,8 +930,9 @@ namespace minas.teste.prototype.MVVM.View
 
             // drenol (valor bruto assumido como LPM, convertido para GPM usando o fator 3.98 do usuário)
             // CORRIGIDO: Chave "drenol" estava digitada incorretamente
-            if (_currentNumericSensorReadings.TryGetValue("dreno1", out double dreno1Value))
+            if (_currentNumericSensorReadings.TryGetValue("dreno1", out double dreno1Value)) // CORRIGIDO
             {
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'dreno1' encontrada com valor: {dreno1Value}"); // Log de debug
                 // Exibe em LPM
                 sensor_lpm_DR.Text = dreno1Value.ToString("F2", CultureInfo.InvariantCulture);
                 // Converte LPM para GPM usando o fator 3.98 (incomum, mas segue instrução do usuário)
@@ -963,7 +940,8 @@ namespace minas.teste.prototype.MVVM.View
             }
             else
             {
-                // Define como "N/A" se a chave não for encontrada
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'drenol' NÃO encontrada."); // Log de debug
+                                                                                      // Define como "N/A" se a chave não for encontrada
                 sensor_lpm_DR.Text = "N/A";
                 sensor_gpm_DR.Text = "N/A";
             }
@@ -971,6 +949,7 @@ namespace minas.teste.prototype.MVVM.View
             // P1 (valor bruto assumido como BAR, convertido para PSI usando 14.5)
             if (_currentNumericSensorReadings.TryGetValue("P1", out double p1Value))
             {
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'P1' encontrada com valor: {p1Value}"); // Log de debug
                 // Exibe em BAR
                 sensor_Press_BAR.Text = p1Value.ToString("F2", CultureInfo.InvariantCulture);
                 // Converte BAR para PSI usando o fator 14.5
@@ -978,7 +957,8 @@ namespace minas.teste.prototype.MVVM.View
             }
             else
             {
-                // Define como "N/A" se a chave não for encontrada
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'P1' NÃO encontrada."); // Log de debug
+                                                                                  // Define como "N/A" se a chave não for encontrada
                 sensor_Press_BAR.Text = "N/A";
                 sensor_Press_PSI.Text = "N/A";
             }
@@ -986,19 +966,22 @@ namespace minas.teste.prototype.MVVM.View
             // RPM (valor bruto assumido como RPM)
             if (_currentNumericSensorReadings.TryGetValue("RPM", out double rpmValue))
             {
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'RPM' encontrada com valor: {rpmValue}"); // Log de debug
                 // Exibe em RPM (geralmente sem casas decimais)
                 sensor_rotacao_RPM.Text = rpmValue.ToString("F0", CultureInfo.InvariantCulture);
             }
             else
             {
-                // Define como "N/A" se a chave não for encontrada
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'RPM' NÃO encontrada."); // Log de debug
+                                                                                   // Define como "N/A" se a chave não for encontrada
                 sensor_rotacao_RPM.Text = "N/A";
             }
 
             // fluxol (valor bruto assumido como LPM, convertido para GPM usando o fator 3.98 do usuário)
             // CORRIGIDO: Chave "fluxol" estava digitada incorretamente
-            if (_currentNumericSensorReadings.TryGetValue("fluxo1", out double fluxo1Value))
+            if (_currentNumericSensorReadings.TryGetValue("fluxo1", out double fluxo1Value)) // CORRIGIDO
             {
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'fluxo1' encontrada com valor: {fluxo1Value}"); // Log de debug
                 // Exibe em LPM
                 sensor_Vazao_LPM.Text = fluxo1Value.ToString("F2", CultureInfo.InvariantCulture);
                 // Converte LPM para GPM usando o fator 3.98 (incomum, mas segue instrução do usuário)
@@ -1006,7 +989,8 @@ namespace minas.teste.prototype.MVVM.View
             }
             else
             {
-                // Define como "N/A" se a chave não for encontrada
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'fluxo1' NÃO encontrada."); // Log de debug
+                                                                                      // Define como "N/A" se a chave não for encontrada
                 sensor_Vazao_LPM.Text = "N/A";
                 sensor_Vazao_GPM.Text = "N/A";
             }
@@ -1014,15 +998,18 @@ namespace minas.teste.prototype.MVVM.View
             // temp (valor bruto assumido como Celsius)
             if (_currentNumericSensorReadings.TryGetValue("temp", out double tempValue))
             {
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'temp' encontrada com valor: {tempValue}"); // Log de debug
                 // Exibe em Celsius (geralmente com 1 casa decimal)
                 sensor_Temp_C.Text = tempValue.ToString("F1", CultureInfo.InvariantCulture);
             }
             else
             {
-                // Define como "N/A" se a chave não for encontrada
+                Debug.WriteLine($"[UpdateTextBoxes] Chave 'temp' NÃO encontrada."); // Log de debug
+                                                                                    // Define como "N/A" se a chave não for encontrada
                 sensor_Temp_C.Text = "N/A";
             }
 
+            Debug.WriteLine("[UpdateTextBoxes] Finalizando atualização dos TextBoxes."); // Log de debug
             // Você pode adicionar tratamento de erro ou valores padrão se uma chave estiver faltando em _currentNumericSensorReadings
         }
 
@@ -1055,9 +1042,9 @@ namespace minas.teste.prototype.MVVM.View
             // Usa TryGetValue para acessar os dados de forma segura.
             // NOTA: Usando as chaves corrigidas ('l' em vez de '1')
             if (_currentNumericSensorReadings.TryGetValue("P1", out double pressaoBar) &&
-                _currentNumericSensorReadings.TryGetValue("fluxo1", out double vazaoLpm) && // CORRIGIDO: fluxo1 -> fluxol
-                _currentNumericSensorReadings.TryGetValue("Piloto1", out double pilotagemRaw) && // CORRIGIDO: Piloto1 -> Pilotol - Usando valor bruto de Pilotol
-                _currentNumericSensorReadings.TryGetValue("dreno1", out double drenoLpm) && // CORRIGIDO: dreno1 -> drenol
+                _currentNumericSensorReadings.TryGetValue("fluxol", out double vazaoLpm) && // CORRIGIDO
+                _currentNumericSensorReadings.TryGetValue("Pilotol", out double pilotagemRaw) && // CORRIGIDO
+                _currentNumericSensorReadings.TryGetValue("drenol", out double drenoLpm) && // CORRIGIDO
                 _currentNumericSensorReadings.TryGetValue("RPM", out double rotacaoRpm) &&
                 _currentNumericSensorReadings.TryGetValue("temp", out double temperaturaC))
             {
@@ -1072,7 +1059,7 @@ namespace minas.teste.prototype.MVVM.View
                 if (dataPoint.HasValue)
                 {
                     // Verifica se a série existe antes de adicionar pontos
-                    if (chart1.Series["Pre.x Vaz."] != null) // Uso ContainsKey para robustez
+                    if (chart1.Series.IsUniqueName("Pre.x Vaz.")) // Uso ContainsKey para robustez
                     {
                         chart1.Series["Pre.x Vaz."].Points.AddXY(dataPoint.Value.FlowLpm, dataPoint.Value.PressureBar);
                     }
@@ -1080,7 +1067,7 @@ namespace minas.teste.prototype.MVVM.View
 
 
                 // Chart 2 (Vazamento Interno / Dreno - Vazão Dreno vs Rotação) - X=Rotação (RPM), Y=Dreno (LPM)
-                if (chart2.Series["Vaz.In.X Rot"] != null)
+                if (chart2.Series.IndexOf("Vaz.In.X Rot") != -1)
                 {
                     chart2.Series["Vaz.In.X Rot"].Points.AddXY(rotacaoRpm, drenoLpm);
                 }
@@ -1088,7 +1075,7 @@ namespace minas.teste.prototype.MVVM.View
                 // Chart 3 (Vazamento Interno / Dreno - Vazão Dreno vs Pressão Carga) - X=Pressão Carga (BAR), Y=Dreno (LPM)
                 // Assumindo que 'Pressão de Carga' para o Chart 3 é o valor de Pilotagem em BAR
                 double pilotagemBar = pilotagemRaw * BAR_CONVERSION_PILOT; // Usa o fator de conversão para Pilotagem BAR
-                if (chart3.Series["Vaz. x Pres."] != null)
+                if (chart3.Series.IndexOf("Vaz. x Pres.") != -1)
                 {
                     chart3.Series["Vaz. x Pres."].Points.AddXY(pilotagemBar, drenoLpm);
                 }
@@ -1112,11 +1099,11 @@ namespace minas.teste.prototype.MVVM.View
                 if (rendimentoGlobal > eficienciaVolumetrica) rendimentoGlobal = eficienciaVolumetrica;
 
 
-                if (chart4.Series["Rend. Global"] != null)
+                if (chart4.Series.IndexOf("Rend. Global") != -1)
                 {
                     chart4.Series["Rend. Global"].Points.AddXY(vazaoLpm, rendimentoGlobal);
                 }
-                if (chart4.Series["Ef. Volumetrica"] != null)
+                if (chart4.Series.IndexOf("Ef. Volumetrica") != -1)
                 {
                     // Recalcula a eficiência volumétrica se necessário, ou usa a calculada acima
                     chart4.Series["Ef. Volumetrica"].Points.AddXY(vazaoLpm, eficienciaVolumetrica);
@@ -1124,21 +1111,21 @@ namespace minas.teste.prototype.MVVM.View
 
                 // Chart 5 (Rampa de Amaciamento) - X=Tempo (segundos), Y1=Temp (°C), Y2=Press (BAR), Y2=Vazao (LPM)
                 // Usa _timeCounterSeconds (agora incrementando a cada segundo)
-                if (chart5.Series["Temperatura"] != null)
+                if (chart5.Series.IndexOf("Temperatura") != -1)
                 {
                     chart5.Series["Temperatura"].Points.AddXY(_timeCounterSeconds, temperaturaC);
                 }
-                if (chart5.Series["Pressão Rampa"] != null)
+                if (chart5.Series.IndexOf("Pressão Rampa") != -1)
                 {
                     chart5.Series["Pressão Rampa"].Points.AddXY(_timeCounterSeconds, pressaoBar); // Usando pressão principal
                 }
-                if (chart5.Series["Vazão Rampa"] != null)
+                if (chart5.Series.IndexOf("Vazão Rampa") != -1)
                 {
                     chart5.Series["Vazão Rampa"].Points.AddXY(_timeCounterSeconds, vazaoLpm); // Usando vazão principal
                 }
 
                 // Chart 6 (Vazão Real vs Rotação) - X=Rotação (RPM), Y=Vazão Real (LPM)
-                if (chart6.Series["Vazão Real"] != null)
+                if (chart6.Series.IndexOf("Vazão Real") != -1)
                 {
                     chart6.Series["Vazão Real"].Points.AddXY(rotacaoRpm, vazaoLpm); // Assumindo Vazão Real é Vazão Principal
                 }
@@ -1146,7 +1133,7 @@ namespace minas.teste.prototype.MVVM.View
             else
             {
                 // Logar um aviso se dados essenciais estiverem faltando para os gráficos (evitar logs frequentes)
-                // Console.WriteLine($"{DateTime.Now:G}: AVISO - Dados essenciais para gráficos ausentes ou inválidos.");
+                Debug.WriteLine("[AddDataPointsToChartsInternal] AVISO - Dados essenciais para gráficos ausentes ou inválidos."); // Log de debug
             }
         }
 
@@ -1904,11 +1891,11 @@ namespace minas.teste.prototype.MVVM.View
             // Obtém os valores atuais dos TextBoxes (que foram atualizados pelo _updateTimer)
             // Usa TryGetValue para acessar os dados de forma segura
             // NOTA: Usando as chaves corrigidas ('l' em vez de '1')
-            _currentNumericSensorReadings.TryGetValue("Piloto1", out double piloto1Value); // CORRIGIDO
-            _currentNumericSensorReadings.TryGetValue("dreno1", out double dreno1Value); // CORRIGIDO
+            _currentNumericSensorReadings.TryGetValue("Pilotol", out double piloto1Value); // CORRIGIDO
+            _currentNumericSensorReadings.TryGetValue("drenol", out double dreno1Value); // CORRIGIDO
             _currentNumericSensorReadings.TryGetValue("P1", out double p1Value);
             _currentNumericSensorReadings.TryGetValue("RPM", out double rpmValue);
-            _currentNumericSensorReadings.TryGetValue("fluxo1", out double fluxo1Value); // CORRIGIDO
+            _currentNumericSensorReadings.TryGetValue("fluxol", out double fluxo1Value); // CORRIGIDO
             _currentNumericSensorReadings.TryGetValue("temp", out double tempValue);
 
             // Aplica conversões para exibição no DataGridView
