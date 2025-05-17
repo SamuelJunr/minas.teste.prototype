@@ -294,16 +294,15 @@ namespace minas.teste.prototype.MVVM.View
 
             if (result == DialogResult.Yes)
             {
-                ConnectionSettingsApplication.UpdateConnection(
-                     comboBox1.SelectedItem.ToString(),
-                        (int)comboBox2.SelectedItem);
+               
                 MessageBox.Show("Configurações salvas com sucesso!");
             }
         }
 
         private void conexao_Load(object sender, EventArgs e)
         {
-            if (ConnectionSettingsApplication.TryAutoConnect())
+            ArduinoPortFinder finder = new ArduinoPortFinder(); // Declare and initialize the finder object
+            if (ConnectionSettingsApplication.TryAutoConnect(finder))
             {
                 MessageBox.Show($"Conectado automaticamente na porta {ConnectionSettingsApplication.PortName}");
                 // Atualiza UI com os valores persistentes
@@ -315,7 +314,6 @@ namespace minas.teste.prototype.MVVM.View
             {
                 MessageBox.Show("Arduino não encontrado. Selecione manualmente.");
             }
-
         }
     }
 }
