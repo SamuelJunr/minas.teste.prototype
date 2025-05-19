@@ -3,64 +3,79 @@ using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using minas.teste.prototype.MVVM.Repository.Context;
-using minas.teste.prototype.Service;
-using minas.teste.prototype.MVVM.Model.Concrete;
+using minas.teste.prototype.MVVM.Repository.Context; // Seu AppDbContext
+using minas.teste.prototype.Service;                 // Onde ArduinoPortFinder deve estar
+using minas.teste.prototype.MVVM.Model.Concrete;     // Onde ConnectionSettingsApplication está
+using minas.teste.prototype.MVVM.View;               // Para InformationForm, TelaInicial
+using System.Diagnostics;
 
 namespace minas.teste.prototype
 {
     static class Program
     {
-        /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
-        /// </summary>
+        public static IServiceProvider ServiceProvider { get; private set; }
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Adiciona um manipulador para o evento ApplicationExit
-            // Isso garante que a conexão serial seja fechada ao sair da aplicação.
             Application.ApplicationExit += Application_ApplicationExit;
 
-            var finder = new ArduinoPortFinder();
-
-            bool arduinoEncontrado = finder.FindArduinoAndConfirmData();
-            ConnectionSettingsApplication.TryAutoConnect(finder); // Adicionado o ponto e vírgula para corrigir CS1002
-
-            // Criação do modal
-            using (var infoForm = new InformationForm(arduinoEncontrado, finder.ConnectedPort))
-            {
-                infoForm.ShowDialog();
-                // Assumindo que TelaInicial é o formulário principal que mantém a aplicação rodando
-                Application.Run(new TelaInicial(finder.ConnectedPort));
-            }
-
-            // Configuração do HostBuilder para injeção de dependência
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
                     services.AddDbContext<AppDbContext>(options =>
-                        options.UseSqlite("Data Source=supervisory_SYSMT_data.db")); // Substitua pelo seu connection string
+                        options.UseSqlite("Data Source=supervisory_SYSMT_data.db")); // Substitua pela sua connection string
                 })
                 .Build();
 
-            // O host.Run() não será alcançado se Application.Run for usado para o ciclo de vida principal da UI.
-            // Se você mudar para um modelo de host para a UI, o encerramento do host
-            // também pode ser um ponto para fechar a conexão serial.
+            ServiceProvider = host.Services;
+            Debug.WriteLine("Program: Host construído e ServiceProvider configurado.");
+
+            // 1. Tentativa de Autoconexão
+            // Instancia o ArduinoPortFinder do namespace correto (Service)
+            // Se CS0246 ocorre aqui, é porque a classe ArduinoPortFinder
+            // não está definida corretamente no namespace minas.teste.prototype.Service
+            var finder = new ArduinoPortFinder();
+            bool autoConnectSuccess = false;
+
+            Debug.WriteLine("Program: Tentando autoconexão...");
+
+            // A chamada para ConnectionSettingsApplication.TryAutoConnect DEVE esperar
+            // um minas.teste.prototype.Service.ArduinoPortFinder como argumento.
+            if (ConnectionSettingsApplication.TryAutoConnect(finder: finder))
+            {
+                autoConnectSuccess = true;
+                Debug.WriteLine($"Program: Autoconexão bem-sucedida na porta {ConnectionSettingsApplication.CurrentPortName} @ {ConnectionSettingsApplication.CurrentBaudRate} bps.");
+            }
+            else
+            {
+                Debug.WriteLine("Program: Autoconexão falhou ou nenhuma porta Arduino válida foi encontrada/confirmada.");
+            }
+
+            // 2. Exibir formulário de informação sobre a autoconexão
+            // Passa o resultado e a porta (se conectada via ConnectionSettingsApplication)
+            using (var infoForm = new InformationForm(autoConnectSuccess, ConnectionSettingsApplication.CurrentPortName))
+            {
+                Debug.WriteLine("Program: Exibindo InformationForm.");
+                infoForm.ShowDialog();
+            }
+            Debug.WriteLine("Program: InformationForm fechado.");
+
+            // 3. Iniciar o Formulário Principal
+            Debug.WriteLine("Program: Iniciando TelaInicial.");
+            // TelaInicial pode verificar ConnectionSettingsApplication.IsCurrentlyConnected
+            // e ConnectionSettingsApplication.CurrentPortName para saber o estado da conexão.
+            Application.Run(new TelaInicial());
         }
 
-        /// <summary>
-        /// Manipulador para o evento ApplicationExit. Chamado quando a aplicação está saindo.
-        /// </summary>
         private static void Application_ApplicationExit(object sender, EventArgs e)
         {
-            // Garante que a conexão serial persistente seja fechada ao sair da aplicação.
+            Debug.WriteLine("Program: ApplicationExit disparado. Fechando todas as conexões seriais.");
             ConnectionSettingsApplication.CloseAllConnections();
+            Debug.WriteLine("Program: Conexões seriais fechadas.");
         }
-
-        // Adicionado o método TryAutoConnect para corrigir CS0103
-
     }
 }

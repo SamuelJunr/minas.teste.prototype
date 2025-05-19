@@ -1,76 +1,94 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using minas.teste.prototype.MVVM.Model.Abstract;
-using minas.teste.prototype.Service;
+using System.Diagnostics;
+using minas.teste.prototype.Service; // Certifique-se que este using está presente e correto
+
+// Remova qualquer using desnecessário que possa causar ambiguidade, como:
+// using minas.teste.prototype.MVVM.Model.Concrete.ArduinoPortFinder; // Se algo assim existir por engano
 
 namespace minas.teste.prototype.MVVM.Model.Concrete
 {
-    class ConnectionSettingsApplication : ConnectionSettingsBase
+    public static class ConnectionSettingsApplication
     {
-        // Properties and methods specific to the application connection settings
-        public static string PortName { get; set; }
-        public static int BaudRate { get; set; }
-
-        // A flag IsReceivingData e seu handler foram removidos, pois a validação do recebimento
-        // de dados no formato esperado é feita no ArduinoPortFinder durante a detecção automática.
+        public static string CurrentPortName { get; private set; }
+        public static int CurrentBaudRate { get; private set; }
+        public static bool IsCurrentlyConnected => _persistentSerialManager?.IsConnected ?? false;
 
         private static SerialManager _persistentSerialManager;
 
-        // Propriedade estática para acesso global.
-        // A subscrição do evento DataReceived deve ser feita pela classe UI (Tela_Bombas)
-        // que é responsável por processar e exibir os dados recebidos continuamente.
         public static SerialManager PersistentSerialManager
         {
             get
             {
                 if (_persistentSerialManager == null)
                 {
+                    Debug.WriteLine("ConnectionSettingsApplication: Criando nova instância de PersistentSerialManager.");
                     _persistentSerialManager = new SerialManager();
-                    // **Não subscreva o DataReceived aqui**; faça-o na classe que lida com a UI e processamento contínuo, como Tela_Bombas.
                 }
                 return _persistentSerialManager;
             }
-            private set => _persistentSerialManager = value;
         }
 
-        // O handler PersistentSerialManager_DataReceived foi removido.
-
-        public static void UpdateConnection(string port, int baudRate)
+        public static bool UpdateConnection(string port, int baudRate)
         {
-            // Desconecta a conexão anterior, se existir
-            if (_persistentSerialManager != null)
+            Debug.WriteLine($"ConnectionSettingsApplication: Tentando UpdateConnection para Porta: {port}, Baud: {baudRate}");
+            var manager = PersistentSerialManager;
+
+            if (manager.IsConnected)
             {
-                _persistentSerialManager.Disconnect();
+                Debug.WriteLine($"ConnectionSettingsApplication: Desconectando conexão existente em {CurrentPortName}@{CurrentBaudRate} antes de tentar nova conexão.");
+                manager.Disconnect();
             }
 
-            // Garante que PersistentSerialManager é inicializado antes de conectar
-            var managerToConnect = PersistentSerialManager;
+            manager.Connect(port, baudRate);
 
-            managerToConnect.Connect(port, baudRate);
-            PortName = port;
-            BaudRate = baudRate;
+            if (manager.IsConnected)
+            {
+                CurrentPortName = port;
+                CurrentBaudRate = baudRate;
+                Debug.WriteLine($"ConnectionSettingsApplication: Conexão bem-sucedida em {CurrentPortName}@{CurrentBaudRate}.");
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine($"ConnectionSettingsApplication: Falha ao conectar em {port}@{baudRate}.");
+                return false;
+            }
         }
 
         /// <summary>
-        /// Tenta realizar a conexão automática encontrando uma porta que envia dados no formato esperado.
-        /// Utiliza o finder para testar portas e baud rates.
+        /// Tenta realizar a conexão automática.
+        /// Utiliza o ArduinoPortFinder para encontrar uma porta e baud rate válidos,
+        /// e então tenta estabelecer a conexão no PersistentSerialManager.
         /// </summary>
-        /// <param name="finder">A instância do ArduinoPortFinder a ser usada.</param>
-        /// <returns>True se uma porta for encontrada e dados no formato esperado forem recebidos, False caso contrário.</returns>
-        public static bool TryAutoConnect(ArduinoPortFinder finder)
+        /// <param name="finder">A instância do ArduinoPortFinder do namespace minas.teste.prototype.Service.</param>
+        /// <returns>True se a autoconexão e a configuração do PersistentSerialManager forem bem-sucedidas.</returns>
+        public static bool TryAutoConnect(ArduinoPortFinder finder) // <--- CORREÇÃO APLICADA AQUI
         {
-            // O finder agora testará todas as portas e baud rates e confirmará
-            // a recepção de dados no formato específico.
-            if (finder.FindArduinoAndConfirmData()) // Chama o método aprimorado
+            if (finder == null)
             {
-                // Se o finder foi bem-sucedido, atualiza a conexão
-                UpdateConnection(finder.ConnectedPort, finder.BaudRate); // Usa as propriedades do finder
-                return true; // Conexão estabelecida e dados no formato esperado recebidos
+                Debug.WriteLine("ConnectionSettingsApplication.TryAutoConnect: ArduinoPortFinder não pode ser nulo.");
+                return false;
             }
-            // Se o finder falhou, nenhuma conexão funcional com o formato de dados esperado foi encontrada.
+
+            Debug.WriteLine("ConnectionSettingsApplication.TryAutoConnect: Chamando finder.FindArduinoAndConfirmData()...");
+            if (finder.TryFindArduinoAndConfirmData()) // finder executa a busca e validação
+            {
+                Debug.WriteLine($"ConnectionSettingsApplication.TryAutoConnect: Finder encontrou porta candidata: {finder.ConnectedPort}@{finder.BaudRate}. Tentando conexão persistente...");
+                // Se o finder foi bem-sucedido, usa UpdateConnection para estabelecer
+                // a conexão no PersistentSerialManager.
+                if (UpdateConnection(finder.ConnectedPort, finder.BaudRate))
+                {
+                    Debug.WriteLine("ConnectionSettingsApplication.TryAutoConnect: Conexão persistente estabelecida com sucesso.");
+                    return true;
+                }
+                else
+                {
+                    Debug.WriteLine("ConnectionSettingsApplication.TryAutoConnect: Finder encontrou uma porta, mas falha ao estabelecer conexão persistente.");
+                    return false;
+                }
+            }
+
+            Debug.WriteLine("ConnectionSettingsApplication.TryAutoConnect: Finder não encontrou nenhuma porta Arduino válida ou não confirmou os dados.");
             return false;
         }
 
@@ -78,9 +96,20 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
         {
             if (_persistentSerialManager != null)
             {
+                Debug.WriteLine("ConnectionSettingsApplication: Iniciando CloseAllConnections.");
                 _persistentSerialManager.Disconnect();
-                _persistentSerialManager = null; // Permite a re-inicialização via getter se necessário
+                _persistentSerialManager.Dispose();
+                _persistentSerialManager = null;
+                Debug.WriteLine("ConnectionSettingsApplication: Instância PersistentSerialManager desconectada e descartada.");
             }
+            else
+            {
+                Debug.WriteLine("ConnectionSettingsApplication: Nenhuma instância PersistentSerialManager para fechar.");
+            }
+
+            CurrentPortName = null;
+            CurrentBaudRate = 0;
+            Debug.WriteLine("ConnectionSettingsApplication: Configurações de porta e baud rate resetadas.");
         }
     }
 }

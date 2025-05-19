@@ -1,54 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.Linq; // Adicionado para .Contains
 using System.Threading;
-
+using System.Diagnostics; // Para Debug.WriteLine
 
 namespace minas.teste.prototype.Service
 {
-
     public class SerialManager : IDisposable
     {
-        // Configurações
         public List<string> AvailablePorts { get; private set; } = new List<string>();
         public static List<int> CommonBaudRates { get; } = new List<int>
-    {
-        300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200
-    };
+        {
+            300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200, 230400, 250000 // Adicionado baud rates mais altos
+        };
         private bool _isConnected;
         public bool IsConnected => _isConnected;
 
-        // Eventos
+        public string PortName { get; internal set; }
+        public int BaudRate { get; internal set; }
+
         public event EventHandler<string> DataReceived;
         public event EventHandler<bool> ConnectionStatusChanged;
-        public event EventHandler<string> ErrorOccurred;
+        public event EventHandler<string> ErrorOccurred; // Alterado para EventHandler<string> para passar a mensagem de erro
 
         private SerialPort _serialPort;
-        private SynchronizationContext _context;
+        private readonly SynchronizationContext _context; // Tornar readonly
+
+        // Buffer para leitura mais eficiente
+        private byte[] _readBuffer; // Buffer de bytes para leitura
+        private const int DefaultReadBufferSize = 4096; // Pode ser ajustado
+
         public SerialManager()
         {
-            // Garantir que o contexto seja capturado corretamente
             _context = SynchronizationContext.Current ?? new SynchronizationContext();
             RefreshPorts();
         }
 
         public void RefreshPorts()
         {
-            AvailablePorts.Clear();
-            AvailablePorts.AddRange(SerialPort.GetPortNames());
+            try
+            {
+                AvailablePorts.Clear();
+                AvailablePorts.AddRange(SerialPort.GetPortNames());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SerialManager: Erro ao listar portas: {ex.Message}");
+                OnErrorOccurred($"Erro ao listar portas disponíveis: {ex.Message}");
+                AvailablePorts.Clear(); // Garante que a lista esteja vazia em caso de erro
+            }
         }
 
         public void Connect(string portName, int baudRate)
         {
+            if (string.IsNullOrEmpty(portName))
+            {
+                OnErrorOccurred("Nome da porta não pode ser vazio.");
+                return;
+            }
+
             try
             {
                 if (_serialPort?.IsOpen == true) Disconnect();
 
-                // Verifica se a porta está disponível
-                if (!AvailablePorts.Contains(portName))
+                RefreshPorts(); // Atualiza a lista de portas antes de verificar
+                if (!AvailablePorts.Contains(portName)) // Usar Linq.Contains
                 {
-                    _isConnected = false;
-                    OnErrorOccurred($"A porta {portName} não está disponível.");
+                    _isConnected = false; // Garantir que esteja falso
+                    OnConnectionStatusChanged(false); // Notificar status
+                    OnErrorOccurred($"A porta {portName} não está disponível ou foi desconectada.");
                     return;
                 }
 
@@ -58,60 +79,80 @@ namespace minas.teste.prototype.Service
                     DataBits = 8,
                     StopBits = StopBits.One,
                     Handshake = Handshake.None,
-                    ReadTimeout = 100,
-                    WriteTimeout = 100
+                    ReadTimeout = 500,  // Aumentado ligeiramente para flexibilidade, mas ReadExisting não bloqueia por muito tempo
+                    WriteTimeout = 500,
+                    ReadBufferSize = DefaultReadBufferSize * 2, // Aumenta o buffer interno do SerialPort (Sugestão 1)
+                    ReceivedBytesThreshold = 1 // Dispara evento o mais rápido possível (Sugestão 1)
                 };
 
+                _readBuffer = new byte[_serialPort.ReadBufferSize]; // Inicializa o buffer de bytes
+
                 _serialPort.DataReceived += HandleDataReceived;
+                _serialPort.ErrorReceived += HandleErrorReceived; // Adiciona handler para erros da porta
                 _serialPort.Open();
                 _isConnected = true;
                 OnConnectionStatusChanged(true);
             }
-            catch (UnauthorizedAccessException)
+            catch (UnauthorizedAccessException ex)
             {
                 _isConnected = false;
-                OnErrorOccurred($"Acesso negado à porta {portName}. Verifique se ela está em uso por outro programa ou execute o aplicativo como administrador.");
+                OnConnectionStatusChanged(false);
+                OnErrorOccurred($"Acesso negado à porta {portName}. Verifique se ela está em uso ou se há permissões. Detalhes: {ex.Message}");
+            }
+            catch (System.IO.IOException ex)
+            {
+                _isConnected = false;
+                OnConnectionStatusChanged(false);
+                OnErrorOccurred($"Erro de IO na porta {portName}. A porta pode não existir ou o dispositivo foi removido. Detalhes: {ex.Message}");
             }
             catch (Exception ex)
             {
                 _isConnected = false;
-                OnErrorOccurred($"Erro na conexão: {ex.Message}");
+                OnConnectionStatusChanged(false);
+                OnErrorOccurred($"Erro desconhecido ao conectar à porta {portName}: {ex.Message}");
             }
         }
 
         public void Disconnect()
         {
+            if (_serialPort == null) return;
+
             try
             {
-                if (_serialPort != null)
+                if (_serialPort.IsOpen)
                 {
-                    if (_serialPort.IsOpen)
-                    {
-                        // Desinscreve o manipulador de eventos DataReceived antes de fechar a porta
-                        // para evitar chamadas após a porta ser fechada.
-                        _serialPort.DataReceived -= HandleDataReceived;
-                        _serialPort.Close();
-                    }
-                    // Libera os recursos nativos associados ao SerialPort
-                    _serialPort.Dispose();
-                    _serialPort = null; // Define como null para indicar que não há porta ativa
-                    _isConnected = false;
-                    OnConnectionStatusChanged(false);
+                    _serialPort.DataReceived -= HandleDataReceived;
+                    _serialPort.ErrorReceived -= HandleErrorReceived;
+
+                    // Em algumas situações, fechar a porta pode bloquear ou demorar.
+                    // Considerar executar em uma Task se isso se tornar um problema de responsividade da UI ao desconectar.
+                    _serialPort.Close();
                 }
             }
             catch (Exception ex)
             {
-                // Em caso de erro ao fechar, loga o erro mas continua para tentar liberar recursos
-                OnErrorOccurred($"Erro ao desconectar: {ex.Message}");
-                // Tenta descartar mesmo se fechar falhou, para liberar o handle do SO
-                if (_serialPort != null)
-                {
-                    try { _serialPort.Dispose(); } catch { /* Ignora erros no dispose final */ }
-                    _serialPort = null; // Garante que a referência seja nula
-                }
-                _isConnected = false;
-                OnConnectionStatusChanged(false); // Garante que o status seja atualizado
+                OnErrorOccurred($"Erro ao fechar a porta em Disconnect: {ex.Message}");
             }
+            finally // Garante que Dispose seja chamado e o status atualizado
+            {
+                // _serialPort.Dispose() também chama Close() internamente se a porta estiver aberta.
+                _serialPort.Dispose();
+                _serialPort = null;
+                _readBuffer = null; // Limpar buffer
+                if (_isConnected) // Só altera e notifica se o estado realmente mudou
+                {
+                    _isConnected = false;
+                    OnConnectionStatusChanged(false);
+                }
+            }
+        }
+
+        private void HandleErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+        {
+            // Erros como Parity, Frame, Overrun podem ser tratados aqui.
+            OnErrorOccurred($"Erro da porta serial: {e.EventType}");
+            // Dependendo do erro, você pode querer tentar uma desconexão/reconexão
+            // ou apenas logar e informar o usuário.
         }
 
         public void SendData(string data)
@@ -120,8 +161,18 @@ namespace minas.teste.prototype.Service
             {
                 if (_serialPort?.IsOpen == true)
                 {
+                    // Adicionar um NewLine se o dispositivo esperar por isso com WriteLine
+                    // ou usar _serialPort.Write(data) se a terminação já estiver na string 'data'.
                     _serialPort.WriteLine(data);
                 }
+                else
+                {
+                    OnErrorOccurred("Não é possível enviar dados. Porta não está aberta.");
+                }
+            }
+            catch (TimeoutException ex)
+            {
+                OnErrorOccurred($"Timeout ao enviar dados: {ex.Message}");
             }
             catch (Exception ex)
             {
@@ -131,88 +182,97 @@ namespace minas.teste.prototype.Service
 
         private void HandleDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            // Este método roda em uma thread secundária.
-            // Qualquer acesso a controles de UI deve ser feito via Invoke/BeginInvoke.
-            // O SafeInvoke já lida com isso.
+            if (_serialPort == null || !_serialPort.IsOpen) return;
+
             try
             {
-                // Lê todos os dados disponíveis no buffer da porta serial
-                var data = _serialPort.ReadExisting();
-                if (!string.IsNullOrEmpty(data))
+                // Lê todos os bytes disponíveis para o buffer _readBuffer.
+                // Isso é mais eficiente do que ReadExisting() que cria uma nova string a cada chamada
+                // e pode envolver múltiplas leituras internas.
+                int bytesToRead = _serialPort.BytesToRead;
+                if (bytesToRead > 0)
                 {
-                    // Dispara o evento DataReceived na thread do contexto de sincronização (UI thread se capturado)
-                    SafeInvoke(() => DataReceived?.Invoke(this, data));
+                    if (bytesToRead > _readBuffer.Length)
+                    {
+                        // Isso não deveria acontecer se ReadBufferSize for grande o suficiente
+                        // e os dados forem lidos com frequência. Se acontecer, pode ser necessário
+                        // um buffer maior ou uma estratégia de leitura em loop.
+                        Debug.WriteLine($"SerialManager: BytesToRead ({bytesToRead}) excede o tamanho do _readBuffer ({_readBuffer.Length}). Lendo em partes ou truncando.");
+                        // Para simplificar, vamos ler apenas o que cabe no buffer.
+                        // Uma solução mais robusta leria em loop até esvaziar o buffer da porta.
+                        bytesToRead = _readBuffer.Length;
+                    }
+
+                    int bytesRead = _serialPort.Read(_readBuffer, 0, bytesToRead);
+                    if (bytesRead > 0)
+                    {
+                        // Converte os bytes lidos para string usando a codificação da porta (geralmente ASCII ou UTF-8 para Arduino)
+                        // SerialPort.Encoding padrão é ASCII. Se o Arduino envia UTF-8 ou outros caracteres, ajuste.
+                        string data = _serialPort.Encoding.GetString(_readBuffer, 0, bytesRead);
+                        SafeInvoke(() => DataReceived?.Invoke(this, data));
+                    }
                 }
+            }
+            catch (TimeoutException)
+            {
+                // ReadTimeout pode ocorrer se a porta for fechada enquanto uma leitura está pendente,
+                // ou se o dispositivo parar de enviar dados inesperadamente.
+                // Geralmente, com ReceivedBytesThreshold = 1 e leitura reativa, isso é menos comum.
+                Debug.WriteLine("SerialManager: Timeout na leitura da porta serial.");
+                // Não necessariamente um erro a ser propagado para o usuário como crítico,
+                // a menos que se torne frequente.
             }
             catch (Exception ex)
             {
-                // Lida com erros durante a recepção de dados
-                OnErrorOccurred($"Erro na recepção: {ex.Message}");
-                // Em caso de erro grave na recepção, pode ser necessário desconectar
-                // para evitar um loop de erros. No entanto, desconectar aqui diretamente
-                // pode causar deadlocks ou outros problemas de thread.
-                // Uma abordagem mais segura seria sinalizar a thread da UI
-                // para iniciar o processo de desconexão.
-                // Por enquanto, apenas logamos o erro.
+                // Erros inesperados durante a leitura
+                OnErrorOccurred($"Erro crítico na recepção de dados: {ex.Message}");
+                // Considerar uma desconexão controlada aqui se o erro for grave e repetitivo.
+                // Ex: SafeInvoke(() => AttemptControlledDisconnectAndNotify("Erro crítico na leitura: " + ex.Message));
             }
         }
 
-        /// <summary>
-        /// Invoca uma ação na thread do contexto de sincronização capturado (geralmente a thread da UI).
-        /// Se nenhum contexto foi capturado ou já estamos na thread correta, executa a ação diretamente.
-        /// </summary>
-        /// <param name="action">A ação a ser executada.</param>
         private void SafeInvoke(Action action)
         {
-            // Verifica se há um contexto de sincronização e se não estamos já nele
-            if (_context != null && _context != SynchronizationContext.Current)
+            if (_context != SynchronizationContext.Current && _context != null) // Verifica se _context não é null
             {
-                // Posta a ação para ser executada na thread do contexto
                 _context.Post(_ => action(), null);
             }
             else
             {
-                // Executa a ação diretamente se não houver contexto ou já estiver na thread correta
                 action();
             }
         }
 
-        /// <summary>
-        /// Dispara o evento ConnectionStatusChanged de forma segura para a thread.
-        /// </summary>
-        /// <param name="isConnected">O novo status da conexão.</param>
-        private void OnConnectionStatusChanged(bool isConnected)
+        private void OnConnectionStatusChanged(bool connected)
         {
-            SafeInvoke(() => ConnectionStatusChanged?.Invoke(this, isConnected));
+            SafeInvoke(() => ConnectionStatusChanged?.Invoke(this, connected));
         }
 
-        /// <summary>
-        /// Dispara o evento ErrorOccurred de forma segura para a thread.
-        /// </summary>
-        /// <param name="message">A mensagem de erro.</param>
         private void OnErrorOccurred(string message)
         {
             SafeInvoke(() => ErrorOccurred?.Invoke(this, message));
         }
 
-        /// <summary>
-        /// Implementação do padrão IDisposable. Garante que a conexão serial seja fechada
-        /// e os recursos liberados quando o objeto SerialManager for descartado.
-        /// </summary>
         public void Dispose()
         {
-            // Chama Disconnect para fechar a porta e liberar recursos.
-            Disconnect();
-            // Indica que o objeto já foi descartado para o coletor de lixo.
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        // Opcional: Finalizador (destrutor) caso Dispose não seja chamado explicitamente.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Liberar recursos gerenciados (como o SerialPort)
+                Disconnect(); // Disconnect já lida com _serialPort?.Dispose()
+            }
+            // Liberar recursos não gerenciados (se houver)
+        }
+
+        // Remover finalizador se não houver recursos não gerenciados diretos na classe
         // ~SerialManager()
         // {
-        //     // Limpeza de recursos não gerenciados (a porta serial é um recurso não gerenciado)
-        //     // Isso só deve ser feito se Dispose não foi chamado.
-        //     // Disconnect(false); // Passa false para evitar disparar eventos ou logar novamente
+        //     Dispose(false);
         // }
     }
 }

@@ -29,28 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            CodeArtEng.Gauge.Themes.ThemeColors themeColors1 = new CodeArtEng.Gauge.Themes.ThemeColors();
-            CodeArtEng.Gauge.Themes.ThemeColors themeColors2 = new CodeArtEng.Gauge.Themes.ThemeColors();
-            CodeArtEng.Gauge.Themes.ThemeColors themeColors3 = new CodeArtEng.Gauge.Themes.ThemeColors();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_Bombas));
             this.painelBase = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -88,84 +75,19 @@
             this.btnrelatoriobomba = new CuoreUI.Controls.cuiButton();
             this.bntFinalizar = new CuoreUI.Controls.cuiButton();
             this.btniniciarteste = new CuoreUI.Controls.cuiButton();
-            this.labMedidas = new CuoreUI.Controls.cuiLabel();
             this.labControle = new CuoreUI.Controls.cuiLabel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.unidade_medidasvazao1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.sensor_Vazao_LPM = new System.Windows.Forms.TextBox();
-            this.sensor_Vazao_GPM = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.unidade_medidapilotagem1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.sensor_bar_PL = new System.Windows.Forms.TextBox();
-            this.sensor_psi_PL = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.Temperatura = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.unidade_medidatemp = new System.Windows.Forms.Button();
-            this.sensor_Temp_C = new System.Windows.Forms.TextBox();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.unidade_medidadreno1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.sensor_lpm_DR = new System.Windows.Forms.TextBox();
-            this.sensor_gpm_DR = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.unidade_medidapressao1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.sensor_Press_BAR = new System.Windows.Forms.TextBox();
-            this.sensor_Press_PSI = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.rotacao = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.unidade_medidarota = new System.Windows.Forms.Button();
-            this.sensor_rotacao_RPM = new System.Windows.Forms.TextBox();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.labEtapa = new CuoreUI.Controls.cuiLabel();
-            this.gaugePanel1 = new CodeArtEng.Gauge.PanelGauges.GaugePanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.labetapas = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.metroUserControl1 = new MetroFramework.Controls.MetroUserControl();
-            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
-            this.graficos_dados_tab = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.labParametro = new CuoreUI.Controls.cuiLabel();
-            this.visualizador = new System.Windows.Forms.DataGridView();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.checkBox_psi = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
             this.labminutos = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.checkBox_temperatura = new System.Windows.Forms.CheckBox();
             this.checkBox_rotacao = new System.Windows.Forms.CheckBox();
@@ -186,15 +108,96 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.labAutoma = new CuoreUI.Controls.cuiLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.mascaraabertura = new CuoreUI.Components.cuiFormAnimator(this.components);
+            this.labAutoma = new CuoreUI.Controls.cuiLabel();
+            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.LbMotorB2 = new System.Windows.Forms.Label();
+            this.LbMotorB1 = new System.Windows.Forms.Label();
+            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.LbMotorA2 = new System.Windows.Forms.Label();
+            this.LbMotorA1 = new System.Windows.Forms.Label();
+            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.LbHidroB2 = new System.Windows.Forms.Label();
+            this.LbHidroB1 = new System.Windows.Forms.Label();
+            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.textBox38 = new System.Windows.Forms.TextBox();
+            this.labMedidas = new CuoreUI.Controls.cuiLabel();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.LbHidroA2 = new System.Windows.Forms.Label();
+            this.LbHidroA1 = new System.Windows.Forms.Label();
+            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.LbRota = new System.Windows.Forms.Label();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.LbTemp = new System.Windows.Forms.Label();
+            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.LbVazao4 = new System.Windows.Forms.Label();
+            this.LbVazao3 = new System.Windows.Forms.Label();
+            this.LbVazao2 = new System.Windows.Forms.Label();
+            this.LbVazao1 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.LbPressao4 = new System.Windows.Forms.Label();
+            this.LbPressao3 = new System.Windows.Forms.Label();
+            this.LbPressao2 = new System.Windows.Forms.Label();
+            this.LbPressao1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.sensor_psi_PL = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.LbPilotagem4 = new System.Windows.Forms.Label();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.LbPilotagem3 = new System.Windows.Forms.Label();
+            this.LbPilotagem2 = new System.Windows.Forms.Label();
+            this.LbPilotagem1 = new System.Windows.Forms.Label();
+            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LbDreno1 = new System.Windows.Forms.Label();
+            this.LbDreno2 = new System.Windows.Forms.Label();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.graficos_dados_tab = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
-            this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.painelBase.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -211,52 +214,34 @@
             this.metroPanel3.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.Temperatura.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.rotacao.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
-            this.tableLayoutPanel15.SuspendLayout();
-            this.gaugePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            this.tableLayoutPanel18.SuspendLayout();
-            this.graficos_dados_tab.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tableLayoutPanel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.visualizador)).BeginInit();
             this.metroPanel2.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.metroPanel4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.metroPanel5.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.graficos_dados_tab.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
-            this.metroPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBase
@@ -274,9 +259,9 @@
             this.painelBase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.painelBase.Name = "painelBase";
             this.painelBase.RowCount = 3;
-            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 165F));
             this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 743F));
+            this.painelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 763F));
             this.painelBase.Size = new System.Drawing.Size(1928, 992);
             this.painelBase.TabIndex = 0;
             // 
@@ -293,7 +278,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.57252F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1920, 181);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1920, 161);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -310,7 +295,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.19048F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1395, 177);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1395, 157);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // painalFuncaoes
@@ -320,26 +305,26 @@
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.31102F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.68898F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 235F));
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel2, 3, 0);
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel3, 2, 0);
             this.painalFuncaoes.Controls.Add(this.Stage_box_bomba, 0, 0);
             this.painalFuncaoes.Controls.Add(this.tableLayoutPanel14, 1, 0);
             this.painalFuncaoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.painalFuncaoes.Location = new System.Drawing.Point(3, 44);
+            this.painalFuncaoes.Location = new System.Drawing.Point(3, 39);
             this.painalFuncaoes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.painalFuncaoes.Name = "painalFuncaoes";
             this.painalFuncaoes.RowCount = 1;
             this.painalFuncaoes.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.painalFuncaoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 129F));
-            this.painalFuncaoes.Size = new System.Drawing.Size(1389, 131);
+            this.painalFuncaoes.Size = new System.Drawing.Size(1389, 116);
             this.painalFuncaoes.TabIndex = 0;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.Controls.Add(this.labelCronometro_bomba);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(1198, 4);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1197, 4);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(144, 62);
@@ -360,7 +345,7 @@
             // 
             this.flowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel3.Controls.Add(this.LabelHorariotela);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(992, 4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(989, 4);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(153, 62);
@@ -396,13 +381,13 @@
             this.tableLayoutPanel14.Controls.Add(this.HistoricalEvents, 0, 1);
             this.tableLayoutPanel14.Controls.Add(this.dadosentrada1, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(246, 6);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(245, 6);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(733, 119);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(731, 119);
             this.tableLayoutPanel14.TabIndex = 49;
             // 
             // HistoricalEvents
@@ -417,7 +402,7 @@
             this.HistoricalEvents.Multiline = true;
             this.HistoricalEvents.Name = "HistoricalEvents";
             this.HistoricalEvents.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.HistoricalEvents.Size = new System.Drawing.Size(727, 53);
+            this.HistoricalEvents.Size = new System.Drawing.Size(725, 49);
             this.HistoricalEvents.TabIndex = 49;
             // 
             // dadosentrada1
@@ -426,7 +411,7 @@
             this.dadosentrada1.ColumnCount = 3;
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.04301F));
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.95699F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 187F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
@@ -439,14 +424,14 @@
             this.dadosentrada1.RowCount = 2;
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.23256F));
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.76744F));
-            this.dadosentrada1.Size = new System.Drawing.Size(727, 53);
+            this.dadosentrada1.Size = new System.Drawing.Size(725, 53);
             this.dadosentrada1.TabIndex = 48;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(562, 1);
+            this.label4.Location = new System.Drawing.Point(559, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
@@ -456,7 +441,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(432, 1);
+            this.label5.Location = new System.Drawing.Point(429, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
@@ -465,7 +450,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(543, 19);
+            this.textBox4.Location = new System.Drawing.Point(539, 19);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -475,11 +460,11 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(392, 19);
+            this.textBox5.Location = new System.Drawing.Point(389, 19);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(144, 29);
+            this.textBox5.Size = new System.Drawing.Size(143, 29);
             this.textBox5.TabIndex = 5;
             // 
             // textBox6
@@ -489,14 +474,14 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(381, 29);
+            this.textBox6.Size = new System.Drawing.Size(378, 29);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(133, 1);
+            this.label6.Location = new System.Drawing.Point(131, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 15);
             this.label6.TabIndex = 7;
@@ -511,7 +496,7 @@
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.3609F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.6391F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 235F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
@@ -523,7 +508,7 @@
             this.painelTitulos.RowCount = 1;
             this.painelTitulos.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.painelTitulos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.painelTitulos.Size = new System.Drawing.Size(1389, 38);
+            this.painelTitulos.Size = new System.Drawing.Size(1389, 33);
             this.painelTitulos.TabIndex = 1;
             // 
             // text_teste
@@ -532,9 +517,9 @@
             this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(1157, 2);
+            this.text_teste.Location = new System.Drawing.Point(1154, 2);
             this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(227, 16);
+            this.text_teste.Size = new System.Drawing.Size(230, 16);
             this.text_teste.TabIndex = 45;
             this.text_teste.Text = "TESTE";
             this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -545,7 +530,7 @@
             this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(988, 2);
+            this.text_datahora.Location = new System.Drawing.Point(985, 2);
             this.text_datahora.Name = "text_datahora";
             this.text_datahora.Size = new System.Drawing.Size(161, 16);
             this.text_datahora.TabIndex = 44;
@@ -560,7 +545,7 @@
             this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_nometeste.Location = new System.Drawing.Point(245, 2);
             this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(735, 16);
+            this.text_nometeste.Size = new System.Drawing.Size(732, 16);
             this.text_nometeste.TabIndex = 43;
             this.text_nometeste.Text = "DADOS DO ENSAIO";
             this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -588,14 +573,14 @@
             this.Imagem_minasteste.Location = new System.Drawing.Point(3, 2);
             this.Imagem_minasteste.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Imagem_minasteste.Name = "Imagem_minasteste";
-            this.Imagem_minasteste.Size = new System.Drawing.Size(513, 177);
+            this.Imagem_minasteste.Size = new System.Drawing.Size(513, 157);
             this.Imagem_minasteste.TabIndex = 1;
             this.Imagem_minasteste.TabStop = false;
             // 
             // separador_1
             // 
             this.separador_1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.separador_1.Location = new System.Drawing.Point(4, 189);
+            this.separador_1.Location = new System.Drawing.Point(4, 169);
             this.separador_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.separador_1.Name = "separador_1";
             this.separador_1.OutlineThickness = 1F;
@@ -608,18 +593,18 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.40028F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.64451F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.02519F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.22587F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.55086F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.22326F));
             this.tableLayoutPanel1.Controls.Add(this.metroPanel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel10, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.metroPanel2, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 206);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 186);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1917, 780);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1917, 801);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // metroPanel1
@@ -636,7 +621,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(4, 4);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(607, 772);
+            this.metroPanel1.Size = new System.Drawing.Size(972, 793);
             this.metroPanel1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel1.StyleManager = null;
             this.metroPanel1.TabIndex = 0;
@@ -650,16 +635,8 @@
             // 
             this.metroPanel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.metroPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.metroPanel3.Controls.Add(this.tableLayoutPanel11);
-            this.metroPanel3.Controls.Add(this.tableLayoutPanel12);
-            this.metroPanel3.Controls.Add(this.labMedidas);
-            this.metroPanel3.Controls.Add(this.labControle);
-            this.metroPanel3.Controls.Add(this.groupBox2);
-            this.metroPanel3.Controls.Add(this.groupBox5);
-            this.metroPanel3.Controls.Add(this.Temperatura);
-            this.metroPanel3.Controls.Add(this.groupBox4);
-            this.metroPanel3.Controls.Add(this.groupBox3);
-            this.metroPanel3.Controls.Add(this.rotacao);
+            this.metroPanel3.Controls.Add(this.graficos_dados_tab);
+            this.metroPanel3.Controls.Add(this.panel1);
             this.metroPanel3.CustomBackground = true;
             this.metroPanel3.HorizontalScrollbar = false;
             this.metroPanel3.HorizontalScrollbarBarColor = true;
@@ -668,7 +645,7 @@
             this.metroPanel3.Location = new System.Drawing.Point(4, 4);
             this.metroPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel3.Name = "metroPanel3";
-            this.metroPanel3.Size = new System.Drawing.Size(595, 761);
+            this.metroPanel3.Size = new System.Drawing.Size(960, 781);
             this.metroPanel3.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel3.StyleManager = null;
             this.metroPanel3.TabIndex = 2;
@@ -689,13 +666,13 @@
             this.tableLayoutPanel11.Controls.Add(this.cuiButton3, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.btngravar, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.btnreset, 0, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(4, 663);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(7, 121);
             this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(587, 94);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(599, 75);
             this.tableLayoutPanel11.TabIndex = 89;
             // 
             // cuiButton3
@@ -719,7 +696,7 @@
             this.cuiButton3.ImageExpand = new System.Drawing.Point(0, 0);
             this.cuiButton3.ImageOffset = new System.Drawing.Point(0, 0);
             this.cuiButton3.ImageTint = System.Drawing.Color.White;
-            this.cuiButton3.Location = new System.Drawing.Point(402, 4);
+            this.cuiButton3.Location = new System.Drawing.Point(414, 4);
             this.cuiButton3.Margin = new System.Windows.Forms.Padding(4);
             this.cuiButton3.Name = "cuiButton3";
             this.cuiButton3.NormalBackground = System.Drawing.Color.Black;
@@ -730,7 +707,7 @@
             this.cuiButton3.PressedImageTint = System.Drawing.Color.White;
             this.cuiButton3.PressedOutline = System.Drawing.Color.Empty;
             this.cuiButton3.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton3.Size = new System.Drawing.Size(181, 86);
+            this.cuiButton3.Size = new System.Drawing.Size(181, 67);
             this.cuiButton3.TabIndex = 7;
             this.cuiButton3.TextOffset = new System.Drawing.Point(0, 0);
             this.cuiButton3.Click += new System.EventHandler(this.CloseWindows_Click);
@@ -756,7 +733,7 @@
             this.btngravar.ImageExpand = new System.Drawing.Point(0, 0);
             this.btngravar.ImageOffset = new System.Drawing.Point(0, 0);
             this.btngravar.ImageTint = System.Drawing.Color.White;
-            this.btngravar.Location = new System.Drawing.Point(201, 4);
+            this.btngravar.Location = new System.Drawing.Point(213, 4);
             this.btngravar.Margin = new System.Windows.Forms.Padding(4);
             this.btngravar.Name = "btngravar";
             this.btngravar.NormalBackground = System.Drawing.Color.Gray;
@@ -767,7 +744,7 @@
             this.btngravar.PressedImageTint = System.Drawing.Color.White;
             this.btngravar.PressedOutline = System.Drawing.Color.Empty;
             this.btngravar.Rounding = new System.Windows.Forms.Padding(8);
-            this.btngravar.Size = new System.Drawing.Size(193, 86);
+            this.btngravar.Size = new System.Drawing.Size(193, 67);
             this.btngravar.TabIndex = 6;
             this.btngravar.TextOffset = new System.Drawing.Point(0, 0);
             this.btngravar.Click += new System.EventHandler(this.btn_gravar_Click);
@@ -804,10 +781,9 @@
             this.btnreset.PressedImageTint = System.Drawing.Color.White;
             this.btnreset.PressedOutline = System.Drawing.Color.Empty;
             this.btnreset.Rounding = new System.Windows.Forms.Padding(8);
-            this.btnreset.Size = new System.Drawing.Size(188, 86);
+            this.btnreset.Size = new System.Drawing.Size(188, 67);
             this.btnreset.TabIndex = 4;
             this.btnreset.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnreset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // tableLayoutPanel12
             // 
@@ -818,15 +794,15 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
             this.tableLayoutPanel12.Controls.Add(this.btnrelatoriobomba, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.bntFinalizar, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.btniniciarteste, 0, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(4, 545);
+            this.tableLayoutPanel12.Controls.Add(this.bntFinalizar, 2, 0);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(7, 40);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(587, 94);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(599, 77);
             this.tableLayoutPanel12.TabIndex = 88;
             // 
             // btnrelatoriobomba
@@ -850,7 +826,7 @@
             this.btnrelatoriobomba.ImageExpand = new System.Drawing.Point(0, 0);
             this.btnrelatoriobomba.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnrelatoriobomba.ImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.Location = new System.Drawing.Point(200, 4);
+            this.btnrelatoriobomba.Location = new System.Drawing.Point(212, 4);
             this.btnrelatoriobomba.Margin = new System.Windows.Forms.Padding(4);
             this.btnrelatoriobomba.Name = "btnrelatoriobomba";
             this.btnrelatoriobomba.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
@@ -861,7 +837,7 @@
             this.btnrelatoriobomba.PressedImageTint = System.Drawing.Color.White;
             this.btnrelatoriobomba.PressedOutline = System.Drawing.Color.Empty;
             this.btnrelatoriobomba.Rounding = new System.Windows.Forms.Padding(8);
-            this.btnrelatoriobomba.Size = new System.Drawing.Size(192, 86);
+            this.btnrelatoriobomba.Size = new System.Drawing.Size(192, 69);
             this.btnrelatoriobomba.TabIndex = 6;
             this.btnrelatoriobomba.TextOffset = new System.Drawing.Point(0, 0);
             this.btnrelatoriobomba.Click += new System.EventHandler(this.btnrelatoriobomba_Click);
@@ -887,7 +863,7 @@
             this.bntFinalizar.ImageExpand = new System.Drawing.Point(0, 0);
             this.bntFinalizar.ImageOffset = new System.Drawing.Point(0, 0);
             this.bntFinalizar.ImageTint = System.Drawing.Color.White;
-            this.bntFinalizar.Location = new System.Drawing.Point(400, 4);
+            this.bntFinalizar.Location = new System.Drawing.Point(412, 4);
             this.bntFinalizar.Margin = new System.Windows.Forms.Padding(4);
             this.bntFinalizar.Name = "bntFinalizar";
             this.bntFinalizar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
@@ -898,7 +874,7 @@
             this.bntFinalizar.PressedImageTint = System.Drawing.Color.White;
             this.bntFinalizar.PressedOutline = System.Drawing.Color.Empty;
             this.bntFinalizar.Rounding = new System.Windows.Forms.Padding(8);
-            this.bntFinalizar.Size = new System.Drawing.Size(183, 86);
+            this.bntFinalizar.Size = new System.Drawing.Size(183, 69);
             this.bntFinalizar.TabIndex = 5;
             this.bntFinalizar.TextOffset = new System.Drawing.Point(0, 0);
             this.bntFinalizar.Click += new System.EventHandler(this.btnParar_Click);
@@ -935,970 +911,53 @@
             this.btniniciarteste.PressedImageTint = System.Drawing.Color.White;
             this.btniniciarteste.PressedOutline = System.Drawing.Color.Empty;
             this.btniniciarteste.Rounding = new System.Windows.Forms.Padding(8);
-            this.btniniciarteste.Size = new System.Drawing.Size(188, 86);
+            this.btniniciarteste.Size = new System.Drawing.Size(188, 69);
             this.btniniciarteste.TabIndex = 3;
             this.btniniciarteste.TextOffset = new System.Drawing.Point(0, 0);
             this.btniniciarteste.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
-            // labMedidas
-            // 
-            this.labMedidas.Content = "MÉTRICAS\\ DE\\ BOMBAS";
-            this.labMedidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labMedidas.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.labMedidas.Location = new System.Drawing.Point(144, 7);
-            this.labMedidas.Margin = new System.Windows.Forms.Padding(5);
-            this.labMedidas.Name = "labMedidas";
-            this.labMedidas.Size = new System.Drawing.Size(329, 26);
-            this.labMedidas.TabIndex = 87;
-            // 
             // labControle
             // 
+            this.labControle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labControle.Content = "CONTROLE";
             this.labControle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labControle.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.labControle.Location = new System.Drawing.Point(160, 512);
+            this.labControle.Location = new System.Drawing.Point(167, 5);
             this.labControle.Margin = new System.Windows.Forms.Padding(5);
             this.labControle.Name = "labControle";
             this.labControle.Size = new System.Drawing.Size(280, 26);
             this.labControle.TabIndex = 86;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tableLayoutPanel4);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(303, 36);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(288, 156);
-            this.groupBox2.TabIndex = 82;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "VAZÃO";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.56097F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.43903F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel4.Controls.Add(this.unidade_medidasvazao1, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.button5, 2, 1);
-            this.tableLayoutPanel4.Controls.Add(this.sensor_Vazao_LPM, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.sensor_Vazao_GPM, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.panel6, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 18);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(275, 125);
-            this.tableLayoutPanel4.TabIndex = 10;
-            // 
-            // unidade_medidasvazao1
-            // 
-            this.unidade_medidasvazao1.BackColor = System.Drawing.Color.Black;
-            this.unidade_medidasvazao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidade_medidasvazao1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidasvazao1.Location = new System.Drawing.Point(208, 2);
-            this.unidade_medidasvazao1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.unidade_medidasvazao1.Name = "unidade_medidasvazao1";
-            this.unidade_medidasvazao1.Size = new System.Drawing.Size(63, 60);
-            this.unidade_medidasvazao1.TabIndex = 25;
-            this.unidade_medidasvazao1.Text = "GPM";
-            this.unidade_medidasvazao1.UseVisualStyleBackColor = true;
-            this.unidade_medidasvazao1.Click += new System.EventHandler(this.unidade_medidasvazao1_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Black;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button5.Location = new System.Drawing.Point(208, 66);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(63, 57);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "LPM";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.unidade_medidasvazao2_Click);
-            // 
-            // sensor_Vazao_LPM
-            // 
-            this.sensor_Vazao_LPM.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_Vazao_LPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Vazao_LPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_Vazao_LPM.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Vazao_LPM.Location = new System.Drawing.Point(80, 66);
-            this.sensor_Vazao_LPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_Vazao_LPM.Multiline = true;
-            this.sensor_Vazao_LPM.Name = "sensor_Vazao_LPM";
-            this.sensor_Vazao_LPM.Size = new System.Drawing.Size(122, 54);
-            this.sensor_Vazao_LPM.TabIndex = 22;
-            this.sensor_Vazao_LPM.Tag = "vazão";
-            this.sensor_Vazao_LPM.Text = "0";
-            this.sensor_Vazao_LPM.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // sensor_Vazao_GPM
-            // 
-            this.sensor_Vazao_GPM.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_Vazao_GPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Vazao_GPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_Vazao_GPM.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Vazao_GPM.Location = new System.Drawing.Point(80, 2);
-            this.sensor_Vazao_GPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_Vazao_GPM.Multiline = true;
-            this.sensor_Vazao_GPM.Name = "sensor_Vazao_GPM";
-            this.sensor_Vazao_GPM.Size = new System.Drawing.Size(122, 56);
-            this.sensor_Vazao_GPM.TabIndex = 20;
-            this.sensor_Vazao_GPM.Tag = "vazão";
-            this.sensor_Vazao_GPM.Text = "0";
-            this.sensor_Vazao_GPM.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel6
-            // 
-            this.panel6.BackgroundImage = global::minas.teste.prototype.Properties.Resources.vazãobomba_removebg_preview__1_;
-            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Controls.Add(this.panel7);
-            this.panel6.Location = new System.Drawing.Point(3, 2);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(65, 60);
-            this.panel6.TabIndex = 2;
-            // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(99, 69);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(284, 154);
-            this.panel7.TabIndex = 0;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.tableLayoutPanel7);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(4, 36);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Size = new System.Drawing.Size(291, 156);
-            this.groupBox5.TabIndex = 85;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "PILOTAGEM";
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 3;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.80392F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.19608F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.tableLayoutPanel7.Controls.Add(this.unidade_medidapilotagem1, 2, 0);
-            this.tableLayoutPanel7.Controls.Add(this.button2, 2, 1);
-            this.tableLayoutPanel7.Controls.Add(this.sensor_bar_PL, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.sensor_psi_PL, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.panel4, 0, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(7, 18);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(277, 124);
-            this.tableLayoutPanel7.TabIndex = 7;
-            // 
-            // unidade_medidapilotagem1
-            // 
-            this.unidade_medidapilotagem1.BackColor = System.Drawing.Color.Black;
-            this.unidade_medidapilotagem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidade_medidapilotagem1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidapilotagem1.Location = new System.Drawing.Point(207, 2);
-            this.unidade_medidapilotagem1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.unidade_medidapilotagem1.Name = "unidade_medidapilotagem1";
-            this.unidade_medidapilotagem1.Size = new System.Drawing.Size(63, 59);
-            this.unidade_medidapilotagem1.TabIndex = 22;
-            this.unidade_medidapilotagem1.Text = "PSI";
-            this.unidade_medidapilotagem1.UseVisualStyleBackColor = true;
-            this.unidade_medidapilotagem1.Click += new System.EventHandler(this.unidade_medidapilotagem1_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Black;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button2.Location = new System.Drawing.Point(207, 65);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(63, 57);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "BAR";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.unidade_medidapilotagem2_Click);
-            // 
-            // sensor_bar_PL
-            // 
-            this.sensor_bar_PL.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_bar_PL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_bar_PL.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_bar_PL.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_bar_PL.Location = new System.Drawing.Point(74, 65);
-            this.sensor_bar_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_bar_PL.Multiline = true;
-            this.sensor_bar_PL.Name = "sensor_bar_PL";
-            this.sensor_bar_PL.Size = new System.Drawing.Size(127, 54);
-            this.sensor_bar_PL.TabIndex = 17;
-            this.sensor_bar_PL.Tag = "pilotagem";
-            this.sensor_bar_PL.Text = "0";
-            this.sensor_bar_PL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // sensor_psi_PL
-            // 
-            this.sensor_psi_PL.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_psi_PL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_psi_PL.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_psi_PL.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_psi_PL.Location = new System.Drawing.Point(74, 2);
-            this.sensor_psi_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_psi_PL.Multiline = true;
-            this.sensor_psi_PL.Name = "sensor_psi_PL";
-            this.sensor_psi_PL.Size = new System.Drawing.Size(127, 56);
-            this.sensor_psi_PL.TabIndex = 16;
-            this.sensor_psi_PL.Tag = "pilotagem";
-            this.sensor_psi_PL.Text = "0";
-            this.sensor_psi_PL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel4
-            // 
-            this.panel4.BackgroundImage = global::minas.teste.prototype.Properties.Resources.pilotagembomba_removebg_preview__1_;
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Controls.Add(this.panel10);
-            this.panel4.Location = new System.Drawing.Point(3, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(65, 59);
-            this.panel4.TabIndex = 2;
-            // 
-            // panel10
-            // 
-            this.panel10.Location = new System.Drawing.Point(99, 69);
-            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(284, 154);
-            this.panel10.TabIndex = 0;
-            // 
-            // Temperatura
-            // 
-            this.Temperatura.Controls.Add(this.tableLayoutPanel9);
-            this.Temperatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Temperatura.Location = new System.Drawing.Point(303, 363);
-            this.Temperatura.Margin = new System.Windows.Forms.Padding(4);
-            this.Temperatura.Name = "Temperatura";
-            this.Temperatura.Padding = new System.Windows.Forms.Padding(4);
-            this.Temperatura.Size = new System.Drawing.Size(288, 140);
-            this.Temperatura.TabIndex = 80;
-            this.Temperatura.TabStop = false;
-            this.Temperatura.Text = "TEMPERATURA";
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 3;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.58537F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.41463F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel9.Controls.Add(this.unidade_medidatemp, 2, 0);
-            this.tableLayoutPanel9.Controls.Add(this.sensor_Temp_C, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.panel11, 0, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(7, 15);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(275, 119);
-            this.tableLayoutPanel9.TabIndex = 12;
-            // 
-            // unidade_medidatemp
-            // 
-            this.unidade_medidatemp.BackColor = System.Drawing.Color.Black;
-            this.unidade_medidatemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidade_medidatemp.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidatemp.Location = new System.Drawing.Point(208, 2);
-            this.unidade_medidatemp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.unidade_medidatemp.Name = "unidade_medidatemp";
-            this.unidade_medidatemp.Size = new System.Drawing.Size(63, 57);
-            this.unidade_medidatemp.TabIndex = 21;
-            this.unidade_medidatemp.Text = "C º";
-            this.unidade_medidatemp.UseVisualStyleBackColor = true;
-            this.unidade_medidatemp.Click += new System.EventHandler(this.unidade_medidatemp_Click);
-            // 
-            // sensor_Temp_C
-            // 
-            this.sensor_Temp_C.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_Temp_C.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Temp_C.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_Temp_C.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Temp_C.Location = new System.Drawing.Point(78, 2);
-            this.sensor_Temp_C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_Temp_C.Multiline = true;
-            this.sensor_Temp_C.Name = "sensor_Temp_C";
-            this.sensor_Temp_C.Size = new System.Drawing.Size(124, 54);
-            this.sensor_Temp_C.TabIndex = 20;
-            this.sensor_Temp_C.Tag = "temperatura";
-            this.sensor_Temp_C.Text = "0";
-            this.sensor_Temp_C.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel11
-            // 
-            this.panel11.BackgroundImage = global::minas.teste.prototype.Properties.Resources.termometro_removebg_preview;
-            this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel11.Controls.Add(this.panel12);
-            this.panel11.Location = new System.Drawing.Point(3, 2);
-            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(69, 57);
-            this.panel11.TabIndex = 2;
-            // 
-            // panel12
-            // 
-            this.panel12.Location = new System.Drawing.Point(99, 69);
-            this.panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(284, 154);
-            this.panel12.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.tableLayoutPanel5);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(303, 199);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(288, 156);
-            this.groupBox4.TabIndex = 84;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "DRENO";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.37864F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.62136F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel5.Controls.Add(this.unidade_medidadreno1, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button1, 2, 1);
-            this.tableLayoutPanel5.Controls.Add(this.sensor_lpm_DR, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.sensor_gpm_DR, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 22);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(275, 121);
-            this.tableLayoutPanel5.TabIndex = 8;
-            // 
-            // unidade_medidadreno1
-            // 
-            this.unidade_medidadreno1.BackColor = System.Drawing.Color.Black;
-            this.unidade_medidadreno1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidade_medidadreno1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidadreno1.Location = new System.Drawing.Point(209, 2);
-            this.unidade_medidadreno1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.unidade_medidadreno1.Name = "unidade_medidadreno1";
-            this.unidade_medidadreno1.Size = new System.Drawing.Size(63, 57);
-            this.unidade_medidadreno1.TabIndex = 25;
-            this.unidade_medidadreno1.Text = "GPM";
-            this.unidade_medidadreno1.UseVisualStyleBackColor = true;
-            this.unidade_medidadreno1.Click += new System.EventHandler(this.unidade_medidadreno1_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button1.Location = new System.Drawing.Point(209, 64);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 54);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "LPM";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.unidade_medidadreno2_Click);
-            // 
-            // sensor_lpm_DR
-            // 
-            this.sensor_lpm_DR.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_lpm_DR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_lpm_DR.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_lpm_DR.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_lpm_DR.Location = new System.Drawing.Point(80, 64);
-            this.sensor_lpm_DR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_lpm_DR.Multiline = true;
-            this.sensor_lpm_DR.Name = "sensor_lpm_DR";
-            this.sensor_lpm_DR.Size = new System.Drawing.Size(123, 54);
-            this.sensor_lpm_DR.TabIndex = 22;
-            this.sensor_lpm_DR.Tag = "dreno";
-            this.sensor_lpm_DR.Text = "0";
-            this.sensor_lpm_DR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // sensor_gpm_DR
-            // 
-            this.sensor_gpm_DR.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.sensor_gpm_DR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_gpm_DR.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_gpm_DR.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_gpm_DR.Location = new System.Drawing.Point(80, 2);
-            this.sensor_gpm_DR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_gpm_DR.Multiline = true;
-            this.sensor_gpm_DR.Name = "sensor_gpm_DR";
-            this.sensor_gpm_DR.Size = new System.Drawing.Size(123, 56);
-            this.sensor_gpm_DR.TabIndex = 20;
-            this.sensor_gpm_DR.Tag = "dreno";
-            this.sensor_gpm_DR.Text = "0";
-            this.sensor_gpm_DR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::minas.teste.prototype.Properties.Resources._10311715_ilustracao_contorno_icone_icone_de_agua_bomba_de_agua_vetor_removebg_preview;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(3, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(71, 57);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(99, 69);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(284, 154);
-            this.panel3.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.tableLayoutPanel6);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(4, 199);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(291, 156);
-            this.groupBox3.TabIndex = 83;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "PRESSÃO";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 3;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.63415F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.36585F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel6.Controls.Add(this.unidade_medidapressao1, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button3, 2, 1);
-            this.tableLayoutPanel6.Controls.Add(this.sensor_Press_BAR, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.sensor_Press_PSI, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.panel5, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(7, 22);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(277, 121);
-            this.tableLayoutPanel6.TabIndex = 9;
-            // 
-            // unidade_medidapressao1
-            // 
-            this.unidade_medidapressao1.BackColor = System.Drawing.Color.Black;
-            this.unidade_medidapressao1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidade_medidapressao1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidapressao1.Location = new System.Drawing.Point(208, 2);
-            this.unidade_medidapressao1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.unidade_medidapressao1.Name = "unidade_medidapressao1";
-            this.unidade_medidapressao1.Size = new System.Drawing.Size(60, 57);
-            this.unidade_medidapressao1.TabIndex = 25;
-            this.unidade_medidapressao1.Text = "PSI";
-            this.unidade_medidapressao1.UseVisualStyleBackColor = true;
-            this.unidade_medidapressao1.Click += new System.EventHandler(this.unidade_medidapressao1_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Black;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button3.Location = new System.Drawing.Point(208, 64);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 54);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "BAR";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.unidade_medidapressao2_Click);
-            // 
-            // sensor_Press_BAR
-            // 
-            this.sensor_Press_BAR.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_Press_BAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Press_BAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_Press_BAR.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Press_BAR.Location = new System.Drawing.Point(74, 64);
-            this.sensor_Press_BAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_Press_BAR.Multiline = true;
-            this.sensor_Press_BAR.Name = "sensor_Press_BAR";
-            this.sensor_Press_BAR.Size = new System.Drawing.Size(128, 54);
-            this.sensor_Press_BAR.TabIndex = 22;
-            this.sensor_Press_BAR.Tag = "pressão";
-            this.sensor_Press_BAR.Text = "0";
-            this.sensor_Press_BAR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // sensor_Press_PSI
-            // 
-            this.sensor_Press_PSI.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_Press_PSI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_Press_PSI.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_Press_PSI.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_Press_PSI.Location = new System.Drawing.Point(74, 2);
-            this.sensor_Press_PSI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_Press_PSI.Multiline = true;
-            this.sensor_Press_PSI.Name = "sensor_Press_PSI";
-            this.sensor_Press_PSI.Size = new System.Drawing.Size(128, 56);
-            this.sensor_Press_PSI.TabIndex = 20;
-            this.sensor_Press_PSI.Tag = "pressão";
-            this.sensor_Press_PSI.Text = "0";
-            this.sensor_Press_PSI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel5
-            // 
-            this.panel5.BackgroundImage = global::minas.teste.prototype.Properties.Resources._14988722_de_contorno_do_icone_do_manometro_de_pressao_manometro_vetor_removebg_preview;
-            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Controls.Add(this.panel8);
-            this.panel5.Location = new System.Drawing.Point(3, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(65, 57);
-            this.panel5.TabIndex = 2;
-            // 
-            // panel8
-            // 
-            this.panel8.Location = new System.Drawing.Point(99, 69);
-            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(284, 154);
-            this.panel8.TabIndex = 0;
-            // 
-            // rotacao
-            // 
-            this.rotacao.Controls.Add(this.tableLayoutPanel8);
-            this.rotacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rotacao.Location = new System.Drawing.Point(4, 363);
-            this.rotacao.Margin = new System.Windows.Forms.Padding(4);
-            this.rotacao.Name = "rotacao";
-            this.rotacao.Padding = new System.Windows.Forms.Padding(4);
-            this.rotacao.Size = new System.Drawing.Size(291, 140);
-            this.rotacao.TabIndex = 81;
-            this.rotacao.TabStop = false;
-            this.rotacao.Text = "ROTAÇÃO";
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 3;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.78431F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.21568F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.tableLayoutPanel8.Controls.Add(this.unidade_medidarota, 2, 0);
-            this.tableLayoutPanel8.Controls.Add(this.sensor_rotacao_RPM, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.panel9, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(7, 15);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 2;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.2987F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.7013F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(277, 119);
-            this.tableLayoutPanel8.TabIndex = 11;
-            // 
-            // unidade_medidarota
-            // 
-            this.unidade_medidarota.BackColor = System.Drawing.Color.Black;
-            this.unidade_medidarota.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidade_medidarota.ForeColor = System.Drawing.Color.DarkGreen;
-            this.unidade_medidarota.Location = new System.Drawing.Point(207, 2);
-            this.unidade_medidarota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.unidade_medidarota.Name = "unidade_medidarota";
-            this.unidade_medidarota.Size = new System.Drawing.Size(63, 57);
-            this.unidade_medidarota.TabIndex = 21;
-            this.unidade_medidarota.Text = "RPM";
-            this.unidade_medidarota.UseVisualStyleBackColor = true;
-            this.unidade_medidarota.Click += new System.EventHandler(this.unidade_medidarota_Click);
-            // 
-            // sensor_rotacao_RPM
-            // 
-            this.sensor_rotacao_RPM.BackColor = System.Drawing.SystemColors.InfoText;
-            this.sensor_rotacao_RPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sensor_rotacao_RPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sensor_rotacao_RPM.ForeColor = System.Drawing.Color.DarkGreen;
-            this.sensor_rotacao_RPM.Location = new System.Drawing.Point(76, 2);
-            this.sensor_rotacao_RPM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sensor_rotacao_RPM.Multiline = true;
-            this.sensor_rotacao_RPM.Name = "sensor_rotacao_RPM";
-            this.sensor_rotacao_RPM.Size = new System.Drawing.Size(125, 55);
-            this.sensor_rotacao_RPM.TabIndex = 20;
-            this.sensor_rotacao_RPM.Tag = "rotação";
-            this.sensor_rotacao_RPM.Text = "0";
-            this.sensor_rotacao_RPM.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel9
-            // 
-            this.panel9.BackgroundImage = global::minas.teste.prototype.Properties.Resources._14837433_de_contorno_do_icone_da_bomba_da_industria_sistema_motor_vetor_removebg_preview;
-            this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel9.Controls.Add(this.panel13);
-            this.panel9.Location = new System.Drawing.Point(3, 2);
-            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(66, 57);
-            this.panel9.TabIndex = 2;
-            // 
-            // panel13
-            // 
-            this.panel13.Location = new System.Drawing.Point(99, 69);
-            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(284, 154);
-            this.panel13.TabIndex = 0;
-            // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.ColumnCount = 1;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel15, 0, 4);
             this.tableLayoutPanel10.Controls.Add(this.metroUserControl1, 0, 3);
-            this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel18, 0, 2);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(624, 4);
+            this.tableLayoutPanel10.Controls.Add(this.metroPanel5, 0, 4);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(986, 4);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 5;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 524F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 7F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(981, 772);
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 569F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(616, 793);
             this.tableLayoutPanel10.TabIndex = 1;
-            // 
-            // tableLayoutPanel15
-            // 
-            this.tableLayoutPanel15.ColumnCount = 1;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.33643F));
-            this.tableLayoutPanel15.Controls.Add(this.labEtapa, 0, 0);
-            this.tableLayoutPanel15.Controls.Add(this.gaugePanel1, 0, 1);
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 549);
-            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 2;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.81395F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.18604F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(975, 219);
-            this.tableLayoutPanel15.TabIndex = 2;
-            this.tableLayoutPanel15.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel15_Paint);
-            // 
-            // labEtapa
-            // 
-            this.labEtapa.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labEtapa.Content = "ETAPAS\\ DE\\ \\ ENSAIO";
-            this.labEtapa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labEtapa.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.labEtapa.Location = new System.Drawing.Point(309, 5);
-            this.labEtapa.Margin = new System.Windows.Forms.Padding(5);
-            this.labEtapa.Name = "labEtapa";
-            this.labEtapa.Size = new System.Drawing.Size(356, 24);
-            this.labEtapa.TabIndex = 21;
-            // 
-            // gaugePanel1
-            // 
-            this.gaugePanel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gaugePanel1.Controls.Add(this.dataGridView1);
-            this.gaugePanel1.Controls.Add(this.panel1);
-            this.gaugePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gaugePanel1.Location = new System.Drawing.Point(3, 36);
-            this.gaugePanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gaugePanel1.Name = "gaugePanel1";
-            this.gaugePanel1.Size = new System.Drawing.Size(969, 181);
-            this.gaugePanel1.TabIndex = 22;
-            this.gaugePanel1.UserDefinedColors.Base = themeColors1;
-            this.gaugePanel1.UserDefinedColors.Error = themeColors2;
-            this.gaugePanel1.UserDefinedColors.Warning = themeColors3;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dataGridView1.ColumnHeadersHeight = 32;
-            this.dataGridView1.Location = new System.Drawing.Point(117, 4);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.MaximumSize = new System.Drawing.Size(852, 174);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(852, 174);
-            this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.trackBar1);
-            this.panel1.Controls.Add(this.labetapas);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Location = new System.Drawing.Point(3, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(115, 190);
-            this.panel1.TabIndex = 0;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.LargeChange = 7;
-            this.trackBar1.Location = new System.Drawing.Point(3, 114);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trackBar1.Maximum = 7;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBar1.Size = new System.Drawing.Size(101, 56);
-            this.trackBar1.TabIndex = 2;
-            this.trackBar1.Value = 7;
-            // 
-            // labetapas
-            // 
-            this.labetapas.AutoSize = true;
-            this.labetapas.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labetapas.Location = new System.Drawing.Point(9, 18);
-            this.labetapas.Name = "labetapas";
-            this.labetapas.Size = new System.Drawing.Size(87, 16);
-            this.labetapas.TabIndex = 5;
-            this.labetapas.Text = "Nº de Etapas";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(12, 46);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(84, 54);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // metroUserControl1
             // 
             this.metroUserControl1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.metroUserControl1.CustomBackground = false;
-            this.metroUserControl1.Location = new System.Drawing.Point(4, 528);
+            this.metroUserControl1.Location = new System.Drawing.Point(4, 573);
             this.metroUserControl1.Margin = new System.Windows.Forms.Padding(4);
             this.metroUserControl1.Name = "metroUserControl1";
-            this.metroUserControl1.Size = new System.Drawing.Size(973, 15);
+            this.metroUserControl1.Size = new System.Drawing.Size(608, 12);
             this.metroUserControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroUserControl1.StyleManager = null;
             this.metroUserControl1.TabIndex = 1;
             this.metroUserControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // tableLayoutPanel18
-            // 
-            this.tableLayoutPanel18.ColumnCount = 2;
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.64103F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.35897F));
-            this.tableLayoutPanel18.Controls.Add(this.graficos_dados_tab, 1, 0);
-            this.tableLayoutPanel18.Controls.Add(this.flowLayoutPanel1, 0, 0);
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 2);
-            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
-            this.tableLayoutPanel18.RowCount = 1;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(975, 514);
-            this.tableLayoutPanel18.TabIndex = 3;
-            // 
-            // graficos_dados_tab
-            // 
-            this.graficos_dados_tab.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.graficos_dados_tab.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.graficos_dados_tab.Controls.Add(this.tabPage1);
-            this.graficos_dados_tab.Controls.Add(this.tabPage2);
-            this.graficos_dados_tab.Controls.Add(this.tabPage3);
-            this.graficos_dados_tab.Location = new System.Drawing.Point(370, 3);
-            this.graficos_dados_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.graficos_dados_tab.Name = "graficos_dados_tab";
-            this.graficos_dados_tab.SelectedIndex = 0;
-            this.graficos_dados_tab.Size = new System.Drawing.Size(602, 507);
-            this.graficos_dados_tab.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.tabPage1.Controls.Add(this.tableLayoutPanel16);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(594, 475);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Graficos Ax. de Cir. Aberto";
-            // 
-            // tableLayoutPanel16
-            // 
-            this.tableLayoutPanel16.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.tableLayoutPanel16.ColumnCount = 1;
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.Controls.Add(this.chart2, 0, 1);
-            this.tableLayoutPanel16.Controls.Add(this.chart1, 0, 0);
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
-            this.tableLayoutPanel16.RowCount = 2;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.55752F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.44248F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(588, 470);
-            this.tableLayoutPanel16.TabIndex = 0;
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(3, 2);
-            this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(582, 228);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
-            // chart2
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(3, 234);
-            this.chart2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.Points.Add(dataPoint1);
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(582, 234);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.ControlText;
-            this.tabPage2.Controls.Add(this.tableLayoutPanel17);
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(594, 475);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Graficos Ax. de Cir. Fechado";
-            // 
-            // tableLayoutPanel17
-            // 
-            this.tableLayoutPanel17.BackColor = System.Drawing.Color.Black;
-            this.tableLayoutPanel17.ColumnCount = 1;
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Controls.Add(this.chart4, 0, 1);
-            this.tableLayoutPanel17.Controls.Add(this.chart3, 0, 0);
-            this.tableLayoutPanel17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(0, -1);
-            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
-            this.tableLayoutPanel17.RowCount = 2;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(591, 473);
-            this.tableLayoutPanel17.TabIndex = 1;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.tableLayoutPanel19);
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(594, 475);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Graficos En, Palh, Cart";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel19
-            // 
-            this.tableLayoutPanel19.BackColor = System.Drawing.Color.Black;
-            this.tableLayoutPanel19.ColumnCount = 1;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.Controls.Add(this.chart6, 0, 1);
-            this.tableLayoutPanel19.Controls.Add(this.chart5, 0, 0);
-            this.tableLayoutPanel19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(2, 1);
-            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 2;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(591, 473);
-            this.tableLayoutPanel19.TabIndex = 2;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.labParametro);
-            this.flowLayoutPanel1.Controls.Add(this.visualizador);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 2);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(361, 510);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // labParametro
-            // 
-            this.labParametro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labParametro.Content = "PARÂMETROS\\ DE\\ ENSAIO";
-            this.labParametro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labParametro.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.labParametro.Location = new System.Drawing.Point(5, 5);
-            this.labParametro.Margin = new System.Windows.Forms.Padding(5);
-            this.labParametro.Name = "labParametro";
-            this.labParametro.Size = new System.Drawing.Size(354, 28);
-            this.labParametro.TabIndex = 19;
-            // 
-            // visualizador
-            // 
-            this.visualizador.AllowUserToAddRows = false;
-            this.visualizador.AllowUserToOrderColumns = true;
-            this.visualizador.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.visualizador.ColumnHeadersHeight = 29;
-            this.visualizador.Location = new System.Drawing.Point(3, 40);
-            this.visualizador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.visualizador.Name = "visualizador";
-            this.visualizador.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.visualizador.RowHeadersVisible = false;
-            this.visualizador.RowHeadersWidth = 51;
-            this.visualizador.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.visualizador.RowTemplate.Height = 24;
-            this.visualizador.RowTemplate.ReadOnly = true;
-            this.visualizador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.visualizador.Size = new System.Drawing.Size(356, 468);
-            this.visualizador.TabIndex = 20;
             // 
             // metroPanel2
             // 
@@ -1912,10 +971,10 @@
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 12;
-            this.metroPanel2.Location = new System.Drawing.Point(1613, 4);
+            this.metroPanel2.Location = new System.Drawing.Point(1610, 4);
             this.metroPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(298, 772);
+            this.metroPanel2.Size = new System.Drawing.Size(303, 793);
             this.metroPanel2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel2.StyleManager = null;
             this.metroPanel2.TabIndex = 2;
@@ -1955,7 +1014,7 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 318F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 222F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(288, 762);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(293, 782);
             this.tableLayoutPanel13.TabIndex = 2;
             // 
             // groupBox7
@@ -1965,7 +1024,7 @@
             this.groupBox7.Controls.Add(this.button6);
             this.groupBox7.Controls.Add(this.button4);
             this.groupBox7.Controls.Add(this.textBox1);
-            this.groupBox7.Location = new System.Drawing.Point(4, 544);
+            this.groupBox7.Location = new System.Drawing.Point(4, 564);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
@@ -1973,6 +1032,63 @@
             this.groupBox7.TabIndex = 24;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Tempo de Execução";
+            // 
+            // metroPanel4
+            // 
+            this.metroPanel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.metroPanel4.Controls.Add(this.circularProgressBar1);
+            this.metroPanel4.CustomBackground = false;
+            this.metroPanel4.HorizontalScrollbar = false;
+            this.metroPanel4.HorizontalScrollbarBarColor = true;
+            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.HorizontalScrollbarSize = 10;
+            this.metroPanel4.Location = new System.Drawing.Point(1, 37);
+            this.metroPanel4.Name = "metroPanel4";
+            this.metroPanel4.Size = new System.Drawing.Size(172, 165);
+            this.metroPanel4.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel4.StyleManager = null;
+            this.metroPanel4.TabIndex = 5;
+            this.metroPanel4.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroPanel4.VerticalScrollbar = false;
+            this.metroPanel4.VerticalScrollbarBarColor = true;
+            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // circularProgressBar1
+            // 
+            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.circularProgressBar1.AnimationSpeed = 500;
+            this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.circularProgressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.circularProgressBar1.ForeColor = System.Drawing.Color.Transparent;
+            this.circularProgressBar1.InnerColor = System.Drawing.Color.Transparent;
+            this.circularProgressBar1.InnerMargin = 2;
+            this.circularProgressBar1.InnerWidth = -1;
+            this.circularProgressBar1.Location = new System.Drawing.Point(7, 4);
+            this.circularProgressBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
+            this.circularProgressBar1.Maximum = 120;
+            this.circularProgressBar1.Name = "circularProgressBar1";
+            this.circularProgressBar1.OuterColor = System.Drawing.Color.Gray;
+            this.circularProgressBar1.OuterMargin = -25;
+            this.circularProgressBar1.OuterWidth = 26;
+            this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.circularProgressBar1.ProgressWidth = 25;
+            this.circularProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.circularProgressBar1.RightToLeftLayout = true;
+            this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.circularProgressBar1.Size = new System.Drawing.Size(161, 145);
+            this.circularProgressBar1.StartAngle = 270;
+            this.circularProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.circularProgressBar1.SubscriptText = ".23";
+            this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.circularProgressBar1.SuperscriptText = "Segundos";
+            this.circularProgressBar1.TabIndex = 0;
+            this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.circularProgressBar1.Value = 68;
             // 
             // labminutos
             // 
@@ -2017,42 +1133,6 @@
             this.textBox1.Text = "0";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // circularProgressBar1
-            // 
-            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.circularProgressBar1.AnimationSpeed = 500;
-            this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.circularProgressBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
-            this.circularProgressBar1.ForeColor = System.Drawing.Color.Transparent;
-            this.circularProgressBar1.InnerColor = System.Drawing.Color.Transparent;
-            this.circularProgressBar1.InnerMargin = 2;
-            this.circularProgressBar1.InnerWidth = -1;
-            this.circularProgressBar1.Location = new System.Drawing.Point(7, 4);
-            this.circularProgressBar1.Margin = new System.Windows.Forms.Padding(4);
-            this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
-            this.circularProgressBar1.Maximum = 120;
-            this.circularProgressBar1.Name = "circularProgressBar1";
-            this.circularProgressBar1.OuterColor = System.Drawing.Color.Gray;
-            this.circularProgressBar1.OuterMargin = -25;
-            this.circularProgressBar1.OuterWidth = 26;
-            this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.circularProgressBar1.ProgressWidth = 25;
-            this.circularProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.circularProgressBar1.RightToLeftLayout = true;
-            this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.circularProgressBar1.Size = new System.Drawing.Size(161, 145);
-            this.circularProgressBar1.StartAngle = 270;
-            this.circularProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.circularProgressBar1.SubscriptText = ".23";
-            this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.circularProgressBar1.SuperscriptText = "Segundos";
-            this.circularProgressBar1.TabIndex = 0;
-            this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.circularProgressBar1.Value = 68;
-            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.checkBox_temperatura);
@@ -2074,7 +1154,7 @@
             this.groupBox6.Controls.Add(this.textBox11);
             this.groupBox6.Controls.Add(this.textBox8);
             this.groupBox6.Controls.Add(this.textBox9);
-            this.groupBox6.Location = new System.Drawing.Point(4, 226);
+            this.groupBox6.Location = new System.Drawing.Point(4, 246);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
@@ -2094,7 +1174,6 @@
             this.checkBox_temperatura.TabIndex = 43;
             this.checkBox_temperatura.Text = "CELSUS";
             this.checkBox_temperatura.UseVisualStyleBackColor = false;
-            this.checkBox_temperatura.CheckedChanged += new System.EventHandler(this.checkBox_temperatura_CheckedChanged);
             // 
             // checkBox_rotacao
             // 
@@ -2107,7 +1186,6 @@
             this.checkBox_rotacao.TabIndex = 42;
             this.checkBox_rotacao.Text = "RPM";
             this.checkBox_rotacao.UseVisualStyleBackColor = false;
-            this.checkBox_rotacao.CheckedChanged += new System.EventHandler(this.checkBox_rotacao_CheckedChanged);
             // 
             // checkBox_lpm
             // 
@@ -2120,7 +1198,6 @@
             this.checkBox_lpm.TabIndex = 41;
             this.checkBox_lpm.Text = "LPM";
             this.checkBox_lpm.UseVisualStyleBackColor = false;
-            this.checkBox_lpm.CheckedChanged += new System.EventHandler(this.checkBox_lpm_CheckedChanged);
             // 
             // checkBox_gpm
             // 
@@ -2133,7 +1210,6 @@
             this.checkBox_gpm.TabIndex = 40;
             this.checkBox_gpm.Text = "GPM";
             this.checkBox_gpm.UseVisualStyleBackColor = false;
-            this.checkBox_gpm.CheckedChanged += new System.EventHandler(this.checkBox_gpm_CheckedChanged);
             // 
             // checkBox_bar
             // 
@@ -2146,7 +1222,6 @@
             this.checkBox_bar.TabIndex = 39;
             this.checkBox_bar.Text = "BAR";
             this.checkBox_bar.UseVisualStyleBackColor = false;
-            this.checkBox_bar.CheckedChanged += new System.EventHandler(this.checkBox_bar_CheckedChanged);
             // 
             // label2
             // 
@@ -2264,18 +1339,6 @@
             this.textBox9.Size = new System.Drawing.Size(64, 22);
             this.textBox9.TabIndex = 14;
             // 
-            // labAutoma
-            // 
-            this.labAutoma.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labAutoma.Content = "AUTOMATIZAÇÕES";
-            this.labAutoma.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labAutoma.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.labAutoma.Location = new System.Drawing.Point(5, 5);
-            this.labAutoma.Margin = new System.Windows.Forms.Padding(5);
-            this.labAutoma.Name = "labAutoma";
-            this.labAutoma.Size = new System.Drawing.Size(277, 28);
-            this.labAutoma.TabIndex = 21;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.checkedListBox1);
@@ -2314,90 +1377,1132 @@
             this.mascaraabertura.TargetForm = this;
             this.mascaraabertura.TargetOpacity = 1D;
             // 
+            // labAutoma
+            // 
+            this.labAutoma.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labAutoma.Content = "AUTOMATIZAÇÕES";
+            this.labAutoma.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labAutoma.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labAutoma.Location = new System.Drawing.Point(8, 5);
+            this.labAutoma.Margin = new System.Windows.Forms.Padding(5);
+            this.labAutoma.Name = "labAutoma";
+            this.labAutoma.Size = new System.Drawing.Size(277, 28);
+            this.labAutoma.TabIndex = 21;
+            // 
+            // metroPanel5
+            // 
+            this.metroPanel5.Controls.Add(this.labControle);
+            this.metroPanel5.Controls.Add(this.tableLayoutPanel11);
+            this.metroPanel5.Controls.Add(this.tableLayoutPanel12);
+            this.metroPanel5.CustomBackground = false;
+            this.metroPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel5.HorizontalScrollbar = false;
+            this.metroPanel5.HorizontalScrollbarBarColor = true;
+            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.HorizontalScrollbarSize = 10;
+            this.metroPanel5.Location = new System.Drawing.Point(3, 592);
+            this.metroPanel5.Name = "metroPanel5";
+            this.metroPanel5.Size = new System.Drawing.Size(610, 198);
+            this.metroPanel5.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel5.StyleManager = null;
+            this.metroPanel5.TabIndex = 2;
+            this.metroPanel5.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroPanel5.VerticalScrollbar = false;
+            this.metroPanel5.VerticalScrollbarBarColor = true;
+            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.VerticalScrollbarSize = 10;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox11);
+            this.panel1.Controls.Add(this.groupBox13);
+            this.panel1.Controls.Add(this.groupBox12);
+            this.panel1.Controls.Add(this.labMedidas);
+            this.panel1.Controls.Add(this.groupBox10);
+            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Controls.Add(this.groupBox8);
+            this.panel1.Controls.Add(this.groupBox9);
+            this.panel1.Controls.Add(this.groupBox4);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Location = new System.Drawing.Point(6, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(951, 534);
+            this.panel1.TabIndex = 2;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.label42);
+            this.groupBox11.Controls.Add(this.LbMotorB2);
+            this.groupBox11.Controls.Add(this.LbMotorB1);
+            this.groupBox11.Controls.Add(this.textBox35);
+            this.groupBox11.Controls.Add(this.textBox36);
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(481, 31);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox11.Size = new System.Drawing.Size(452, 55);
+            this.groupBox11.TabIndex = 96;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "MOTOR B";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(1, 31);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(71, 15);
+            this.label42.TabIndex = 46;
+            this.label42.Text = "PRESSÃO";
+            // 
+            // LbMotorB2
+            // 
+            this.LbMotorB2.AutoSize = true;
+            this.LbMotorB2.Location = new System.Drawing.Point(395, 31);
+            this.LbMotorB2.Name = "LbMotorB2";
+            this.LbMotorB2.Size = new System.Drawing.Size(39, 17);
+            this.LbMotorB2.TabIndex = 46;
+            this.LbMotorB2.Text = "BAR";
+            // 
+            // LbMotorB1
+            // 
+            this.LbMotorB1.AutoSize = true;
+            this.LbMotorB1.Location = new System.Drawing.Point(205, 31);
+            this.LbMotorB1.Name = "LbMotorB1";
+            this.LbMotorB1.Size = new System.Drawing.Size(39, 17);
+            this.LbMotorB1.TabIndex = 45;
+            this.LbMotorB1.Text = "BAR";
+            // 
+            // textBox35
+            // 
+            this.textBox35.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox35.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox35.Location = new System.Drawing.Point(279, 14);
+            this.textBox35.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox35.Multiline = true;
+            this.textBox35.Name = "textBox35";
+            this.textBox35.Size = new System.Drawing.Size(111, 35);
+            this.textBox35.TabIndex = 34;
+            this.textBox35.Tag = "pilotagem";
+            this.textBox35.Text = "0";
+            this.textBox35.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox36
+            // 
+            this.textBox36.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox36.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox36.Location = new System.Drawing.Point(88, 14);
+            this.textBox36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox36.Multiline = true;
+            this.textBox36.Name = "textBox36";
+            this.textBox36.Size = new System.Drawing.Size(111, 35);
+            this.textBox36.TabIndex = 33;
+            this.textBox36.Tag = "pilotagem";
+            this.textBox36.Text = "0";
+            this.textBox36.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.label41);
+            this.groupBox13.Controls.Add(this.LbMotorA2);
+            this.groupBox13.Controls.Add(this.LbMotorA1);
+            this.groupBox13.Controls.Add(this.textBox39);
+            this.groupBox13.Controls.Add(this.textBox40);
+            this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox13.Location = new System.Drawing.Point(8, 31);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox13.Size = new System.Drawing.Size(465, 55);
+            this.groupBox13.TabIndex = 95;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "MOTOR A";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(6, 32);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(71, 15);
+            this.label41.TabIndex = 45;
+            this.label41.Text = "PRESSÃO";
+            // 
+            // LbMotorA2
+            // 
+            this.LbMotorA2.AutoSize = true;
+            this.LbMotorA2.Location = new System.Drawing.Point(400, 31);
+            this.LbMotorA2.Name = "LbMotorA2";
+            this.LbMotorA2.Size = new System.Drawing.Size(39, 17);
+            this.LbMotorA2.TabIndex = 44;
+            this.LbMotorA2.Text = "BAR";
+            // 
+            // LbMotorA1
+            // 
+            this.LbMotorA1.AutoSize = true;
+            this.LbMotorA1.Location = new System.Drawing.Point(205, 31);
+            this.LbMotorA1.Name = "LbMotorA1";
+            this.LbMotorA1.Size = new System.Drawing.Size(39, 17);
+            this.LbMotorA1.TabIndex = 43;
+            this.LbMotorA1.Text = "BAR";
+            // 
+            // textBox39
+            // 
+            this.textBox39.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox39.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox39.Location = new System.Drawing.Point(283, 14);
+            this.textBox39.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox39.Multiline = true;
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new System.Drawing.Size(111, 35);
+            this.textBox39.TabIndex = 34;
+            this.textBox39.Tag = "pilotagem";
+            this.textBox39.Text = "0";
+            this.textBox39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox40
+            // 
+            this.textBox40.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox40.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox40.Location = new System.Drawing.Point(88, 14);
+            this.textBox40.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox40.Multiline = true;
+            this.textBox40.Name = "textBox40";
+            this.textBox40.Size = new System.Drawing.Size(111, 35);
+            this.textBox40.TabIndex = 33;
+            this.textBox40.Tag = "pilotagem";
+            this.textBox40.Text = "0";
+            this.textBox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.label43);
+            this.groupBox12.Controls.Add(this.LbHidroB2);
+            this.groupBox12.Controls.Add(this.LbHidroB1);
+            this.groupBox12.Controls.Add(this.textBox37);
+            this.groupBox12.Controls.Add(this.textBox38);
+            this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox12.Location = new System.Drawing.Point(480, 94);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox12.Size = new System.Drawing.Size(452, 55);
+            this.groupBox12.TabIndex = 94;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "HIDRO B";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(1, 31);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(71, 15);
+            this.label43.TabIndex = 49;
+            this.label43.Text = "PRESSÃO";
+            // 
+            // LbHidroB2
+            // 
+            this.LbHidroB2.AutoSize = true;
+            this.LbHidroB2.Location = new System.Drawing.Point(395, 31);
+            this.LbHidroB2.Name = "LbHidroB2";
+            this.LbHidroB2.Size = new System.Drawing.Size(39, 17);
+            this.LbHidroB2.TabIndex = 48;
+            this.LbHidroB2.Text = "BAR";
+            // 
+            // LbHidroB1
+            // 
+            this.LbHidroB1.AutoSize = true;
+            this.LbHidroB1.Location = new System.Drawing.Point(205, 31);
+            this.LbHidroB1.Name = "LbHidroB1";
+            this.LbHidroB1.Size = new System.Drawing.Size(39, 17);
+            this.LbHidroB1.TabIndex = 47;
+            this.LbHidroB1.Text = "BAR";
+            // 
+            // textBox37
+            // 
+            this.textBox37.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox37.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox37.Location = new System.Drawing.Point(279, 14);
+            this.textBox37.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox37.Multiline = true;
+            this.textBox37.Name = "textBox37";
+            this.textBox37.Size = new System.Drawing.Size(111, 35);
+            this.textBox37.TabIndex = 34;
+            this.textBox37.Tag = "pilotagem";
+            this.textBox37.Text = "0";
+            this.textBox37.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox38
+            // 
+            this.textBox38.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox38.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox38.Location = new System.Drawing.Point(88, 14);
+            this.textBox38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox38.Multiline = true;
+            this.textBox38.Name = "textBox38";
+            this.textBox38.Size = new System.Drawing.Size(111, 35);
+            this.textBox38.TabIndex = 33;
+            this.textBox38.Tag = "pilotagem";
+            this.textBox38.Text = "0";
+            this.textBox38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labMedidas
+            // 
+            this.labMedidas.Content = "MÉTRICAS\\ DE\\ BOMBAS";
+            this.labMedidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labMedidas.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labMedidas.Location = new System.Drawing.Point(279, 5);
+            this.labMedidas.Margin = new System.Windows.Forms.Padding(5);
+            this.labMedidas.Name = "labMedidas";
+            this.labMedidas.Size = new System.Drawing.Size(329, 28);
+            this.labMedidas.TabIndex = 88;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label40);
+            this.groupBox10.Controls.Add(this.LbHidroA2);
+            this.groupBox10.Controls.Add(this.LbHidroA1);
+            this.groupBox10.Controls.Add(this.textBox33);
+            this.groupBox10.Controls.Add(this.textBox34);
+            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox10.Location = new System.Drawing.Point(7, 94);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox10.Size = new System.Drawing.Size(465, 55);
+            this.groupBox10.TabIndex = 93;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "HIDRO A";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(7, 31);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(71, 15);
+            this.label40.TabIndex = 43;
+            this.label40.Text = "PRESSÃO";
+            // 
+            // LbHidroA2
+            // 
+            this.LbHidroA2.AutoSize = true;
+            this.LbHidroA2.Location = new System.Drawing.Point(400, 31);
+            this.LbHidroA2.Name = "LbHidroA2";
+            this.LbHidroA2.Size = new System.Drawing.Size(39, 17);
+            this.LbHidroA2.TabIndex = 42;
+            this.LbHidroA2.Text = "BAR";
+            // 
+            // LbHidroA1
+            // 
+            this.LbHidroA1.AutoSize = true;
+            this.LbHidroA1.Location = new System.Drawing.Point(205, 31);
+            this.LbHidroA1.Name = "LbHidroA1";
+            this.LbHidroA1.Size = new System.Drawing.Size(39, 17);
+            this.LbHidroA1.TabIndex = 41;
+            this.LbHidroA1.Text = "BAR";
+            // 
+            // textBox33
+            // 
+            this.textBox33.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox33.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox33.Location = new System.Drawing.Point(283, 14);
+            this.textBox33.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox33.Multiline = true;
+            this.textBox33.Name = "textBox33";
+            this.textBox33.Size = new System.Drawing.Size(111, 35);
+            this.textBox33.TabIndex = 34;
+            this.textBox33.Tag = "pilotagem";
+            this.textBox33.Text = "0";
+            this.textBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox34
+            // 
+            this.textBox34.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox34.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox34.Location = new System.Drawing.Point(88, 14);
+            this.textBox34.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox34.Multiline = true;
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new System.Drawing.Size(111, 35);
+            this.textBox34.TabIndex = 33;
+            this.textBox34.Tag = "pilotagem";
+            this.textBox34.Text = "0";
+            this.textBox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBox5.Controls.Add(this.LbRota);
+            this.groupBox5.Controls.Add(this.textBox30);
+            this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(166, 157);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(306, 52);
+            this.groupBox5.TabIndex = 91;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "ROTAÇÃO";
+            // 
+            // LbRota
+            // 
+            this.LbRota.AutoSize = true;
+            this.LbRota.Location = new System.Drawing.Point(227, 27);
+            this.LbRota.Name = "LbRota";
+            this.LbRota.Size = new System.Drawing.Size(41, 17);
+            this.LbRota.TabIndex = 40;
+            this.LbRota.Text = "RPM";
+            // 
+            // textBox30
+            // 
+            this.textBox30.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox30.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox30.Location = new System.Drawing.Point(110, 11);
+            this.textBox30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox30.Multiline = true;
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(111, 35);
+            this.textBox30.TabIndex = 32;
+            this.textBox30.Tag = "pilotagem";
+            this.textBox30.Text = "0";
+            this.textBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.LbTemp);
+            this.groupBox8.Controls.Add(this.textBox29);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(480, 158);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Size = new System.Drawing.Size(332, 51);
+            this.groupBox8.TabIndex = 91;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "TEMPERATURA";
+            // 
+            // LbTemp
+            // 
+            this.LbTemp.AutoSize = true;
+            this.LbTemp.Location = new System.Drawing.Point(243, 24);
+            this.LbTemp.Name = "LbTemp";
+            this.LbTemp.Size = new System.Drawing.Size(68, 17);
+            this.LbTemp.TabIndex = 41;
+            this.LbTemp.Text = "CELSUS";
+            // 
+            // textBox29
+            // 
+            this.textBox29.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox29.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox29.Location = new System.Drawing.Point(126, 10);
+            this.textBox29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox29.Multiline = true;
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(111, 35);
+            this.textBox29.TabIndex = 32;
+            this.textBox29.Tag = "pilotagem";
+            this.textBox29.Text = "0";
+            this.textBox29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.LbVazao4);
+            this.groupBox9.Controls.Add(this.LbVazao3);
+            this.groupBox9.Controls.Add(this.LbVazao2);
+            this.groupBox9.Controls.Add(this.LbVazao1);
+            this.groupBox9.Controls.Add(this.label26);
+            this.groupBox9.Controls.Add(this.label27);
+            this.groupBox9.Controls.Add(this.label28);
+            this.groupBox9.Controls.Add(this.label29);
+            this.groupBox9.Controls.Add(this.textBox25);
+            this.groupBox9.Controls.Add(this.textBox26);
+            this.groupBox9.Controls.Add(this.textBox27);
+            this.groupBox9.Controls.Add(this.textBox28);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(8, 446);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox9.Size = new System.Drawing.Size(925, 85);
+            this.groupBox9.TabIndex = 92;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "VAZÃO";
+            // 
+            // LbVazao4
+            // 
+            this.LbVazao4.AutoSize = true;
+            this.LbVazao4.Location = new System.Drawing.Point(842, 58);
+            this.LbVazao4.Name = "LbVazao4";
+            this.LbVazao4.Size = new System.Drawing.Size(39, 17);
+            this.LbVazao4.TabIndex = 40;
+            this.LbVazao4.Text = "LPM";
+            // 
+            // LbVazao3
+            // 
+            this.LbVazao3.AutoSize = true;
+            this.LbVazao3.Location = new System.Drawing.Point(593, 59);
+            this.LbVazao3.Name = "LbVazao3";
+            this.LbVazao3.Size = new System.Drawing.Size(39, 17);
+            this.LbVazao3.TabIndex = 39;
+            this.LbVazao3.Text = "LPM";
+            // 
+            // LbVazao2
+            // 
+            this.LbVazao2.AutoSize = true;
+            this.LbVazao2.Location = new System.Drawing.Point(359, 59);
+            this.LbVazao2.Name = "LbVazao2";
+            this.LbVazao2.Size = new System.Drawing.Size(39, 17);
+            this.LbVazao2.TabIndex = 38;
+            this.LbVazao2.Text = "LPM";
+            // 
+            // LbVazao1
+            // 
+            this.LbVazao1.AutoSize = true;
+            this.LbVazao1.Location = new System.Drawing.Point(149, 60);
+            this.LbVazao1.Name = "LbVazao1";
+            this.LbVazao1.Size = new System.Drawing.Size(39, 17);
+            this.LbVazao1.TabIndex = 37;
+            this.LbVazao1.Text = "LPM";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(773, 22);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(27, 17);
+            this.label26.TabIndex = 36;
+            this.label26.Text = "P4";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(514, 20);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(27, 17);
+            this.label27.TabIndex = 35;
+            this.label27.Text = "P3";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(281, 24);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(37, 17);
+            this.label28.TabIndex = 34;
+            this.label28.Text = "PV2";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(64, 24);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(37, 17);
+            this.label29.TabIndex = 33;
+            this.label29.Text = "PV1";
+            // 
+            // textBox25
+            // 
+            this.textBox25.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox25.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox25.Location = new System.Drawing.Point(725, 41);
+            this.textBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox25.Multiline = true;
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new System.Drawing.Size(111, 35);
+            this.textBox25.TabIndex = 32;
+            this.textBox25.Tag = "pilotagem";
+            this.textBox25.Text = "0";
+            this.textBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox26
+            // 
+            this.textBox26.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox26.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox26.Location = new System.Drawing.Point(476, 41);
+            this.textBox26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox26.Multiline = true;
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(111, 35);
+            this.textBox26.TabIndex = 31;
+            this.textBox26.Tag = "pilotagem";
+            this.textBox26.Text = "0";
+            this.textBox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox27
+            // 
+            this.textBox27.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox27.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox27.Location = new System.Drawing.Point(243, 44);
+            this.textBox27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox27.Multiline = true;
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(111, 35);
+            this.textBox27.TabIndex = 30;
+            this.textBox27.Tag = "pilotagem";
+            this.textBox27.Text = "0";
+            this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox28
+            // 
+            this.textBox28.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox28.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox28.Location = new System.Drawing.Point(32, 43);
+            this.textBox28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox28.Multiline = true;
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(111, 35);
+            this.textBox28.TabIndex = 29;
+            this.textBox28.Tag = "pilotagem";
+            this.textBox28.Text = "0";
+            this.textBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.LbPressao4);
+            this.groupBox4.Controls.Add(this.LbPressao3);
+            this.groupBox4.Controls.Add(this.LbPressao2);
+            this.groupBox4.Controls.Add(this.LbPressao1);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.textBox13);
+            this.groupBox4.Controls.Add(this.textBox7);
+            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Controls.Add(this.sensor_psi_PL);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(7, 368);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(925, 78);
+            this.groupBox4.TabIndex = 91;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "PRESSÃO";
+            // 
+            // LbPressao4
+            // 
+            this.LbPressao4.AutoSize = true;
+            this.LbPressao4.Location = new System.Drawing.Point(842, 54);
+            this.LbPressao4.Name = "LbPressao4";
+            this.LbPressao4.Size = new System.Drawing.Size(39, 17);
+            this.LbPressao4.TabIndex = 28;
+            this.LbPressao4.Text = "BAR";
+            // 
+            // LbPressao3
+            // 
+            this.LbPressao3.AutoSize = true;
+            this.LbPressao3.Location = new System.Drawing.Point(593, 56);
+            this.LbPressao3.Name = "LbPressao3";
+            this.LbPressao3.Size = new System.Drawing.Size(39, 17);
+            this.LbPressao3.TabIndex = 27;
+            this.LbPressao3.Text = "BAR";
+            // 
+            // LbPressao2
+            // 
+            this.LbPressao2.AutoSize = true;
+            this.LbPressao2.Location = new System.Drawing.Point(358, 57);
+            this.LbPressao2.Name = "LbPressao2";
+            this.LbPressao2.Size = new System.Drawing.Size(39, 17);
+            this.LbPressao2.TabIndex = 26;
+            this.LbPressao2.Text = "BAR";
+            // 
+            // LbPressao1
+            // 
+            this.LbPressao1.AutoSize = true;
+            this.LbPressao1.Location = new System.Drawing.Point(149, 57);
+            this.LbPressao1.Name = "LbPressao1";
+            this.LbPressao1.Size = new System.Drawing.Size(39, 17);
+            this.LbPressao1.TabIndex = 25;
+            this.LbPressao1.Text = "BAR";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(773, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(27, 17);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "P4";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(514, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 17);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "P3";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(285, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 17);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "P2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(74, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 17);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "P1";
+            // 
+            // textBox13
+            // 
+            this.textBox13.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox13.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox13.Location = new System.Drawing.Point(725, 37);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox13.Multiline = true;
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(111, 35);
+            this.textBox13.TabIndex = 20;
+            this.textBox13.Tag = "pilotagem";
+            this.textBox13.Text = "0";
+            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox7.Location = new System.Drawing.Point(476, 36);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(111, 35);
+            this.textBox7.TabIndex = 19;
+            this.textBox7.Tag = "pilotagem";
+            this.textBox7.Text = "0";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox3.Location = new System.Drawing.Point(242, 36);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(111, 35);
+            this.textBox3.TabIndex = 18;
+            this.textBox3.Tag = "pilotagem";
+            this.textBox3.Text = "0";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // sensor_psi_PL
+            // 
+            this.sensor_psi_PL.BackColor = System.Drawing.SystemColors.InfoText;
+            this.sensor_psi_PL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sensor_psi_PL.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sensor_psi_PL.ForeColor = System.Drawing.Color.DarkGreen;
+            this.sensor_psi_PL.Location = new System.Drawing.Point(32, 36);
+            this.sensor_psi_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sensor_psi_PL.Multiline = true;
+            this.sensor_psi_PL.Name = "sensor_psi_PL";
+            this.sensor_psi_PL.Size = new System.Drawing.Size(111, 35);
+            this.sensor_psi_PL.TabIndex = 17;
+            this.sensor_psi_PL.Tag = "pilotagem";
+            this.sensor_psi_PL.Text = "0";
+            this.sensor_psi_PL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.LbPilotagem4);
+            this.groupBox3.Controls.Add(this.textBox21);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.textBox22);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.label30);
+            this.groupBox3.Controls.Add(this.textBox24);
+            this.groupBox3.Controls.Add(this.LbPilotagem3);
+            this.groupBox3.Controls.Add(this.LbPilotagem2);
+            this.groupBox3.Controls.Add(this.LbPilotagem1);
+            this.groupBox3.Controls.Add(this.textBox23);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(8, 277);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(925, 83);
+            this.groupBox3.TabIndex = 91;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "PILOTAGEM";
+            // 
+            // LbPilotagem4
+            // 
+            this.LbPilotagem4.AutoSize = true;
+            this.LbPilotagem4.Location = new System.Drawing.Point(842, 59);
+            this.LbPilotagem4.Name = "LbPilotagem4";
+            this.LbPilotagem4.Size = new System.Drawing.Size(39, 17);
+            this.LbPilotagem4.TabIndex = 40;
+            this.LbPilotagem4.Text = "BAR";
+            // 
+            // textBox21
+            // 
+            this.textBox21.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox21.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox21.Location = new System.Drawing.Point(725, 39);
+            this.textBox21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox21.Multiline = true;
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(111, 35);
+            this.textBox21.TabIndex = 32;
+            this.textBox21.Tag = "pilotagem";
+            this.textBox21.Text = "0";
+            this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(726, 20);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(95, 17);
+            this.label31.TabIndex = 43;
+            this.label31.Text = "PRESSÃO 1";
+            // 
+            // textBox22
+            // 
+            this.textBox22.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox22.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox22.Location = new System.Drawing.Point(472, 39);
+            this.textBox22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox22.Multiline = true;
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(111, 35);
+            this.textBox22.TabIndex = 31;
+            this.textBox22.Tag = "pilotagem";
+            this.textBox22.Text = "0";
+            this.textBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(40, 20);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(95, 17);
+            this.label21.TabIndex = 33;
+            this.label21.Text = "PRESSÃO 1";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(473, 20);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(95, 17);
+            this.label20.TabIndex = 42;
+            this.label20.Text = "PRESSÃO 1";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(254, 20);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(95, 17);
+            this.label30.TabIndex = 41;
+            this.label30.Text = "PRESSÃO 1";
+            // 
+            // textBox24
+            // 
+            this.textBox24.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox24.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox24.Location = new System.Drawing.Point(28, 39);
+            this.textBox24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox24.Multiline = true;
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new System.Drawing.Size(111, 35);
+            this.textBox24.TabIndex = 29;
+            this.textBox24.Tag = "pilotagem";
+            this.textBox24.Text = "0";
+            this.textBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LbPilotagem3
+            // 
+            this.LbPilotagem3.AutoSize = true;
+            this.LbPilotagem3.Location = new System.Drawing.Point(589, 62);
+            this.LbPilotagem3.Name = "LbPilotagem3";
+            this.LbPilotagem3.Size = new System.Drawing.Size(39, 17);
+            this.LbPilotagem3.TabIndex = 38;
+            this.LbPilotagem3.Text = "BAR";
+            // 
+            // LbPilotagem2
+            // 
+            this.LbPilotagem2.AutoSize = true;
+            this.LbPilotagem2.Location = new System.Drawing.Point(359, 60);
+            this.LbPilotagem2.Name = "LbPilotagem2";
+            this.LbPilotagem2.Size = new System.Drawing.Size(39, 17);
+            this.LbPilotagem2.TabIndex = 39;
+            this.LbPilotagem2.Text = "BAR";
+            // 
+            // LbPilotagem1
+            // 
+            this.LbPilotagem1.AutoSize = true;
+            this.LbPilotagem1.Location = new System.Drawing.Point(141, 61);
+            this.LbPilotagem1.Name = "LbPilotagem1";
+            this.LbPilotagem1.Size = new System.Drawing.Size(39, 17);
+            this.LbPilotagem1.TabIndex = 37;
+            this.LbPilotagem1.Text = "BAR";
+            // 
+            // textBox23
+            // 
+            this.textBox23.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox23.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox23.Location = new System.Drawing.Point(242, 39);
+            this.textBox23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox23.Multiline = true;
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new System.Drawing.Size(111, 35);
+            this.textBox23.TabIndex = 30;
+            this.textBox23.Tag = "pilotagem";
+            this.textBox23.Text = "0";
+            this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.LbDreno1);
+            this.groupBox2.Controls.Add(this.LbDreno2);
+            this.groupBox2.Controls.Add(this.textBox32);
+            this.groupBox2.Controls.Add(this.textBox31);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(8, 216);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(925, 55);
+            this.groupBox2.TabIndex = 90;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "DRENO";
+            // 
+            // LbDreno1
+            // 
+            this.LbDreno1.AutoSize = true;
+            this.LbDreno1.Location = new System.Drawing.Point(385, 31);
+            this.LbDreno1.Name = "LbDreno1";
+            this.LbDreno1.Size = new System.Drawing.Size(39, 17);
+            this.LbDreno1.TabIndex = 50;
+            this.LbDreno1.Text = "LPM";
+            // 
+            // LbDreno2
+            // 
+            this.LbDreno2.AutoSize = true;
+            this.LbDreno2.Location = new System.Drawing.Point(715, 32);
+            this.LbDreno2.Name = "LbDreno2";
+            this.LbDreno2.Size = new System.Drawing.Size(39, 17);
+            this.LbDreno2.TabIndex = 49;
+            this.LbDreno2.Text = "LPM";
+            // 
+            // textBox32
+            // 
+            this.textBox32.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox32.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox32.Location = new System.Drawing.Point(598, 13);
+            this.textBox32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox32.Multiline = true;
+            this.textBox32.Name = "textBox32";
+            this.textBox32.Size = new System.Drawing.Size(111, 35);
+            this.textBox32.TabIndex = 34;
+            this.textBox32.Tag = "pilotagem";
+            this.textBox32.Text = "0";
+            this.textBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox31
+            // 
+            this.textBox31.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox31.ForeColor = System.Drawing.Color.DarkGreen;
+            this.textBox31.Location = new System.Drawing.Point(268, 13);
+            this.textBox31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox31.Multiline = true;
+            this.textBox31.Name = "textBox31";
+            this.textBox31.Size = new System.Drawing.Size(111, 35);
+            this.textBox31.TabIndex = 33;
+            this.textBox31.Tag = "pilotagem";
+            this.textBox31.Text = "0";
+            this.textBox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // graficos_dados_tab
+            // 
+            this.graficos_dados_tab.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.graficos_dados_tab.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.graficos_dados_tab.Controls.Add(this.tabPage1);
+            this.graficos_dados_tab.Controls.Add(this.tabPage2);
+            this.graficos_dados_tab.Controls.Add(this.tabPage3);
+            this.graficos_dados_tab.Location = new System.Drawing.Point(5, 544);
+            this.graficos_dados_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.graficos_dados_tab.Name = "graficos_dados_tab";
+            this.graficos_dados_tab.SelectedIndex = 0;
+            this.graficos_dados_tab.Size = new System.Drawing.Size(949, 232);
+            this.graficos_dados_tab.TabIndex = 3;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.ControlText;
+            this.tabPage1.Controls.Add(this.chart1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(941, 200);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Graficos Ax. de Cir. Aberto";
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(6, 4);
+            this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(932, 194);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.ControlText;
+            this.tabPage2.Controls.Add(this.tableLayoutPanel17);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(941, 200);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Graficos Ax. de Cir. Fechado";
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel17.ColumnCount = 1;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.Controls.Add(this.chart3, 0, 0);
+            this.tableLayoutPanel17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 4);
+            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 1;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.43875F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(938, 263);
+            this.tableLayoutPanel17.TabIndex = 1;
+            // 
             // chart3
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart3.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart3.Legends.Add(legend2);
             this.chart3.Location = new System.Drawing.Point(3, 3);
             this.chart3.Name = "chart3";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart3.Series.Add(series4);
-            this.chart3.Size = new System.Drawing.Size(585, 230);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart3.Series.Add(series2);
+            this.chart3.Size = new System.Drawing.Size(929, 190);
             this.chart3.TabIndex = 0;
             this.chart3.Text = "chart3";
             // 
-            // chart4
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel19);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(941, 200);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Graficos En, Palh, Cart";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel19.ColumnCount = 1;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.Controls.Add(this.chart2, 0, 0);
+            this.tableLayoutPanel19.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(2, 1);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 1;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.76744F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(936, 264);
+            this.tableLayoutPanel19.TabIndex = 2;
+            // 
+            // chart2
             // 
             chartArea3.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea3);
+            this.chart2.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
-            this.chart4.Legends.Add(legend3);
-            this.chart4.Location = new System.Drawing.Point(3, 239);
-            this.chart4.Name = "chart4";
+            this.chart2.Legends.Add(legend3);
+            this.chart2.Location = new System.Drawing.Point(3, 3);
+            this.chart2.Name = "chart2";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
-            this.chart4.Series.Add(series3);
-            this.chart4.Size = new System.Drawing.Size(585, 230);
-            this.chart4.TabIndex = 1;
-            this.chart4.Text = "chart4";
-            // 
-            // metroPanel4
-            // 
-            this.metroPanel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.metroPanel4.Controls.Add(this.circularProgressBar1);
-            this.metroPanel4.CustomBackground = false;
-            this.metroPanel4.HorizontalScrollbar = false;
-            this.metroPanel4.HorizontalScrollbarBarColor = true;
-            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.HorizontalScrollbarSize = 10;
-            this.metroPanel4.Location = new System.Drawing.Point(1, 37);
-            this.metroPanel4.Name = "metroPanel4";
-            this.metroPanel4.Size = new System.Drawing.Size(172, 165);
-            this.metroPanel4.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroPanel4.StyleManager = null;
-            this.metroPanel4.TabIndex = 5;
-            this.metroPanel4.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroPanel4.VerticalScrollbar = false;
-            this.metroPanel4.VerticalScrollbarBarColor = true;
-            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.VerticalScrollbarSize = 10;
-            // 
-            // chart5
-            // 
-            chartArea6.Name = "ChartArea1";
-            this.chart5.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart5.Legends.Add(legend6);
-            this.chart5.Location = new System.Drawing.Point(3, 3);
-            this.chart5.Name = "chart5";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart5.Series.Add(series6);
-            this.chart5.Size = new System.Drawing.Size(583, 230);
-            this.chart5.TabIndex = 0;
-            this.chart5.Text = "chart5";
-            // 
-            // chart6
-            // 
-            chartArea5.Name = "ChartArea1";
-            this.chart6.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart6.Legends.Add(legend5);
-            this.chart6.Location = new System.Drawing.Point(3, 239);
-            this.chart6.Name = "chart6";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart6.Series.Add(series5);
-            this.chart6.Size = new System.Drawing.Size(583, 230);
-            this.chart6.TabIndex = 1;
-            this.chart6.Text = "chart6";
+            this.chart2.Series.Add(series3);
+            this.chart2.Size = new System.Drawing.Size(930, 193);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "chart2";
             // 
             // Tela_Bombas
             // 
@@ -2434,62 +2539,47 @@
             this.metroPanel3.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.Temperatura.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.rotacao.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
-            this.tableLayoutPanel15.ResumeLayout(false);
-            this.gaugePanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            this.tableLayoutPanel18.ResumeLayout(false);
-            this.graficos_dados_tab.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tableLayoutPanel16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tableLayoutPanel17.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.visualizador)).EndInit();
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
             this.tableLayoutPanel13.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.metroPanel4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.metroPanel5.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.graficos_dados_tab.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
-            this.metroPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel19.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2516,7 +2606,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private CuoreUI.Controls.cuiLabel labParametro;
         private MetroFramework.Controls.MetroUserControl metroUserControl1;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroPanel metroPanel3;
@@ -2528,54 +2617,8 @@
         private CuoreUI.Controls.cuiButton btnrelatoriobomba;
         private CuoreUI.Controls.cuiButton bntFinalizar;
         private CuoreUI.Controls.cuiButton btniniciarteste;
-        private CuoreUI.Controls.cuiLabel labMedidas;
         private CuoreUI.Controls.cuiLabel labControle;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button unidade_medidasvazao1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox sensor_Vazao_LPM;
-        private System.Windows.Forms.TextBox sensor_Vazao_GPM;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button unidade_medidapilotagem1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox sensor_bar_PL;
-        private System.Windows.Forms.TextBox sensor_psi_PL;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.GroupBox Temperatura;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.Button unidade_medidatemp;
-        private System.Windows.Forms.TextBox sensor_Temp_C;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button unidade_medidadreno1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox sensor_lpm_DR;
-        private System.Windows.Forms.TextBox sensor_gpm_DR;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button unidade_medidapressao1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox sensor_Press_BAR;
-        private System.Windows.Forms.TextBox sensor_Press_PSI;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.GroupBox rotacao;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Button unidade_medidarota;
-        private System.Windows.Forms.TextBox sensor_rotacao_RPM;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private CuoreUI.Controls.cuiLabel labAutoma;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -2609,36 +2652,99 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label labminutos;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private CuoreUI.Controls.cuiLabel labEtapa;
-        private CodeArtEng.Gauge.PanelGauges.GaugePanel gaugePanel1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label labetapas;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TabControl graficos_dados_tab;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
-        private System.Windows.Forms.DataGridView visualizador;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.CheckBox checkBox_psi;
         private System.Windows.Forms.CheckBox checkBox_temperatura;
         private System.Windows.Forms.CheckBox checkBox_rotacao;
         private System.Windows.Forms.CheckBox checkBox_lpm;
         private System.Windows.Forms.CheckBox checkBox_gpm;
         private System.Windows.Forms.CheckBox checkBox_bar;
+        private MetroFramework.Controls.MetroPanel metroPanel4;
+        private CuoreUI.Controls.cuiLabel labAutoma;
+        private MetroFramework.Controls.MetroPanel metroPanel5;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label LbMotorB2;
+        private System.Windows.Forms.Label LbMotorB1;
+        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label LbMotorA2;
+        private System.Windows.Forms.Label LbMotorA1;
+        private System.Windows.Forms.TextBox textBox39;
+        private System.Windows.Forms.TextBox textBox40;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label LbHidroB2;
+        private System.Windows.Forms.Label LbHidroB1;
+        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.TextBox textBox38;
+        private CuoreUI.Controls.cuiLabel labMedidas;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label LbHidroA2;
+        private System.Windows.Forms.Label LbHidroA1;
+        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label LbRota;
+        private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label LbTemp;
+        private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label LbVazao4;
+        private System.Windows.Forms.Label LbVazao3;
+        private System.Windows.Forms.Label LbVazao2;
+        private System.Windows.Forms.Label LbVazao1;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label LbPressao4;
+        private System.Windows.Forms.Label LbPressao3;
+        private System.Windows.Forms.Label LbPressao2;
+        private System.Windows.Forms.Label LbPressao1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox sensor_psi_PL;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label LbPilotagem4;
+        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.Label LbPilotagem3;
+        private System.Windows.Forms.Label LbPilotagem2;
+        private System.Windows.Forms.Label LbPilotagem1;
+        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label LbDreno1;
+        private System.Windows.Forms.Label LbDreno2;
+        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.TabControl graficos_dados_tab;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private MetroFramework.Controls.MetroPanel metroPanel4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart6;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

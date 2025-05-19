@@ -58,6 +58,14 @@ namespace minas.teste.prototype
 
 
             Tela_Bombas Bombasvv = new Tela_Bombas();
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => Bombasvv.Show()));
+            }
+            else
+            {
+                Bombasvv.Show();
+            }
             Bombasvv.Show();
             this.Hide();
 

@@ -16,7 +16,9 @@
             // this.SettingsSaving += this.SettingsSavingEventHandler;
             //
         }
-        
+
+        public int BaudRateSelecionado { get; internal set; }
+
         private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e) {
             // Adicione código para manipular o evento SettingChangingEvent aqui.
         }

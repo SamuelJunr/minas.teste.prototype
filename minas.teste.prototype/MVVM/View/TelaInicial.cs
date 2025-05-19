@@ -15,10 +15,10 @@ namespace minas.teste.prototype
 {
     public partial class TelaInicial: Form
     {
-        private string _portaArduino;
-        public TelaInicial(string porta)
+       
+        public TelaInicial()
         {
-            _portaArduino = porta;
+            
             InitializeComponent();
             var appSession = ApplicationSession.Instance;
         }

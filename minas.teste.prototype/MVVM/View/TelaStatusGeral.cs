@@ -16,5 +16,7 @@ namespace minas.teste.prototype.MVVM.View
         {
             InitializeComponent();
         }
+
+        
     }
 }

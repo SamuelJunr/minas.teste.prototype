@@ -32,20 +32,22 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.cuiButton1 = new CuoreUI.Controls.cuiButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnTestarConexao = new CuoreUI.Controls.cuiButton();
             this.cuiButton2 = new CuoreUI.Controls.cuiButton();
             this.cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             this.cuiLabel2 = new CuoreUI.Controls.cuiLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxBaudRate = new System.Windows.Forms.ComboBox();
+            this.comboBoxPortaCOM = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Bntvoltar = new System.Windows.Forms.Button();
+            this.lblStatusConexao = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cuiButton3 = new CuoreUI.Controls.cuiButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSalvarAplicarConfiguracoes = new CuoreUI.Controls.cuiButton();
+            this.lblInfoAdicional = new System.Windows.Forms.Label();
+            this.btnAtualizarPortas = new System.Windows.Forms.Button();
             this.metroPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +75,7 @@
             // metroPanel2
             // 
             this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel2.Controls.Add(this.textBox1);
+            this.metroPanel2.Controls.Add(this.lblInfoAdicional);
             this.metroPanel2.CustomBackground = false;
             this.metroPanel2.HorizontalScrollbar = false;
             this.metroPanel2.HorizontalScrollbarBarColor = true;
@@ -82,7 +84,7 @@
             this.metroPanel2.Location = new System.Drawing.Point(399, 49);
             this.metroPanel2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(391, 305);
+            this.metroPanel2.Size = new System.Drawing.Size(402, 305);
             this.metroPanel2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroPanel2.StyleManager = null;
             this.metroPanel2.TabIndex = 1;
@@ -92,42 +94,53 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 27;
             // 
-            // cuiButton1
+            // textBox1
             // 
-            this.cuiButton1.CheckButton = false;
-            this.cuiButton1.Checked = false;
-            this.cuiButton1.CheckedBackground = System.Drawing.Color.Blue;
-            this.cuiButton1.CheckedForeColor = System.Drawing.Color.White;
-            this.cuiButton1.CheckedImageTint = System.Drawing.Color.White;
-            this.cuiButton1.CheckedOutline = System.Drawing.Color.Blue;
-            this.cuiButton1.Content = "Conectar";
-            this.cuiButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.cuiButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cuiButton1.ForeColor = System.Drawing.Color.White;
-            this.cuiButton1.HoverBackground = System.Drawing.Color.Silver;
-            this.cuiButton1.HoveredImageTint = System.Drawing.Color.White;
-            this.cuiButton1.HoverForeColor = System.Drawing.Color.White;
-            this.cuiButton1.HoverOutline = System.Drawing.Color.Empty;
-            this.cuiButton1.Image = null;
-            this.cuiButton1.ImageAutoCenter = true;
-            this.cuiButton1.ImageExpand = new System.Drawing.Point(0, 0);
-            this.cuiButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton1.ImageTint = System.Drawing.Color.White;
-            this.cuiButton1.Location = new System.Drawing.Point(412, 377);
-            this.cuiButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cuiButton1.Name = "cuiButton1";
-            this.cuiButton1.NormalBackground = System.Drawing.Color.DarkGreen;
-            this.cuiButton1.NormalOutline = System.Drawing.Color.Empty;
-            this.cuiButton1.OutlineThickness = 1.6F;
-            this.cuiButton1.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton1.PressedForeColor = System.Drawing.Color.White;
-            this.cuiButton1.PressedImageTint = System.Drawing.Color.White;
-            this.cuiButton1.PressedOutline = System.Drawing.Color.Empty;
-            this.cuiButton1.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton1.Size = new System.Drawing.Size(117, 81);
-            this.cuiButton1.TabIndex = 3;
-            this.cuiButton1.TextOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton1.Click += new System.EventHandler(this.btnConnect_Click);
+            this.textBox1.AcceptsReturn = true;
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.textBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.textBox1.Location = new System.Drawing.Point(398, 53);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(403, 202);
+            this.textBox1.TabIndex = 2;
+            // 
+            // btnTestarConexao
+            // 
+            this.btnTestarConexao.CheckButton = false;
+            this.btnTestarConexao.Checked = false;
+            this.btnTestarConexao.CheckedBackground = System.Drawing.Color.Blue;
+            this.btnTestarConexao.CheckedForeColor = System.Drawing.Color.White;
+            this.btnTestarConexao.CheckedImageTint = System.Drawing.Color.White;
+            this.btnTestarConexao.CheckedOutline = System.Drawing.Color.Blue;
+            this.btnTestarConexao.Content = "Conectar";
+            this.btnTestarConexao.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnTestarConexao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnTestarConexao.ForeColor = System.Drawing.Color.White;
+            this.btnTestarConexao.HoverBackground = System.Drawing.Color.Silver;
+            this.btnTestarConexao.HoveredImageTint = System.Drawing.Color.White;
+            this.btnTestarConexao.HoverForeColor = System.Drawing.Color.White;
+            this.btnTestarConexao.HoverOutline = System.Drawing.Color.Empty;
+            this.btnTestarConexao.Image = null;
+            this.btnTestarConexao.ImageAutoCenter = true;
+            this.btnTestarConexao.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnTestarConexao.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnTestarConexao.ImageTint = System.Drawing.Color.White;
+            this.btnTestarConexao.Location = new System.Drawing.Point(412, 377);
+            this.btnTestarConexao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTestarConexao.Name = "btnTestarConexao";
+            this.btnTestarConexao.NormalBackground = System.Drawing.Color.DarkGreen;
+            this.btnTestarConexao.NormalOutline = System.Drawing.Color.Empty;
+            this.btnTestarConexao.OutlineThickness = 1.6F;
+            this.btnTestarConexao.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnTestarConexao.PressedForeColor = System.Drawing.Color.White;
+            this.btnTestarConexao.PressedImageTint = System.Drawing.Color.White;
+            this.btnTestarConexao.PressedOutline = System.Drawing.Color.Empty;
+            this.btnTestarConexao.Rounding = new System.Windows.Forms.Padding(8);
+            this.btnTestarConexao.Size = new System.Drawing.Size(117, 81);
+            this.btnTestarConexao.TabIndex = 3;
+            this.btnTestarConexao.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnTestarConexao.Click += new System.EventHandler(this.btnConectarDesconectar_Click);
             // 
             // cuiButton2
             // 
@@ -164,7 +177,7 @@
             this.cuiButton2.Size = new System.Drawing.Size(117, 81);
             this.cuiButton2.TabIndex = 4;
             this.cuiButton2.TextOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton2.Click += new System.EventHandler(this.btnDesconnect_Click);
+            this.cuiButton2.Click += new System.EventHandler(this.btnDesconectarSeparado_Click);
             // 
             // cuiLabel1
             // 
@@ -194,51 +207,53 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnAtualizarPortas, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxBaudRate, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxPortaCOM, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 5);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(32, 50);
+            this.tableLayoutPanel1.Controls.Add(this.Bntvoltar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblStatusConexao, 0, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(21, 50);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.77778F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 114F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(308, 414);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(340, 424);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // comboBox2
+            // comboBoxBaudRate
             // 
-            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(4, 223);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(299, 24);
-            this.comboBox2.TabIndex = 3;
+            this.comboBoxBaudRate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBoxBaudRate.FormattingEnabled = true;
+            this.comboBoxBaudRate.Location = new System.Drawing.Point(20, 203);
+            this.comboBoxBaudRate.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBaudRate.Name = "comboBoxBaudRate";
+            this.comboBoxBaudRate.Size = new System.Drawing.Size(299, 24);
+            this.comboBoxBaudRate.TabIndex = 3;
             // 
-            // comboBox1
+            // comboBoxPortaCOM
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(4, 124);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(299, 24);
-            this.comboBox1.TabIndex = 3;
+            this.comboBoxPortaCOM.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBoxPortaCOM.FormattingEnabled = true;
+            this.comboBoxPortaCOM.Location = new System.Drawing.Point(20, 114);
+            this.comboBoxPortaCOM.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxPortaCOM.Name = "comboBoxPortaCOM";
+            this.comboBoxPortaCOM.Size = new System.Drawing.Size(299, 24);
+            this.comboBoxPortaCOM.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(111, 188);
+            this.label2.Location = new System.Drawing.Point(127, 164);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 18);
@@ -250,38 +265,38 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(129, 87);
+            this.label1.Location = new System.Drawing.Point(145, 80);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 18);
             this.label1.TabIndex = 3;
             this.label1.Text = "Porta";
             // 
-            // button1
+            // Bntvoltar
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(68, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 65);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Retornar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Bntvoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Bntvoltar.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Bntvoltar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Bntvoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bntvoltar.Location = new System.Drawing.Point(84, 7);
+            this.Bntvoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.Bntvoltar.Name = "Bntvoltar";
+            this.Bntvoltar.Size = new System.Drawing.Size(171, 65);
+            this.Bntvoltar.TabIndex = 3;
+            this.Bntvoltar.Text = "Retornar";
+            this.Bntvoltar.UseVisualStyleBackColor = true;
+            this.Bntvoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // label3
+            // lblStatusConexao
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 333);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 46);
-            this.label3.TabIndex = 3;
+            this.lblStatusConexao.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblStatusConexao.AutoSize = true;
+            this.lblStatusConexao.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusConexao.Location = new System.Drawing.Point(4, 282);
+            this.lblStatusConexao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatusConexao.Name = "lblStatusConexao";
+            this.lblStatusConexao.Size = new System.Drawing.Size(0, 46);
+            this.lblStatusConexao.TabIndex = 3;
             // 
             // panel1
             // 
@@ -293,52 +308,68 @@
             this.panel1.Size = new System.Drawing.Size(350, 436);
             this.panel1.TabIndex = 3;
             // 
-            // cuiButton3
+            // btnSalvarAplicarConfiguracoes
             // 
-            this.cuiButton3.CheckButton = false;
-            this.cuiButton3.Checked = false;
-            this.cuiButton3.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton3.CheckedForeColor = System.Drawing.Color.White;
-            this.cuiButton3.CheckedImageTint = System.Drawing.Color.White;
-            this.cuiButton3.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton3.Content = "Salvar";
-            this.cuiButton3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.cuiButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cuiButton3.ForeColor = System.Drawing.Color.White;
-            this.cuiButton3.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton3.HoveredImageTint = System.Drawing.Color.White;
-            this.cuiButton3.HoverForeColor = System.Drawing.Color.White;
-            this.cuiButton3.HoverOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.Image = null;
-            this.cuiButton3.ImageAutoCenter = true;
-            this.cuiButton3.ImageExpand = new System.Drawing.Point(0, 0);
-            this.cuiButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton3.ImageTint = System.Drawing.Color.White;
-            this.cuiButton3.Location = new System.Drawing.Point(679, 377);
-            this.cuiButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cuiButton3.Name = "cuiButton3";
-            this.cuiButton3.NormalBackground = System.Drawing.Color.Silver;
-            this.cuiButton3.NormalOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.OutlineThickness = 1.6F;
-            this.cuiButton3.PressedBackground = System.Drawing.Color.Red;
-            this.cuiButton3.PressedForeColor = System.Drawing.Color.Goldenrod;
-            this.cuiButton3.PressedImageTint = System.Drawing.Color.White;
-            this.cuiButton3.PressedOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton3.Size = new System.Drawing.Size(117, 81);
-            this.cuiButton3.TabIndex = 7;
-            this.cuiButton3.TextOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton3.Click += new System.EventHandler(this.cuiButton3_Click);
+            this.btnSalvarAplicarConfiguracoes.CheckButton = false;
+            this.btnSalvarAplicarConfiguracoes.Checked = false;
+            this.btnSalvarAplicarConfiguracoes.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnSalvarAplicarConfiguracoes.CheckedForeColor = System.Drawing.Color.White;
+            this.btnSalvarAplicarConfiguracoes.CheckedImageTint = System.Drawing.Color.White;
+            this.btnSalvarAplicarConfiguracoes.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnSalvarAplicarConfiguracoes.Content = "Salvar";
+            this.btnSalvarAplicarConfiguracoes.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSalvarAplicarConfiguracoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnSalvarAplicarConfiguracoes.ForeColor = System.Drawing.Color.White;
+            this.btnSalvarAplicarConfiguracoes.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
+            this.btnSalvarAplicarConfiguracoes.HoveredImageTint = System.Drawing.Color.White;
+            this.btnSalvarAplicarConfiguracoes.HoverForeColor = System.Drawing.Color.White;
+            this.btnSalvarAplicarConfiguracoes.HoverOutline = System.Drawing.Color.Empty;
+            this.btnSalvarAplicarConfiguracoes.Image = null;
+            this.btnSalvarAplicarConfiguracoes.ImageAutoCenter = true;
+            this.btnSalvarAplicarConfiguracoes.ImageExpand = new System.Drawing.Point(0, 0);
+            this.btnSalvarAplicarConfiguracoes.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnSalvarAplicarConfiguracoes.ImageTint = System.Drawing.Color.White;
+            this.btnSalvarAplicarConfiguracoes.Location = new System.Drawing.Point(679, 377);
+            this.btnSalvarAplicarConfiguracoes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSalvarAplicarConfiguracoes.Name = "btnSalvarAplicarConfiguracoes";
+            this.btnSalvarAplicarConfiguracoes.NormalBackground = System.Drawing.Color.Silver;
+            this.btnSalvarAplicarConfiguracoes.NormalOutline = System.Drawing.Color.Empty;
+            this.btnSalvarAplicarConfiguracoes.OutlineThickness = 1.6F;
+            this.btnSalvarAplicarConfiguracoes.PressedBackground = System.Drawing.Color.Red;
+            this.btnSalvarAplicarConfiguracoes.PressedForeColor = System.Drawing.Color.Goldenrod;
+            this.btnSalvarAplicarConfiguracoes.PressedImageTint = System.Drawing.Color.White;
+            this.btnSalvarAplicarConfiguracoes.PressedOutline = System.Drawing.Color.Empty;
+            this.btnSalvarAplicarConfiguracoes.Rounding = new System.Windows.Forms.Padding(8);
+            this.btnSalvarAplicarConfiguracoes.Size = new System.Drawing.Size(117, 81);
+            this.btnSalvarAplicarConfiguracoes.TabIndex = 7;
+            this.btnSalvarAplicarConfiguracoes.TextOffset = new System.Drawing.Point(0, 0);
+            this.btnSalvarAplicarConfiguracoes.Click += new System.EventHandler(this.btnSalvarConfiguracoesClick);
             // 
-            // textBox1
+            // lblInfoAdicional
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.textBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.textBox1.Location = new System.Drawing.Point(15, 17);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(364, 274);
-            this.textBox1.TabIndex = 2;
+            this.lblInfoAdicional.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblInfoAdicional.AutoSize = true;
+            this.lblInfoAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoAdicional.Location = new System.Drawing.Point(36, 223);
+            this.lblInfoAdicional.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInfoAdicional.Name = "lblInfoAdicional";
+            this.lblInfoAdicional.Size = new System.Drawing.Size(0, 46);
+            this.lblInfoAdicional.TabIndex = 4;
+            // 
+            // btnAtualizarPortas
+            // 
+            this.btnAtualizarPortas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAtualizarPortas.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnAtualizarPortas.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAtualizarPortas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtualizarPortas.Location = new System.Drawing.Point(84, 368);
+            this.btnAtualizarPortas.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAtualizarPortas.Name = "btnAtualizarPortas";
+            this.btnAtualizarPortas.Size = new System.Drawing.Size(171, 52);
+            this.btnAtualizarPortas.TabIndex = 4;
+            this.btnAtualizarPortas.Text = "Atualizar";
+            this.btnAtualizarPortas.UseVisualStyleBackColor = true;
+            this.btnAtualizarPortas.Click += new System.EventHandler(this.btnAtualizarPortas_Click);
             // 
             // conexao
             // 
@@ -346,12 +377,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(808, 510);
-            this.Controls.Add(this.cuiButton3);
+            this.Controls.Add(this.btnSalvarAplicarConfiguracoes);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.cuiLabel2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cuiLabel1);
             this.Controls.Add(this.cuiButton2);
-            this.Controls.Add(this.cuiButton1);
+            this.Controls.Add(this.btnTestarConexao);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -367,6 +399,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -375,20 +408,22 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private MetroFramework.Controls.MetroPanel metroPanel2;
-        private CuoreUI.Controls.cuiButton cuiButton1;
+        private CuoreUI.Controls.cuiButton btnTestarConexao;
         private CuoreUI.Controls.cuiButton cuiButton2;
         private CuoreUI.Controls.cuiLabel cuiLabel1;
         private CuoreUI.Controls.cuiLabel cuiLabel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button Bntvoltar;
+        private System.Windows.Forms.Label lblStatusConexao;
+        private System.Windows.Forms.ComboBox comboBoxBaudRate;
+        private System.Windows.Forms.ComboBox comboBoxPortaCOM;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
- 
+
         private System.Windows.Forms.Panel panel1;
-        private CuoreUI.Controls.cuiButton cuiButton3;
+        private CuoreUI.Controls.cuiButton btnSalvarAplicarConfiguracoes;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblInfoAdicional;
+        private System.Windows.Forms.Button btnAtualizarPortas;
     }
 }
