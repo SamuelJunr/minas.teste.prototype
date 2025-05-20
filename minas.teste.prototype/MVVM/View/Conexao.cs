@@ -523,7 +523,7 @@ namespace minas.teste.prototype.MVVM.View
             }
             else
             {
-                lblInfoAdicional.Text = "Nenhuma config salva. Selecione e conecte."; // Supondo um lblInfoAdicional
+                lblInfoAdicional.Text = "Nenhuma config salva.\n Selecione e conecte."; // Supondo um lblInfoAdicional
             }
         }
         // Adicione um Label chamado lblInfoAdicional no seu designer para essas mensagens.

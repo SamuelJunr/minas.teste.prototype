@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            CodeArtEng.Gauge.Themes.ThemeColors themeColors1 = new CodeArtEng.Gauge.Themes.ThemeColors();
-            CodeArtEng.Gauge.Themes.ThemeColors themeColors2 = new CodeArtEng.Gauge.Themes.ThemeColors();
-            CodeArtEng.Gauge.Themes.ThemeColors themeColors3 = new CodeArtEng.Gauge.Themes.ThemeColors();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -40,6 +37,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            CodeArtEng.Gauge.Themes.ThemeColors themeColors1 = new CodeArtEng.Gauge.Themes.ThemeColors();
+            CodeArtEng.Gauge.Themes.ThemeColors themeColors2 = new CodeArtEng.Gauge.Themes.ThemeColors();
+            CodeArtEng.Gauge.Themes.ThemeColors themeColors3 = new CodeArtEng.Gauge.Themes.ThemeColors();
             this.painelBase = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Imagem_minasteste = new System.Windows.Forms.PictureBox();
@@ -101,24 +101,6 @@
             this.labAutoma = new CuoreUI.Controls.cuiLabel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.cuiButton3 = new CuoreUI.Controls.cuiButton();
-            this.btngravar = new CuoreUI.Controls.cuiButton();
-            this.btnreset = new CuoreUI.Controls.cuiButton();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnrelatoriobomba = new CuoreUI.Controls.cuiButton();
-            this.bntFinalizar = new CuoreUI.Controls.cuiButton();
-            this.btniniciarteste = new CuoreUI.Controls.cuiButton();
-            this.labControle = new CuoreUI.Controls.cuiLabel();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.labEtapa = new CuoreUI.Controls.cuiLabel();
-            this.gaugePanel1 = new CodeArtEng.Gauge.PanelGauges.GaugePanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.labetapas = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -206,6 +188,14 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.labEtapa = new CuoreUI.Controls.cuiLabel();
+            this.gaugePanel1 = new CodeArtEng.Gauge.PanelGauges.GaugePanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.labetapas = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.painelBase.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Imagem_minasteste)).BeginInit();
@@ -225,15 +215,6 @@
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.metroPanel1.SuspendLayout();
-            this.tableLayoutPanel11.SuspendLayout();
-            this.tableLayoutPanel12.SuspendLayout();
-            this.tableLayoutPanel15.SuspendLayout();
-            this.gaugePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.flowLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -256,6 +237,11 @@
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.tableLayoutPanel15.SuspendLayout();
+            this.gaugePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBase
@@ -333,7 +319,7 @@
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.31102F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.68898F));
             this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.painalFuncaoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel2, 3, 0);
             this.painalFuncaoes.Controls.Add(this.flowLayoutPanel3, 2, 0);
             this.painalFuncaoes.Controls.Add(this.Stage_box_bomba, 0, 0);
@@ -352,7 +338,7 @@
             // 
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.Controls.Add(this.labelCronometro_bomba);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(1195, 4);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1194, 4);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(139, 63);
@@ -373,7 +359,7 @@
             // 
             this.flowLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel3.Controls.Add(this.LabelHorariotela);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(991, 4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(988, 4);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(148, 63);
@@ -395,7 +381,7 @@
             this.Stage_box_bomba.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Stage_box_bomba.BackgroundImage = global::minas.teste.prototype.Properties.Resources.off;
             this.Stage_box_bomba.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stage_box_bomba.Location = new System.Drawing.Point(78, 23);
+            this.Stage_box_bomba.Location = new System.Drawing.Point(77, 23);
             this.Stage_box_bomba.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Stage_box_bomba.Name = "Stage_box_bomba";
             this.Stage_box_bomba.Size = new System.Drawing.Size(86, 85);
@@ -409,13 +395,13 @@
             this.tableLayoutPanel14.Controls.Add(this.HistoricalEvents, 0, 1);
             this.tableLayoutPanel14.Controls.Add(this.dadosentrada1, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(246, 6);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(245, 6);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(732, 119);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(730, 119);
             this.tableLayoutPanel14.TabIndex = 49;
             // 
             // HistoricalEvents
@@ -427,7 +413,7 @@
             this.HistoricalEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HistoricalEvents.Multiline = true;
             this.HistoricalEvents.Name = "HistoricalEvents";
-            this.HistoricalEvents.Size = new System.Drawing.Size(726, 54);
+            this.HistoricalEvents.Size = new System.Drawing.Size(724, 54);
             this.HistoricalEvents.TabIndex = 49;
             // 
             // dadosentrada1
@@ -436,7 +422,7 @@
             this.dadosentrada1.ColumnCount = 3;
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.95564F));
             this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.04436F));
-            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
+            this.dadosentrada1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
             this.dadosentrada1.Controls.Add(this.label4, 2, 0);
             this.dadosentrada1.Controls.Add(this.label5, 1, 0);
             this.dadosentrada1.Controls.Add(this.textBox4, 2, 1);
@@ -449,14 +435,14 @@
             this.dadosentrada1.RowCount = 2;
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.23256F));
             this.dadosentrada1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.76744F));
-            this.dadosentrada1.Size = new System.Drawing.Size(726, 54);
+            this.dadosentrada1.Size = new System.Drawing.Size(724, 54);
             this.dadosentrada1.TabIndex = 48;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(559, 1);
+            this.label4.Location = new System.Drawing.Point(556, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 9;
@@ -466,7 +452,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(406, 1);
+            this.label5.Location = new System.Drawing.Point(403, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 8;
@@ -475,7 +461,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(538, 19);
+            this.textBox4.Location = new System.Drawing.Point(534, 19);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -485,11 +471,11 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(345, 19);
+            this.textBox5.Location = new System.Drawing.Point(343, 19);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(186, 30);
+            this.textBox5.Size = new System.Drawing.Size(184, 30);
             this.textBox5.TabIndex = 5;
             // 
             // textBox6
@@ -499,14 +485,14 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(334, 30);
+            this.textBox6.Size = new System.Drawing.Size(332, 30);
             this.textBox6.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(112, 1);
+            this.label6.Location = new System.Drawing.Point(111, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 15);
             this.label6.TabIndex = 7;
@@ -521,7 +507,7 @@
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.3609F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.6391F));
             this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.painelTitulos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
             this.painelTitulos.Controls.Add(this.text_teste, 3, 0);
             this.painelTitulos.Controls.Add(this.text_datahora, 2, 0);
             this.painelTitulos.Controls.Add(this.text_nometeste, 1, 0);
@@ -542,9 +528,9 @@
             this.text_teste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_teste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_teste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_teste.Location = new System.Drawing.Point(1152, 2);
+            this.text_teste.Location = new System.Drawing.Point(1149, 2);
             this.text_teste.Name = "text_teste";
-            this.text_teste.Size = new System.Drawing.Size(226, 16);
+            this.text_teste.Size = new System.Drawing.Size(229, 16);
             this.text_teste.TabIndex = 45;
             this.text_teste.Text = "TESTE";
             this.text_teste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -555,7 +541,7 @@
             this.text_datahora.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_datahora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_datahora.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_datahora.Location = new System.Drawing.Point(987, 2);
+            this.text_datahora.Location = new System.Drawing.Point(984, 2);
             this.text_datahora.Name = "text_datahora";
             this.text_datahora.Size = new System.Drawing.Size(157, 16);
             this.text_datahora.TabIndex = 44;
@@ -568,9 +554,9 @@
             this.text_nometeste.Dock = System.Windows.Forms.DockStyle.Top;
             this.text_nometeste.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.text_nometeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_nometeste.Location = new System.Drawing.Point(245, 2);
+            this.text_nometeste.Location = new System.Drawing.Point(244, 2);
             this.text_nometeste.Name = "text_nometeste";
-            this.text_nometeste.Size = new System.Drawing.Size(734, 16);
+            this.text_nometeste.Size = new System.Drawing.Size(732, 16);
             this.text_nometeste.TabIndex = 43;
             this.text_nometeste.Text = "DADOS DO TESTE";
             this.text_nometeste.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -583,7 +569,7 @@
             this.text_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_status.Location = new System.Drawing.Point(5, 2);
             this.text_status.Name = "text_status";
-            this.text_status.Size = new System.Drawing.Size(232, 16);
+            this.text_status.Size = new System.Drawing.Size(231, 16);
             this.text_status.TabIndex = 42;
             this.text_status.Text = "STATUS GERAL";
             this.text_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1052,405 +1038,11 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.metroPanel1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 547);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1580, 228);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // metroPanel1
-            // 
-            this.metroPanel1.Controls.Add(this.tableLayoutPanel11);
-            this.metroPanel1.Controls.Add(this.tableLayoutPanel12);
-            this.metroPanel1.Controls.Add(this.labControle);
-            this.metroPanel1.CustomBackground = false;
-            this.metroPanel1.HorizontalScrollbar = false;
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(3, 3);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(536, 265);
-            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroPanel1.StyleManager = null;
-            this.metroPanel1.TabIndex = 0;
-            this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroPanel1.VerticalScrollbar = false;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // tableLayoutPanel11
-            // 
-            this.tableLayoutPanel11.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tableLayoutPanel11.ColumnCount = 3;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
-            this.tableLayoutPanel11.Controls.Add(this.cuiButton3, 2, 0);
-            this.tableLayoutPanel11.Controls.Add(this.btngravar, 1, 0);
-            this.tableLayoutPanel11.Controls.Add(this.btnreset, 0, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 130);
-            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 1;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(528, 94);
-            this.tableLayoutPanel11.TabIndex = 90;
-            // 
-            // cuiButton3
-            // 
-            this.cuiButton3.CheckButton = false;
-            this.cuiButton3.Checked = false;
-            this.cuiButton3.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton3.CheckedForeColor = System.Drawing.Color.White;
-            this.cuiButton3.CheckedImageTint = System.Drawing.Color.White;
-            this.cuiButton3.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton3.Content = "Retornar";
-            this.cuiButton3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.cuiButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cuiButton3.ForeColor = System.Drawing.Color.White;
-            this.cuiButton3.HoverBackground = System.Drawing.Color.DimGray;
-            this.cuiButton3.HoveredImageTint = System.Drawing.Color.White;
-            this.cuiButton3.HoverForeColor = System.Drawing.Color.White;
-            this.cuiButton3.HoverOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.Image = null;
-            this.cuiButton3.ImageAutoCenter = true;
-            this.cuiButton3.ImageExpand = new System.Drawing.Point(0, 0);
-            this.cuiButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton3.ImageTint = System.Drawing.Color.White;
-            this.cuiButton3.Location = new System.Drawing.Point(363, 4);
-            this.cuiButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.cuiButton3.Name = "cuiButton3";
-            this.cuiButton3.NormalBackground = System.Drawing.Color.Black;
-            this.cuiButton3.NormalOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.OutlineThickness = 1.6F;
-            this.cuiButton3.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cuiButton3.PressedForeColor = System.Drawing.Color.White;
-            this.cuiButton3.PressedImageTint = System.Drawing.Color.White;
-            this.cuiButton3.PressedOutline = System.Drawing.Color.Empty;
-            this.cuiButton3.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton3.Size = new System.Drawing.Size(161, 86);
-            this.cuiButton3.TabIndex = 7;
-            this.cuiButton3.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // btngravar
-            // 
-            this.btngravar.CheckButton = false;
-            this.btngravar.Checked = false;
-            this.btngravar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btngravar.CheckedForeColor = System.Drawing.Color.White;
-            this.btngravar.CheckedImageTint = System.Drawing.Color.White;
-            this.btngravar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btngravar.Content = "Gravar";
-            this.btngravar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btngravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btngravar.ForeColor = System.Drawing.Color.White;
-            this.btngravar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btngravar.HoveredImageTint = System.Drawing.Color.White;
-            this.btngravar.HoverForeColor = System.Drawing.Color.White;
-            this.btngravar.HoverOutline = System.Drawing.Color.Empty;
-            this.btngravar.Image = null;
-            this.btngravar.ImageAutoCenter = true;
-            this.btngravar.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btngravar.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btngravar.ImageTint = System.Drawing.Color.White;
-            this.btngravar.Location = new System.Drawing.Point(179, 4);
-            this.btngravar.Margin = new System.Windows.Forms.Padding(4);
-            this.btngravar.Name = "btngravar";
-            this.btngravar.NormalBackground = System.Drawing.Color.Gray;
-            this.btngravar.NormalOutline = System.Drawing.Color.Empty;
-            this.btngravar.OutlineThickness = 1.6F;
-            this.btngravar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btngravar.PressedForeColor = System.Drawing.Color.White;
-            this.btngravar.PressedImageTint = System.Drawing.Color.White;
-            this.btngravar.PressedOutline = System.Drawing.Color.Empty;
-            this.btngravar.Rounding = new System.Windows.Forms.Padding(8);
-            this.btngravar.Size = new System.Drawing.Size(176, 86);
-            this.btngravar.TabIndex = 6;
-            this.btngravar.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // btnreset
-            // 
-            this.btnreset.CheckButton = false;
-            this.btnreset.Checked = false;
-            this.btnreset.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnreset.CheckedForeColor = System.Drawing.Color.White;
-            this.btnreset.CheckedImageTint = System.Drawing.Color.White;
-            this.btnreset.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnreset.Content = "Reset";
-            this.btnreset.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnreset.ForeColor = System.Drawing.Color.White;
-            this.btnreset.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnreset.HoveredImageTint = System.Drawing.Color.White;
-            this.btnreset.HoverForeColor = System.Drawing.Color.White;
-            this.btnreset.HoverOutline = System.Drawing.Color.Empty;
-            this.btnreset.Image = null;
-            this.btnreset.ImageAutoCenter = true;
-            this.btnreset.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnreset.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnreset.ImageTint = System.Drawing.Color.White;
-            this.btnreset.Location = new System.Drawing.Point(4, 4);
-            this.btnreset.Margin = new System.Windows.Forms.Padding(4);
-            this.btnreset.Name = "btnreset";
-            this.btnreset.NormalBackground = System.Drawing.Color.Gray;
-            this.btnreset.NormalOutline = System.Drawing.Color.Empty;
-            this.btnreset.OutlineThickness = 1.6F;
-            this.btnreset.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnreset.PressedForeColor = System.Drawing.Color.White;
-            this.btnreset.PressedImageTint = System.Drawing.Color.White;
-            this.btnreset.PressedOutline = System.Drawing.Color.Empty;
-            this.btnreset.Rounding = new System.Windows.Forms.Padding(8);
-            this.btnreset.Size = new System.Drawing.Size(167, 86);
-            this.btnreset.TabIndex = 4;
-            this.btnreset.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // tableLayoutPanel12
-            // 
-            this.tableLayoutPanel12.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tableLayoutPanel12.ColumnCount = 3;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 168F));
-            this.tableLayoutPanel12.Controls.Add(this.btnrelatoriobomba, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.bntFinalizar, 2, 0);
-            this.tableLayoutPanel12.Controls.Add(this.btniniciarteste, 0, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 36);
-            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 1;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(529, 94);
-            this.tableLayoutPanel12.TabIndex = 89;
-            // 
-            // btnrelatoriobomba
-            // 
-            this.btnrelatoriobomba.CheckButton = false;
-            this.btnrelatoriobomba.Checked = false;
-            this.btnrelatoriobomba.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.CheckedForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.CheckedImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.Content = "Relátorio";
-            this.btnrelatoriobomba.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnrelatoriobomba.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnrelatoriobomba.ForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.HoveredImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.HoverForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.HoverOutline = System.Drawing.Color.Empty;
-            this.btnrelatoriobomba.Image = null;
-            this.btnrelatoriobomba.ImageAutoCenter = true;
-            this.btnrelatoriobomba.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btnrelatoriobomba.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnrelatoriobomba.ImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.Location = new System.Drawing.Point(180, 4);
-            this.btnrelatoriobomba.Margin = new System.Windows.Forms.Padding(4);
-            this.btnrelatoriobomba.Name = "btnrelatoriobomba";
-            this.btnrelatoriobomba.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.NormalOutline = System.Drawing.Color.Empty;
-            this.btnrelatoriobomba.OutlineThickness = 1.6F;
-            this.btnrelatoriobomba.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btnrelatoriobomba.PressedForeColor = System.Drawing.Color.White;
-            this.btnrelatoriobomba.PressedImageTint = System.Drawing.Color.White;
-            this.btnrelatoriobomba.PressedOutline = System.Drawing.Color.Empty;
-            this.btnrelatoriobomba.Rounding = new System.Windows.Forms.Padding(8);
-            this.btnrelatoriobomba.Size = new System.Drawing.Size(177, 86);
-            this.btnrelatoriobomba.TabIndex = 6;
-            this.btnrelatoriobomba.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // bntFinalizar
-            // 
-            this.bntFinalizar.CheckButton = false;
-            this.bntFinalizar.Checked = false;
-            this.bntFinalizar.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.bntFinalizar.CheckedForeColor = System.Drawing.Color.White;
-            this.bntFinalizar.CheckedImageTint = System.Drawing.Color.White;
-            this.bntFinalizar.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.bntFinalizar.Content = "Finalizar";
-            this.bntFinalizar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.bntFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.bntFinalizar.ForeColor = System.Drawing.Color.White;
-            this.bntFinalizar.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.bntFinalizar.HoveredImageTint = System.Drawing.Color.White;
-            this.bntFinalizar.HoverForeColor = System.Drawing.Color.White;
-            this.bntFinalizar.HoverOutline = System.Drawing.Color.Empty;
-            this.bntFinalizar.Image = null;
-            this.bntFinalizar.ImageAutoCenter = true;
-            this.bntFinalizar.ImageExpand = new System.Drawing.Point(0, 0);
-            this.bntFinalizar.ImageOffset = new System.Drawing.Point(0, 0);
-            this.bntFinalizar.ImageTint = System.Drawing.Color.White;
-            this.bntFinalizar.Location = new System.Drawing.Point(365, 4);
-            this.bntFinalizar.Margin = new System.Windows.Forms.Padding(4);
-            this.bntFinalizar.Name = "bntFinalizar";
-            this.bntFinalizar.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.bntFinalizar.NormalOutline = System.Drawing.Color.Empty;
-            this.bntFinalizar.OutlineThickness = 1.6F;
-            this.bntFinalizar.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.bntFinalizar.PressedForeColor = System.Drawing.Color.White;
-            this.bntFinalizar.PressedImageTint = System.Drawing.Color.White;
-            this.bntFinalizar.PressedOutline = System.Drawing.Color.Empty;
-            this.bntFinalizar.Rounding = new System.Windows.Forms.Padding(8);
-            this.bntFinalizar.Size = new System.Drawing.Size(160, 86);
-            this.bntFinalizar.TabIndex = 5;
-            this.bntFinalizar.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // btniniciarteste
-            // 
-            this.btniniciarteste.CheckButton = false;
-            this.btniniciarteste.Checked = false;
-            this.btniniciarteste.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btniniciarteste.CheckedForeColor = System.Drawing.Color.White;
-            this.btniniciarteste.CheckedImageTint = System.Drawing.Color.White;
-            this.btniniciarteste.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btniniciarteste.Content = "Iniciar";
-            this.btniniciarteste.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btniniciarteste.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btniniciarteste.ForeColor = System.Drawing.Color.White;
-            this.btniniciarteste.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btniniciarteste.HoveredImageTint = System.Drawing.Color.White;
-            this.btniniciarteste.HoverForeColor = System.Drawing.Color.White;
-            this.btniniciarteste.HoverOutline = System.Drawing.Color.Empty;
-            this.btniniciarteste.Image = null;
-            this.btniniciarteste.ImageAutoCenter = true;
-            this.btniniciarteste.ImageExpand = new System.Drawing.Point(0, 0);
-            this.btniniciarteste.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btniniciarteste.ImageTint = System.Drawing.Color.White;
-            this.btniniciarteste.Location = new System.Drawing.Point(4, 4);
-            this.btniniciarteste.Margin = new System.Windows.Forms.Padding(4);
-            this.btniniciarteste.Name = "btniniciarteste";
-            this.btniniciarteste.NormalBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btniniciarteste.NormalOutline = System.Drawing.Color.Empty;
-            this.btniniciarteste.OutlineThickness = 1.6F;
-            this.btniniciarteste.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.btniniciarteste.PressedForeColor = System.Drawing.Color.White;
-            this.btniniciarteste.PressedImageTint = System.Drawing.Color.White;
-            this.btniniciarteste.PressedOutline = System.Drawing.Color.Empty;
-            this.btniniciarteste.Rounding = new System.Windows.Forms.Padding(8);
-            this.btniniciarteste.Size = new System.Drawing.Size(168, 86);
-            this.btniniciarteste.TabIndex = 3;
-            this.btniniciarteste.TextOffset = new System.Drawing.Point(0, 0);
-            // 
-            // labControle
-            // 
-            this.labControle.Content = "CONTROLE";
-            this.labControle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labControle.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.labControle.Location = new System.Drawing.Point(121, 5);
-            this.labControle.Margin = new System.Windows.Forms.Padding(5);
-            this.labControle.Name = "labControle";
-            this.labControle.Size = new System.Drawing.Size(280, 26);
-            this.labControle.TabIndex = 87;
-            // 
-            // tableLayoutPanel15
-            // 
-            this.tableLayoutPanel15.ColumnCount = 1;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.33643F));
-            this.tableLayoutPanel15.Controls.Add(this.labEtapa, 0, 0);
-            this.tableLayoutPanel15.Controls.Add(this.gaugePanel1, 0, 1);
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 543);
-            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 2;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.64435F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.35565F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(1029, 239);
-            this.tableLayoutPanel15.TabIndex = 3;
-            // 
-            // labEtapa
-            // 
-            this.labEtapa.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labEtapa.Content = "ETAPAS\\ DE\\ \\ ENSAIO";
-            this.labEtapa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labEtapa.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
-            this.labEtapa.Location = new System.Drawing.Point(336, 5);
-            this.labEtapa.Margin = new System.Windows.Forms.Padding(5);
-            this.labEtapa.Name = "labEtapa";
-            this.labEtapa.Size = new System.Drawing.Size(356, 24);
-            this.labEtapa.TabIndex = 21;
-            // 
-            // gaugePanel1
-            // 
-            this.gaugePanel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.gaugePanel1.Controls.Add(this.dataGridView1);
-            this.gaugePanel1.Controls.Add(this.panel2);
-            this.gaugePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gaugePanel1.Location = new System.Drawing.Point(3, 36);
-            this.gaugePanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gaugePanel1.Name = "gaugePanel1";
-            this.gaugePanel1.Size = new System.Drawing.Size(1023, 201);
-            this.gaugePanel1.TabIndex = 22;
-            this.gaugePanel1.UserDefinedColors.Base = themeColors1;
-            this.gaugePanel1.UserDefinedColors.Error = themeColors2;
-            this.gaugePanel1.UserDefinedColors.Warning = themeColors3;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dataGridView1.ColumnHeadersHeight = 32;
-            this.dataGridView1.Location = new System.Drawing.Point(124, 4);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.MaximumSize = new System.Drawing.Size(896, 212);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(896, 182);
-            this.dataGridView1.StandardTab = true;
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.trackBar1);
-            this.panel2.Controls.Add(this.labetapas);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Location = new System.Drawing.Point(3, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(115, 192);
-            this.panel2.TabIndex = 0;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.LargeChange = 7;
-            this.trackBar1.Location = new System.Drawing.Point(3, 114);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.trackBar1.Maximum = 7;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBar1.Size = new System.Drawing.Size(101, 56);
-            this.trackBar1.TabIndex = 2;
-            this.trackBar1.Value = 7;
-            // 
-            // labetapas
-            // 
-            this.labetapas.AutoSize = true;
-            this.labetapas.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labetapas.Location = new System.Drawing.Point(9, 18);
-            this.labetapas.Name = "labetapas";
-            this.labetapas.Size = new System.Drawing.Size(87, 16);
-            this.labetapas.TabIndex = 5;
-            this.labetapas.Text = "Nº de Etapas";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(12, 46);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(84, 54);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // flowLayoutPanel4
             // 
@@ -2569,6 +2161,110 @@
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 1;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.33643F));
+            this.tableLayoutPanel15.Controls.Add(this.labEtapa, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.gaugePanel1, 0, 1);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 543);
+            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 2;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.64435F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.35565F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(1029, 239);
+            this.tableLayoutPanel15.TabIndex = 3;
+            // 
+            // labEtapa
+            // 
+            this.labEtapa.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labEtapa.Content = "ETAPAS\\ DE\\ \\ ENSAIO";
+            this.labEtapa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labEtapa.HorizontalAlignment = CuoreUI.Controls.cuiLabel.HorizontalAlignments.Center;
+            this.labEtapa.Location = new System.Drawing.Point(336, 5);
+            this.labEtapa.Margin = new System.Windows.Forms.Padding(5);
+            this.labEtapa.Name = "labEtapa";
+            this.labEtapa.Size = new System.Drawing.Size(356, 24);
+            this.labEtapa.TabIndex = 21;
+            // 
+            // gaugePanel1
+            // 
+            this.gaugePanel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gaugePanel1.Controls.Add(this.dataGridView1);
+            this.gaugePanel1.Controls.Add(this.panel2);
+            this.gaugePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gaugePanel1.Location = new System.Drawing.Point(3, 36);
+            this.gaugePanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gaugePanel1.Name = "gaugePanel1";
+            this.gaugePanel1.Size = new System.Drawing.Size(1023, 201);
+            this.gaugePanel1.TabIndex = 22;
+            this.gaugePanel1.UserDefinedColors.Base = themeColors1;
+            this.gaugePanel1.UserDefinedColors.Error = themeColors2;
+            this.gaugePanel1.UserDefinedColors.Warning = themeColors3;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.ColumnHeadersHeight = 32;
+            this.dataGridView1.Location = new System.Drawing.Point(124, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.MaximumSize = new System.Drawing.Size(896, 212);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(896, 182);
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.trackBar1);
+            this.panel2.Controls.Add(this.labetapas);
+            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Location = new System.Drawing.Point(3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(115, 192);
+            this.panel2.TabIndex = 0;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.LargeChange = 7;
+            this.trackBar1.Location = new System.Drawing.Point(3, 114);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trackBar1.Maximum = 7;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.trackBar1.Size = new System.Drawing.Size(101, 56);
+            this.trackBar1.TabIndex = 2;
+            this.trackBar1.Value = 7;
+            // 
+            // labetapas
+            // 
+            this.labetapas.AutoSize = true;
+            this.labetapas.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labetapas.Location = new System.Drawing.Point(9, 18);
+            this.labetapas.Name = "labetapas";
+            this.labetapas.Size = new System.Drawing.Size(87, 16);
+            this.labetapas.TabIndex = 5;
+            this.labetapas.Text = "Nº de Etapas";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(12, 46);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(84, 54);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // TelaStatusGeral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2607,16 +2303,6 @@
             this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.metroPanel1.ResumeLayout(false);
-            this.tableLayoutPanel11.ResumeLayout(false);
-            this.tableLayoutPanel12.ResumeLayout(false);
-            this.tableLayoutPanel15.ResumeLayout(false);
-            this.gaugePanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
@@ -2649,6 +2335,12 @@
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.gaugePanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2686,18 +2378,8 @@
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Panel panel1;
-        private CuoreUI.Controls.cuiLabel labControle;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private CuoreUI.Controls.cuiButton btnrelatoriobomba;
-        private CuoreUI.Controls.cuiButton bntFinalizar;
-        private CuoreUI.Controls.cuiButton btniniciarteste;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private CuoreUI.Controls.cuiButton cuiButton3;
-        private CuoreUI.Controls.cuiButton btngravar;
-        private CuoreUI.Controls.cuiButton btnreset;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private CuoreUI.Controls.cuiLabel labEtapa;
         private CodeArtEng.Gauge.PanelGauges.GaugePanel gaugePanel1;

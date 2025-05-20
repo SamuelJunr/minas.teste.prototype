@@ -471,7 +471,9 @@
     <Compile Include="Botaoinicio.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MVVM\ViewModel\ConfigurationResult.cs" />
     <Compile Include="MVVM\ViewModel\Grafico_Ax_Cir_Abert_Tbombas.cs" />
+    <Compile Include="MVVM\ViewModel\ReadingData.cs" />
     <Compile Include="MVVM\ViewModel\RecebimentoDados.cs" />
     <Compile Include="MVVM\ViewModel\SimulatedDrainDataGenerator.cs" />
     <Compile Include="MVVM\ViewModel\SimulatedPumpDataGenerator.cs" />
@@ -488,6 +490,12 @@
     </Compile>
     <Compile Include="MVVM\View\conexao.Designer.cs">
       <DependentUpon>conexao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ConfigFormBomb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\ConfigFormBomb.Designer.cs">
+      <DependentUpon>ConfigFormBomb.cs</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Configuracao.cs">
       <SubType>Form</SubType>
@@ -604,6 +612,9 @@
     <Compile Include="Teste\Tela_Bomba\TestDataGenerator.cs" />
     <EmbeddedResource Include="MVVM\View\Conexao.resx">
       <DependentUpon>conexao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVVM\View\ConfigFormBomb.resx">
+      <DependentUpon>ConfigFormBomb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MVVM\View\Configuracao.resx">
       <DependentUpon>Configuracao.cs</DependentUpon>

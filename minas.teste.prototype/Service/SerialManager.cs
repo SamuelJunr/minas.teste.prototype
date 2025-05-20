@@ -269,10 +269,6 @@ namespace minas.teste.prototype.Service
             // Liberar recursos não gerenciados (se houver)
         }
 
-        // Remover finalizador se não houver recursos não gerenciados diretos na classe
-        // ~SerialManager()
-        // {
-        //     Dispose(false);
-        // }
+        
     }
 }

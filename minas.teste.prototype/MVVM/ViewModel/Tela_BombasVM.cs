@@ -333,10 +333,12 @@ namespace minas.teste.prototype.MVVM.ViewModel
         {
             PararCronometro();
             stage.BackgroundImage = (System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("off");
-            _sessaoBomba.FinalizarSessao();
-            mensagemConfirmacao();
-
-
+            if (_sessaoBomba != null)
+            {
+                _sessaoBomba.FinalizarSessao();
+                mensagemConfirmacao();
+            }
+           
         }
 
         public void mensagemConfirmacao()

@@ -32,12 +32,14 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.lblInfoAdicional = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnTestarConexao = new CuoreUI.Controls.cuiButton();
             this.cuiButton2 = new CuoreUI.Controls.cuiButton();
             this.cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             this.cuiLabel2 = new CuoreUI.Controls.cuiLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAtualizarPortas = new System.Windows.Forms.Button();
             this.comboBoxBaudRate = new System.Windows.Forms.ComboBox();
             this.comboBoxPortaCOM = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,8 +48,6 @@
             this.lblStatusConexao = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalvarAplicarConfiguracoes = new CuoreUI.Controls.cuiButton();
-            this.lblInfoAdicional = new System.Windows.Forms.Label();
-            this.btnAtualizarPortas = new System.Windows.Forms.Button();
             this.metroPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +93,17 @@
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 27;
+            // 
+            // lblInfoAdicional
+            // 
+            this.lblInfoAdicional.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblInfoAdicional.AutoSize = true;
+            this.lblInfoAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoAdicional.Location = new System.Drawing.Point(25, 224);
+            this.lblInfoAdicional.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInfoAdicional.Name = "lblInfoAdicional";
+            this.lblInfoAdicional.Size = new System.Drawing.Size(0, 20);
+            this.lblInfoAdicional.TabIndex = 4;
             // 
             // textBox1
             // 
@@ -228,6 +239,21 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(340, 424);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
+            // btnAtualizarPortas
+            // 
+            this.btnAtualizarPortas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAtualizarPortas.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnAtualizarPortas.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAtualizarPortas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtualizarPortas.Location = new System.Drawing.Point(84, 368);
+            this.btnAtualizarPortas.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAtualizarPortas.Name = "btnAtualizarPortas";
+            this.btnAtualizarPortas.Size = new System.Drawing.Size(171, 52);
+            this.btnAtualizarPortas.TabIndex = 4;
+            this.btnAtualizarPortas.Text = "Atualizar";
+            this.btnAtualizarPortas.UseVisualStyleBackColor = true;
+            this.btnAtualizarPortas.Click += new System.EventHandler(this.btnAtualizarPortas_Click);
+            // 
             // comboBoxBaudRate
             // 
             this.comboBoxBaudRate.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -344,32 +370,6 @@
             this.btnSalvarAplicarConfiguracoes.TabIndex = 7;
             this.btnSalvarAplicarConfiguracoes.TextOffset = new System.Drawing.Point(0, 0);
             this.btnSalvarAplicarConfiguracoes.Click += new System.EventHandler(this.btnSalvarConfiguracoesClick);
-            // 
-            // lblInfoAdicional
-            // 
-            this.lblInfoAdicional.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblInfoAdicional.AutoSize = true;
-            this.lblInfoAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoAdicional.Location = new System.Drawing.Point(36, 223);
-            this.lblInfoAdicional.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblInfoAdicional.Name = "lblInfoAdicional";
-            this.lblInfoAdicional.Size = new System.Drawing.Size(0, 46);
-            this.lblInfoAdicional.TabIndex = 4;
-            // 
-            // btnAtualizarPortas
-            // 
-            this.btnAtualizarPortas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAtualizarPortas.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAtualizarPortas.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAtualizarPortas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizarPortas.Location = new System.Drawing.Point(84, 368);
-            this.btnAtualizarPortas.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAtualizarPortas.Name = "btnAtualizarPortas";
-            this.btnAtualizarPortas.Size = new System.Drawing.Size(171, 52);
-            this.btnAtualizarPortas.TabIndex = 4;
-            this.btnAtualizarPortas.Text = "Atualizar";
-            this.btnAtualizarPortas.UseVisualStyleBackColor = true;
-            this.btnAtualizarPortas.Click += new System.EventHandler(this.btnAtualizarPortas_Click);
             // 
             // conexao
             // 
