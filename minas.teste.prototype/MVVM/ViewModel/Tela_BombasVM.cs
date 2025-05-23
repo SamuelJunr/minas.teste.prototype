@@ -376,31 +376,48 @@ namespace minas.teste.prototype.MVVM.ViewModel
             }
             return true;
         }
-        public async Task PiscarLabelsVermelho(Label label1, Label label2, Label label3, int duration)
+        public void PiscarLabelsVermelhoSync(Label label1, Label label2, Label label3, int duration)
         {
             Color originalColor1 = label1.ForeColor;
             Color originalColor2 = label2.ForeColor;
             Color originalColor3 = label3.ForeColor;
-            int interval = 500; // Intervalo de 500 milissegundos (0.5 segundos) para cada troca de cor
+            int interval = 500;
             int steps = duration / interval;
+            int totalTicks = 2 * steps; // Cada passo requer dois ciclos (ligar/desligar)
 
-            for (int i = 0; i < steps; i++)
+            Timer timer = new Timer();
+            timer.Interval = interval;
+            int tickCount = 0;
+
+            timer.Tick += (sender, e) =>
             {
-                label1.ForeColor = Color.Red;
-                label2.ForeColor = Color.Red;
-                label3.ForeColor = Color.Red;
-                await Task.Delay(interval);
+                if (tickCount % 2 == 0) // Ciclos pares: ligar vermelho
+                {
+                    label1.ForeColor = Color.Red;
+                    label2.ForeColor = Color.Red;
+                    label3.ForeColor = Color.Red;
+                }
+                else // Ciclos ímpares: restaurar cor original
+                {
+                    label1.ForeColor = originalColor1;
+                    label2.ForeColor = originalColor2;
+                    label3.ForeColor = originalColor3;
+                }
 
-                label1.ForeColor = originalColor1;
-                label2.ForeColor = originalColor2;
-                label3.ForeColor = originalColor3;
-                await Task.Delay(interval);
-            }
+                tickCount++;
 
-            // Garantir que as cores voltem ao original após o período
-            label1.ForeColor = originalColor1;
-            label2.ForeColor = originalColor2;
-            label3.ForeColor = originalColor3;
+                if (tickCount >= totalTicks)
+                {
+                    timer.Stop();
+                    // Garante que as cores finais sejam as originais
+                    label1.ForeColor = originalColor1;
+                    label2.ForeColor = originalColor2;
+                    label3.ForeColor = originalColor3;
+                    timer.Dispose();
+                }
+            };
+
+            timer.Start();
         }
 
         public void LimparCamposEntrada(params TextBox[] textBoxes)

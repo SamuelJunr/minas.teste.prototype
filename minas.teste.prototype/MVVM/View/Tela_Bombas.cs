@@ -5,19 +5,14 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-// Removido: using System.Web.UI.WebControls; pois TextBox é System.Windows.Forms.TextBox
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using minas.teste.prototype.MVVM.Model.Concrete; // Assumindo que esta e as próximas são necessárias para o restante da classe
+using minas.teste.prototype.MVVM.Model.Concrete; 
 using minas.teste.prototype.MVVM.ViewModel;
 using minas.teste.prototype.Service;
 using TextBox = System.Windows.Forms.TextBox; // Especifica o TextBox do Windows Forms
 
-// Certifique-se que Tela_BombasVM.Datapoint_Bar_Lpm está acessível.
-// Se estiver dentro de Tela_BombasVM, e Tela_BombasVM for uma classe,
-// você precisará de uma instância ou torná-la estática, ou mover a struct.
-// Exemplo: public struct Datapoint_Bar_Lpm { public double FlowLpm; public double PressureBar; }
-// pode ser definida dentro deste namespace ou em um arquivo comum.
 
 namespace minas.teste.prototype.MVVM.View
 {
@@ -121,7 +116,7 @@ namespace minas.teste.prototype.MVVM.View
 
             _updateUiTimer = new Timer();
             _updateUiTimer.Interval = 150; // Intervalo de atualização da UI
-           // _updateUiTimer.Tick += UpdateUiTimer_Tick;
+                                           // _updateUiTimer.Tick += UpdateUiTimer_Tick;
 
             InitializeAllCharts();
 
@@ -131,7 +126,7 @@ namespace minas.teste.prototype.MVVM.View
             SetButtonState(btnreset, false);
             SetButtonState(btnrelatoriobomba, false);
             InitializeSensorConfigurationSystem();
-           
+
         }
 
         // --- INÍCIO: Métodos para o sistema de configuração de ensaio ---
@@ -347,8 +342,13 @@ namespace minas.teste.prototype.MVVM.View
             }
 
             // Garante que GroupBoxes que não têm mais itens selecionados tenham seus controles internos (mapeados) ocultos
-            foreach (var groupControl in this.Controls.OfType<Panel>().SelectMany(p => p.Controls.OfType<GroupBox>()) // Assumindo que GroupBoxes estão em panel1
-                                          .Concat(this.Controls.OfType<GroupBox>())) // Inclui GroupBoxes diretamente no Form
+            // Procura em panel1 e diretamente no Form por GroupBoxes
+            var allGroupBoxesOnForm = this.Controls.OfType<Panel>()
+                                     .Where(p => p.Name == "panel1") // Assumindo que o panel principal se chama panel1
+                                     .SelectMany(p => p.Controls.OfType<GroupBox>())
+                                     .Concat(this.Controls.OfType<GroupBox>());
+
+            foreach (var groupControl in allGroupBoxesOnForm)
             {
                 if (!groupBoxReadingsMap.ContainsKey(groupControl)) // Se este GroupBox não está no mapa de itens a serem exibidos
                 {
@@ -368,6 +368,7 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
 
+
         private GroupBox FindParentGroupBox(Control control)
         {
             Control current = control;
@@ -382,137 +383,108 @@ namespace minas.teste.prototype.MVVM.View
             return null;
         }
 
-        // MÉTODO LayoutControlsInGroup REATORADO PARA NOVO LAYOUT
+        // MÉTODO LayoutControlsInGroup ATUALIZADO
         private void LayoutControlsInGroup(GroupBox groupBox, List<(TextBox valueTb, Label unitL)> selectedItemsInGroup)
         {
-            if (groupBox == null) return;
+            if (groupBox == null || selectedItemsInGroup == null) return;
+
             groupBox.SuspendLayout();
 
-            // Ocultar todos os controles de sensor mapeados neste grupo que NÃO estão na lista `selectedItemsInGroup`
+            // Ocultar todos os TextBoxes e Labels de unidade mapeados neste grupo que NÃO estão na lista `selectedItemsInGroup`
             foreach (var readingEntry in sensorControlsMap)
             {
                 if (FindParentGroupBox(readingEntry.Value.valueTextBox) == groupBox)
                 {
                     bool isCurrentlySelectedForThisGroup = selectedItemsInGroup.Any(item => item.valueTb == readingEntry.Value.valueTextBox);
+
                     readingEntry.Value.valueTextBox.Visible = isCurrentlySelectedForThisGroup;
                     readingEntry.Value.unitLabel.Visible = isCurrentlySelectedForThisGroup;
                 }
             }
 
-            if (selectedItemsInGroup == null || !selectedItemsInGroup.Any())
+            var itemsToLayout = selectedItemsInGroup.Where(item => item.valueTb.Visible).ToList();
+
+            if (!itemsToLayout.Any())
             {
                 groupBox.ResumeLayout(true);
                 return;
             }
 
-            int yPos = 25; // Posição Y inicial dentro do GroupBox (abaixo do título do GroupBox)
-            const int itemVerticalHeight = 35; // Altura de uma linha de (TextBox + Label) - Ajuste conforme o tamanho dos seus TextBoxes
-            const int verticalSpacingBetweenRows = 5;
-            const int horizontalPaddingInGroupBox = 10;
-            const int spacingBetweenSensorItemsOnSameRow = 10; // Espaçamento entre "(TextBox)Label" na mesma linha
-            const int spacingWithinSensorItem = 2; // Espaçamento entre o TextBox e seu Label de unidade
-
-            // Larguras preferenciais (os TextBoxes já têm suas larguras do Designer)
-            // A largura do Label de unidade pode ser AutoSize ou uma largura fixa pequena.
-            // int valueTextBoxWidth = 75; // Exemplo, mas usaremos a largura real do TextBox
-            const int unitLabelPreferredWidth = 40; // Ex: "BAR", "PSI"
-
-            int currentItemGlobalIndex = 0;
-            while (currentItemGlobalIndex < selectedItemsInGroup.Count)
+            int controlRowHeight = 35;
+            if (itemsToLayout.Any())
             {
-                int itemsToPlaceInThisVisualRow = 0;
-                int remainingItemsForGroup = selectedItemsInGroup.Count - currentItemGlobalIndex;
-                int availableWidthForItems = groupBox.ClientSize.Width - (2 * horizontalPaddingInGroupBox);
-
-                // Determina quantos itens cabem na linha atual
-                for (int attemptCount = Math.Min(4, remainingItemsForGroup); attemptCount >= 1; attemptCount--)
-                {
-                    // Calcula a largura necessária para 'attemptCount' itens
-                    int widthNeededForAttempt = 0;
-                    for (int k = 0; k < attemptCount; k++)
-                    {
-                        if (currentItemGlobalIndex + k < selectedItemsInGroup.Count)
-                        {
-                            var itemTuple = selectedItemsInGroup[currentItemGlobalIndex + k];
-                            widthNeededForAttempt += itemTuple.valueTb.Width + spacingWithinSensorItem + unitLabelPreferredWidth;
-                            if (k < attemptCount - 1) // Adiciona espaçamento entre itens
-                            {
-                                widthNeededForAttempt += spacingBetweenSensorItemsOnSameRow;
-                            }
-                        }
-                    }
-
-                    if (widthNeededForAttempt <= availableWidthForItems)
-                    {
-                        itemsToPlaceInThisVisualRow = attemptCount;
-                        break;
-                    }
-                }
-
-                if (itemsToPlaceInThisVisualRow == 0 && remainingItemsForGroup > 0)
-                {
-                    itemsToPlaceInThisVisualRow = 1; // Força ao menos um item se houver algum restante
-                }
-
-                if (itemsToPlaceInThisVisualRow == 0) break;
-
-                // Calcula a largura total real dos itens que serão colocados nesta linha
-                int actualRowWidth = 0;
-                for (int i = 0; i < itemsToPlaceInThisVisualRow; i++)
-                {
-                    if (currentItemGlobalIndex + i < selectedItemsInGroup.Count)
-                    {
-                        var itemTuple = selectedItemsInGroup[currentItemGlobalIndex + i];
-                        actualRowWidth += itemTuple.valueTb.Width + spacingWithinSensorItem + unitLabelPreferredWidth;
-                    }
-                }
-                actualRowWidth += Math.Max(0, itemsToPlaceInThisVisualRow - 1) * spacingBetweenSensorItemsOnSameRow;
-
-                int startX = horizontalPaddingInGroupBox + (availableWidthForItems - actualRowWidth) / 2;
-                if (startX < horizontalPaddingInGroupBox) startX = horizontalPaddingInGroupBox;
-
-                for (int i = 0; i < itemsToPlaceInThisVisualRow; i++)
-                {
-                    if (currentItemGlobalIndex >= selectedItemsInGroup.Count) break;
-
-                    var currentItemTuple = selectedItemsInGroup[currentItemGlobalIndex];
-                    TextBox valueTextBox = currentItemTuple.valueTb;
-                    Label unitLabel = currentItemTuple.unitL;
-
-                    // Garante que são visíveis
-                    valueTextBox.Visible = true;
-                    unitLabel.Visible = true;
-
-                    // Define a largura do Label da unidade (pode ser AutoSize ou fixa)
-                    unitLabel.AutoSize = true; // Deixa o Label definir sua largura baseada no texto
-                    // unitLabel.Width = unitLabelPreferredWidth; // Ou define uma largura fixa
-
-                    int currentItemStartX = startX + i * ((actualRowWidth - ((itemsToPlaceInThisVisualRow - 1) * spacingBetweenSensorItemsOnSameRow)) / itemsToPlaceInThisVisualRow + spacingBetweenSensorItemsOnSameRow);
-                    if (i > 0) // Adiciona espaçamento entre itens, exceto para o primeiro
-                    {
-                        // A lógica de startX já considera o espaçamento distribuído.
-                        // No entanto, se for um espaçamento fixo entre blocos:
-                        // currentItemStartX = (valueTextBox anterior).Right + spacingBetweenSensorItemsOnSameRow;
-                        // Para simplificar, o startX calculado para a linha inteira já tenta centralizar o conjunto.
-                        // Vamos posicionar relativo ao startX da linha e ao acumulado dos itens anteriores.
-                        Control previousControlSet_TB = selectedItemsInGroup[currentItemGlobalIndex - 1].valueTb;
-                        Control previousControlSet_LBL = selectedItemsInGroup[currentItemGlobalIndex - 1].unitL;
-                        currentItemStartX = previousControlSet_LBL.Right + spacingBetweenSensorItemsOnSameRow;
-
-                    }
-                    else
-                    {
-                        currentItemStartX = startX; // Posição X do primeiro item na linha
-                    }
-
-
-                    valueTextBox.Location = new Point(currentItemStartX, yPos + (itemVerticalHeight - valueTextBox.Height) / 2);
-                    unitLabel.Location = new Point(valueTextBox.Right + spacingWithinSensorItem, yPos + (itemVerticalHeight - unitLabel.Height) / 2);
-
-                    currentItemGlobalIndex++;
-                }
-                yPos += itemVerticalHeight + verticalSpacingBetweenRows;
+                controlRowHeight = itemsToLayout.First().valueTb.Height;
             }
+
+            // Use GroupBox.DisplayRectangle para determinar a área útil para controlos filhos.
+            // Esta área já considera as bordas do GroupBox e o espaço para o título.
+            Rectangle displayRect = groupBox.DisplayRectangle;
+
+            // Calcula a posição Y para centrar a linha de controlos verticalmente dentro do DisplayRectangle.
+            int yPosForRow = displayRect.Y; // Começa no topo do display rectangle.
+            if (displayRect.Height > controlRowHeight)
+            {
+                yPosForRow += (displayRect.Height - controlRowHeight) / 2;
+            }
+            // Se controlRowHeight > displayRect.Height, será alinhado ao topo do displayRect.Y.
+
+            // Garante que yPosForRow não seja menor que o topo do display rectangle.
+            yPosForRow = Math.Max(displayRect.Y, yPosForRow);
+
+
+            // Constantes para posicionamento horizontal
+            // Usar DisplayRectangle.X e DisplayRectangle.Width para cálculos horizontais.
+            const int internalHorizontalPadding = 5; // Pequeno padding dentro do display rectangle.
+            int availableContentWidth = displayRect.Width - (2 * internalHorizontalPadding);
+            const int spacingBetweenSensorItemsOnSameRow = 15;
+            const int spacingWithinSensorItem = 3;
+
+            int totalWidthOfItemsInThisRow = 0;
+            for (int i = 0; i < itemsToLayout.Count; i++)
+            {
+                var itemTuple = itemsToLayout[i];
+                itemTuple.unitL.AutoSize = true;
+                Size unitLabelActualSize = TextRenderer.MeasureText(itemTuple.unitL.Text, itemTuple.unitL.Font);
+
+                totalWidthOfItemsInThisRow += itemTuple.valueTb.Width + spacingWithinSensorItem + unitLabelActualSize.Width;
+                if (i < itemsToLayout.Count - 1)
+                {
+                    totalWidthOfItemsInThisRow += spacingBetweenSensorItemsOnSameRow;
+                }
+            }
+
+            int startX = displayRect.X + internalHorizontalPadding; // Começa após o padding esquerdo do display rect.
+            if (availableContentWidth > totalWidthOfItemsInThisRow)
+            {
+                startX += (availableContentWidth - totalWidthOfItemsInThisRow) / 2; // Centra na largura disponível.
+            }
+
+            int currentXInRow = startX;
+
+            for (int i = 0; i < itemsToLayout.Count; i++)
+            {
+                var currentItemTuple = itemsToLayout[i];
+                TextBox valueTextBox = currentItemTuple.valueTb;
+                Label unitLabel = currentItemTuple.unitL;
+
+                valueTextBox.Visible = true;
+                unitLabel.Visible = true;
+                unitLabel.AutoSize = true;
+
+                int tbY = yPosForRow;
+                // Alinha o Label verticalmente ao centro do TextBox.
+                int lblY = tbY + (valueTextBox.Height - unitLabel.PreferredHeight) / 2;
+
+                // Garante que as posições Y não sejam menores que o topo do display rectangle.
+                tbY = Math.Max(displayRect.Y, tbY);
+                lblY = Math.Max(displayRect.Y, lblY);
+
+                valueTextBox.Location = new Point(currentXInRow, tbY);
+                unitLabel.Location = new Point(valueTextBox.Right + spacingWithinSensorItem, lblY);
+
+                currentXInRow = unitLabel.Right + spacingBetweenSensorItemsOnSameRow;
+            }
+
             groupBox.ResumeLayout(true);
         }
 
@@ -1068,9 +1040,11 @@ namespace minas.teste.prototype.MVVM.View
             System.Windows.Forms.TextBox tb5 = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
             System.Windows.Forms.TextBox tb4 = this.Controls.Find("textBox4", true).FirstOrDefault() as System.Windows.Forms.TextBox;
 
-            if (tb6 == null || tb5 == null || tb4 == null || !_viewModel.cabecalhoinicial(tb6, tb5, tb4))
+            if (!_viewModel.cabecalhoinicial(tb6, tb5, tb4))
             {
+                
                 MessageBox.Show("Favor preencher os campos obrigatórios em DADOS DE ENSAIO.", "Campos Obrigatórios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _viewModel.PiscarLabelsVermelhoSync(label6, label5, label4, 1000);
                 return;
             }
 
@@ -1374,7 +1348,7 @@ namespace minas.teste.prototype.MVVM.View
             {
                 _updateUiTimer = new Timer();
                 _updateUiTimer.Interval = 150; // Intervalo de atualização da UI
-              //  _updateUiTimer.Tick += UpdateUiTimer_Tick;
+                                               //  _updateUiTimer.Tick += UpdateUiTimer_Tick;
             }
             if (!_updateUiTimer.Enabled)
             {
@@ -1737,7 +1711,7 @@ namespace minas.teste.prototype.MVVM.View
                 _currentNumericSensorReadings.Clear();
             }
 
-           // UpdateTextBoxes(); // Atualiza TextBoxes para mostrar "N/A" ou valores zerados
+            // UpdateTextBoxes(); // Atualiza TextBoxes para mostrar "N/A" ou valores zerados
             ClearStaticDataGridViewCells(); // Limpa os dados das etapas no DataGridView
 
             // Reseta CircularProgressBar
