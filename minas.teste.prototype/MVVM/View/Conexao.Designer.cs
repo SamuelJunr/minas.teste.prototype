@@ -110,10 +110,10 @@
             this.textBox1.AcceptsReturn = true;
             this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.textBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.textBox1.Location = new System.Drawing.Point(398, 53);
+            this.textBox1.Location = new System.Drawing.Point(403, 53);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(403, 202);
+            this.textBox1.Size = new System.Drawing.Size(393, 202);
             this.textBox1.TabIndex = 2;
             // 
             // btnTestarConexao

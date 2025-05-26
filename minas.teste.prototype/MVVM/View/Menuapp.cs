@@ -137,5 +137,12 @@ namespace minas.teste.prototype
             TutorialVV.Show();
             this.Hide();
         }
+
+        private void BtnContas_user_Click(object sender, EventArgs e)
+        {
+            ContasW Contas = new ContasW();
+            Contas.Show();
+            this.Hide();
+        }
     }
 }

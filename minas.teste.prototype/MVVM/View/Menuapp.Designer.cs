@@ -49,6 +49,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.BtnContas_user = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Chocolate;
+            this.panel1.Controls.Add(this.BtnContas_user);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
@@ -288,6 +290,17 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // BtnContas_user
+            // 
+            this.BtnContas_user.Location = new System.Drawing.Point(16, 62);
+            this.BtnContas_user.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnContas_user.Name = "BtnContas_user";
+            this.BtnContas_user.Size = new System.Drawing.Size(237, 90);
+            this.BtnContas_user.TabIndex = 5;
+            this.BtnContas_user.Text = "Contas";
+            this.BtnContas_user.UseVisualStyleBackColor = true;
+            this.BtnContas_user.Click += new System.EventHandler(this.BtnContas_user_Click);
+            // 
             // Menuapp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -330,5 +343,6 @@
         private CuoreUI.Controls.cuiLabel cuiLabel3;
         private CuoreUI.Controls.cuiLabel cuiLabel2;
         private CuoreUI.Controls.cuiLabel cuiLabel1;
+        private System.Windows.Forms.Button BtnContas_user;
     }
 }

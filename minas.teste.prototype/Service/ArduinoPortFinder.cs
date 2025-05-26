@@ -15,7 +15,8 @@ public class ArduinoPortFinder
 
     private readonly List<string> expectedKeys = new List<string>
     {
-        "P1", "fluxo1", "Piloto1", "dreno1", "RPM", "temp"
+        "HA1","HA2","HB1","HB2","MA1","MA2","MB1","MB2","TEM","ROT","DR1","DR2","DR3","DR4","PL1","PL2","PL3","PL4","PR1","PR2","PR3","PR4","VZ1","VZ2","VZ3","VZ4"
+
     };
 
     /// <summary>
