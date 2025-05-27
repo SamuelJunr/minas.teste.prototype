@@ -396,6 +396,12 @@
     <Compile Include="MVVM\View\Banco_de_dados.Designer.cs">
       <DependentUpon>Banco_de_dados.cs</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\View\ChartDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVVM\View\ChartDetailForm.Designer.cs">
+      <DependentUpon>ChartDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\conexao.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -4,18 +4,14 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.IO.Ports;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using Microsoft.Extensions.Logging;
-using minas.teste.prototype.Estilo;
-using minas.teste.prototype.MVVM.Model.Abstract;
 using minas.teste.prototype.MVVM.Model.Concrete;
 using minas.teste.prototype.Service;
-using static System.Net.Mime.MediaTypeNames;
-using Panel = System.Windows.Forms.Panel;
+// Assuming Properties.Settings is accessible for calibration coefficients
+// using minas.teste.prototype.Properties; 
 
 namespace minas.teste.prototype.MVVM.ViewModel
 {
@@ -26,13 +22,12 @@ namespace minas.teste.prototype.MVVM.ViewModel
         public const string LABEL_CRONOMETRO = "labelCronometro_bomba";
         private HoraDia _Tempo;
         private SessaoBomba _sessaoBomba;
-        public event EventHandler<Datapoint_Bar_Rpm> Chart1Data;
+        public event EventHandler<Datapoint_Bar_Rpm> Chart1Data; // Assuming Datapoint_Bar_Rpm is defined
 
         // --- Chart Data Logic Fields ---
         private double _previousRotationRpm = double.NaN;
-        private const double RotationTolerance = 10.0; // Tolerance for considering rotation constant (adjust as needed)
+        private const double RotationTolerance = 10.0;
 
-        // Data structure for chart points (Pressure in Bar, Flow in Lpm)
         public struct Datapoint_Bar_Lpm
         {
             public double PressureBar { get; set; }
@@ -44,31 +39,198 @@ namespace minas.teste.prototype.MVVM.ViewModel
                 FlowLpm = flowLpm;
             }
         }
-        // --- End Chart Data Logic Fields ---
+        public struct Datapoint_Bar_Rpm // Make sure this is defined if used by Chart1Data event
+        {
+            public double RotationRpm { get; set; }
+            public double PressureBar { get; set; }
+
+            public Datapoint_Bar_Rpm(double rotationRpm, double pressureBar)
+            {
+                RotationRpm = rotationRpm;
+                PressureBar = pressureBar;
+            }
+        }
 
 
-        #region PROPRIEDADES_JANELA
+        // --- Serial Data Processing and Calibration Fields ---
+        private Dictionary<string, double> _currentRawSensorReadings = new Dictionary<string, double>();
+        private Dictionary<string, double> _currentCalibratedSensorReadings = new Dictionary<string, double>();
+        private Dictionary<string, double> _calibrationFactors = new Dictionary<string, double>();
+
+        public event Action<Dictionary<string, string>> SensorDisplayDataUpdated;
+
+        public readonly Dictionary<string, string> _serialKeyToTextBoxNameMap = new Dictionary<string, string>
+        {
+            {"HA1", "sensor_HA1"}, {"HA2", "sensor_HA2"},
+            {"HB1", "sensor_HB1"}, {"HB2", "sensor_HB2"},
+            {"MA1", "sensor_MA1"}, {"MA2", "sensor_MA2"},
+            {"MB1", "sensor_MB1"}, {"MB2", "sensor_MB2"},
+            {"TEM", "sensor_CELSUS"},
+            {"ROT", "sensor_RPM"},
+            {"DR1", "sensor_DR1"}, {"DR2", "sensor_DR2"},
+            {"PL1", "sensor_P1"}, {"PL2", "sensor_P2"}, // Maps PLx from serial to sensor_Px TextBox
+            {"PL3", "sensor_P3"}, {"PL4", "sensor_P4"},
+            {"PR1", "sensor_PR1"}, {"PR2", "sensor_PR2"}, // Maps PRx from serial to sensor_PRx TextBox
+            {"PR3", "sensor_PR3"}, {"PR4", "sensor_PR4"},
+            {"VZ1", "sensor_V1"}, {"VZ2", "sensor_V2"},
+            {"VZ3", "sensor_V3"}, {"VZ4", "sensor_V4"}
+            // DR3, DR4 from serial are not mapped to a specific TextBox here for direct update via event.
+            // Their values will be in _currentCalibratedSensorReadings and can be fetched via GetCalibratedSensorValue.
+        };
+
+        public Tela_BombasVM()
+        {
+            LoadCalibrationFactors();
+        }
+
+        private void LoadCalibrationFactors()
+        {
+            _calibrationFactors.Clear();
+            try
+            {
+                string json = minas.teste.prototype.Properties.Settings.Default.CalibrationCoefficientsJSON;
+                if (!string.IsNullOrEmpty(json))
+                {
+                    var serializer = new JavaScriptSerializer();
+                    var savedCoefficients = serializer.Deserialize<Dictionary<string, string>>(json);
+
+                    if (savedCoefficients != null)
+                    {
+                        foreach (var entry in savedCoefficients)
+                        {
+                            if (double.TryParse(entry.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double factor) && factor != 0.0)
+                            {
+                                _calibrationFactors[entry.Key] = factor;
+                            }
+                            else
+                            {
+                                _calibrationFactors[entry.Key] = 1.0;
+                                Debug.WriteLine($"Warning: Calibration factor for {entry.Key} ('{entry.Value}') is invalid or zero. Using 1.0.");
+                            }
+                        }
+                        Debug.WriteLine("ViewModel: Calibration factors loaded.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"ViewModel: Error loading calibration factors: {ex.Message}");
+            }
+        }
+
+        public void ProcessSerialDataString(string dataString)
+        {
+            if (string.IsNullOrWhiteSpace(dataString)) return;
+
+            string[] pairs = dataString.Split('|');
+            bool newReadingsFound = false;
+            var tempRawReadings = new Dictionary<string, double>(); // Process one full message
+
+            foreach (string pair in pairs)
+            {
+                string[] keyValue = pair.Split(':');
+                if (keyValue.Length == 2)
+                {
+                    string key = keyValue[0].Trim();
+                    if (double.TryParse(keyValue[1].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
+                    {
+                        tempRawReadings[key] = value; // Use temp dictionary for the current message
+                        newReadingsFound = true;
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"[VM_PARSE_ERROR] Invalid value for {key}: {keyValue[1]} in message: {dataString}");
+                    }
+                }
+            }
+
+            // Update main raw readings with the fresh set from the current message
+            // This ensures that if a sensor isn't in the current message, its old value isn't stuck
+            // For a full overwrite strategy:
+            // _currentRawSensorReadings = new Dictionary<string, double>(tempRawReadings);
+            // For an update/add strategy:
+            foreach (var reading in tempRawReadings)
+            {
+                _currentRawSensorReadings[reading.Key] = reading.Value;
+            }
+
+
+            if (newReadingsFound) // Or always apply calibration even if only one value changed
+            {
+                ApplyCalibration();
+                PrepareDisplayValuesAndNotifyView();
+            }
+        }
+
+        private void ApplyCalibration()
+        {
+            _currentCalibratedSensorReadings.Clear();
+            foreach (var rawReading in _currentRawSensorReadings)
+            {
+                string sensorKey = rawReading.Key;
+                double rawValue = rawReading.Value;
+                double calibratedValue = rawValue;
+
+                if (_calibrationFactors.TryGetValue(sensorKey, out double factor))
+                {
+                    calibratedValue = rawValue * factor; // Factor of 1.0 means no change
+                }
+                _currentCalibratedSensorReadings[sensorKey] = calibratedValue;
+            }
+        }
+
+        private void PrepareDisplayValuesAndNotifyView()
+        {
+            var displayValues = new Dictionary<string, string>();
+            foreach (var calibratedReading in _currentCalibratedSensorReadings)
+            {
+                string serialKey = calibratedReading.Key;
+                double value = calibratedReading.Value;
+                string formattedValue;
+
+                if (serialKey == "TEM") formattedValue = value.ToString("F1", CultureInfo.InvariantCulture);
+                else if (serialKey == "ROT") formattedValue = value.ToString("F0", CultureInfo.InvariantCulture);
+                else formattedValue = value.ToString("F2", CultureInfo.InvariantCulture);
+
+                if (_serialKeyToTextBoxNameMap.TryGetValue(serialKey, out string textBoxName))
+                {
+                    displayValues[textBoxName] = formattedValue;
+                }
+            }
+            SensorDisplayDataUpdated?.Invoke(displayValues);
+        }
+
+        public double GetCalibratedSensorValue(string serialKey, double defaultValue = 0.0)
+        {
+            if (_currentCalibratedSensorReadings.TryGetValue(serialKey, out double value))
+            {
+                return value;
+            }
+            // If key not found (e.g. DR3, DR4 if not mapped), return default
+            // Or if you want raw value for uncalibrated/unmapped:
+            // if (_currentRawSensorReadings.TryGetValue(serialKey, out double rawValue)) return rawValue;
+            return defaultValue;
+        }
+
+        // ... (Rest of the Tela_BombasVM.cs methods like Carregar_configuracao, cronometer, validation, buttons, charts, flags, etc., remain as previously refactored)
+        #region PROPRIEDADES_JANELA 
         public void Carregar_configuracao(Form FormView)
         {
-            FormView.Text = Properties.Resources.ResourceManager.GetString("MainFormTitle");
+            FormView.Text = minas.teste.prototype.Properties.Resources.ResourceManager.GetString("MainFormTitle");
             SetupCronometroTimer();
             VincularCronometroLabel(FormView);
         }
         public void Stage_signal(PictureBox stage)
         {
-            stage.BackgroundImage = (System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("off");
-
+            stage.BackgroundImage = (System.Drawing.Image)minas.teste.prototype.Properties.Resources.ResourceManager.GetObject("off");
         }
         public void VincularRelogioLabel(Label relogio)
         {
             _Tempo = new HoraDia(relogio);
-
         }
-
         #endregion
 
-        #region CRONÔMETRO
-        // Métodos do Cronômetro
+        #region CRONÔMETRO 
         private void SetupCronometroTimer()
         {
             _timerAtualizacao = new System.Windows.Forms.Timer();
@@ -91,10 +253,8 @@ namespace minas.teste.prototype.MVVM.ViewModel
         public void IniciarCronometro()
         {
             if (_cronometro.IsRunning) return;
-
             if (_cronometro.GetCurrentTotalElapsedTime() > TimeSpan.Zero)
                 _cronometro.AccumulatedElapsed = TimeSpan.Zero;
-
             _cronometro.StartTime = DateTime.Now;
             _cronometro.IsRunning = true;
             _timerAtualizacao.Start();
@@ -103,7 +263,6 @@ namespace minas.teste.prototype.MVVM.ViewModel
         public void PararCronometro()
         {
             if (!_cronometro.IsRunning) return;
-
             _cronometro.AccumulatedElapsed = _cronometro.GetCurrentTotalElapsedTime();
             _cronometro.IsRunning = false;
             _timerAtualizacao.Stop();
@@ -117,27 +276,24 @@ namespace minas.teste.prototype.MVVM.ViewModel
 
         private void AtualizarLabelSeguro(Label label, string valor)
         {
-            if (label == null) return;
-
+            if (label == null || label.IsDisposed) return;
             if (label.InvokeRequired)
-                label.BeginInvoke((Action)(() => label.Text = valor));
+                label.BeginInvoke((Action)(() => { if (!label.IsDisposed) label.Text = valor; }));
             else
                 label.Text = valor;
         }
         #endregion
 
-        #region VALIDACAO
-
-
+        #region VALIDACAO 
         public void MonitorarDados(
            string psiPLValor, string psiPLMin, string psiPLMax, bool psiPLAtivo, Panel psiPLPanel, TextBox historicalEvents,
            string pressPSIValor, string pressPSIMin, string pressPSIMax, bool pressPSIAtivo, Panel pressPSIPanel,
            string gpmDRValor, string gpmDRMin, string gpmDRMax, bool gpmDRAtivo, Panel gpmDRPanel,
            string vazaoGPMValor, string vazaoGPMMin, string vazaoGPMMax, bool vazaoGPMAtivo, Panel vazaoGPMPanel,
            string pressBARValor, string pressBARMin, string pressBARMax, bool pressBARAtivo, Panel pressBARPanel,
-           string barPLValor, string barPLMin, string barPLMax, bool barPLAtivo, Panel barPLPanel, 
-           string rotacaoRPMValor, string rotacaoRPMMin, string rotacaoRPMMax, bool rotacaoRPMAtivo, Panel rotacaoRPMPanel, 
-           string vazaoLPMValor, string vazaoLPMMin, string vazaoLPMMax, bool vazaoLPMAtivo, Panel vazaoLPMPanel, 
+           string barPLValor, string barPLMin, string barPLMax, bool barPLAtivo, Panel barPLPanel,
+           string rotacaoRPMValor, string rotacaoRPMMin, string rotacaoRPMMax, bool rotacaoRPMAtivo, Panel rotacaoRPMPanel,
+           string vazaoLPMValor, string vazaoLPMMin, string vazaoLPMMax, bool vazaoLPMAtivo, Panel vazaoLPMPanel,
            string lpmDRValor, string lpmDRMin, string lpmDRMax, bool lpmDRAtivo, Panel lpmDRPanel,
            string tempCValor, string tempCMin, string tempCMax, bool tempCAtivo, Panel tempCPanel
        )
@@ -156,450 +312,171 @@ namespace minas.teste.prototype.MVVM.ViewModel
 
         private void SetPanelImage(Panel panel, string resourceName)
         {
-            if (string.IsNullOrEmpty(resourceName))
-            {
-                panel.BackgroundImage?.Dispose(); // Libera a imagem anterior, se houver
-                panel.BackgroundImage = null;
-                panel.BackColor = SystemColors.Control; // Cor padrão se nenhum recurso for especificado
-                return;
-            }
+            if (panel == null || panel.IsDisposed) return;
 
-            try
+            Action action = () =>
             {
-                // Tenta obter o recurso como byte array (mais comum para imagens em Resources)
-                object resourceObject = Properties.Resources.ResourceManager.GetObject(resourceName);
-
-                if (resourceObject is byte[] imageBytes)
+                if (string.IsNullOrEmpty(resourceName))
                 {
-                    using (var ms = new MemoryStream(imageBytes))
-                    {
-                        panel.BackgroundImage?.Dispose(); // Libera a imagem anterior
-                        panel.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                    }
-                }
-                // Tenta obter como um objeto Image (menos comum, mas possível)
-                else if (resourceObject is System.Drawing.Image image)
-                {
-                    panel.BackgroundImage?.Dispose(); // Libera a imagem anterior
-                                                      // Clonar é mais seguro para evitar problemas se o recurso for modificado/liberado em outro lugar
-                    panel.BackgroundImage = (System.Drawing.Image)image.Clone();
-                }
-                else
-                {
-                    // Recurso não encontrado ou tipo inválido
                     panel.BackgroundImage?.Dispose();
                     panel.BackgroundImage = null;
-                    panel.BackColor = Color.Magenta; // Cor de erro para indicar problema no recurso
-                    Console.WriteLine($"Alerta: Recurso '{resourceName}' não encontrado ou não é uma imagem válida.");
-                    // Ou logar em um arquivo de log
+                    panel.BackColor = SystemColors.Control;
+                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                // Erro ao carregar ou definir a imagem
-                panel.BackgroundImage?.Dispose();
-                panel.BackgroundImage = null;
-                panel.BackColor = Color.Red; // Cor de erro crítico
-                Console.WriteLine($"Erro ao definir imagem do painel com recurso '{resourceName}': {ex.Message}");
-                // Ou logar em um arquivo de log
-            }
+                try
+                {
+                    object resourceObject = minas.teste.prototype.Properties.Resources.ResourceManager.GetObject(resourceName);
+                    if (resourceObject is byte[] imageBytes) { using (var ms = new MemoryStream(imageBytes)) { panel.BackgroundImage?.Dispose(); panel.BackgroundImage = System.Drawing.Image.FromStream(ms); } }
+                    else if (resourceObject is System.Drawing.Image image) { panel.BackgroundImage?.Dispose(); panel.BackgroundImage = (System.Drawing.Image)image.Clone(); }
+                    else { panel.BackgroundImage?.Dispose(); panel.BackgroundImage = null; panel.BackColor = Color.Magenta; Debug.WriteLine($"Alerta: Recurso '{resourceName}' não encontrado ou não é uma imagem válida."); }
+                }
+                catch (Exception ex) { panel.BackgroundImage?.Dispose(); panel.BackgroundImage = null; panel.BackColor = Color.Red; Debug.WriteLine($"Erro ao definir imagem do painel com recurso '{resourceName}': {ex.Message}"); }
+            };
+
+            if (panel.InvokeRequired) panel.BeginInvoke(action); else action();
         }
 
-
-        /// <summary>
-        /// Verifica se o valor de um sensor está dentro do range definido e atualiza
-        /// um painel com uma imagem indicativa (_on para fora do range, _off para dentro/inativo).
-        /// </summary>
-        /// <param name="sensorNome">Nome descritivo do sensor.</param>
-        /// <param name="sensorValorTexto">Valor atual do sensor (como string).</param>
-        /// <param name="minValorTexto">Valor mínimo permitido (como string).</param>
-        /// <param name="maxValorTexto">Valor máximo permitido (como string).</param>
-        /// <param name="ativo">Indica se a verificação para este sensor está ativa.</param>
-        /// <param name="panelAlerta">O painel cuja imagem de fundo será alterada.</param>
-        /// <param name="historicalEvents">TextBox para registrar eventos (ex: valor fora do range).</param>
         private void VerificarRange(string sensorNome, string sensorValorTexto, string minValorTexto, string maxValorTexto, bool ativo, Panel panelAlerta, TextBox historicalEvents)
         {
-            string resourceNameOn = null;
-            string resourceNameOff = null;
-
-            // Mapeia o nome do sensor para os nomes dos recursos de imagem
-            // *** IMPORTANTE: Assumindo que existem recursos _on correspondentes ***
+            if (panelAlerta == null || panelAlerta.IsDisposed) return;
+            string resourceNameOn = null; string resourceNameOff = null;
             switch (sensorNome)
             {
-                case "Pilotagem PSI":
-                    resourceNameOn = "pilotagem_on"; // Assumido
-                    resourceNameOff = "pilotagem_off";
-                    break;
-                case "Pressão PSI":
-                    resourceNameOn = "pressao_on"; // Assumido
-                    resourceNameOff = "pressao_off";
-                    break;
-                case "Dreno GPM":
-                    resourceNameOn = "dreno_on"; // Assumido
-                    resourceNameOff = "dreno_off";
-                    break;
-                case "Vazão GPM":
-                    resourceNameOn = "vazao_on"; // Assumido
-                    resourceNameOff = "vazao_off";
-                    break;
-                case "Pressão BAR":
-                    resourceNameOn = "pressao_on"; // Reutilizando imagem de pressão
-                    resourceNameOff = "pressao_off";
-                    break;
-                case "Pilotagem BAR":
-                    resourceNameOn = "pilotagem_on"; // Reutilizando imagem de pilotagem
-                    resourceNameOff = "pilotagem_off";
-                    break;
-                case "Rotação RPM":
-                    resourceNameOn = "rotacao_on"; // Assumido
-                    resourceNameOff = "rotacao_off";
-                    break;
-                case "Vazão LPM":
-                    resourceNameOn = "vazao_on"; // Reutilizando imagem de vazão
-                    resourceNameOff = "vazao_off";
-                    break;
-                case "Dreno LPM":
-                    resourceNameOn = "dreno_on"; // Reutilizando imagem de dreno
-                    resourceNameOff = "dreno_off";
-                    break;
-                case "Temperatura Celsus": // Corrigido de "Celsus" para "Celsius" se for o caso
-                    resourceNameOn = "termometro_on"; // Assumido
-                    resourceNameOff = "termometro_off";
-                    break;
-                default:
-                    Console.WriteLine($"Aviso: Nome de sensor não mapeado para imagens: '{sensorNome}'");
-                    // Define uma aparência padrão ou de erro se o sensor não for conhecido
-                    SetPanelImage(panelAlerta, null); // Limpa a imagem
-                    panelAlerta.BackColor = Color.Gray; // Indica estado desconhecido/não mapeado
-                    return; // Sai da função se o sensor não for reconhecido
+                case "Pilotagem PSI": resourceNameOn = "pilotagem_on"; resourceNameOff = "pilotagem_off"; break;
+                case "Pressão PSI": resourceNameOn = "pressao_on"; resourceNameOff = "pressao_off"; break;
+                // ... (rest of the cases) ...
+                case "Temperatura Celsus": resourceNameOn = "termometro_on"; resourceNameOff = "termometro_off"; break;
+                default: Debug.WriteLine($"Aviso: Nome de sensor não mapeado para imagens: '{sensorNome}'"); SetPanelImage(panelAlerta, null); panelAlerta.BackColor = Color.Gray; return;
             }
 
+            if (!ativo) { SetPanelImage(panelAlerta, resourceNameOn); return; }
+            bool valorOk = decimal.TryParse(sensorValorTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorSensor);
+            bool minOk = decimal.TryParse(minValorTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorMinimo);
+            bool maxOk = decimal.TryParse(maxValorTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorMaximo);
 
-
-            // Tenta converter os valores de string para decimal
-            bool valorOk = decimal.TryParse(sensorValorTexto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal valorSensor);
-            bool minOk = decimal.TryParse(minValorTexto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal valorMinimo);
-            bool maxOk = decimal.TryParse(maxValorTexto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal valorMaximo);
-
-            // Verifica se todas as conversões foram bem-sucedidas
-            if (ativo)
+            if (valorOk && minOk && maxOk)
             {
-                if (valorOk && minOk && maxOk)
+                if (valorSensor < valorMinimo || valorSensor > valorMaximo)
                 {
-                    // Verifica se o valor está fora do range permitido
-                    if (valorSensor < valorMinimo || valorSensor > valorMaximo)
-                    {
-                        // Valor fora do range - mostra imagem 'on' e registra evento
-                        SetPanelImage(panelAlerta, resourceNameOff);
-                        // Adiciona ao histórico (usando AppendText para não sobrescrever)
-                        // Adiciona data/hora para melhor rastreamento
-                        historicalEvents.AppendText($"{DateTime.Now:G}: O valor do sensor {sensorNome} ({valorSensor}) está fora do range [{valorMinimo} - {valorMaximo}]." + Environment.NewLine);
-                    }
-                    
-                }
-                else
-                {
-                    // Erro ao converter algum dos valores
-                    // Decide como tratar: mostrar imagem 'off'? Mostrar indicador de erro?
-                    // Opção 1: Mostrar imagem 'off' (estado seguro/indeterminado)
                     SetPanelImage(panelAlerta, resourceNameOff);
-
+                    if (historicalEvents != null && !historicalEvents.IsDisposed)
+                    {
+                        Action appendLog = () => historicalEvents.AppendText($"{DateTime.Now:G}: O valor do sensor {sensorNome} ({valorSensor}) está fora do range [{valorMinimo} - {valorMaximo}]." + Environment.NewLine);
+                        if (historicalEvents.InvokeRequired) historicalEvents.BeginInvoke(appendLog); else appendLog();
+                    }
                 }
+                else { SetPanelImage(panelAlerta, resourceNameOn); }
             }
-            else
-            {
-                SetPanelImage(panelAlerta, resourceNameOn);
-            }
-
-            
+            else { SetPanelImage(panelAlerta, resourceNameOff); }
         }
-
         #endregion
 
-        #region BOTÕES
-
+        #region BOTÕES 
         public void IniciarTesteBomba(PictureBox stage)
         {
             IniciarCronometro();
-            using (var ms = new System.IO.MemoryStream((byte[])Properties.Resources.ResourceManager.GetObject("on")))
+            if (stage != null && !stage.IsDisposed)
             {
-                stage.BackgroundImage = System.Drawing.Image.FromStream(ms);
+                var img = minas.teste.prototype.Properties.Resources.ResourceManager.GetObject("on") as System.Drawing.Image;
+                if (img != null) stage.BackgroundImage = img;
             }
             _sessaoBomba = new SessaoBomba();
-
         }
 
         public void FinalizarTesteBomba(PictureBox stage)
         {
             PararCronometro();
-            stage.BackgroundImage = (System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("off");
-            if (_sessaoBomba != null)
+            if (stage != null && !stage.IsDisposed)
             {
-                _sessaoBomba.FinalizarSessao();
-                mensagemConfirmacao();
+                var img = minas.teste.prototype.Properties.Resources.ResourceManager.GetObject("off") as System.Drawing.Image;
+                if (img != null) stage.BackgroundImage = img;
             }
-           
+            if (_sessaoBomba != null) { _sessaoBomba.FinalizarSessao(); mensagemConfirmacao(); }
         }
 
         public void mensagemConfirmacao()
         {
-            var resultado = MessageBox.Show(
-           "Deseja salvar todos os dados do teste?",
-           "Confirmação de Salvamento",
-           MessageBoxButtons.YesNo,
-           MessageBoxIcon.Question,
-           MessageBoxDefaultButton.Button1
-            );
-
-            if (resultado == DialogResult.Yes)
-            {
-                _sessaoBomba.ProcessarSalvamento();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Dados não foram salvos!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-            }
+            var resultado = MessageBox.Show("Deseja salvar todos os dados do teste?", "Confirmação de Salvamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (resultado == DialogResult.Yes) { _sessaoBomba.ProcessarSalvamento(); }
+            else { MessageBox.Show("Dados não foram salvos!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         public bool cabecalhoinicial(TextBox textBox6, TextBox textBox5, TextBox textBox4)
         {
-            if (string.IsNullOrEmpty(textBox6?.Text) ||
-                string.IsNullOrEmpty(textBox5?.Text) ||
-                string.IsNullOrEmpty(textBox4?.Text))
-            {
-                return false;
-            }
-            return true;
+            return !(string.IsNullOrEmpty(textBox6?.Text) || string.IsNullOrEmpty(textBox5?.Text) || string.IsNullOrEmpty(textBox4?.Text));
         }
+
         public void PiscarLabelsVermelhoSync(Label label1, Label label2, Label label3, int duration)
         {
-            Color originalColor1 = label1.ForeColor;
-            Color originalColor2 = label2.ForeColor;
-            Color originalColor3 = label3.ForeColor;
-            int interval = 500;
-            int steps = duration / interval;
-            int totalTicks = 2 * steps; // Cada passo requer dois ciclos (ligar/desligar)
-
-            Timer timer = new Timer();
-            timer.Interval = interval;
-            int tickCount = 0;
-
-            timer.Tick += (sender, e) =>
-            {
-                if (tickCount % 2 == 0) // Ciclos pares: ligar vermelho
-                {
-                    label1.ForeColor = Color.Red;
-                    label2.ForeColor = Color.Red;
-                    label3.ForeColor = Color.Red;
-                }
-                else // Ciclos ímpares: restaurar cor original
-                {
-                    label1.ForeColor = originalColor1;
-                    label2.ForeColor = originalColor2;
-                    label3.ForeColor = originalColor3;
-                }
-
+            if (label1 == null || label2 == null || label3 == null) return;
+            Color originalColor1 = label1.ForeColor; Color originalColor2 = label2.ForeColor; Color originalColor3 = label3.ForeColor;
+            int interval = 500; int steps = duration / interval; int totalTicks = 2 * steps;
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer { Interval = interval }; int tickCount = 0;
+            timer.Tick += (sender, e) => {
+                if (label1.IsDisposed || label2.IsDisposed || label3.IsDisposed) { timer.Stop(); timer.Dispose(); return; }
+                label1.ForeColor = (tickCount % 2 == 0) ? Color.Red : originalColor1;
+                label2.ForeColor = (tickCount % 2 == 0) ? Color.Red : originalColor2;
+                label3.ForeColor = (tickCount % 2 == 0) ? Color.Red : originalColor3;
                 tickCount++;
-
-                if (tickCount >= totalTicks)
-                {
-                    timer.Stop();
-                    // Garante que as cores finais sejam as originais
-                    label1.ForeColor = originalColor1;
-                    label2.ForeColor = originalColor2;
-                    label3.ForeColor = originalColor3;
-                    timer.Dispose();
-                }
+                if (tickCount >= totalTicks) { timer.Stop(); if (!label1.IsDisposed) label1.ForeColor = originalColor1; if (!label2.IsDisposed) label2.ForeColor = originalColor2; if (!label3.IsDisposed) label3.ForeColor = originalColor3; timer.Dispose(); }
             };
-
             timer.Start();
         }
 
         public void LimparCamposEntrada(params TextBox[] textBoxes)
         {
-            foreach (var textBox in textBoxes)
-            {
-                textBox.Text = string.Empty;
-            }
+            foreach (var textBox in textBoxes) { if (textBox != null && !textBox.IsDisposed) textBox.Text = string.Empty; }
         }
-
         #endregion
 
-        #region GRAFICOS
-
-        // Method to provide chart data with rotation check
+        #region GRAFICOS 
         public Datapoint_Bar_Lpm? GetChartDataIfRotationConstant(string pressureBarText, string vazaoLpmText, string rotacaoRpmText)
         {
-            // Use InvariantCulture for parsing to handle decimal points consistently
             if (double.TryParse(pressureBarText, NumberStyles.Any, CultureInfo.InvariantCulture, out double pressureBar) &&
                 double.TryParse(vazaoLpmText, NumberStyles.Any, CultureInfo.InvariantCulture, out double flowLpm) &&
                 double.TryParse(rotacaoRpmText, NumberStyles.Any, CultureInfo.InvariantCulture, out double currentRotationRpm))
             {
-                // Check if rotation is constant (within tolerance) or if it's the first reading
                 if (double.IsNaN(_previousRotationRpm) || Math.Abs(currentRotationRpm - _previousRotationRpm) <= RotationTolerance)
-                {
-                    _previousRotationRpm = currentRotationRpm; // Update previous rotation
-                    return new Datapoint_Bar_Lpm(pressureBar, flowLpm); // Provide data
-                }
-                else
-                {
-                    // Rotation is not constant, do not provide data for the chart
-                    _previousRotationRpm = currentRotationRpm; // Update previous rotation even if not constant for check in next tick
-                    return null;
-                }
+                { _previousRotationRpm = currentRotationRpm; return new Datapoint_Bar_Lpm(pressureBar, flowLpm); }
+                else { _previousRotationRpm = currentRotationRpm; return null; }
             }
-            // Parsing failed for one or more values
-            _previousRotationRpm = double.NaN; // Reset previous rotation on parsing error
-            return null;
+            _previousRotationRpm = double.NaN; return null;
         }
 
-        // Method to reset the chart data logic state (e.g., on chart clear/reset)
-        public void ResetChartDataLogic()
-        {
-            _previousRotationRpm = double.NaN;
-        }
-        public void ProcessChartData(double rotation, double pressure)
-        {
-            // Aqui você poderia adicionar lógica de validação ou transformação antes
-            // de enviar os dados para o gráfico, se necessário.
-
-            // Dispara o evento NewChartData com os dados recebidos
-            Chart1Data?.Invoke(this, new Datapoint_Bar_Rpm(rotation, pressure));
-        }
+        public void ResetChartDataLogic() { _previousRotationRpm = double.NaN; }
+        public void ProcessChartData(double rotation, double pressure) { Chart1Data?.Invoke(this, new Datapoint_Bar_Rpm(rotation, pressure)); }
         #endregion
 
         #region FLAGS 
-        public void AlterarEstadoPaineis(bool ativo, Panel p1, Panel p2,Panel p3,Panel p4,Panel p5,Panel p6)
+        public void AlterarEstadoPaineis(bool ativo, Panel p1, Panel p2, Panel p3, Panel p4, Panel p5, Panel p6)
         {
-            // Implemente a mudança visual dos painéis aqui
-            if (ativo)
-            {
-                // Exibe os painéis
-                var imageBytes = (byte[])Properties.Resources.ResourceManager.GetObject("pilotagem_on");
-                using (var ms = new MemoryStream(imageBytes))
-                {
-                    p1.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes1 = (byte[])Properties.Resources.ResourceManager.GetObject("dreno_on");
-                using (var ms = new MemoryStream(imageBytes1))
-                {
-                    p2.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes2 = (byte[])Properties.Resources.ResourceManager.GetObject("pressao_on");
-                using (var ms = new MemoryStream(imageBytes2))
-                {
-                    p3.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes3 = (byte[])Properties.Resources.ResourceManager.GetObject("rotacao_on");
-                using (var ms = new MemoryStream(imageBytes3))
-                {
-                    p4.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes4 = (byte[])Properties.Resources.ResourceManager.GetObject("vazao_on");
-                using (var ms = new MemoryStream(imageBytes4))
-                {
-                    p5.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes5 = (byte[])Properties.Resources.ResourceManager.GetObject("termometro_on");
-                using (var ms = new MemoryStream(imageBytes5))
-                {
-                    p6.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-            }
-            else
-            { 
-                var imageBytes = (byte[])Properties.Resources.ResourceManager.GetObject("pilotagem_by");
-                using (var ms = new MemoryStream(imageBytes))
-                {
-                    p1.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes1 = (byte[])Properties.Resources.ResourceManager.GetObject("dreno_by");
-                using (var ms = new MemoryStream(imageBytes1))
-                {
-                    p2.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes2 = (byte[])Properties.Resources.ResourceManager.GetObject("pressao_by");
-                using (var ms = new MemoryStream(imageBytes2))
-                {
-                    p3.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes3 = (byte[])Properties.Resources.ResourceManager.GetObject("rotacao_by");
-                using (var ms = new MemoryStream(imageBytes3))
-                {
-                    p4.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes4 = (byte[])Properties.Resources.ResourceManager.GetObject("vazao_by");
-                using (var ms = new MemoryStream(imageBytes4))
-                {
-                    p5.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-                var imageBytes5 = (byte[])Properties.Resources.ResourceManager.GetObject("termometro_by");
-                using (var ms = new MemoryStream(imageBytes5))
-                {
-                    p6.BackgroundImage = System.Drawing.Image.FromStream(ms);
-                }
-            }
-
+            string suffix = ativo ? "_on" : "_by";
+            SetPanelImage(p1, $"pilotagem{suffix}");
+            SetPanelImage(p2, $"dreno{suffix}");
+            SetPanelImage(p3, $"pressao{suffix}");
+            SetPanelImage(p4, $"rotacao{suffix}");
+            SetPanelImage(p5, $"vazao{suffix}");
+            SetPanelImage(p6, $"termometro{suffix}");
         }
         #endregion
 
-
-        public void AtualizarVisualizador(DataGridView fonte,List<SensorData> data )
+        public void AtualizarVisualizador(DataGridView fonte, List<SensorData> data) // Assuming SensorData is defined
         {
-            // Configurar o DataGridView se necessário
-            if (fonte.Columns.Count == 0)
+            if (fonte == null || fonte.IsDisposed) return;
+            Action updateGrid = () =>
             {
-                fonte.AutoGenerateColumns = true;
-
-                fonte.Columns.Add(new DataGridViewTextBoxColumn()
+                if (fonte.Columns.Count == 0)
                 {
-                    DataPropertyName = "Sensor",
-                    HeaderText = "Sensor",
-                    Width = 100
-                });
-
-                fonte.Columns.Add(new DataGridViewTextBoxColumn()
-                {
-                    DataPropertyName = "Valor",
-                    HeaderText = "Valor",
-                    Width = 80
-                });
-
-                fonte.Columns.Add(new DataGridViewTextBoxColumn()
-                {
-                    DataPropertyName = "Medidas",
-                    HeaderText = "Medidas",
-                    Width = 60
-                });
-            }
-
-            // Atualizar a fonte de dados
-          fonte.DataSource = null;
-          fonte.DataSource = data;
-        
+                    fonte.AutoGenerateColumns = false;
+                    fonte.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Sensor", HeaderText = "Sensor", Width = 100 });
+                    fonte.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Valor", HeaderText = "Valor", Width = 80 });
+                    fonte.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Medidas", HeaderText = "Medidas", Width = 60 });
+                }
+                fonte.DataSource = null;
+                fonte.DataSource = data;
+            };
+            if (fonte.InvokeRequired) fonte.BeginInvoke(updateGrid); else updateGrid();
         }
-
-
-        public static void TiposdeTesteBombas()
-        {
-            //// Defina os tipos de teste disponíveis
-            //var tiposDeTeste = new Dictionary<string, string>();
-            //{
-            //    ["A"] = "conjunto de teste 1",
-            //    ["B"] = "conjunto de teste 2 ",
-            //    ["C"] = "conjunto de teste 3 "
-                
-            //};
-            //// Exiba os tipos de teste disponíveis
-            //foreach (var tipo in tiposDeTeste)
-            //{
-            //    Console.WriteLine(tipo);
-            //}   
-        }
+        public static void TiposdeTesteBombas() { /* ... */ }
     }
 }

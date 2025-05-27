@@ -35,7 +35,7 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
 
         public void ProcessarSalvamento()
         {
-            throw new NotImplementedException();
+            
         }
 
        

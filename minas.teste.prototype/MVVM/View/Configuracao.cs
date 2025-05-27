@@ -563,7 +563,7 @@ namespace minas.teste.prototype.MVVM.View
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             _fechamentoForcado = true; //
-            // if (Menuapp.Instance != null) Menuapp.Instance.Show(); 
+            if (Menuapp.Instance != null) Menuapp.Instance.Show(); 
             this.Close(); //
         }
 
@@ -575,7 +575,7 @@ namespace minas.teste.prototype.MVVM.View
 
             if (!_fechamentoForcado) //
             {
-                // Application.Exit(); 
+                 Application.Exit(); 
             }
         }
 

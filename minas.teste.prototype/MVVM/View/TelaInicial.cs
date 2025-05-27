@@ -39,11 +39,6 @@ namespace minas.teste.prototype
             this.Hide();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void TelaInicial_Load(object sender, EventArgs e)
         {
             //exibe tela de apresentação 

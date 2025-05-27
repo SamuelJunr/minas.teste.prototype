@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Configuration;
+
 namespace minas.teste.prototype.Properties {
     
     
@@ -60,6 +62,16 @@ namespace minas.teste.prototype.Properties {
                 this["ModuloSelecionado"] = value;
             }
         }
+
+        // Add this property to the Settings class in your application settings file
+        [UserScopedSetting()]
+        [DefaultSettingValue("{}")]
+        public string CalibrationCoefficientsJSON
+        {
+            get { return (string)this["CalibrationCoefficientsJSON"]; }
+            set { this["CalibrationCoefficientsJSON"] = value; }
+        }
+
 
 
     }

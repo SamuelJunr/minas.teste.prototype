@@ -35,7 +35,6 @@
             this.lblInfoAdicional = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnTestarConexao = new CuoreUI.Controls.cuiButton();
-            this.cuiButton2 = new CuoreUI.Controls.cuiButton();
             this.cuiLabel1 = new CuoreUI.Controls.cuiLabel();
             this.cuiLabel2 = new CuoreUI.Controls.cuiLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -99,7 +98,7 @@
             this.lblInfoAdicional.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblInfoAdicional.AutoSize = true;
             this.lblInfoAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfoAdicional.Location = new System.Drawing.Point(25, 224);
+            this.lblInfoAdicional.Location = new System.Drawing.Point(4, 221);
             this.lblInfoAdicional.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInfoAdicional.Name = "lblInfoAdicional";
             this.lblInfoAdicional.Size = new System.Drawing.Size(0, 20);
@@ -137,7 +136,7 @@
             this.btnTestarConexao.ImageExpand = new System.Drawing.Point(0, 0);
             this.btnTestarConexao.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnTestarConexao.ImageTint = System.Drawing.Color.White;
-            this.btnTestarConexao.Location = new System.Drawing.Point(412, 377);
+            this.btnTestarConexao.Location = new System.Drawing.Point(479, 377);
             this.btnTestarConexao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTestarConexao.Name = "btnTestarConexao";
             this.btnTestarConexao.NormalBackground = System.Drawing.Color.DarkGreen;
@@ -152,43 +151,6 @@
             this.btnTestarConexao.TabIndex = 3;
             this.btnTestarConexao.TextOffset = new System.Drawing.Point(0, 0);
             this.btnTestarConexao.Click += new System.EventHandler(this.btnConectarDesconectar_Click);
-            // 
-            // cuiButton2
-            // 
-            this.cuiButton2.CheckButton = false;
-            this.cuiButton2.Checked = false;
-            this.cuiButton2.CheckedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton2.CheckedForeColor = System.Drawing.Color.White;
-            this.cuiButton2.CheckedImageTint = System.Drawing.Color.White;
-            this.cuiButton2.CheckedOutline = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton2.Content = "Desconectar";
-            this.cuiButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.cuiButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.cuiButton2.ForeColor = System.Drawing.Color.White;
-            this.cuiButton2.HoverBackground = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton2.HoveredImageTint = System.Drawing.Color.White;
-            this.cuiButton2.HoverForeColor = System.Drawing.Color.White;
-            this.cuiButton2.HoverOutline = System.Drawing.Color.Empty;
-            this.cuiButton2.Image = null;
-            this.cuiButton2.ImageAutoCenter = true;
-            this.cuiButton2.ImageExpand = new System.Drawing.Point(0, 0);
-            this.cuiButton2.ImageOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton2.ImageTint = System.Drawing.Color.White;
-            this.cuiButton2.Location = new System.Drawing.Point(550, 377);
-            this.cuiButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cuiButton2.Name = "cuiButton2";
-            this.cuiButton2.NormalBackground = System.Drawing.Color.Crimson;
-            this.cuiButton2.NormalOutline = System.Drawing.Color.Empty;
-            this.cuiButton2.OutlineThickness = 1.6F;
-            this.cuiButton2.PressedBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(106)))), ((int)(((byte)(0)))));
-            this.cuiButton2.PressedForeColor = System.Drawing.Color.White;
-            this.cuiButton2.PressedImageTint = System.Drawing.Color.White;
-            this.cuiButton2.PressedOutline = System.Drawing.Color.Empty;
-            this.cuiButton2.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiButton2.Size = new System.Drawing.Size(117, 81);
-            this.cuiButton2.TabIndex = 4;
-            this.cuiButton2.TextOffset = new System.Drawing.Point(0, 0);
-            this.cuiButton2.Click += new System.EventHandler(this.btnDesconectarSeparado_Click);
             // 
             // cuiLabel1
             // 
@@ -355,7 +317,7 @@
             this.btnSalvarAplicarConfiguracoes.ImageExpand = new System.Drawing.Point(0, 0);
             this.btnSalvarAplicarConfiguracoes.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnSalvarAplicarConfiguracoes.ImageTint = System.Drawing.Color.White;
-            this.btnSalvarAplicarConfiguracoes.Location = new System.Drawing.Point(679, 377);
+            this.btnSalvarAplicarConfiguracoes.Location = new System.Drawing.Point(654, 377);
             this.btnSalvarAplicarConfiguracoes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvarAplicarConfiguracoes.Name = "btnSalvarAplicarConfiguracoes";
             this.btnSalvarAplicarConfiguracoes.NormalBackground = System.Drawing.Color.Silver;
@@ -382,7 +344,6 @@
             this.Controls.Add(this.cuiLabel2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cuiLabel1);
-            this.Controls.Add(this.cuiButton2);
             this.Controls.Add(this.btnTestarConexao);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.panel1);
@@ -409,7 +370,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private CuoreUI.Controls.cuiButton btnTestarConexao;
-        private CuoreUI.Controls.cuiButton cuiButton2;
         private CuoreUI.Controls.cuiLabel cuiLabel1;
         private CuoreUI.Controls.cuiLabel cuiLabel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

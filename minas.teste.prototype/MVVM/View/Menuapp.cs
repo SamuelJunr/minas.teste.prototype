@@ -45,7 +45,7 @@ namespace minas.teste.prototype
         
         private void button5_Click(object sender, EventArgs e)
         {
-
+            ApplicationExit();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -143,6 +143,11 @@ namespace minas.teste.prototype
             ContasW Contas = new ContasW();
             Contas.Show();
             this.Hide();
+        }
+
+        private void ApplicationExit()
+        {
+            Application.Exit();
         }
     }
 }

@@ -92,6 +92,12 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
             return false;
         }
 
+        public static void UpdateCurrentSettings(string portName, int baudRate)
+        {
+            CurrentPortName = portName;
+            CurrentBaudRate = baudRate;
+        }
+
         public static void CloseAllConnections()
         {
             if (_persistentSerialManager != null)
