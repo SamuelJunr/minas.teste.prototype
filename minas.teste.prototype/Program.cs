@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using minas.teste.prototype.MVVM.Repository.Context; // Seu AppDbContext
 using minas.teste.prototype.Service;                 // Onde ArduinoPortFinder deve estar
 using minas.teste.prototype.MVVM.Model.Concrete;     // Onde ConnectionSettingsApplication está
-using minas.teste.prototype.MVVM.View;               // Para InformationForm, TelaInicial
 using System.Diagnostics;
 
 namespace minas.teste.prototype
@@ -27,7 +26,7 @@ namespace minas.teste.prototype
                 .ConfigureServices((context, services) =>
                 {
                     services.AddDbContext<AppDbContext>(options =>
-                        options.UseSqlite("Data Source=supervisory_SYSMT_data.db")); // Substitua pela sua connection string
+                        options.UseSqlite("Data Source=supervisory_SYSMT_data.db")); 
                 })
                 .Build();
 
@@ -35,17 +34,12 @@ namespace minas.teste.prototype
             Debug.WriteLine("Program: Host construído e ServiceProvider configurado.");
 
             // 1. Tentativa de Autoconexão
-            // Instancia o ArduinoPortFinder do namespace correto (Service)
-            // Se CS0246 ocorre aqui, é porque a classe ArduinoPortFinder
-            // não está definida corretamente no namespace minas.teste.prototype.Service
             var finder = new ArduinoPortFinder();
             bool autoConnectSuccess = false;
 
             Debug.WriteLine("Program: Tentando autoconexão...");
 
-            // A chamada para ConnectionSettingsApplication.TryAutoConnect DEVE esperar
-            // um minas.teste.prototype.Service.ArduinoPortFinder como argumento.
-            if (ConnectionSettingsApplication.TryAutoConnect(finder: finder))
+            if (ConnectionSettingsApplication.TryAutoConnect(finder: finder).Result)
             {
                 autoConnectSuccess = true;
                 Debug.WriteLine($"Program: Autoconexão bem-sucedida na porta {ConnectionSettingsApplication.CurrentPortName} @ {ConnectionSettingsApplication.CurrentBaudRate} bps.");
@@ -56,7 +50,7 @@ namespace minas.teste.prototype
             }
 
             // 2. Exibir formulário de informação sobre a autoconexão
-            // Passa o resultado e a porta (se conectada via ConnectionSettingsApplication)
+            
             using (var infoForm = new InformationForm(autoConnectSuccess, ConnectionSettingsApplication.CurrentPortName))
             {
                 Debug.WriteLine("Program: Exibindo InformationForm.");
@@ -66,8 +60,6 @@ namespace minas.teste.prototype
 
             // 3. Iniciar o Formulário Principal
             Debug.WriteLine("Program: Iniciando TelaInicial.");
-            // TelaInicial pode verificar ConnectionSettingsApplication.IsCurrentlyConnected
-            // e ConnectionSettingsApplication.CurrentPortName para saber o estado da conexão.
             Application.Run(new TelaInicial());
         }
 

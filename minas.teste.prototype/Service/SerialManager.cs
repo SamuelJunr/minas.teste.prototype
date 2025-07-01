@@ -12,7 +12,7 @@ namespace minas.teste.prototype.Service
         public List<string> AvailablePorts { get; private set; } = new List<string>();
         public static List<int> CommonBaudRates { get; } = new List<int>
         {
-            300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200, 230400, 250000 // Adicionado baud rates mais altos
+            1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 
         };
         private bool _isConnected;
         public bool IsConnected => _isConnected;

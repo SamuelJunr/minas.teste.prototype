@@ -175,6 +175,10 @@
   <data name="pilotagem_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\pilotagem_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ValidationKeywords" xml:space="preserve">
+    <value> HA1:|HA2:|HB1:|HB2:|MA1:|MA2:|MB1:|MB2:|TEM:|ROT:|DR1:|DR2:|DR3:|DR4:|PL1:|PL2:|PL3:|PL4:|PR1:|PR2:|PR3:|PR4:|VZ1:|VZ2:|VZ3:|VZ4:  </value>
+    <comment>validação de dados </comment>
+  </data>
   <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\icon\icons8-database-100.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -215,14 +219,17 @@
   <data name="background3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="printerpage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\printerpage.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\icon\vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WhatsApp Image 2025-04-17 at 08.54.57" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2025-04-17 at 08.54.57.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rotacao_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\rotacao_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dreno_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\medidas\dreno_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="return" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\icon\icons8-left-64.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -241,6 +248,9 @@
   </data>
   <data name="termometro_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\termometro_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="salvarimagem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-download-100 (1).png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pressao_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\pressao_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -266,6 +276,9 @@
   <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="background2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background2.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -281,14 +294,17 @@
   <data name="logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\logomarca\logo2.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="gears-6122_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gears-6122_256.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="direcao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\servocon02.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="icons8-save-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-save-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="termometro-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\termometro-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cilindro01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -317,14 +333,11 @@
   <data name="comandos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\componentes01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="gears-6122_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gears-6122_256.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cilindro01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\cilindro01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vazao_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\vazao_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="bomba300X300" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WhatsApp Image 2025-04-17 at 08.54.57 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2025-04-17 at 08.54.57 (2).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -344,16 +357,16 @@
   <data name="motor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\motor01.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\14837433-de-contorno-do-icone-da-bomba-da-industria-sistema-motor-vetor-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bomba300X300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\modulos\bomba300X300.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dreno_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\medidas\dreno_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="printerpage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printerpage.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WhatsApp Image 2025-04-17 at 08.54.57 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2025-04-17 at 08.54.57 (3).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagens\icon\vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-download-100 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-download-100 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -45,9 +45,42 @@ namespace minas.teste.prototype.MVVM.Repository.Context
                 .IsUnique();
 
             base.OnModelCreating(modelBuilder); // Boa prática chamar o método base
+            // Configuração para Sessao (já existente, adicionando relações)
+            modelBuilder.Entity<Sessao>()
+                .HasOne(s => s.Cliente)
+                .WithMany() // Se Cliente não tiver uma coleção de Sessoes
+                .HasForeignKey(s => s.ClienteID)
+                .IsRequired(false); // Permite Sessao sem Cliente
 
+            modelBuilder.Entity<Sessao>()
+                .HasOne(s => s.Empresa)
+                .WithMany() // Se Empresa não tiver uma coleção de Sessoes
+                .HasForeignKey(s => s.EmpresaID)
+                .IsRequired(false); // Permite Sessao sem Empresa
+
+            // Configuração para Etapa (adicionando relação com Sessao)
+            modelBuilder.Entity<Etapa>()
+                .HasOne(e => e.Sessao)
+                .WithMany(s => s.Etapas) // Assume que Sessao terá uma coleção de Etapas
+                .HasForeignKey(e => e.SessaoID)
+                .IsRequired(false); // Uma Etapa pode existir sem uma Sessao associada, se necessário
+
+            // Configuração para SensorDataDB (adicionando relações com Etapa e Sessao)
+            modelBuilder.Entity<SensorDataDB>()
+                .HasOne(sddb => sddb.Etapa)
+                .WithMany(e => e.SensorData) // Assume que Etapa terá uma coleção de SensorDataDB
+                .HasForeignKey(sddb => sddb.EtapaID)
+                .IsRequired(false); // Um SensorDataDB pode existir sem uma Etapa associada, se necessário
+
+            modelBuilder.Entity<SensorDataDB>()
+                .HasOne(sddb => sddb.Sessao)
+                .WithMany() // Se Sessao não tiver uma coleção de SensorDataDB
+                .HasForeignKey(sddb => sddb.SessaoID)
+                .IsRequired(false); // Um SensorDataDB pode existir sem uma Sessao associada, se necessário
+                                    // No entanto, é recomendável que um SensorDataDB sempre esteja ligado a uma Sessão,
+                                    // então considere IsRequired(true) se for o caso de negócio.
+                                    
             // --- Restrições Únicas ---
-
             // Restrição única para Empresa.CNPJ
             // Schema: CNPJ TEXT UNIQUE NOT NULL
             modelBuilder.Entity<Empresa>(entity =>
@@ -138,8 +171,8 @@ namespace minas.teste.prototype.MVVM.Repository.Context
                       .WithMany(e => e.Usuarios) // Propriedade de coleção em Empresa
                       .HasForeignKey(u => u.EmpresaID); // Chave estrangeira em Usuario
             });
+            
 
-                                 
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {

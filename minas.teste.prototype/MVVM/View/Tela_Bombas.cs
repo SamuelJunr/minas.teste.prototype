@@ -8,7 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+<<<<<<< HEAD
 using minas.teste.prototype.MVVM.Model.Concrete;
+=======
+using Microsoft.EntityFrameworkCore;
+using minas.teste.prototype.MVVM.Model.Concrete;
+using minas.teste.prototype.MVVM.Repository.Context;
+>>>>>>> 16ee290 (atualizações segurança)
 using minas.teste.prototype.MVVM.ViewModel;
 using minas.teste.prototype.Service;
 using TextBox = System.Windows.Forms.TextBox; // Especifica o TextBox do Windows Forms
@@ -83,6 +89,9 @@ namespace minas.teste.prototype.MVVM.View
         private Dictionary<string, (TextBox valueTextBox, Label unitLabel)> sensorControlsMap;
         private ToolTip sensorToolTip;
 
+        // >>> INICIO: NOVO CAMPO PARA GERENCIAMENTO DA SESSÃO NO BANCO DE DADOS <<<
+        private int? _currentSessaoId;
+        // >>> FIM: NOVO CAMPO <<<
 
         public Tela_Bombas()
         {
@@ -127,6 +136,205 @@ namespace minas.teste.prototype.MVVM.View
             InitializeSensorConfigurationSystem();
         }
 
+<<<<<<< HEAD
+=======
+        // >>> INICIO: NOVAS FUNÇÕES DE BANCO DE DADOS <<<
+
+        /// <summary>
+        /// Cria uma instância do AppDbContext com a string de conexão para o banco de dados SQLite.
+        /// </summary>
+        /// <returns>Uma nova instância de AppDbContext.</returns>
+        private AppDbContext CreateDbContext()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            // Define o nome do arquivo do banco de dados. Ele será criado no diretório do executável.
+            optionsBuilder.UseSqlite("Data Source=minas_teste_prototype.db");
+            return new AppDbContext(optionsBuilder.Options);
+        }
+
+        /// <summary>
+        /// Inicia uma nova sessão de teste no banco de dados.
+        /// Cria registros para Cliente e Empresa se não existirem.
+        /// </summary>
+        private void IniciarSessaoNoBanco()
+        {
+            _currentSessaoId = null;
+
+            System.Windows.Forms.TextBox tbCliente = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tbBomba = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tbOS = this.Controls.Find("textBox4", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    // Garante que o banco de dados foi criado
+                    context.Database.EnsureCreated();
+
+                    // Procura ou cria o cliente
+                    Cliente cliente = null;
+                    if (tbCliente != null && !string.IsNullOrWhiteSpace(tbCliente.Text))
+                    {
+                        string nomeCliente = tbCliente.Text.Trim();
+                        cliente = context.Clientes.FirstOrDefault(c => c.Name == nomeCliente);
+                        if (cliente == null)
+                        {
+                            cliente = new Cliente { Name = nomeCliente, CreateTime = DateTime.UtcNow, UpdateTime = DateTime.UtcNow };
+                            context.Clientes.Add(cliente);
+                            context.SaveChanges(); // Salva para obter o ID do novo cliente
+                        }
+                    }
+
+                    // Assume que o usuário 'admin' (ID=1) está executando o teste
+                    // Em uma aplicação real, o ID do usuário logado seria usado.
+                    int adminUserId = 1;
+
+                    // Cria a nova sessão
+                    var novaSessao = new Sessao
+                    {
+                        ClienteID = cliente?.ID,
+                        UsuarioID = adminUserId,
+                        Name = textBox6?.Text,
+                        OrdemServicoTextBox = textBox4?.Text,
+                        CreateTime = DateTime.UtcNow,
+                        UpdateTime = DateTime.UtcNow
+                    };
+
+                    context.Sessoes.Add(novaSessao);
+                    context.SaveChanges();
+
+                    _currentSessaoId = novaSessao.ID; // Armazena o ID da sessão atual
+                    LogHistoricalEvent($"Sessão de teste #{_currentSessaoId} iniciada no banco de dados.", Color.Green);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao iniciar sessão no banco de dados: {ex.Message}", Color.Red);
+                MessageBox.Show($"Ocorreu um erro ao iniciar a sessão no banco de dados:\n{ex.Message}", "Erro de Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Grava os dados da etapa atual e as leituras dos sensores selecionados no banco de dados.
+        /// </summary>
+        private void SalvarDadosEtapaNoBanco()
+        {
+            if (!_currentSessaoId.HasValue)
+            {
+                MessageBox.Show("Sessão de teste não foi iniciada no banco de dados. Não é possível salvar a etapa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogHistoricalEvent("Tentativa de salvar etapa sem uma sessão de DB ativa.", Color.Red);
+                return;
+            }
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    // 1. Criar e salvar a nova Etapa para obter seu ID
+                    var novaEtapa = new Etapa
+                    {
+                        SessaoID = _currentSessaoId.Value,
+                        Ordem = this.etapaAtual,
+                        CreateTime = DateTime.UtcNow,
+                        UpdateTime = DateTime.UtcNow,
+                    };
+                    context.Etapas.Add(novaEtapa);
+                    context.SaveChanges();
+                    int novaEtapaId = novaEtapa.ID;
+
+                    // 2. Coletar e salvar os dados dos sensores para esta etapa
+                    var leiturasParaSalvar = new List<SensorDataDB>();
+                    Dictionary<string, double> readingsSnapshot;
+                    lock (readingsLock)
+                    {
+                        readingsSnapshot = new Dictionary<string, double>(_currentNumericSensorReadings);
+                    }
+
+                    // Itera sobre os sensores que foram configurados para o teste atual
+                    foreach (string sensorId in currentConfiguration.SelectedReadingIds)
+                    {
+                        var readingMetadata = allReadingsData.FirstOrDefault(r => r.Id == sensorId);
+                        if (readingMetadata == null) continue;
+
+                        string arduinoKey = _arduinoKeyToSensorIdMap.FirstOrDefault(kvp => kvp.Value == sensorId).Key;
+                        if (arduinoKey == null || !readingsSnapshot.TryGetValue(arduinoKey, out double numericValue))
+                        {
+                            continue; // Pula se não houver chave ou leitura para este sensor
+                        }
+
+                        // Determina a unidade de medida com base na configuração
+                        string unidade = readingMetadata.OriginalUnit;
+                        if (readingMetadata.Type == "pressure")
+                        {
+                            unidade = currentConfiguration.SelectedPressureUnit;
+                        }
+                        else if (readingMetadata.Type == "flow")
+                        {
+                            unidade = currentConfiguration.SelectedFlowUnit;
+                        }
+
+                        // Cria o registro do dado do sensor
+                        var novaLeitura = new SensorDataDB
+                        {
+                            SessaoID = _currentSessaoId.Value,
+                            EtapaID = novaEtapaId,
+                            Value = numericValue,
+                            Unit = unidade,
+                            Timestamp = DateTime.UtcNow
+                        };
+                        leiturasParaSalvar.Add(novaLeitura);
+                    }
+
+                    if (leiturasParaSalvar.Any())
+                    {
+                        context.SensorDataDB.AddRange(leiturasParaSalvar);
+                        context.SaveChanges();
+                    }
+
+                    LogHistoricalEvent($"Etapa {etapaAtual} com {leiturasParaSalvar.Count} leituras salva no banco (Sessão: {_currentSessaoId}, Etapa: {novaEtapaId}).", Color.DarkBlue);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao salvar dados da etapa no banco: {ex.Message}", Color.Red);
+                MessageBox.Show($"Ocorreu um erro ao salvar os dados da etapa no banco de dados:\n{ex.Message}", "Erro de Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Atualiza a sessão de teste no banco de dados com a hora de finalização.
+        /// </summary>
+        private void FinalizarSessaoNoBanco()
+        {
+            if (!_currentSessaoId.HasValue) return;
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    var sessao = context.Sessoes.Find(_currentSessaoId.Value);
+                    if (sessao != null)
+                    {
+                        sessao.TerminateTime = DateTime.UtcNow;
+                        sessao.UpdateTime = DateTime.UtcNow;
+                        context.SaveChanges();
+                        LogHistoricalEvent($"Sessão de teste #{_currentSessaoId} finalizada no banco de dados.", Color.Green);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao finalizar sessão no banco: {ex.Message}", Color.Red);
+            }
+            finally
+            {
+                _currentSessaoId = null; // Limpa o ID da sessão ao finalizar
+            }
+        }
+
+        // >>> FIM: NOVAS FUNÇÕES DE BANCO DE DADOS <<<
+
+>>>>>>> 16ee290 (atualizações segurança)
         private void InitializeArduinoToSensorIdMapping()
         {
             _arduinoKeyToSensorIdMap = new Dictionary<string, string>
@@ -326,6 +534,10 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
 
+<<<<<<< HEAD
+=======
+        // <<< MÉTODO PRINCIPAL ALTERADO >>> Implementa a nova regra de pacote com chaves e validação de tamanho.
+>>>>>>> 16ee290 (atualizações segurança)
         private void ProcessSerialBuffer()
         {
             string bufferContent = serialDataBuffer.ToString();
@@ -536,6 +748,185 @@ namespace minas.teste.prototype.MVVM.View
         // [O código para HandleConfigButtonClick, OpenConfigModal, UpdateTelaBombasDisplay, etc. foi omitido por brevidade]
         // ...
         #region placeholder
+<<<<<<< HEAD
+=======
+        public void btnIniciar_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.TextBox tb6 = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tb5 = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tb4 = this.Controls.Find("textBox4", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+
+            if (!_viewModel.cabecalhoinicial(tb6, tb5, tb4))
+            {
+
+                MessageBox.Show("Favor preencher os campos obrigatórios em DADOS DE ENSAIO.", "Campos Obrigatórios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _viewModel.PiscarLabelsVermelhoSync(label6, label5, label4, 1000);
+                return;
+            }
+
+            // >>> MODIFICADO: Inicia a sessão no banco de dados <<<
+            IniciarSessaoNoBanco();
+            if (!_currentSessaoId.HasValue)
+            {
+                // Se a sessão não pôde ser criada no DB, impede o início do teste
+                MessageBox.Show("Não foi possível iniciar o teste pois a sessão não pôde ser criada no banco de dados.", "Erro Crítico", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            _isMonitoring = true;
+            Inicioteste = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            if (Stage_box_bomba != null) _viewModel.IniciarTesteBomba(Stage_box_bomba);
+
+            InicializarMonitoramento();
+            _timeCounterSecondsRampa = 0;
+            etapaAtual = 1;
+
+            if (tempoCronometroDefinidoManualmente && valorDefinidoCronometro > 0)
+            {
+                cronometroIniciado = true;
+                int tempoTotal = valorDefinidoCronometro * 60;
+                if (circularProgressBar1 != null)
+                {
+                    circularProgressBar1.Maximum = tempoTotal > 0 ? tempoTotal : 1;
+                    circularProgressBar1.Minimum = 0;
+                    circularProgressBar1.Value = tempoTotal;
+                    circularProgressBar1.Invalidate();
+                }
+                timerCronometro.Start();
+            }
+            else
+            {
+                if (circularProgressBar1 != null)
+                {
+                    circularProgressBar1.Value = 0;
+                    circularProgressBar1.Maximum = 100;
+                }
+            }
+
+            SetButtonState(btngravar, true);
+            SetButtonState(bntFinalizar, true);
+            SetButtonState(btnreset, true);
+            SetButtonState(btnrelatoriobomba, false);
+            SetButtonState(btniniciarteste, false);
+            LogHistoricalEvent("INICIADO ENSAIO DE BOMBAS", Color.Blue);
+
+            ClearCharts();
+            _viewModel.ResetChartDataLogic();
+            ClearStaticDataGridViewCells();
+            StartSerialConnection();
+        }
+        private void btnParar_Click(object sender, EventArgs e)
+        {
+            StopTimers();
+            StopSerialConnection();
+
+            cronometroIniciado = false;
+            _isMonitoring = false;
+            Fimteste = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+
+            // >>> MODIFICADO: Finaliza a sessão no banco de dados <<<
+            FinalizarSessaoNoBanco();
+
+            SetButtonState(btngravar, false);
+            SetButtonState(bntFinalizar, false);
+            SetButtonState(btnreset, true);
+            SetButtonState(btnrelatoriobomba, true);
+            SetButtonState(btniniciarteste, true);
+
+            LogHistoricalEvent("ENSAIO DE BOMBAS FINALIZADO", Color.Red);
+            if (Stage_box_bomba != null) _viewModel.FinalizarTesteBomba(Stage_box_bomba);
+        }
+        private void btn_gravar_Click(object sender, EventArgs e)
+        {
+            if (!_isMonitoring)
+            {
+                MessageBox.Show("O teste não foi iniciado. Por favor, inicie o teste para gravar os dados.", "Teste Não Iniciado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (tempoCronometroDefinidoManualmente && !cronometroIniciado && valorDefinidoCronometro > 0 && (circularProgressBar1 == null || circularProgressBar1.Value <= 0))
+            {
+                MessageBox.Show("O tempo definido para o teste encerrou ou o cronômetro não está ativo. Não é possível gravar novas etapas.", "Tempo Esgotado ou Cronômetro Inativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SetButtonState(btngravar, false);
+                return;
+            }
+
+            int maxEtapasTabela = 7;
+            if (etapaAtual > maxEtapasTabela)
+            {
+                MessageBox.Show($"Limite de {maxEtapasTabela} etapas para a tabela foi atingido.", "Limite de Etapas da Tabela", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SetButtonState(btngravar, false);
+                return;
+            }
+
+            GravarDadosNoDataGridViewEstatico();
+
+            // >>> MODIFICADO: Chama a função para salvar os dados no banco de dados <<<
+            SalvarDadosEtapaNoBanco();
+
+            var currentEtapaData = new EtapaData
+            {
+                Etapa = etapaAtual,
+                leituras = new List<SensorData>()
+            };
+
+            Dictionary<string, double> readingsSnapshot;
+            lock (readingsLock)
+            {
+                readingsSnapshot = new Dictionary<string, double>(_currentNumericSensorReadings);
+            }
+
+            if (_staticDataGridViewParameters != null)
+            {
+                foreach (var paramInfo in _staticDataGridViewParameters)
+                {
+                    string serialKeyForParam = _arduinoKeyToSensorIdMap
+                        .FirstOrDefault(kvp =>
+                            sensorControlsMap.ContainsKey(kvp.Value) &&
+                            sensorControlsMap[kvp.Value].valueTextBox.Name == paramInfo.SourceTextBoxName)
+                        .Key;
+
+                    if (string.IsNullOrEmpty(serialKeyForParam))
+                    {
+                        serialKeyForParam = paramInfo.SourceTextBoxName.Replace("sensor_", "");
+                    }
+
+                    string valorParaRelatorio = "N/D";
+                    string unidadeParaRelatorio = "";
+
+                    if (readingsSnapshot.TryGetValue(serialKeyForParam, out double sensorNumericValue))
+                    {
+                        valorParaRelatorio = sensorNumericValue.ToString("F2", CultureInfo.InvariantCulture);
+
+                        var readingData = allReadingsData.FirstOrDefault(rd => _arduinoKeyToSensorIdMap.ContainsKey(serialKeyForParam) && _arduinoKeyToSensorIdMap[serialKeyForParam] == rd.Id);
+                        if (readingData != null)
+                        {
+                            if (readingData.Type == "pressure") unidadeParaRelatorio = currentConfiguration.SelectedPressureUnit.ToUpper();
+                            else if (readingData.Type == "flow") unidadeParaRelatorio = currentConfiguration.SelectedFlowUnit.ToUpper();
+                            else unidadeParaRelatorio = readingData.OriginalUnit;
+                        }
+                    }
+
+                    currentEtapaData.leituras.Add(new SensorData
+                    {
+                        Sensor = paramInfo.DisplayName,
+                        Valor = valorParaRelatorio,
+                        Medidas = unidadeParaRelatorio
+                    });
+                }
+            }
+            _dadosColetados.Add(currentEtapaData);
+
+            LogHistoricalEvent($"Dados da Etapa {etapaAtual} gravados.", Color.DarkCyan);
+            etapaAtual++;
+
+            if (etapaAtual > maxEtapasTabela)
+            {
+                MessageBox.Show("Todas as etapas da tabela foram preenchidas.", "Tabela Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SetButtonState(btngravar, false);
+            }
+        }
+>>>>>>> 16ee290 (atualizações segurança)
         private void HandleConfigButtonClick(Button clickedButton, string testTypeDescription)
         {
             if (clickedButton == null) return;
@@ -1250,6 +1641,7 @@ namespace minas.teste.prototype.MVVM.View
                 Environment.Exit(Environment.ExitCode);
             }
         }
+<<<<<<< HEAD
         public void btnIniciar_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox tb6 = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
@@ -1306,6 +1698,8 @@ namespace minas.teste.prototype.MVVM.View
             ClearStaticDataGridViewCells();
             StartSerialConnection();
         }
+=======
+>>>>>>> 16ee290 (atualizações segurança)
         private void InicializarMonitoramento()
         {
             if (monitoramentoTimer == null)
@@ -1318,6 +1712,7 @@ namespace minas.teste.prototype.MVVM.View
         {
             monitoramentoTimer?.Stop();
         }
+<<<<<<< HEAD
         private void btnParar_Click(object sender, EventArgs e)
         {
             StopTimers();
@@ -1336,6 +1731,8 @@ namespace minas.teste.prototype.MVVM.View
             LogHistoricalEvent("ENSAIO DE BOMBAS FINALIZADO", Color.Red);
             if (Stage_box_bomba != null) _viewModel.FinalizarTesteBomba(Stage_box_bomba);
         }
+=======
+>>>>>>> 16ee290 (atualizações segurança)
         private void btnretornar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -1700,6 +2097,7 @@ namespace minas.teste.prototype.MVVM.View
                 MessageBox.Show(this, "O cronômetro está em execução. Finalize o teste atual para limpar o tempo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+<<<<<<< HEAD
         private void btn_gravar_Click(object sender, EventArgs e)
         {
             if (!_isMonitoring)
@@ -1787,6 +2185,8 @@ namespace minas.teste.prototype.MVVM.View
                 SetButtonState(btngravar, false);
             }
         }
+=======
+>>>>>>> 16ee290 (atualizações segurança)
         private void GravarDadosNoDataGridViewEstatico()
         {
             if (dataGridView1 == null || dataGridView1.IsDisposed || _staticDataGridViewParameters == null) return;
@@ -1884,6 +2284,40 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
         #endregion
+<<<<<<< HEAD
+=======
+        private void btnrelatoriobomba_Click(object sender, EventArgs e)
+        {
+            // Verifica se o teste foi executado e finalizado
+            if (_isMonitoring || string.IsNullOrEmpty(Fimteste))
+            {
+                MessageBox.Show("O teste deve ser finalizado antes de gerar um relatório.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // 1. Coleta os dados dos TextBoxes
+            string cliente = (this.Controls.Find("textBox6", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
+            string bomba = (this.Controls.Find("textBox5", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
+            string os = (this.Controls.Find("textBox4", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
+
+            // 2. Coleta dados do processo de teste
+            string modulo = "Bomba";
+            // O número de etapas gravadas é o valor atual do contador de etapas menos 1
+            int numeroEtapas = etapaAtual > 0 ? etapaAtual - 1 : 0;
+
+            // 3. Calcula o tempo total de teste
+            string tempoTotal = "00:00:00";
+            if (DateTime.TryParse(Inicioteste, CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime inicio) &&
+                DateTime.TryParse(Fimteste, CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime fim))
+            {
+                TimeSpan duracao = fim - inicio;
+                tempoTotal = $"{(int)duracao.TotalHours:D2}:{duracao.Minutes:D2}:{duracao.Seconds:D2}";
+            }
+>>>>>>> 16ee290 (atualizações segurança)
+
+            // 4. Cria e exibe o formulário de relatório com os dados
+            RelatorioTestes relatorioForm = new RelatorioTestes(cliente, bomba, os, modulo, numeroEtapas, tempoTotal);
+            relatorioForm.ShowDialog(this); // ShowDialog para abrir como uma janela modal
+        }
     }
 }

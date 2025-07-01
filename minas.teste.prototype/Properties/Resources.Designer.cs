@@ -413,6 +413,26 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_download_100__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-download-100 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
         internal static byte[] logo1 {
@@ -671,6 +691,16 @@ namespace minas.teste.prototype.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] salvarimagem {
+            get {
+                object obj = ResourceManager.GetObject("salvarimagem", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap servocon02 {
@@ -727,6 +757,15 @@ namespace minas.teste.prototype.Properties {
             get {
                 object obj = ResourceManager.GetObject("termometro-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  HA1:|HA2:|HB1:|HB2:|MA1:|MA2:|MB1:|MB2:|TEM:|ROT:|DR1:|DR2:|DR3:|DR4:|PL1:|PL2:|PL3:|PL4:|PR1:|PR2:|PR3:|PR4:|VZ1:|VZ2:|VZ3:|VZ4:  .
+        /// </summary>
+        internal static string ValidationKeywords {
+            get {
+                return ResourceManager.GetString("ValidationKeywords", resourceCulture);
             }
         }
         
