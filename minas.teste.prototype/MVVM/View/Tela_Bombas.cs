@@ -137,6 +137,14 @@ namespace minas.teste.prototype.MVVM.View
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
 =======
         // >>> INICIO: NOVAS FUNÇÕES DE BANCO DE DADOS <<<
 
@@ -145,6 +153,400 @@ namespace minas.teste.prototype.MVVM.View
         /// </summary>
         /// <returns>Uma nova instância de AppDbContext.</returns>
         private AppDbContext CreateDbContext()
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            // Define o nome do arquivo do banco de dados. Ele será criado no diretório do executável.
+            optionsBuilder.UseSqlite("Data Source=minas_teste_prototype.db");
+            return new AppDbContext(optionsBuilder.Options);
+        }
+
+        /// <summary>
+        /// Inicia uma nova sessão de teste no banco de dados.
+        /// Cria registros para Cliente e Empresa se não existirem.
+        /// </summary>
+        private void IniciarSessaoNoBanco()
+        {
+            _currentSessaoId = null;
+
+            System.Windows.Forms.TextBox tbCliente = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tbBomba = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tbOS = this.Controls.Find("textBox4", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    // Garante que o banco de dados foi criado
+                    context.Database.EnsureCreated();
+
+                    // Procura ou cria o cliente
+                    Cliente cliente = null;
+                    if (tbCliente != null && !string.IsNullOrWhiteSpace(tbCliente.Text))
+                    {
+                        string nomeCliente = tbCliente.Text.Trim();
+                        cliente = context.Clientes.FirstOrDefault(c => c.Name == nomeCliente);
+                        if (cliente == null)
+                        {
+                            cliente = new Cliente { Name = nomeCliente, CreateTime = DateTime.UtcNow, UpdateTime = DateTime.UtcNow };
+                            context.Clientes.Add(cliente);
+                            context.SaveChanges(); // Salva para obter o ID do novo cliente
+                        }
+                    }
+
+                    // Assume que o usuário 'admin' (ID=1) está executando o teste
+                    // Em uma aplicação real, o ID do usuário logado seria usado.
+                    int adminUserId = 1;
+
+                    // Cria a nova sessão
+                    var novaSessao = new Sessao
+                    {
+                        ClienteID = cliente?.ID,
+                        UsuarioID = adminUserId,
+                        Name = textBox6?.Text,
+                        OrdemServicoTextBox = textBox4?.Text,
+                        CreateTime = DateTime.UtcNow,
+                        UpdateTime = DateTime.UtcNow
+                    };
+
+                    context.Sessoes.Add(novaSessao);
+                    context.SaveChanges();
+
+                    _currentSessaoId = novaSessao.ID; // Armazena o ID da sessão atual
+                    LogHistoricalEvent($"Sessão de teste #{_currentSessaoId} iniciada no banco de dados.", Color.Green);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao iniciar sessão no banco de dados: {ex.Message}", Color.Red);
+                MessageBox.Show($"Ocorreu um erro ao iniciar a sessão no banco de dados:\n{ex.Message}", "Erro de Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Grava os dados da etapa atual e as leituras dos sensores selecionados no banco de dados.
+        /// </summary>
+        private void SalvarDadosEtapaNoBanco()
+        {
+            if (!_currentSessaoId.HasValue)
+            {
+                MessageBox.Show("Sessão de teste não foi iniciada no banco de dados. Não é possível salvar a etapa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogHistoricalEvent("Tentativa de salvar etapa sem uma sessão de DB ativa.", Color.Red);
+                return;
+            }
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    // 1. Criar e salvar a nova Etapa para obter seu ID
+                    var novaEtapa = new Etapa
+                    {
+                        SessaoID = _currentSessaoId.Value,
+                        Ordem = this.etapaAtual,
+                        CreateTime = DateTime.UtcNow,
+                        UpdateTime = DateTime.UtcNow,
+                    };
+                    context.Etapas.Add(novaEtapa);
+                    context.SaveChanges();
+                    int novaEtapaId = novaEtapa.ID;
+
+                    // 2. Coletar e salvar os dados dos sensores para esta etapa
+                    var leiturasParaSalvar = new List<SensorDataDB>();
+                    Dictionary<string, double> readingsSnapshot;
+                    lock (readingsLock)
+                    {
+                        readingsSnapshot = new Dictionary<string, double>(_currentNumericSensorReadings);
+                    }
+
+                    // Itera sobre os sensores que foram configurados para o teste atual
+                    foreach (string sensorId in currentConfiguration.SelectedReadingIds)
+                    {
+                        var readingMetadata = allReadingsData.FirstOrDefault(r => r.Id == sensorId);
+                        if (readingMetadata == null) continue;
+
+                        string arduinoKey = _arduinoKeyToSensorIdMap.FirstOrDefault(kvp => kvp.Value == sensorId).Key;
+                        if (arduinoKey == null || !readingsSnapshot.TryGetValue(arduinoKey, out double numericValue))
+                        {
+                            continue; // Pula se não houver chave ou leitura para este sensor
+                        }
+
+                        // Determina a unidade de medida com base na configuração
+                        string unidade = readingMetadata.OriginalUnit;
+                        if (readingMetadata.Type == "pressure")
+                        {
+                            unidade = currentConfiguration.SelectedPressureUnit;
+                        }
+                        else if (readingMetadata.Type == "flow")
+                        {
+                            unidade = currentConfiguration.SelectedFlowUnit;
+                        }
+
+                        // Cria o registro do dado do sensor
+                        var novaLeitura = new SensorDataDB
+                        {
+                            SessaoID = _currentSessaoId.Value,
+                            EtapaID = novaEtapaId,
+                            Value = numericValue,
+                            Unit = unidade,
+                            Timestamp = DateTime.UtcNow
+                        };
+                        leiturasParaSalvar.Add(novaLeitura);
+                    }
+
+                    if (leiturasParaSalvar.Any())
+                    {
+                        context.SensorDataDB.AddRange(leiturasParaSalvar);
+                        context.SaveChanges();
+                    }
+
+                    LogHistoricalEvent($"Etapa {etapaAtual} com {leiturasParaSalvar.Count} leituras salva no banco (Sessão: {_currentSessaoId}, Etapa: {novaEtapaId}).", Color.DarkBlue);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao salvar dados da etapa no banco: {ex.Message}", Color.Red);
+                MessageBox.Show($"Ocorreu um erro ao salvar os dados da etapa no banco de dados:\n{ex.Message}", "Erro de Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Atualiza a sessão de teste no banco de dados com a hora de finalização.
+        /// </summary>
+        private void FinalizarSessaoNoBanco()
+        {
+            if (!_currentSessaoId.HasValue) return;
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    var sessao = context.Sessoes.Find(_currentSessaoId.Value);
+                    if (sessao != null)
+                    {
+                        sessao.TerminateTime = DateTime.UtcNow;
+                        sessao.UpdateTime = DateTime.UtcNow;
+                        context.SaveChanges();
+                        LogHistoricalEvent($"Sessão de teste #{_currentSessaoId} finalizada no banco de dados.", Color.Green);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao finalizar sessão no banco: {ex.Message}", Color.Red);
+            }
+            finally
+            {
+                _currentSessaoId = null; // Limpa o ID da sessão ao finalizar
+            }
+        }
+
+        // >>> FIM: NOVAS FUNÇÕES DE BANCO DE DADOS <<<
+
+>>>>>>> 16ee290 (atualizações segurança)
+=======
+>>>>>>> parent of a2f06f9 (atualizações segurança)
+        private void InitializeArduinoToSensorIdMapping()
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            // Define o nome do arquivo do banco de dados. Ele será criado no diretório do executável.
+            optionsBuilder.UseSqlite("Data Source=minas_teste_prototype.db");
+            return new AppDbContext(optionsBuilder.Options);
+        }
+
+        /// <summary>
+        /// Inicia uma nova sessão de teste no banco de dados.
+        /// Cria registros para Cliente e Empresa se não existirem.
+        /// </summary>
+        private void IniciarSessaoNoBanco()
+        {
+            _currentSessaoId = null;
+
+            System.Windows.Forms.TextBox tbCliente = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tbBomba = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tbOS = this.Controls.Find("textBox4", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    // Garante que o banco de dados foi criado
+                    context.Database.EnsureCreated();
+
+                    // Procura ou cria o cliente
+                    Cliente cliente = null;
+                    if (tbCliente != null && !string.IsNullOrWhiteSpace(tbCliente.Text))
+                    {
+                        string nomeCliente = tbCliente.Text.Trim();
+                        cliente = context.Clientes.FirstOrDefault(c => c.Name == nomeCliente);
+                        if (cliente == null)
+                        {
+                            cliente = new Cliente { Name = nomeCliente, CreateTime = DateTime.UtcNow, UpdateTime = DateTime.UtcNow };
+                            context.Clientes.Add(cliente);
+                            context.SaveChanges(); // Salva para obter o ID do novo cliente
+                        }
+                    }
+
+                    // Assume que o usuário 'admin' (ID=1) está executando o teste
+                    // Em uma aplicação real, o ID do usuário logado seria usado.
+                    int adminUserId = 1;
+
+                    // Cria a nova sessão
+                    var novaSessao = new Sessao
+                    {
+                        ClienteID = cliente?.ID,
+                        UsuarioID = adminUserId,
+                        Name = textBox6?.Text,
+                        OrdemServicoTextBox = textBox4?.Text,
+                        CreateTime = DateTime.UtcNow,
+                        UpdateTime = DateTime.UtcNow
+                    };
+
+                    context.Sessoes.Add(novaSessao);
+                    context.SaveChanges();
+
+                    _currentSessaoId = novaSessao.ID; // Armazena o ID da sessão atual
+                    LogHistoricalEvent($"Sessão de teste #{_currentSessaoId} iniciada no banco de dados.", Color.Green);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao iniciar sessão no banco de dados: {ex.Message}", Color.Red);
+                MessageBox.Show($"Ocorreu um erro ao iniciar a sessão no banco de dados:\n{ex.Message}", "Erro de Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Grava os dados da etapa atual e as leituras dos sensores selecionados no banco de dados.
+        /// </summary>
+        private void SalvarDadosEtapaNoBanco()
+        {
+            if (!_currentSessaoId.HasValue)
+            {
+                MessageBox.Show("Sessão de teste não foi iniciada no banco de dados. Não é possível salvar a etapa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogHistoricalEvent("Tentativa de salvar etapa sem uma sessão de DB ativa.", Color.Red);
+                return;
+            }
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    // 1. Criar e salvar a nova Etapa para obter seu ID
+                    var novaEtapa = new Etapa
+                    {
+                        SessaoID = _currentSessaoId.Value,
+                        Ordem = this.etapaAtual,
+                        CreateTime = DateTime.UtcNow,
+                        UpdateTime = DateTime.UtcNow,
+                    };
+                    context.Etapas.Add(novaEtapa);
+                    context.SaveChanges();
+                    int novaEtapaId = novaEtapa.ID;
+
+                    // 2. Coletar e salvar os dados dos sensores para esta etapa
+                    var leiturasParaSalvar = new List<SensorDataDB>();
+                    Dictionary<string, double> readingsSnapshot;
+                    lock (readingsLock)
+                    {
+                        readingsSnapshot = new Dictionary<string, double>(_currentNumericSensorReadings);
+                    }
+
+                    // Itera sobre os sensores que foram configurados para o teste atual
+                    foreach (string sensorId in currentConfiguration.SelectedReadingIds)
+                    {
+                        var readingMetadata = allReadingsData.FirstOrDefault(r => r.Id == sensorId);
+                        if (readingMetadata == null) continue;
+
+                        string arduinoKey = _arduinoKeyToSensorIdMap.FirstOrDefault(kvp => kvp.Value == sensorId).Key;
+                        if (arduinoKey == null || !readingsSnapshot.TryGetValue(arduinoKey, out double numericValue))
+                        {
+                            continue; // Pula se não houver chave ou leitura para este sensor
+                        }
+
+                        // Determina a unidade de medida com base na configuração
+                        string unidade = readingMetadata.OriginalUnit;
+                        if (readingMetadata.Type == "pressure")
+                        {
+                            unidade = currentConfiguration.SelectedPressureUnit;
+                        }
+                        else if (readingMetadata.Type == "flow")
+                        {
+                            unidade = currentConfiguration.SelectedFlowUnit;
+                        }
+
+                        // Cria o registro do dado do sensor
+                        var novaLeitura = new SensorDataDB
+                        {
+                            SessaoID = _currentSessaoId.Value,
+                            EtapaID = novaEtapaId,
+                            Value = numericValue,
+                            Unit = unidade,
+                            Timestamp = DateTime.UtcNow
+                        };
+                        leiturasParaSalvar.Add(novaLeitura);
+                    }
+
+                    if (leiturasParaSalvar.Any())
+                    {
+                        context.SensorDataDB.AddRange(leiturasParaSalvar);
+                        context.SaveChanges();
+                    }
+
+                    LogHistoricalEvent($"Etapa {etapaAtual} com {leiturasParaSalvar.Count} leituras salva no banco (Sessão: {_currentSessaoId}, Etapa: {novaEtapaId}).", Color.DarkBlue);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao salvar dados da etapa no banco: {ex.Message}", Color.Red);
+                MessageBox.Show($"Ocorreu um erro ao salvar os dados da etapa no banco de dados:\n{ex.Message}", "Erro de Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Atualiza a sessão de teste no banco de dados com a hora de finalização.
+        /// </summary>
+        private void FinalizarSessaoNoBanco()
+        {
+            if (!_currentSessaoId.HasValue) return;
+
+            try
+            {
+                using (var context = CreateDbContext())
+                {
+                    var sessao = context.Sessoes.Find(_currentSessaoId.Value);
+                    if (sessao != null)
+                    {
+                        sessao.TerminateTime = DateTime.UtcNow;
+                        sessao.UpdateTime = DateTime.UtcNow;
+                        context.SaveChanges();
+                        LogHistoricalEvent($"Sessão de teste #{_currentSessaoId} finalizada no banco de dados.", Color.Green);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHistoricalEvent($"Falha ao finalizar sessão no banco: {ex.Message}", Color.Red);
+            }
+            finally
+            {
+                _currentSessaoId = null; // Limpa o ID da sessão ao finalizar
+            }
+        }
+
+        // >>> FIM: NOVAS FUNÇÕES DE BANCO DE DADOS <<<
+
+>>>>>>> 16ee290 (atualizações segurança)
+        private void InitializeArduinoToSensorIdMapping()
+=======
+        // --- INÍCIO: Mapeamento de Sensores, Calibração e Formato de Display ---
+        private void InitializeSensorDisplayMap()
+>>>>>>> parent of 4086f19 (atualização de recuperaçãoatualizações segurança)
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             // Define o nome do arquivo do banco de dados. Ele será criado no diretório do executável.
@@ -741,6 +1143,1057 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+        #endregion
+
+        // O restante do código (eventos de botões, cronômetro, gráficos, etc.) permanece o mesmo.
+        // ...
+        // [O código para HandleConfigButtonClick, OpenConfigModal, UpdateTelaBombasDisplay, etc. foi omitido por brevidade]
+        // ...
+        #region placeholder
+        private void HandleConfigButtonClick(Button clickedButton, string testTypeDescription)
+        {
+            if (clickedButton == null) return;
+
+            if (currentlyActiveTestButton == null)
+            {
+                OpenConfigModal(testTypeDescription, clickedButton);
+            }
+            else if (clickedButton == currentlyActiveTestButton)
+            {
+                DialogResult dr = MessageBox.Show("Deseja resetar a configuração atual e selecionar um novo tipo de ensaio?",
+                                                 "Resetar Ensaio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    ResetActiveTestConfiguration();
+                }
+            }
+            else
+            {
+                MessageBox.Show($"O ensaio '{currentlyActiveTestButton.Tag?.ToString() ?? "ativo"}' já está configurado.\n" +
+                                "Para mudar o tipo de ensaio, clique no botão do teste ativo (verde) e confirme o reset.",
+                                "Ensaio Ativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void OpenConfigModal(string testTypeDescription, Button activatingButton)
+        {
+            var configForModal = new ConfigurationResult
+            {
+                SelectedPressureUnit = currentConfiguration.SelectedPressureUnit,
+                SelectedFlowUnit = currentConfiguration.SelectedFlowUnit,
+                SelectedReadingIds = new List<string>(currentConfiguration.SelectedReadingIds)
+            };
+
+            using (ConfigFormBomb configDialog = new ConfigFormBomb(testTypeDescription, allReadingsData, configForModal))
+            {
+                if (configDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    currentConfiguration = configDialog.CurrentConfiguration;
+                    UpdateTelaBombasDisplay();
+
+                    if (currentlyActiveTestButton != null && currentlyActiveTestButton != activatingButton)
+                    {
+                        currentlyActiveTestButton.BackColor = defaultButtonColor;
+                        currentlyActiveTestButton.ForeColor = SystemColors.ControlText;
+                        currentlyActiveTestButton.Enabled = true;
+                    }
+
+                    currentlyActiveTestButton = activatingButton;
+                    currentlyActiveTestButton.BackColor = Color.DarkGreen;
+                    currentlyActiveTestButton.ForeColor = Color.White;
+                    currentlyActiveTestButton.Tag = testTypeDescription;
+
+                    var configButtons = new[] { btnConfigCircuitoAberto, btnConfigCircuitoFechado, btnConfigEngrenagem };
+                    foreach (Button btn in configButtons)
+                    {
+                        if (btn != null && btn != currentlyActiveTestButton)
+                        {
+                            btn.Enabled = false;
+                            btn.BackColor = defaultButtonColor;
+                            btn.ForeColor = SystemColors.ControlText;
+                        }
+                    }
+                    if (btniniciarteste != null) btniniciarteste.Enabled = true;
+                }
+            }
+        }
+        private void UpdateTelaBombasDisplay()
+        {
+            if (allReadingsData == null || sensorControlsMap == null) return;
+
+            Dictionary<GroupBox, List<(TextBox valueTb, Label unitL)>> groupBoxReadingsMap =
+                new Dictionary<GroupBox, List<(TextBox valueTb, Label unitL)>>();
+
+            foreach (ReadingData rd in allReadingsData)
+            {
+                if (sensorControlsMap.TryGetValue(rd.Id, out var controls))
+                {
+                    bool isSelected = currentConfiguration.SelectedReadingIds.Contains(rd.Id);
+
+                    controls.valueTextBox.Visible = isSelected;
+                    controls.unitLabel.Visible = isSelected;
+
+                    if (isSelected)
+                    {
+                        string unitText = "";
+                        if (rd.Type == "pressure") unitText = currentConfiguration.SelectedPressureUnit.ToUpper();
+                        else if (rd.Type == "flow") unitText = currentConfiguration.SelectedFlowUnit.ToUpper();
+                        else unitText = rd.OriginalUnit.ToUpper();
+
+                        controls.unitLabel.Text = unitText;
+                        controls.unitLabel.Font = new Font(controls.unitLabel.Font, FontStyle.Bold);
+
+                        GroupBox parentGroup = FindParentGroupBox(controls.valueTextBox);
+                        if (parentGroup != null)
+                        {
+                            if (!groupBoxReadingsMap.ContainsKey(parentGroup))
+                            {
+                                groupBoxReadingsMap[parentGroup] = new List<(TextBox valueTb, Label unitL)>();
+                            }
+                            groupBoxReadingsMap[parentGroup].Add(controls);
+                        }
+                    }
+                }
+            }
+
+            foreach (var kvp in groupBoxReadingsMap)
+            {
+                LayoutControlsInGroup(kvp.Key, kvp.Value);
+            }
+
+            var allGroupBoxesOnForm = this.Controls.OfType<Panel>()
+                                     .Where(p => p.Name == "panel1")
+                                     .SelectMany(p => p.Controls.OfType<GroupBox>())
+                                     .Concat(this.Controls.OfType<GroupBox>());
+
+            foreach (var groupControl in allGroupBoxesOnForm)
+            {
+                if (!groupBoxReadingsMap.ContainsKey(groupControl))
+                {
+                    foreach (var rd in allReadingsData)
+                    {
+                        if (sensorControlsMap.TryGetValue(rd.Id, out var sensorPair))
+                        {
+                            if (FindParentGroupBox(sensorPair.valueTextBox) == groupControl)
+                            {
+                                sensorPair.valueTextBox.Visible = false;
+                                sensorPair.unitLabel.Visible = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private GroupBox FindParentGroupBox(Control control)
+        {
+            Control current = control;
+            while (current != null)
+            {
+                if (current is GroupBox gb)
+                {
+                    return gb;
+                }
+                current = current.Parent;
+            }
+            return null;
+        }
+        private void LayoutControlsInGroup(GroupBox groupBox, List<(TextBox valueTb, Label unitL)> selectedItemsInGroup)
+        {
+            if (groupBox == null || selectedItemsInGroup == null) return;
+
+            groupBox.SuspendLayout();
+
+            foreach (var readingEntry in sensorControlsMap)
+            {
+                if (FindParentGroupBox(readingEntry.Value.valueTextBox) == groupBox)
+                {
+                    bool isCurrentlySelectedForThisGroup = selectedItemsInGroup.Any(item => item.valueTb == readingEntry.Value.valueTextBox);
+
+                    readingEntry.Value.valueTextBox.Visible = isCurrentlySelectedForThisGroup;
+                    readingEntry.Value.unitLabel.Visible = isCurrentlySelectedForThisGroup;
+                }
+            }
+
+            var itemsToLayout = selectedItemsInGroup.Where(item => item.valueTb.Visible).ToList();
+
+            if (!itemsToLayout.Any())
+            {
+                groupBox.ResumeLayout(true);
+                return;
+            }
+
+            int controlRowHeight = 35;
+            if (itemsToLayout.Any())
+            {
+                controlRowHeight = itemsToLayout.First().valueTb.Height;
+            }
+
+            Rectangle displayRect = groupBox.DisplayRectangle;
+
+            int yPosForRow = displayRect.Y;
+            if (displayRect.Height > controlRowHeight)
+            {
+                yPosForRow += (displayRect.Height - controlRowHeight) / 2;
+            }
+
+            yPosForRow = Math.Max(displayRect.Y, yPosForRow);
+
+            const int internalHorizontalPadding = 5;
+            int availableContentWidth = displayRect.Width - (2 * internalHorizontalPadding);
+            const int spacingBetweenSensorItemsOnSameRow = 15;
+            const int spacingWithinSensorItem = 3;
+
+            int totalWidthOfItemsInThisRow = 0;
+            for (int i = 0; i < itemsToLayout.Count; i++)
+            {
+                var itemTuple = itemsToLayout[i];
+                itemTuple.unitL.AutoSize = true;
+                Size unitLabelActualSize = TextRenderer.MeasureText(itemTuple.unitL.Text, itemTuple.unitL.Font);
+
+                totalWidthOfItemsInThisRow += itemTuple.valueTb.Width + spacingWithinSensorItem + unitLabelActualSize.Width;
+                if (i < itemsToLayout.Count - 1)
+                {
+                    totalWidthOfItemsInThisRow += spacingBetweenSensorItemsOnSameRow;
+                }
+            }
+
+            int startX = displayRect.X + internalHorizontalPadding;
+            if (availableContentWidth > totalWidthOfItemsInThisRow)
+            {
+                startX += (availableContentWidth - totalWidthOfItemsInThisRow) / 2;
+            }
+
+            int currentXInRow = startX;
+
+            for (int i = 0; i < itemsToLayout.Count; i++)
+            {
+                var currentItemTuple = itemsToLayout[i];
+                TextBox valueTextBox = currentItemTuple.valueTb;
+                Label unitLabel = currentItemTuple.unitL;
+
+                valueTextBox.Visible = true;
+                unitLabel.Visible = true;
+                unitLabel.AutoSize = true;
+
+                int tbY = yPosForRow;
+                int lblY = tbY + (valueTextBox.Height - unitLabel.PreferredHeight) / 2;
+
+                tbY = Math.Max(displayRect.Y, tbY);
+                lblY = Math.Max(displayRect.Y, lblY);
+
+                valueTextBox.Location = new Point(currentXInRow, tbY);
+                unitLabel.Location = new Point(valueTextBox.Right + spacingWithinSensorItem, lblY);
+
+                currentXInRow = unitLabel.Right + spacingBetweenSensorItemsOnSameRow;
+            }
+
+            groupBox.ResumeLayout(true);
+        }
+        private void ResetActiveTestConfiguration()
+        {
+            currentConfiguration = new ConfigurationResult();
+            UpdateTelaBombasDisplay();
+
+            if (currentlyActiveTestButton != null)
+            {
+                currentlyActiveTestButton.BackColor = defaultButtonColor;
+                currentlyActiveTestButton.ForeColor = SystemColors.ControlText;
+                currentlyActiveTestButton.Tag = null;
+            }
+            currentlyActiveTestButton = null;
+
+            var configButtons = new[] { btnConfigCircuitoAberto, btnConfigCircuitoFechado, btnConfigEngrenagem };
+            foreach (Button btn in configButtons)
+            {
+                if (btn != null)
+                {
+                    btn.Enabled = true;
+                    btn.BackColor = defaultButtonColor;
+                    btn.ForeColor = SystemColors.ControlText;
+                }
+            }
+            if (btniniciarteste != null) btniniciarteste.Enabled = false;
+        }
+        private void SetInitialButtonStates()
+        {
+            var configButtons = new[] { btnConfigCircuitoAberto, btnConfigCircuitoFechado, btnConfigEngrenagem };
+            foreach (Button btn in configButtons)
+            {
+                if (btn != null)
+                {
+                    btn.Enabled = true;
+                    btn.BackColor = defaultButtonColor;
+                    btn.ForeColor = SystemColors.ControlText;
+                }
+            }
+            if (btniniciarteste != null) btniniciarteste.Enabled = false;
+        }
+        public string GetConfiguredSensorValue(string sensorId)
+        {
+            if (currentConfiguration.SelectedReadingIds.Contains(sensorId) &&
+                sensorControlsMap.TryGetValue(sensorId, out var controls))
+            {
+                return controls.valueTextBox.Text;
+            }
+            return "N/D";
+        }
+        public string GetConfiguredSensorUnit(string sensorId)
+        {
+            if (currentConfiguration.SelectedReadingIds.Contains(sensorId) &&
+               sensorControlsMap.TryGetValue(sensorId, out var controls))
+            {
+                return controls.unitLabel.Text;
+            }
+            return "";
+        }
+        private void btnLimparConfigTelaBombas_Click(object sender, EventArgs e)
+        {
+            ResetActiveTestConfiguration();
+        }
+        private void InitializeStaticDataGridViewParameters()
+        {
+            _staticDataGridViewParameters = new List<ParameterRowInfo>
+            {
+                new ParameterRowInfo("P1", "sensor_P1", "float"),
+                new ParameterRowInfo("P2", "sensor_P2", "float"),
+                new ParameterRowInfo("P3", "sensor_P3", "float"),
+                new ParameterRowInfo("P4", "sensor_P4", "float"),
+                new ParameterRowInfo("Pressão Piloto 1", "sensor_PR1", "float"),
+                new ParameterRowInfo("Pressão Piloto 2", "sensor_PR2", "float"),
+                new ParameterRowInfo("Pressão Piloto 3", "sensor_PR3", "float"),
+                new ParameterRowInfo("Pressão Piloto 4", "sensor_PR4", "float"),
+                new ParameterRowInfo("Vazão 1", "sensor_V1", "float"),
+                new ParameterRowInfo("Vazão 2", "sensor_V2", "float"),
+                new ParameterRowInfo("Vazão 3", "sensor_V3", "float"),
+                new ParameterRowInfo("Vazão 4", "sensor_V4", "float"),
+                new ParameterRowInfo("Dreno 1", "sensor_DR1", "float"),
+                new ParameterRowInfo("Dreno 2", "sensor_DR2", "float"),
+                new ParameterRowInfo("Hidro A1", "sensor_HA1", "float"),
+                new ParameterRowInfo("Hidro A2", "sensor_HA2", "float"),
+                new ParameterRowInfo("Hidro B1", "sensor_HB1", "float"),
+                new ParameterRowInfo("Hidro B2", "sensor_HB2", "float"),
+                new ParameterRowInfo("Motor A1", "sensor_MA1", "float"),
+                new ParameterRowInfo("Motor A2", "sensor_MA2", "float"),
+                new ParameterRowInfo("Motor B1", "sensor_MB1", "float"),
+                new ParameterRowInfo("Motor B2", "sensor_MB2", "float"),
+                new ParameterRowInfo("Temperatura", "sensor_CELSUS", "temp"),
+                new ParameterRowInfo("Rotação", "sensor_RPM", "rpm")
+            };
+        }
+        private void SetupStaticDataGridView()
+        {
+            if (dataGridView1 == null || dataGridView1.IsDisposed) return;
+
+            dataGridView1.SuspendLayout();
+
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font ?? SystemFonts.DefaultFont, FontStyle.Bold);
+            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            DataGridViewTextBoxColumn parametroCol = new DataGridViewTextBoxColumn
+            {
+                Name = "Parametro",
+                HeaderText = "Parâmetro",
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Alignment = DataGridViewContentAlignment.MiddleLeft,
+                    Padding = new Padding(5, 2, 5, 2)
+                }
+            };
+            dataGridView1.Columns.Add(parametroCol);
+
+            int numberOfEtapaColumns = 7;
+            for (int i = 1; i <= numberOfEtapaColumns; i++)
+            {
+                dataGridView1.Columns.Add($"Etapa{i}", $"Etapa {i}");
+            }
+
+            if (_staticDataGridViewParameters != null)
+            {
+                foreach (var paramInfo in _staticDataGridViewParameters)
+                {
+                    dataGridView1.Rows.Add(paramInfo.DisplayName);
+                }
+            }
+
+            if (dataGridView1.Rows.Count == 0 || dataGridView1.Columns.Count == 0)
+            {
+                dataGridView1.ResumeLayout();
+                return;
+            }
+
+            int availableClientWidth = dataGridView1.ClientSize.Width;
+            int availableClientHeight = dataGridView1.ClientSize.Height;
+
+            int maxParametroTextWidth = 0;
+            using (Graphics g = dataGridView1.CreateGraphics())
+            {
+                Font paramCellFont = parametroCol.DefaultCellStyle.Font ?? dataGridView1.DefaultCellStyle.Font ?? dataGridView1.Font ?? SystemFonts.DefaultFont;
+                Font headerFont = dataGridView1.ColumnHeadersDefaultCellStyle.Font ?? dataGridView1.Font ?? SystemFonts.DefaultFont;
+
+                int headerTextWidth = TextRenderer.MeasureText(g, parametroCol.HeaderText, headerFont).Width;
+                maxParametroTextWidth = headerTextWidth;
+
+                if (_staticDataGridViewParameters != null)
+                {
+                    foreach (var paramInfo in _staticDataGridViewParameters)
+                    {
+                        int itemTextWidth = TextRenderer.MeasureText(g, paramInfo.DisplayName, paramCellFont).Width;
+                        if (itemTextWidth > maxParametroTextWidth)
+                        {
+                            maxParametroTextWidth = itemTextWidth;
+                        }
+                    }
+                }
+            }
+
+            int parametroColHorizontalPadding = parametroCol.DefaultCellStyle.Padding.Horizontal;
+            int calculatedParametroColWidth = maxParametroTextWidth + parametroColHorizontalPadding + 10;
+
+            int minParametroColWidth = 100;
+            parametroCol.Width = Math.Max(minParametroColWidth, calculatedParametroColWidth);
+
+            int minWidthPerEtapaCol = 30;
+            if (parametroCol.Width > availableClientWidth - (numberOfEtapaColumns * minWidthPerEtapaCol))
+            {
+                parametroCol.Width = Math.Max(minParametroColWidth, availableClientWidth - (numberOfEtapaColumns * minWidthPerEtapaCol));
+                if (parametroCol.Width < minParametroColWidth) parametroCol.Width = minParametroColWidth;
+                if (parametroCol.Width < 0) parametroCol.Width = 0;
+            }
+
+            int remainingWidthForEtapas = availableClientWidth - parametroCol.Width;
+            if (remainingWidthForEtapas < 0) remainingWidthForEtapas = 0;
+
+            if (numberOfEtapaColumns > 0 && remainingWidthForEtapas > 0)
+            {
+                int baseEtapaWidth = remainingWidthForEtapas / numberOfEtapaColumns;
+                int remainderEtapaWidth = remainingWidthForEtapas % numberOfEtapaColumns;
+
+                for (int i = 0; i < numberOfEtapaColumns; i++)
+                {
+                    DataGridViewColumn etapaCol = dataGridView1.Columns[i + 1];
+                    etapaCol.Width = baseEtapaWidth + (i < remainderEtapaWidth ? 1 : 0);
+                    if (etapaCol.Width < minWidthPerEtapaCol && baseEtapaWidth >= minWidthPerEtapaCol) etapaCol.Width = minWidthPerEtapaCol;
+                    else if (etapaCol.Width < 0) etapaCol.Width = 0;
+                }
+            }
+            else if (numberOfEtapaColumns > 0)
+            {
+                for (int i = 0; i < numberOfEtapaColumns; i++)
+                {
+                    dataGridView1.Columns[i + 1].Width = Math.Max(0, Math.Min(minWidthPerEtapaCol, availableClientWidth / (numberOfEtapaColumns + 1)));
+                }
+            }
+
+            int currentTotalColWidth = 0;
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                if (col.Visible) currentTotalColWidth += col.Width;
+            }
+
+            if (currentTotalColWidth < availableClientWidth && dataGridView1.Columns.Count > 1)
+            {
+                int slack = availableClientWidth - currentTotalColWidth;
+                dataGridView1.Columns[dataGridView1.Columns.Count - 1].Width += slack;
+            }
+            else if (currentTotalColWidth > availableClientWidth && dataGridView1.Columns.Count > 1)
+            {
+                int overflow = currentTotalColWidth - availableClientWidth;
+                for (int i = dataGridView1.Columns.Count - 1; i > 0 && overflow > 0; i--)
+                {
+                    DataGridViewColumn etapaCol = dataGridView1.Columns[i];
+                    int reduction = Math.Min(overflow, etapaCol.Width - minWidthPerEtapaCol);
+                    if (reduction > 0)
+                    {
+                        etapaCol.Width -= reduction;
+                        overflow -= reduction;
+                    }
+                }
+            }
+
+            int columnHeadersHeight = dataGridView1.ColumnHeadersVisible ? dataGridView1.ColumnHeadersHeight : 0;
+            int availableHeightForRows = availableClientHeight - columnHeadersHeight;
+            if (availableHeightForRows < 0) availableHeightForRows = 0;
+
+            int numberOfRows = dataGridView1.Rows.Count;
+
+            if (numberOfRows > 0 && availableHeightForRows > 0)
+            {
+                Font rowFont = dataGridView1.DefaultCellStyle.Font ?? dataGridView1.Font ?? SystemFonts.DefaultFont;
+                int cellVerticalPadding = dataGridView1.DefaultCellStyle.Padding.Vertical;
+                int minPracticalRowHeight = rowFont.Height + cellVerticalPadding + 4;
+
+                int baseRowHeight = availableHeightForRows / numberOfRows;
+                int remainderRowHeight = availableHeightForRows % numberOfRows;
+
+                int actualRowHeight = Math.Max(minPracticalRowHeight, baseRowHeight);
+
+                int totalAppliedRowHeight = 0;
+                for (int i = 0; i < numberOfRows; i++)
+                {
+                    if (!dataGridView1.Rows[i].IsNewRow)
+                    {
+                        int heightForRow = actualRowHeight;
+                        if (baseRowHeight >= minPracticalRowHeight && i < remainderRowHeight)
+                        {
+                            heightForRow++;
+                        }
+                        dataGridView1.Rows[i].Height = heightForRow;
+                        totalAppliedRowHeight += heightForRow;
+                    }
+                }
+
+                if (totalAppliedRowHeight < availableHeightForRows && numberOfRows > 0)
+                {
+                    int diff = availableHeightForRows - totalAppliedRowHeight;
+                    for (int i = 0; i < Math.Min(diff, numberOfRows); i++)
+                    {
+                        dataGridView1.Rows[i].Height++;
+                    }
+                }
+                else if (totalAppliedRowHeight > availableHeightForRows && numberOfRows > 0)
+                {
+                    int diff = totalAppliedRowHeight - availableHeightForRows;
+                    for (int i = 0; i < Math.Min(diff, numberOfRows); i++)
+                    {
+                        if (dataGridView1.Rows[i].Height > minPracticalRowHeight)
+                        {
+                            dataGridView1.Rows[i].Height--;
+                        }
+                    }
+                }
+
+                dataGridView1.RowTemplate.Height = (numberOfRows > 0 && availableHeightForRows > 0) ?
+                                                   Math.Max(minPracticalRowHeight, availableHeightForRows / numberOfRows) :
+                                                   minPracticalRowHeight;
+            }
+            else if (numberOfRows > 0)
+            {
+                int minHeight = dataGridView1.Font?.Height ?? 10;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow) row.Height = Math.Max(1, minHeight / 2);
+                }
+                dataGridView1.RowTemplate.Height = Math.Max(1, minHeight / 2);
+            }
+
+            dataGridView1.ResumeLayout(true);
+        }
+        private void SetButtonState(Control button, bool enabled)
+        {
+            if (button != null && !button.IsDisposed)
+            {
+                if (button.InvokeRequired)
+                {
+                    button.BeginInvoke((MethodInvoker)delegate { button.Enabled = enabled; });
+                }
+                else
+                {
+                    button.Enabled = enabled;
+                }
+
+                if (button is CuoreUI.Controls.cuiButton cuiButton)
+                {
+                }
+            }
+        }
+        private void InitializeAllCharts()
+        {
+            InitializeChart(chart1, "Vazão (LPM)", "Pressão (BAR)", "Curva de Desempenho Principal",
+                new List<SeriesConfig> { new SeriesConfig("Pre.x Vaz.", SeriesChartType.FastLine, Color.Blue) },
+                0, 100, 0, 300);
+            InitializeChart(chart2, "Rotação (RPM)", "Dreno (LPM)", "Vazamento Interno / Dreno",
+                new List<SeriesConfig> { new SeriesConfig("Vaz.In.X Rot", SeriesChartType.FastLine, Color.Red) },
+                0, 3000, 0, 100);
+            InitializeChart(chart3, "Pressão de Carga (BAR)", "Dreno (LPM)", "Curva de Pressão",
+                new List<SeriesConfig> { new SeriesConfig("Vaz. x Pres.", SeriesChartType.FastLine, Color.Orange) },
+                0, 300, 0, 10);
+
+        }
+        private void InitializeChart(Chart chart, string xAxisTitle, string yAxisTitle, string chartTitle, List<SeriesConfig> seriesConfigs, double xMin, double xMax, double yMin, double yMax)
+        {
+            if (chart == null || chart.IsDisposed) return;
+            chart.Series.Clear();
+            chart.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea(chartTitle.Replace(" ", "") + "Area");
+
+            chartArea.AxisX.Title = xAxisTitle;
+            chartArea.AxisX.Minimum = xMin;
+            if (xMax > xMin) chartArea.AxisX.Maximum = xMax; else chartArea.AxisX.Maximum = xMin + 1;
+            chartArea.AxisX.LabelStyle.Format = "F0";
+
+            chartArea.AxisY.Title = yAxisTitle;
+            chartArea.AxisY.Minimum = yMin;
+            if (yMax > yMin) chartArea.AxisY.Maximum = yMax; else chartArea.AxisY.Maximum = yMin + 1;
+            chartArea.AxisY.LabelStyle.Format = "F0";
+
+            chartArea.CursorX.IsUserEnabled = true;
+            chartArea.CursorX.IsUserSelectionEnabled = true;
+            chartArea.CursorY.IsUserEnabled = true;
+            chartArea.CursorY.IsUserSelectionEnabled = true;
+            chartArea.AxisX.ScaleView.Zoomable = true;
+            chartArea.AxisY.ScaleView.Zoomable = true;
+
+            chart.ChartAreas.Add(chartArea);
+
+            foreach (var sc in seriesConfigs)
+            {
+                Series series = new Series(sc.Name)
+                {
+                    ChartType = sc.Type,
+                    Color = sc.Color,
+                    BorderWidth = 2
+                };
+                chart.Series.Add(series);
+            }
+            chart.Titles.Clear();
+            chart.Titles.Add(new Title(chartTitle, Docking.Top, new Font("Arial", 12, FontStyle.Bold), Color.Black));
+        }
+        private void InitializeChartWithSecondaryAxis(Chart chart, string xAxisTitle, string yAxisTitlePrimary, string yAxisTitleSecondary, string chartTitle, List<SeriesConfig> seriesConfigs, double xMin, double xMax, double yMinPrimary, double yMaxPrimary, double yMinSecondary, double yMaxSecondary)
+        {
+            if (chart == null || chart.IsDisposed) return;
+            chart.Series.Clear();
+            chart.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea(chartTitle.Replace(" ", "") + "Area");
+
+            chartArea.AxisX.Title = xAxisTitle;
+            chartArea.AxisX.Minimum = xMin;
+            if (xMax > xMin) chartArea.AxisX.Maximum = xMax; else chartArea.AxisX.Maximum = xMin + 1;
+            chartArea.AxisX.LabelStyle.Format = "F0";
+
+
+            chartArea.AxisY.Title = yAxisTitlePrimary;
+            chartArea.AxisY.Minimum = yMinPrimary;
+            if (yMaxPrimary > yMinPrimary) chartArea.AxisY.Maximum = yMaxPrimary; else chartArea.AxisY.Maximum = yMinPrimary + 1;
+            chartArea.AxisY.LineColor = Color.Black;
+            chartArea.AxisY.LabelStyle.ForeColor = Color.Black;
+            chartArea.AxisY.TitleForeColor = Color.Black;
+            chartArea.AxisY.LabelStyle.Format = "F0";
+
+
+            chartArea.AxisY2.Enabled = AxisEnabled.True;
+            chartArea.AxisY2.Title = yAxisTitleSecondary;
+            chartArea.AxisY2.Minimum = yMinSecondary;
+            if (yMaxSecondary > yMinSecondary) chartArea.AxisY2.Maximum = yMaxSecondary; else chartArea.AxisY2.Maximum = yMinSecondary + 1;
+            chartArea.AxisY2.LineColor = Color.DarkRed;
+            chartArea.AxisY2.LabelStyle.ForeColor = Color.DarkRed;
+            chartArea.AxisY2.TitleForeColor = Color.DarkRed;
+            chartArea.AxisY2.MajorGrid.Enabled = false;
+            chartArea.AxisY2.LabelStyle.Format = "F0";
+
+
+            chartArea.CursorX.IsUserEnabled = true;
+            chartArea.CursorX.IsUserSelectionEnabled = true;
+            chartArea.CursorY.IsUserEnabled = true;
+            chartArea.CursorY.IsUserSelectionEnabled = true;
+
+            chartArea.AxisX.ScaleView.Zoomable = true;
+            chartArea.AxisY.ScaleView.Zoomable = true;
+            chartArea.AxisY2.ScaleView.Zoomable = true;
+
+            chart.ChartAreas.Add(chartArea);
+
+            foreach (var sc in seriesConfigs)
+            {
+                Series series = new Series(sc.Name)
+                {
+                    ChartType = sc.Type,
+                    Color = sc.Color,
+                    BorderWidth = 2,
+                    YAxisType = sc.Axis
+                };
+                chart.Series.Add(series);
+            }
+            chart.Titles.Clear();
+            chart.Titles.Add(new Title(chartTitle, Docking.Top, new Font("Arial", 12, FontStyle.Bold), Color.Black));
+        }
+        private void Tela_Bombas_Load(object sender, EventArgs e)
+        {
+            _viewModel.Carregar_configuracao(this);
+            if (Stage_box_bomba != null) _viewModel.Stage_signal(Stage_box_bomba);
+            if (LabelHorariotela != null) _viewModel.VincularRelogioLabel(LabelHorariotela);
+            LogHistoricalEvent("AGUARDANDO INÍCIO DO ENSAIO...", Color.DarkGreen);
+        }
+        private void CloseWindows_Click(object sender, EventArgs e)
+        {
+            btnretornar_Click(sender, e);
+        }
+        private void Tela_Bombas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_fechamentoControladoPeloUsuario)
+            {
+                DialogResult dr = MessageBox.Show("Deseja fechar toda a aplicação?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    StopAllOperationsAndQuit(true);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                StopAllOperationsAndQuit(false);
+            }
+        }
+        private void StopAllOperationsAndQuit(bool exitApplication = true)
+        {
+            StopTimers();
+            StopSerialConnection();
+
+            _updateUiTimer?.Dispose();
+            _updateUiTimer = null;
+            monitoramentoTimer?.Dispose();
+            monitoramentoTimer = null;
+            timerCronometro?.Dispose();
+            timerCronometro = null;
+
+            if (exitApplication)
+            {
+                ConnectionSettingsApplication.CloseAllConnections();
+                Environment.Exit(Environment.ExitCode);
+            }
+        }
+        public void btnIniciar_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.TextBox tb6 = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tb5 = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox tb4 = this.Controls.Find("textBox4", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+
+            if (!_viewModel.cabecalhoinicial(tb6, tb5, tb4))
+            {
+
+                MessageBox.Show("Favor preencher os campos obrigatórios em DADOS DE ENSAIO.", "Campos Obrigatórios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _viewModel.PiscarLabelsVermelhoSync(label6, label5, label4, 1000);
+                return;
+            }
+
+            _isMonitoring = true;
+            Inicioteste = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            if (Stage_box_bomba != null) _viewModel.IniciarTesteBomba(Stage_box_bomba);
+
+            InicializarMonitoramento();
+            _timeCounterSecondsRampa = 0;
+            etapaAtual = 1;
+
+            if (tempoCronometroDefinidoManualmente && valorDefinidoCronometro > 0)
+            {
+                cronometroIniciado = true;
+                int tempoTotal = valorDefinidoCronometro * 60;
+                if (circularProgressBar1 != null)
+                {
+                    circularProgressBar1.Maximum = tempoTotal > 0 ? tempoTotal : 1;
+                    circularProgressBar1.Minimum = 0;
+                    circularProgressBar1.Value = tempoTotal;
+                    circularProgressBar1.Invalidate();
+                }
+                timerCronometro.Start();
+            }
+            else
+            {
+                if (circularProgressBar1 != null)
+                {
+                    circularProgressBar1.Value = 0;
+                    circularProgressBar1.Maximum = 100;
+                }
+            }
+
+            SetButtonState(btngravar, true);
+            SetButtonState(bntFinalizar, true);
+            SetButtonState(btnreset, true);
+            SetButtonState(btnrelatoriobomba, false);
+            SetButtonState(btniniciarteste, false);
+            LogHistoricalEvent("INICIADO ENSAIO DE BOMBAS", Color.Blue);
+
+            ClearCharts();
+            _viewModel.ResetChartDataLogic();
+            ClearStaticDataGridViewCells();
+            StartSerialConnection();
+        }
+        private void InicializarMonitoramento()
+        {
+            if (monitoramentoTimer == null)
+            {
+                monitoramentoTimer = new System.Windows.Forms.Timer();
+                monitoramentoTimer.Interval = 1000;
+            }
+        }
+        private void PararMonitoramento()
+        {
+            monitoramentoTimer?.Stop();
+        }
+        private void btnParar_Click(object sender, EventArgs e)
+        {
+            StopTimers();
+            StopSerialConnection();
+
+            cronometroIniciado = false;
+            _isMonitoring = false;
+            Fimteste = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+
+            SetButtonState(btngravar, false);
+            SetButtonState(bntFinalizar, false);
+            SetButtonState(btnreset, true);
+            SetButtonState(btnrelatoriobomba, true);
+            SetButtonState(btniniciarteste, true);
+
+            LogHistoricalEvent("ENSAIO DE BOMBAS FINALIZADO", Color.Red);
+            if (Stage_box_bomba != null) _viewModel.FinalizarTesteBomba(Stage_box_bomba);
+        }
+        private void btnretornar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Tem certeza que deseja reiniciar o processo e retornar ao menu?\nTodos os dados não salvos em relatório serão perdidos!",
+                "Confirmação de Reinício",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            _fechamentoControladoPeloUsuario = true;
+
+            StopTimers();
+            StopSerialConnection();
+            _isMonitoring = false;
+            cronometroIniciado = false;
+
+            _timeCounterSecondsRampa = 0;
+            etapaAtual = 1;
+            if (dadosSensores != null) dadosSensores.Clear();
+            if (_dadosColetados != null) _dadosColetados.Clear();
+
+
+            Inicioteste = string.Empty;
+            Fimteste = string.Empty;
+
+            lock (serialBufferLock)
+            {
+                serialDataBuffer.Clear();
+            }
+            lock (readingsLock)
+            {
+                _currentNumericSensorReadings.Clear();
+            }
+
+            UpdateTextBoxes();
+            ClearStaticDataGridViewCells();
+
+            if (circularProgressBar1 != null && !circularProgressBar1.IsDisposed)
+            {
+                circularProgressBar1.Value = 0;
+                circularProgressBar1.Maximum = (tempoCronometroDefinidoManualmente && valorDefinidoCronometro > 0) ? (valorDefinidoCronometro * 60) : 100;
+                circularProgressBar1.Invalidate();
+            }
+
+            ClearCharts();
+            _viewModel.ResetChartDataLogic();
+
+            if (Stage_box_bomba != null) _viewModel.FinalizarTesteBomba(Stage_box_bomba);
+            LogHistoricalEvent("AGUARDANDO INÍCIO DO ENSAIO...", Color.DarkGreen);
+
+            SetButtonState(btniniciarteste, true);
+            SetButtonState(btngravar, false);
+            SetButtonState(bntFinalizar, false);
+            SetButtonState(btnreset, false);
+            SetButtonState(btnrelatoriobomba, false);
+
+            try
+            {
+                var menuAppInstance = Menuapp.Instance;
+                if (menuAppInstance != null && !menuAppInstance.IsDisposed)
+                {
+                    menuAppInstance.Show();
+                    menuAppInstance.BringToFront();
+                }
+                else
+                {
+                    Debug.WriteLine("btnretornar_Click: Menuapp.Instance não disponível ou descartado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"btnretornar_Click: Exceção ao tentar mostrar Menuapp: {ex.Message}");
+            }
+            this.Close();
+        }
+        private void ClearStaticDataGridViewCells()
+        {
+            if (dataGridView1 == null || dataGridView1.IsDisposed) return;
+
+            Action action = () => {
+                for (int colIndex = 1; colIndex < dataGridView1.Columns.Count; colIndex++)
+                {
+                    for (int rowIndex = 0; rowIndex < dataGridView1.Rows.Count; rowIndex++)
+                    {
+                        if (dataGridView1.Rows[rowIndex].Cells.Count > colIndex &&
+                            dataGridView1.Rows[rowIndex].Cells[colIndex] != null)
+                        {
+                            dataGridView1.Rows[rowIndex].Cells[colIndex].Value = string.Empty;
+                        }
+                    }
+                }
+            };
+
+            if (dataGridView1.InvokeRequired)
+            {
+                try { dataGridView1.Invoke(action); } catch (ObjectDisposedException) { }
+            }
+            else
+            {
+                action();
+            }
+        }
+=======
+        // ATIVADO: Lógica para adicionar pontos aos gráficos
+>>>>>>> parent of 4086f19 (atualização de recuperaçãoatualizações segurança)
+        private void AddDataPointsToCharts()
+        {
+            if (this.IsDisposed || this.Disposing) return;
+            if (this.InvokeRequired)
+            {
+                try { this.BeginInvoke((MethodInvoker)AddDataPointsToChartsInternal); }
+                catch (ObjectDisposedException) { }
+                catch (InvalidOperationException) { }
+            }
+            else
+            {
+                AddDataPointsToChartsInternal();
+            }
+        }
+
+        // ATIVADO E MODIFICADO: Lógica interna para adicionar pontos aos gráficos
+        private void AddDataPointsToChartsInternal()
+        {
+            if (this.IsDisposed || this.Disposing) return;
+            Dictionary<string, double> readingsSnapshot;
+            lock (readingsLock)
+            {
+                readingsSnapshot = new Dictionary<string, double>(_currentNumericSensorReadings);
+            }
+
+            // Chart 1: Pre.x Vaz. (MA1 vs VZ1)
+            if (readingsSnapshot.TryGetValue("MA1", out double pressaoBar_MA1) &&
+                readingsSnapshot.TryGetValue("VZ1", out double vazaoLpm_VZ1))
+            {
+                // A lógica do ViewModel para Chart 1 foi removida para simplificar, adicionando diretamente.
+                // Se precisar da lógica de rotação constante, ela precisaria ser adaptada e re-adicionada.
+                if (chart1 != null && !chart1.IsDisposed && chart1.Series.Count > 0 && chart1.Series.IndexOf("Pre.x Vaz.") != -1)
+                {
+                    chart1.Series["Pre.x Vaz."].Points.AddXY(vazaoLpm_VZ1, pressaoBar_MA1);
+                }
+            }
+
+            // Chart 2: Vaz.In.X Rot (ROT vs DR1)
+            if (readingsSnapshot.TryGetValue("ROT", out double rotacaoRpm_ROT) &&
+                readingsSnapshot.TryGetValue("DR1", out double drenoLpm_DR1_chart2))
+            {
+                if (chart2 != null && !chart2.IsDisposed && chart2.Series.Count > 0 && chart2.Series.IndexOf("Vaz.In.X Rot") != -1)
+                {
+                    chart2.Series["Vaz.In.X Rot"].Points.AddXY(rotacaoRpm_ROT, drenoLpm_DR1_chart2);
+                }
+            }
+
+            // Chart 3: Vaz. x Pres.Piloto (PL1 vs DR1)
+            // "PL1" é a pressão piloto, "DR1" é o dreno.
+            // A constante BAR_CONVERSION_PILOT será aplicada a PL1.
+            if (readingsSnapshot.TryGetValue("PL1", out double pilotagemRaw_PL1) &&
+                readingsSnapshot.TryGetValue("DR1", out double drenoLpm_DR1_chart3))
+            {
+                double pilotagemBarConvertida_PL1 = pilotagemRaw_PL1 * BAR_CONVERSION_PILOT;
+
+                if (chart3 != null && !chart3.IsDisposed && chart3.Series.Count > 0 && chart3.Series.IndexOf("Vaz. x Pres.Piloto") != -1)
+                {
+                    chart3.Series["Vaz. x Pres.Piloto"].Points.AddXY(pilotagemBarConvertida_PL1, drenoLpm_DR1_chart3);
+                }
+            }
+        }
+
+
+        private void ClearCharts()
+        {
+            if (this.IsDisposed || this.Disposing) return;
+            var chartToCheck = chart1 ?? chart2 ?? chart3;
+            if (chartToCheck != null && !chartToCheck.IsDisposed && chartToCheck.InvokeRequired)
+            {
+                try { this.BeginInvoke((MethodInvoker)ClearChartsInternal); }
+                catch (ObjectDisposedException) { }
+                catch (InvalidOperationException) { }
+            }
+            else
+            {
+                ClearChartsInternal();
+            }
+        }
+
+        private void ClearChartsInternal()
+        {
+            if (this.IsDisposed || this.Disposing) return;
+            var charts = new List<Chart> { chart1, chart2, chart3 };
+            foreach (Chart chart in charts)
+            {
+                if (chart != null && !chart.IsDisposed)
+                {
+                    foreach (var series in chart.Series)
+                    {
+                        series.Points.Clear();
+                    }
+                }
+            }
+        }
+
+        private void StopTimers()
+        {
+            timerCronometro?.Stop();
+            monitoramentoTimer?.Stop();
+            StopUpdateUiTimer();
+        }
+
+        private void LogHistoricalEvent(string message, Color? color = null)
+        {
+            if (HistoricalEvents == null || HistoricalEvents.IsDisposed || this.IsDisposed || this.Disposing) return;
+            if (HistoricalEvents.InvokeRequired)
+            {
+                try
+                {
+                    HistoricalEvents.BeginInvoke((MethodInvoker)delegate { AppendLogMessage(message, color); });
+                }
+                catch (ObjectDisposedException) { }
+                catch (InvalidOperationException) { }
+            }
+            else
+            {
+                AppendLogMessage(message, color);
+            }
+        }
+        private void AppendLogMessage(string message, Color? color = null)
+        {
+            if (HistoricalEvents == null || HistoricalEvents.IsDisposed) return;
+            if (HistoricalEvents.TextLength > 15000)
+            {
+                HistoricalEvents.Text = HistoricalEvents.Text.Substring(HistoricalEvents.TextLength - 5000);
+            }
+            HistoricalEvents.SelectionStart = HistoricalEvents.TextLength;
+            HistoricalEvents.SelectionLength = 0;
+            HistoricalEvents.AppendText($"{DateTime.Now:G}: {message}" + Environment.NewLine);
+            HistoricalEvents.ScrollToCaret();
+        }
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
         #endregion
 
         // O restante do código (eventos de botões, cronômetro, gráficos, etc.) permanece o mesmo.
@@ -836,6 +2289,223 @@ namespace minas.teste.prototype.MVVM.View
             LogHistoricalEvent("ENSAIO DE BOMBAS FINALIZADO", Color.Red);
             if (Stage_box_bomba != null) _viewModel.FinalizarTesteBomba(Stage_box_bomba);
         }
+<<<<<<< HEAD
+
+        private void btnreset_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show(
+                "Tem certeza que deseja resetar o ensaio atual?\nTodos os dados coletados serão perdidos e um novo ciclo de ensaio será iniciado imediatamente com as configurações e dados de cabeçalho atuais.",
+                "Confirmar Reset e Reinício Imediato",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                // --- 1. Parar atividades do teste atual em andamento ---
+                _isMonitoring = false;
+                StopTimers();
+
+                // --- 2. Limpar todos os dados da execução anterior ---
+                ClearCharts();
+                if (_viewModel != null) _viewModel.ResetChartDataLogic();
+
+                lock (readingsLock)
+                {
+                    _latestRawSensorData.Clear();
+                    _currentNumericSensorReadings.Clear();
+                }
+                // UpdateDisplay() será chamado após a reinicialização
+
+                ClearStaticDataGridViewCells();
+
+                if (_dadosColetados != null) _dadosColetados.Clear();
+
+                // --- 3. Reinicializar o sistema para o estado de um novo teste recém-iniciado ---
+                _isMonitoring = true;
+                Inicioteste = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                Fimteste = string.Empty;
+
+                if (Stage_box_bomba != null && _viewModel != null)
+                {
+                    _viewModel.IniciarTesteBomba(Stage_box_bomba);
+                }
+
+                // REINICIAR CONTADOR DE TEMPO DE EXECUÇÃO
+                _timeCounterSecondsRampa = 0;
+                etapaAtual = 1;
+
+                // REINICIAR CRONÔMETRO
+                cronometroIniciado = false;
+                if (timerCronometro != null) timerCronometro.Stop();
+
+                if (tempoCronometroDefinidoManualmente && valorDefinidoCronometro > 0)
+                {
+                    cronometroIniciado = true;
+                    int tempoTotalDefinido = valorDefinidoCronometro * 60;
+                    if (circularProgressBar1 != null && !circularProgressBar1.IsDisposed)
+                    {
+                        circularProgressBar1.Maximum = tempoTotalDefinido > 0 ? tempoTotalDefinido : 1;
+                        circularProgressBar1.Value = tempoTotalDefinido;
+                        circularProgressBar1.Invalidate();
+                    }
+                    if (timerCronometro != null) timerCronometro.Start();
+                }
+                else
+                {
+                    if (circularProgressBar1 != null && !circularProgressBar1.IsDisposed)
+                    {
+                        circularProgressBar1.Value = 0;
+                        circularProgressBar1.Maximum = 100;
+                        circularProgressBar1.Invalidate();
+                    }
+                }
+
+                if (labelCronometro_bomba != null && !labelCronometro_bomba.IsDisposed)
+                {
+                    string initialCronometroText = "00:00:00";
+                    if (labelCronometro_bomba.InvokeRequired)
+                    {
+                        labelCronometro_bomba.BeginInvoke((MethodInvoker)delegate { labelCronometro_bomba.Text = initialCronometroText; });
+                    }
+                    else
+                    {
+                        labelCronometro_bomba.Text = initialCronometroText;
+                    }
+                }
+
+                LogHistoricalEvent("ENSAIO RESETADO E REINICIADO AUTOMATICAMENTE.", Color.Blue);
+
+                UpdateDisplay();
+
+                StartSerialConnection();
+
+                // --- 4. Definir o estado dos botões para corresponder ao estado PÓS-clique bem-sucedido em "Iniciar" ---
+                SetButtonState(btngravar, true);
+                SetButtonState(bntFinalizar, true);
+                SetButtonState(btnreset, true);
+                SetButtonState(btnrelatoriobomba, false);
+                SetButtonState(btniniciarteste, false);
+
+                MessageBox.Show("O ensaio foi resetado e um novo ciclo foi iniciado.", "Reset e Reinício Concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        #endregion
+
+        private void ClearStaticDataGridViewCells()
+        {
+            if (dataGridView1 == null || dataGridView1.IsDisposed) return;
+            Action action = () => {
+                for (int colIndex = 1; colIndex < dataGridView1.Columns.Count; colIndex++)
+                {
+                    for (int rowIndex = 0; rowIndex < dataGridView1.Rows.Count; rowIndex++)
+                    {
+                        if (dataGridView1.Rows[rowIndex].Cells.Count > colIndex && dataGridView1.Rows[rowIndex].Cells[colIndex] != null)
+                        {
+                            dataGridView1.Rows[rowIndex].Cells[colIndex].Value = string.Empty;
+                        }
+                    }
+                }
+            };
+            if (dataGridView1.InvokeRequired) { try { dataGridView1.Invoke(action); } catch (ObjectDisposedException) { } }
+            else { action(); }
+        }
+
+
+        public struct SeriesConfig
+        {
+            public string Name; public SeriesChartType Type; public Color Color; public AxisType Axis;
+            public SeriesConfig(string name, SeriesChartType type, Color color, AxisType axis = AxisType.Primary)
+            { Name = name; Type = type; Color = color; Axis = axis; }
+        }
+
+        private void GravarDadoSensor(string nomeSensor, string valor, string unidade)
+        {
+            if (string.IsNullOrEmpty(valor) || valor == "N/A")
+            { MessageBox.Show($"Valor do sensor '{nomeSensor}' não disponível para gravação.", "Dados Ausentes", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            if (_isMonitoring)
+            {
+                if (dadosSensores == null) dadosSensores = new List<SensorData>();
+                dadosSensores.Add(new SensorData { Sensor = nomeSensor, Valor = valor, Medidas = unidade });
+            }
+            else
+            { MessageBox.Show("Teste não iniciado. Favor iniciar o teste para capturar os dados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+
+        private bool ValidarMinMaxCheckBoxLocal(System.Windows.Forms.CheckBox checkBox, System.Windows.Forms.TextBox minTextBox, System.Windows.Forms.TextBox maxTextBox, string nomeUnidade)
+        {
+            if (checkBox == null || minTextBox == null || maxTextBox == null) return false;
+            if (!checkBox.Checked) return true;
+            bool minOk = decimal.TryParse(minTextBox.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorMinimo);
+            bool maxOk = decimal.TryParse(maxTextBox.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out decimal valorMaximo);
+            string erroMsg = null;
+            if (!minOk || !maxOk) erroMsg = $"Valores de Mínimo e Máximo para {nomeUnidade} devem ser numéricos.";
+            else if (valorMinimo < 0 || valorMaximo < 0) erroMsg = $"Valores de Mínimo e Máximo para {nomeUnidade} não podem ser negativos.";
+            else if (valorMinimo > valorMaximo) erroMsg = $"Valor Mínimo para {nomeUnidade} não pode ser maior que o Valor Máximo.";
+            if (erroMsg != null)
+            { MessageBox.Show(this, erroMsg + $"\nA verificação de limites para {nomeUnidade} foi desativada.", $"Erro de Validação - {nomeUnidade}", MessageBoxButtons.OK, MessageBoxIcon.Warning); checkBox.Checked = false; return false; }
+            return true;
+        }
+        private void checkBox_psi_CheckedChanged(object sender, EventArgs e) { ValidarMinMaxCheckBoxLocal(sender as System.Windows.Forms.CheckBox, textBox9, textBox8, "PSI"); }
+        private void checkBox_gpm_CheckedChanged(object sender, EventArgs e) { ValidarMinMaxCheckBoxLocal(sender as System.Windows.Forms.CheckBox, textBox14, textBox12, "GPM"); }
+        private void checkBox_bar_CheckedChanged(object sender, EventArgs e) { ValidarMinMaxCheckBoxLocal(sender as System.Windows.Forms.CheckBox, textBox11, textBox10, "BAR"); }
+        private void checkBox_rotacao_CheckedChanged(object sender, EventArgs e) { ValidarMinMaxCheckBoxLocal(sender as System.Windows.Forms.CheckBox, textBox18, textBox17, "Rotação (RPM)"); }
+        private void checkBox_lpm_CheckedChanged(object sender, EventArgs e) { ValidarMinMaxCheckBoxLocal(sender as System.Windows.Forms.CheckBox, textBox16, textBox15, "LPM"); }
+        private void checkBox_temperatura_CheckedChanged(object sender, EventArgs e) { ValidarMinMaxCheckBoxLocal(sender as System.Windows.Forms.CheckBox, textBox20, textBox19, "Temperatura (°C)"); }
+
+        private void TimerCronometro_Tick(object sender, EventArgs e)
+        {
+            if (circularProgressBar1 != null && !circularProgressBar1.IsDisposed && circularProgressBar1.Value > 0)
+            { circularProgressBar1.Value--; }
+            else
+            { timerCronometro.Stop(); cronometroIniciado = false; if (_isMonitoring) { LogHistoricalEvent("Tempo do cronômetro esgotado. Finalizando teste automaticamente.", Color.Orange); btnParar_Click(this, EventArgs.Empty); } }
+        }
+
+
+        private void btnDefinir_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.TextBox inputTempoCronometro = this.Controls.Find("textBox1_tempoCronometro", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            if (inputTempoCronometro == null || inputTempoCronometro.IsDisposed)
+            { MessageBox.Show(this, "Controle para definir tempo do cronômetro não encontrado ou foi descartado.", "Erro UI", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+            if (!cronometroIniciado)
+            {
+                if (int.TryParse(inputTempoCronometro.Text, out int valorMinutos) && valorMinutos > 0)
+                {
+                    valorDefinidoCronometro = valorMinutos; tempoCronometroDefinidoManualmente = true;
+                    if (circularProgressBar1 != null && !circularProgressBar1.IsDisposed)
+                    { circularProgressBar1.Maximum = valorDefinidoCronometro * 60 > 0 ? valorDefinidoCronometro * 60 : 1; circularProgressBar1.Value = valorDefinidoCronometro * 60; circularProgressBar1.Invalidate(); }
+                    MessageBox.Show(this, $"Tempo do cronômetro definido para {valorDefinidoCronometro} minutos.", "Cronômetro Definido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else { MessageBox.Show(this, "Por favor, insira um valor numérico inteiro positivo válido em minutos.", "Erro de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            }
+            else { MessageBox.Show(this, "O cronômetro já está em execução. Limpe ou finalize o teste atual para definir um novo tempo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.TextBox inputTempoCronometro = this.Controls.Find("textBox1_tempoCronometro", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            if (inputTempoCronometro != null && !inputTempoCronometro.IsDisposed && !cronometroIniciado)
+            {
+                inputTempoCronometro.Text = "0"; valorDefinidoCronometro = 0; tempoCronometroDefinidoManualmente = false;
+                if (circularProgressBar1 != null && !circularProgressBar1.IsDisposed) { circularProgressBar1.Value = 0; circularProgressBar1.Maximum = 100; circularProgressBar1.Invalidate(); }
+                MessageBox.Show(this, "Tempo do cronômetro limpo.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (cronometroIniciado) { MessageBox.Show(this, "O cronômetro está em execução. Finalize o teste atual para limpar o tempo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 4086f19 (atualização de recuperaçãoatualizações segurança)
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
+=======
+>>>>>>> parent of a2f06f9 (atualizações segurança)
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
         private void btn_gravar_Click(object sender, EventArgs e)
         {
             if (!_isMonitoring)
@@ -926,6 +2596,23 @@ namespace minas.teste.prototype.MVVM.View
                 SetButtonState(btngravar, false);
             }
         }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 16ee290 (atualizações segurança)
+=======
+
+
+>>>>>>> parent of 4086f19 (atualização de recuperaçãoatualizações segurança)
+=======
+=======
+>>>>>>> 16ee290 (atualizações segurança)
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
+=======
+>>>>>>> parent of a2f06f9 (atualizações segurança)
+=======
 >>>>>>> 16ee290 (atualizações segurança)
         private void HandleConfigButtonClick(Button clickedButton, string testTypeDescription)
         {
@@ -2187,6 +3874,7 @@ namespace minas.teste.prototype.MVVM.View
         }
 =======
 >>>>>>> 16ee290 (atualizações segurança)
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
         private void GravarDadosNoDataGridViewEstatico()
         {
             if (dataGridView1 == null || dataGridView1.IsDisposed || _staticDataGridViewParameters == null) return;
@@ -2283,18 +3971,11 @@ namespace minas.teste.prototype.MVVM.View
                 }
             }
         }
-        #endregion
 <<<<<<< HEAD
-=======
-        private void btnrelatoriobomba_Click(object sender, EventArgs e)
-        {
-            // Verifica se o teste foi executado e finalizado
-            if (_isMonitoring || string.IsNullOrEmpty(Fimteste))
-            {
-                MessageBox.Show("O teste deve ser finalizado antes de gerar um relatório.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+<<<<<<< HEAD
+        #endregion
 
+<<<<<<< HEAD
             // 1. Coleta os dados dos TextBoxes
             string cliente = (this.Controls.Find("textBox6", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
             string bomba = (this.Controls.Find("textBox5", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
@@ -2318,6 +3999,57 @@ namespace minas.teste.prototype.MVVM.View
             // 4. Cria e exibe o formulário de relatório com os dados
             RelatorioTestes relatorioForm = new RelatorioTestes(cliente, bomba, os, modulo, numeroEtapas, tempoTotal);
             relatorioForm.ShowDialog(this); // ShowDialog para abrir como uma janela modal
+<<<<<<< HEAD
+=======
+
+
+=======
+        #endregion
+<<<<<<< HEAD
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
+        private void btnrelatoriobomba_Click(object sender, EventArgs e)
+        {
+            // Verifica se o teste foi executado e finalizado
+            if (_isMonitoring || string.IsNullOrEmpty(Fimteste))
+            {
+                MessageBox.Show("O teste deve ser finalizado antes de gerar um relatório.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 1. Coleta os dados dos TextBoxes
+            string cliente = (this.Controls.Find("textBox6", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
+            string bomba = (this.Controls.Find("textBox5", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
+            string os = (this.Controls.Find("textBox4", true).FirstOrDefault() as TextBox)?.Text ?? "Não informado";
+
+            // 2. Coleta dados do processo de teste
+            string modulo = "Bomba";
+            // O número de etapas gravadas é o valor atual do contador de etapas menos 1
+            int numeroEtapas = etapaAtual > 0 ? etapaAtual - 1 : 0;
+
+<<<<<<< HEAD
+            relatorioForm.SetDadosEnsaio(Inicioteste, Fimteste, nomeCliente, nomeBomba, ordemServico, tabelaDadosParaRelatorio, _dadosColetados, graficos);
+            relatorioForm.Show();
+>>>>>>> parent of 4086f19 (atualização de recuperaçãoatualizações segurança)
+=======
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
+=======
+            // 3. Calcula o tempo total de teste
+            string tempoTotal = "00:00:00";
+            if (DateTime.TryParse(Inicioteste, CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime inicio) &&
+                DateTime.TryParse(Fimteste, CultureInfo.CurrentCulture, DateTimeStyles.None, out DateTime fim))
+            {
+                TimeSpan duracao = fim - inicio;
+                tempoTotal = $"{(int)duracao.TotalHours:D2}:{duracao.Minutes:D2}:{duracao.Seconds:D2}";
+            }
+>>>>>>> 16ee290 (atualizações segurança)
+
+            // 4. Cria e exibe o formulário de relatório com os dados
+            RelatorioTestes relatorioForm = new RelatorioTestes(cliente, bomba, os, modulo, numeroEtapas, tempoTotal);
+            relatorioForm.ShowDialog(this); // ShowDialog para abrir como uma janela modal
+>>>>>>> a2f06f9210a01423b43d4d88091ebc23145657b5
         }
+=======
+>>>>>>> parent of a2f06f9 (atualizações segurança)
     }
 }
