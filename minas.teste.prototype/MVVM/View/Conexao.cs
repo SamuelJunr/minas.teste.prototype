@@ -4,24 +4,20 @@ using System.Drawing;
 using System.IO.Ports; // Necessário para SerialPort, mas SerialManager pode encapsular isso
 using System.Linq;
 using System.Text;
-<<<<<<< HEAD
-// using System.Threading; // CancellationTokenSource não é mais necessário
-// using System.Threading.Tasks; // Task.Delay não é mais necessário nesta capacidade
-=======
+
 using System.Threading;
 using System.Threading.Tasks;
->>>>>>> 16ee290 (atualizações segurança)
+
 using System.Windows.Forms;
 using minas.teste.prototype.MVVM.Model.Concrete; // Supondo que esta e a próxima using são necessárias
 using minas.teste.prototype.Service;
 using System.Diagnostics;
-<<<<<<< HEAD
-// using System.Text.RegularExpressions; // Não é mais necessário para ExpectedDataPattern
-using CuoreUI.Controls; // Para cuiButton, se estiver usando
-=======
+
+using CuoreUI.Controls; 
+
 using System.Text.RegularExpressions; // Para Regex na validação
 using minas.teste.prototype.Properties; // Importar namespace para acessar Resources
->>>>>>> 16ee290 (atualizações segurança)
+
 
 namespace minas.teste.prototype.MVVM.View
 {
@@ -29,18 +25,12 @@ namespace minas.teste.prototype.MVVM.View
     {
         private readonly SerialManager _serialManager;
         private readonly System.Windows.Forms.Timer _textBoxUpdateTimer;
-<<<<<<< HEAD
+
         private readonly object _bufferLock = new object();
-=======
->>>>>>> 16ee290 (atualizações segurança)
+
         private Form _ownerForm;
         private bool _fechamentoForcado = false;
         private Regex _validationRegex;
-
-<<<<<<< HEAD
-        // Campos de validação removidos: _validationCts, _dadosValidosRecebidos, ExpectedDataPattern
-=======
-        // <<< ALTERADO >>> Introdução de dois buffers para separar o recebimento da exibição.
         private readonly StringBuilder _serialReceiveBuffer = new StringBuilder();
         private readonly object _serialReceiveLock = new object();
         private readonly StringBuilder _displayBuffer = new StringBuilder();
@@ -48,7 +38,7 @@ namespace minas.teste.prototype.MVVM.View
 
         // <<< NOVO >>> Constante para o tamanho do pacote de dados.
         private const int ARDUINO_PACKET_SIZE = 284;
->>>>>>> 16ee290 (atualizações segurança)
+
 
         public conexao(Form owner = null)
         {
@@ -56,10 +46,7 @@ namespace minas.teste.prototype.MVVM.View
             _ownerForm = owner ?? new Menuapp();
 
             _serialManager = ConnectionSettingsApplication.PersistentSerialManager;
-<<<<<<< HEAD
 
-=======
->>>>>>> 16ee290 (atualizações segurança)
             InitializeSerialManagerHandlers(true);
             ConfigureUI();
 
@@ -120,10 +107,6 @@ namespace minas.teste.prototype.MVVM.View
             comboBoxBaudRate.SelectedItem = currentBaudRate != 0 ? currentBaudRate : (object)115200;
 
             RefreshPortsList();
-<<<<<<< HEAD
-=======
-
->>>>>>> 16ee290 (atualizações segurança)
             UpdateConnectionStatusUI(_serialManager.IsConnected);
         }
 
@@ -178,12 +161,9 @@ namespace minas.teste.prototype.MVVM.View
         {
             comboBoxPortaCOM.Enabled = enabled;
             comboBoxBaudRate.Enabled = enabled;
-<<<<<<< HEAD
-            // btnSalvarAplicarConfiguracoes agora é habilitado/desabilitado com base na conexão também
-            btnSalvarAplicarConfiguracoes.Enabled = !(_serialManager.IsConnected && !enabled); // Habilitado se desconectado ou se 'enabled' for true
-=======
+            btnSalvarAplicarConfiguracoes.Enabled = !(_serialManager.IsConnected && !enabled);
             btnSalvarAplicarConfiguracoes.Enabled = enabled;
->>>>>>> 16ee290 (atualizações segurança)
+
         }
 
         private void TextBoxUpdateTimer_Tick(object sender, EventArgs e)
@@ -233,13 +213,13 @@ namespace minas.teste.prototype.MVVM.View
         // <<< MÉTODO ALTERADO >>> Apenas adiciona dados ao buffer de recebimento e chama o processador.
         private void SerialManager_DataReceived(object sender, string data)
         {
-<<<<<<< HEAD
+
             
 
             string cleanData = FilterNonPrintableChars(data);
-=======
+
             if (string.IsNullOrEmpty(data)) return;
->>>>>>> 16ee290 (atualizações segurança)
+
 
             lock (_serialReceiveLock)
             {
@@ -265,9 +245,9 @@ namespace minas.teste.prototype.MVVM.View
                 // <<< VALIDAÇÃO ALTERADA >>> A validação agora ocorre no pacote completo.
                 if (_validationRegex != null && _validationRegex.IsMatch(cleanPacket))
                 {
-<<<<<<< HEAD
+ 
                     _dataBuffer.Append(cleanData);
-=======
+ 
                     // Se o pacote de 284 caracteres é válido, prepara-o para exibição.
                     dataToDisplay = cleanPacket + "\r\n"; // Adiciona nova linha para legibilidade
                     Debug.WriteLine($"Pacote válido de {ARDUINO_PACKET_SIZE} caracteres detectado.");
@@ -283,7 +263,7 @@ namespace minas.teste.prototype.MVVM.View
                 lock (_displayLock)
                 {
                     _displayBuffer.Append(dataToDisplay);
->>>>>>> 16ee290 (atualizações segurança)
+
                 }
             }
         }
@@ -322,7 +302,7 @@ namespace minas.teste.prototype.MVVM.View
         {
             if (lblStatusConexao != null && !lblStatusConexao.IsDisposed)
             {
-<<<<<<< HEAD
+ 
                 //btnTestarConexao.Text = isConnected ? "Desconectar" : "Conectar"; // Para System.Windows.Forms.Button
                 if (btnTestarConexao is cuiButton cuiBtn) // Para CuoreUI.Controls.cuiButton
                 {
@@ -332,10 +312,10 @@ namespace minas.teste.prototype.MVVM.View
                 }
                 
 
-=======
+ 
                 btnTestarConexao.Content = isConnected ? "Desconectar" : "Conectar";
                 btnTestarConexao.NormalBackground = isConnected ? Color.Crimson : Color.DarkGreen;
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
 
                 lblStatusConexao.Text = isConnected ?
                     $"Conectado: {ConnectionSettingsApplication.CurrentPortName} @ {ConnectionSettingsApplication.CurrentBaudRate}" :
@@ -358,11 +338,11 @@ namespace minas.teste.prototype.MVVM.View
                 // Botão Salvar habilitado se houver portas e estiver desconectado, ou sempre habilitado se quiser permitir salvar a config selecionada mesmo conectado
                 btnSalvarAplicarConfiguracoes.Enabled = enableControlsWhenDisconnected;
             }
-<<<<<<< HEAD
+ 
 
             
-=======
->>>>>>> 16ee290 (atualizações segurança)
+ 
+ ( )
         }
 
         private void SerialManager_ErrorOccurred(object sender, string errorMessage)
@@ -379,19 +359,19 @@ namespace minas.teste.prototype.MVVM.View
             });
         }
 
-<<<<<<< HEAD
+ 
         private async void btnConectarDesconectar_Click(object sender, EventArgs e) // btnTestarConexao.Click
-=======
+ 
         private void btnConectarDesconectar_Click(object sender, EventArgs e)
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
         {
             if (_serialManager.IsConnected)
             {
                 _serialManager.Disconnect();
-<<<<<<< HEAD
+ 
                 // A UI será atualizada pelo evento ConnectionStatusChanged
-=======
->>>>>>> 16ee290 (atualizações segurança)
+ 
+ ( )
             }
             else
             {
@@ -413,16 +393,16 @@ namespace minas.teste.prototype.MVVM.View
 
                 lblStatusConexao.Text = $"Tentando conectar a {port}@{baudRate}...";
                 lblStatusConexao.ForeColor = Color.Orange;
-<<<<<<< HEAD
+ 
                 Application.DoEvents(); // Use com cautela
-=======
+ 
                 btnTestarConexao.Enabled = false;
                 Application.DoEvents();
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
 
                 Task.Run(() =>
                 {
-<<<<<<< HEAD
+ 
                     // Não há mais validação de formato de dados. Apenas conectar.
                     // lblStatusConexao será atualizado por ConnectionStatusChanged
                     // para "Conectado: PORTA @ BAUDRATE"
@@ -446,7 +426,7 @@ namespace minas.teste.prototype.MVVM.View
         }
 
         private void btnDesconectarSeparado_Click(object sender, EventArgs e) // cuiButton2.Click
-=======
+ 
                     bool success = ConnectionSettingsApplication.UpdateConnection(port, baudRate);
 
                     Invoke((MethodInvoker)delegate
@@ -482,7 +462,7 @@ namespace minas.teste.prototype.MVVM.View
         }
 
         private void btnDesconectarSeparado_Click(object sender, EventArgs e)
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
         {
             if (_serialManager.IsConnected)
             {
@@ -529,12 +509,12 @@ namespace minas.teste.prototype.MVVM.View
 
             if (result == DialogResult.Yes)
             {
-<<<<<<< HEAD
+ 
                 SalvarConfiguracoesPersistentes(port, baudRate); // Salva nas Properties.Settings
                 ConnectionSettingsApplication.UpdateCurrentSettings(port, baudRate); // Atualiza as configurações na memória da aplicação
-=======
+ 
                 bool success = ConnectionSettingsApplication.UpdateConnection(port, baudRate);
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
 
                 if (aplicarNovasConfig && _serialManager.IsConnected)
                 {
@@ -545,12 +525,12 @@ namespace minas.teste.prototype.MVVM.View
                 {
                     MessageBox.Show(this, "Configurações salvas com sucesso!", "Configurações Salvas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-<<<<<<< HEAD
+ 
                 ConfigureUI(); // Atualiza os ComboBoxes para refletir as configs salvas
-=======
+ 
 
                 UpdateConnectionStatusUI(_serialManager.IsConnected);
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
             }
         }
 
@@ -579,7 +559,7 @@ namespace minas.teste.prototype.MVVM.View
             // Limpeza de recursos sempre que o formulário estiver fechando
             _textBoxUpdateTimer?.Stop();
             _textBoxUpdateTimer?.Dispose();
-<<<<<<< HEAD
+ 
             InitializeSerialManagerHandlers(false); // Crucial para desinscrever eventos
 
             // Se o fechamento é devido ao Application.Exit() já ter sido chamado,
@@ -616,7 +596,7 @@ namespace minas.teste.prototype.MVVM.View
             {
                 Debug.WriteLine("[CONEXAO.conexao_FormClosing] Usuário cancelou o fechamento da aplicação.");
                 e.Cancel = true; // Cancela o fechamento DESTE formulário
-=======
+ 
             InitializeSerialManagerHandlers(false);
 
             if (!_fechamentoForcado)
@@ -631,7 +611,7 @@ namespace minas.teste.prototype.MVVM.View
                 {
                     e.Cancel = true;
                 }
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
             }
         }
 
@@ -651,7 +631,7 @@ namespace minas.teste.prototype.MVVM.View
 
         private void conexao_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+ 
             if (lblInfoAdicional != null)
             {
                 if (_serialManager.IsConnected)
@@ -666,7 +646,7 @@ namespace minas.teste.prototype.MVVM.View
                 {
                     lblInfoAdicional.Text = "Nenhuma configuração salva. Selecione as opções e conecte.";
                 }
-=======
+ 
             if (_serialManager.IsConnected)
             {
                 // UI já atualizada pelo UpdateConnectionStatusUI
@@ -678,7 +658,7 @@ namespace minas.teste.prototype.MVVM.View
             else
             {
                 lblInfoAdicional.Text = "Nenhuma config salva.\n Selecione e conecte.";
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
             }
         }
 
@@ -687,15 +667,15 @@ namespace minas.teste.prototype.MVVM.View
             if (lblStatusConexao != null) lblStatusConexao.Text = "Atualizando portas...";
             Application.DoEvents();
             RefreshPortsList();
-<<<<<<< HEAD
+ 
             // O status da conexão não muda, então UpdateConnectionStatusUI irá restaurar o texto correto do lblStatusConexao
             UpdateConnectionStatusUI(_serialManager.IsConnected);
-=======
+ 
             if (comboBoxPortaCOM.Enabled)
             {
                 lblStatusConexao.Text = "Lista de portas COM atualizada.";
             }
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
         }
     }
 }

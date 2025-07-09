@@ -399,9 +399,9 @@ namespace minas.teste.prototype.MVVM.View
                     maskedTextBoxCoeficiente.Text = ""; // Limpar se não houver coeficiente salvo
                 }
             }
-<<<<<<< HEAD
+ 
             else
-=======
+ 
         }
 
         private void btnVoltar_Click(object sender, EventArgs e) // Renomeado de button1_Click
@@ -414,7 +414,7 @@ namespace minas.teste.prototype.MVVM.View
         private void Configuracao_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_fechamentoForcado)
->>>>>>> 16ee290 (atualizações segurança)
+ ( )
             {
                 maskedTextBoxCoeficiente.Mask = "";
                 maskedTextBoxCoeficiente.Text = "";
