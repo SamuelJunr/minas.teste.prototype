@@ -131,7 +131,7 @@ namespace minas.teste.prototype.MVVM.View
             this.dgvClientes.SelectionChanged += (s, e) => LoadSelectedClienteToForm();
             this.btnClienteLoadImage.Click += BtnClienteLoadImage_Click;
             this.btnClienteClearImage.Click += (s, e) => { picClienteImage.Image = null; _clienteCurrentImageBytes = null; };
-
+            
 
             // Common
             this.btnSair.Click += (s, e) => this.Close();
@@ -143,6 +143,7 @@ namespace minas.teste.prototype.MVVM.View
             LoadUsuarios();
             LoadClientes();
             LoadEmpresasToComboBoxes(); // Populate ComboBoxes after loading empresas
+            InitializeMockDeletedClientes();
         }
 
         private void LoadEmpresasToComboBoxes()
@@ -740,6 +741,374 @@ namespace minas.teste.prototype.MVVM.View
                     }
                 }
             }
+        }
+
+        #endregion
+
+        #region Cliente Recovery Management
+
+        /// <summary>
+        /// Recupera clientes que foram excluídos (soft delete) e permite restaurá-los
+        /// </summary>
+        private void ShowClienteRecoveryDialog()
+        {
+            // Buscar clientes excluídos (com TerminateTime != null)
+            var clientesExcluidos = _clientes.Where(c => c.TerminateTime != null).ToList();
+
+            if (!clientesExcluidos.Any())
+            {
+                MessageBox.Show("Não há clientes excluídos para recuperar.", "Informação",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Criar formulário de recuperação
+            Form recoveryForm = new Form()
+            {
+                Width = 800,
+                Height = 600,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = "Recuperar Clientes Excluídos",
+                StartPosition = FormStartPosition.CenterScreen,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+            // DataGridView para exibir clientes excluídos
+            DataGridView dgvRecovery = new DataGridView()
+            {
+                Left = 20,
+                Top = 20,
+                Width = 740,
+                Height = 400,
+                AutoGenerateColumns = false,
+                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+                MultiSelect = false,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                ReadOnly = true,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            };
+
+            // Configurar colunas do DataGridView
+            dgvRecovery.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "ID",
+                DataPropertyName = "ID",
+                HeaderText = "ID",
+                Width = 50
+            });
+            dgvRecovery.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Name",
+                DataPropertyName = "Name",
+                HeaderText = "Nome",
+                FillWeight = 25
+            });
+            dgvRecovery.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "CPF",
+                DataPropertyName = "CPF",
+                HeaderText = "CPF",
+                FillWeight = 15
+            });
+            dgvRecovery.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "CNPJ",
+                DataPropertyName = "CNPJ",
+                HeaderText = "CNPJ",
+                FillWeight = 15
+            });
+            dgvRecovery.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Telefone",
+                DataPropertyName = "Telefone",
+                HeaderText = "Telefone",
+                FillWeight = 15
+            });
+            dgvRecovery.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "EmpresaName",
+                DataPropertyName = "EmpresaName",
+                HeaderText = "Empresa",
+                FillWeight = 15
+            });
+            dgvRecovery.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "TerminateTime",
+                DataPropertyName = "TerminateTime",
+                HeaderText = "Data Exclusão",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "g" },
+                FillWeight = 15
+            });
+
+            // Preparar dados para exibição
+            var clientesView = clientesExcluidos.Select(c => new
+            {
+                c.ID,
+                c.Name,
+                c.CPF,
+                c.CNPJ,
+                c.Telefone,
+                EmpresaName = c.EmpresaID.HasValue ?
+                    _empresas.FirstOrDefault(emp => emp.ID == c.EmpresaID.Value)?.Name ?? "Empresa Excluída" :
+                    "N/A",
+                c.TerminateTime
+            }).ToList();
+
+            dgvRecovery.DataSource = clientesView;
+
+            // Botões
+            Button btnRecover = new Button()
+            {
+                Text = "Recuperar Cliente",
+                Left = 20,
+                Top = 440,
+                Width = 150,
+                Height = 30
+            };
+
+            Button btnDeletePermanent = new Button()
+            {
+                Text = "Excluir Permanentemente",
+                Left = 190,
+                Top = 440,
+                Width = 180,
+                Height = 30,
+                BackColor = Color.FromArgb(220, 53, 69), // Vermelho
+                ForeColor = Color.White
+            };
+
+            Button btnClose = new Button()
+            {
+                Text = "Fechar",
+                Left = 600,
+                Top = 440,
+                Width = 100,
+                Height = 30,
+                DialogResult = DialogResult.Cancel
+            };
+
+            // Labels informativos
+            Label lblInfo = new Label()
+            {
+                Text = "Selecione um cliente da lista para recuperar ou excluir permanentemente.",
+                Left = 20,
+                Top = 480,
+                Width = 740,
+                Height = 20,
+                ForeColor = Color.Gray
+            };
+
+            Label lblCount = new Label()
+            {
+                Text = $"Total de clientes excluídos: {clientesExcluidos.Count}",
+                Left = 20,
+                Top = 500,
+                Width = 300,
+                Height = 20,
+                Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold)
+            };
+
+            // Eventos dos botões
+            btnRecover.Click += (s, e) =>
+            {
+                if (dgvRecovery.CurrentRow == null)
+                {
+                    MessageBox.Show("Selecione um cliente para recuperar.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int clienteId = (int)dgvRecovery.CurrentRow.Cells["ID"].Value;
+                Cliente cliente = _clientes.FirstOrDefault(c => c.ID == clienteId);
+
+                if (cliente != null)
+                {
+                    string clienteName = cliente.Name;
+                    var result = MessageBox.Show($"Tem certeza que deseja recuperar o cliente '{clienteName}'?",
+                        "Confirmar Recuperação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Recuperar cliente
+                        cliente.TerminateTime = null;
+                        cliente.UpdateTime = DateTime.Now;
+
+                        // Recuperar imagens associadas (se existirem)
+                        var imagensAssociadas = _imagens.Where(img => img.ClienteID == clienteId && img.TerminateTime != null).ToList();
+                        foreach (var img in imagensAssociadas)
+                        {
+                            img.TerminateTime = null;
+                            img.UpdateTime = DateTime.Now;
+                        }
+
+                        MessageBox.Show($"Cliente '{clienteName}' recuperado com sucesso!", "Sucesso",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Atualizar a lista de clientes ativos
+                        LoadClientes();
+
+                        // Fechar o formulário de recuperação
+                        recoveryForm.Close();
+                    }
+                }
+            };
+
+            btnDeletePermanent.Click += (s, e) =>
+            {
+                if (dgvRecovery.CurrentRow == null)
+                {
+                    MessageBox.Show("Selecione um cliente para excluir permanentemente.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int clienteId = (int)dgvRecovery.CurrentRow.Cells["ID"].Value;
+                Cliente cliente = _clientes.FirstOrDefault(c => c.ID == clienteId);
+
+                if (cliente != null)
+                {
+                    string clienteName = cliente.Name;
+                    var result = MessageBox.Show($"ATENÇÃO: Esta ação não pode ser desfeita!\n\n" +
+                        $"Tem certeza que deseja excluir permanentemente o cliente '{clienteName}'?",
+                        "Confirmar Exclusão Permanente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Excluir permanentemente
+                        _clientes.Remove(cliente);
+
+                        // Excluir imagens associadas permanentemente
+                        var imagensAssociadas = _imagens.Where(img => img.ClienteID == clienteId).ToList();
+                        foreach (var img in imagensAssociadas)
+                        {
+                            _imagens.Remove(img);
+                        }
+
+                        MessageBox.Show($"Cliente '{clienteName}' excluído permanentemente!", "Excluído",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Atualizar a exibição
+                        clientesView = _clientes.Where(c => c.TerminateTime != null).Select(c => new
+                        {
+                            c.ID,
+                            c.Name,
+                            c.CPF,
+                            c.CNPJ,
+                            c.Telefone,
+                            EmpresaName = c.EmpresaID.HasValue ?
+                                _empresas.FirstOrDefault(emp => emp.ID == c.EmpresaID.Value)?.Name ?? "Empresa Excluída" :
+                                "N/A",
+                            c.TerminateTime
+                        }).ToList();
+
+                        dgvRecovery.DataSource = null;
+                        dgvRecovery.DataSource = clientesView;
+                        lblCount.Text = $"Total de clientes excluídos: {clientesView.Count}";
+
+                        // Se não há mais clientes excluídos, fechar o formulário
+                        if (!clientesView.Any())
+                        {
+                            MessageBox.Show("Não há mais clientes excluídos.", "Informação",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            recoveryForm.Close();
+                        }
+                    }
+                }
+            };
+
+            btnClose.Click += (s, e) => recoveryForm.Close();
+
+            // Adicionar controles ao formulário
+            recoveryForm.Controls.Add(dgvRecovery);
+            recoveryForm.Controls.Add(btnRecover);
+            recoveryForm.Controls.Add(btnDeletePermanent);
+            recoveryForm.Controls.Add(btnClose);
+            recoveryForm.Controls.Add(lblInfo);
+            recoveryForm.Controls.Add(lblCount);
+
+            // Configurar botão padrão
+            recoveryForm.AcceptButton = btnRecover;
+            recoveryForm.CancelButton = btnClose;
+
+            // Exibir formulário
+            recoveryForm.ShowDialog();
+        }
+
+        /// <summary>
+        /// Método para criar dados mockados de clientes excluídos para testes
+        /// </summary>
+        private void CreateMockDeletedClientes()
+        {
+            // Criar alguns clientes mockados já excluídos para teste
+            var mockDeletedClientes = new List<Cliente>
+    {
+        new Cliente
+        {
+            ID = 9001,
+            Name = "João Silva Santos",
+            CPF = "123.456.789-10",
+            CNPJ = "12.345.678/0001-90",
+            Endereco = "Rua das Flores, 123",
+            Email = "joao.silva@email.com",
+            Telefone = "(31) 99999-1234",
+            EmpresaID = _empresas.FirstOrDefault()?.ID,
+            CreateTime = DateTime.Now.AddDays(-30),
+            UpdateTime = DateTime.Now.AddDays(-5),
+            TerminateTime = DateTime.Now.AddDays(-5) // Excluído há 5 dias
+        },
+        new Cliente
+        {
+            ID = 9002,
+            Name = "Maria Oliveira Costa",
+            CPF = "987.654.321-00",
+            CNPJ = "98.765.432/0001-10",
+            Endereco = "Av. Principal, 456",
+            Email = "maria.oliveira@email.com",
+            Telefone = "(31) 88888-5678",
+            EmpresaID = _empresas.Skip(1).FirstOrDefault()?.ID,
+            CreateTime = DateTime.Now.AddDays(-20),
+            UpdateTime = DateTime.Now.AddDays(-3),
+            TerminateTime = DateTime.Now.AddDays(-3) // Excluído há 3 dias
+        },
+        new Cliente
+        {
+            ID = 9003,
+            Name = "Carlos Pereira Ltda",
+            CPF = "456.789.123-45",
+            CNPJ = "45.678.912/0001-34",
+            Endereco = "Rua do Comércio, 789",
+            Email = "carlos.pereira@empresa.com",
+            Telefone = "(31) 77777-9012",
+            EmpresaID = null, // Sem empresa vinculada
+            CreateTime = DateTime.Now.AddDays(-15),
+            UpdateTime = DateTime.Now.AddDays(-1),
+            TerminateTime = DateTime.Now.AddDays(-1) // Excluído há 1 dia
+        }
+    };
+
+            // Adicionar os clientes mockados à lista principal
+            _clientes.AddRange(mockDeletedClientes);
+
+            // Atualizar o próximo ID para evitar conflitos
+            _nextClienteId = Math.Max(_nextClienteId, mockDeletedClientes.Max(c => c.ID) + 1);
+        }
+
+        /// <summary>
+        /// Método público para ser chamado de fora da classe (ex: de um botão no formulário)
+        /// </summary>
+        public void ShowClienteRecovery()
+        {
+            ShowClienteRecoveryDialog();
+        }
+
+        /// <summary>
+        /// Método público para criar dados de teste (chamado uma vez para popular dados mockados)
+        /// </summary>
+        public void InitializeMockDeletedClientes()
+        {
+            CreateMockDeletedClientes();
         }
 
         #endregion

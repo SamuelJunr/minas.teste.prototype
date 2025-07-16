@@ -206,6 +206,9 @@
   <data name="vazãobomba-removebg-preview (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vazãobomba-removebg-preview (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_290938961" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\icon\vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pressao_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\pressao_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -215,8 +218,8 @@
   <data name="background3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="printerpage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\printerpage.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\icon\vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WhatsApp Image 2025-04-17 at 08.54.57" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2025-04-17 at 08.54.57.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -263,6 +266,9 @@
   <data name="pressao_by" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\medidas\pressao_by.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="printerpage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printerpage.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10311715-ilustracao-contorno-icone-icone-de-agua-bomba-de-agua-vetor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -280,6 +286,12 @@
   </data>
   <data name="logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\logomarca\logo2.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="icons8_save_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\icon\icons8-left-64.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="icons8-download-100 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagens\icon\icons8-download-100 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="direcao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\modulos\servocon02.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -353,7 +365,7 @@
   <data name="WhatsApp Image 2025-04-17 at 08.54.57 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2025-04-17 at 08.54.57 (3).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_290938962" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagens\icon\vecteezy_data-storage-vector-glyph-icon-for-personal-and-commercial-use_29093896.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

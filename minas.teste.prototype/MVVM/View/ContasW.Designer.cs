@@ -829,7 +829,7 @@
             this.grpClienteDetails.PerformLayout();
             this.ResumeLayout(false);
 
-            }
+        }
 
             #endregion
 

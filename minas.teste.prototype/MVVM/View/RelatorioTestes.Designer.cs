@@ -49,13 +49,13 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblClienteValue = new System.Windows.Forms.TextBox();
             this.cuiGroupBox2 = new CuoreUI.Controls.cuiGroupBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.lblOSValue = new System.Windows.Forms.TextBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -63,15 +63,21 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvRelatorios = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.lblModuloValue = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btncarregar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.cuiGroupBox3 = new CuoreUI.Controls.cuiGroupBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
@@ -83,12 +89,20 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.Salvarbtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.cuiGroupBox1.SuspendLayout();
             this.cuiGroupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorios)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel7.SuspendLayout();
             this.cuiGroupBox3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -118,7 +132,7 @@
             this.cuiGroupBox1.Controls.Add(this.metroLabel2);
             this.cuiGroupBox1.Controls.Add(this.metroLabel1);
             this.cuiGroupBox1.Controls.Add(this.textBox2);
-            this.cuiGroupBox1.Controls.Add(this.textBox1);
+            this.cuiGroupBox1.Controls.Add(this.lblClienteValue);
             this.cuiGroupBox1.Location = new System.Drawing.Point(5, 12);
             this.cuiGroupBox1.Name = "cuiGroupBox1";
             this.cuiGroupBox1.Padding = new System.Windows.Forms.Padding(4, 17, 4, 4);
@@ -368,13 +382,13 @@
             this.textBox2.Size = new System.Drawing.Size(219, 22);
             this.textBox2.TabIndex = 1;
             // 
-            // textBox1
+            // lblClienteValue
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(158, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(269, 22);
-            this.textBox1.TabIndex = 0;
+            this.lblClienteValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblClienteValue.Location = new System.Drawing.Point(158, 35);
+            this.lblClienteValue.Name = "lblClienteValue";
+            this.lblClienteValue.Size = new System.Drawing.Size(269, 22);
+            this.lblClienteValue.TabIndex = 0;
             // 
             // cuiGroupBox2
             // 
@@ -385,7 +399,7 @@
             this.cuiGroupBox2.Controls.Add(this.metroLabel17);
             this.cuiGroupBox2.Controls.Add(this.metroLabel16);
             this.cuiGroupBox2.Controls.Add(this.textBox15);
-            this.cuiGroupBox2.Controls.Add(this.textBox14);
+            this.cuiGroupBox2.Controls.Add(this.lblOSValue);
             this.cuiGroupBox2.Controls.Add(this.metroLabel15);
             this.cuiGroupBox2.Controls.Add(this.metroLabel14);
             this.cuiGroupBox2.Controls.Add(this.textBox13);
@@ -450,13 +464,13 @@
             this.textBox15.Size = new System.Drawing.Size(585, 82);
             this.textBox15.TabIndex = 19;
             // 
-            // textBox14
+            // lblOSValue
             // 
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox14.Location = new System.Drawing.Point(144, 34);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(248, 22);
-            this.textBox14.TabIndex = 18;
+            this.lblOSValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblOSValue.Location = new System.Drawing.Point(144, 34);
+            this.lblOSValue.Name = "lblOSValue";
+            this.lblOSValue.Size = new System.Drawing.Size(248, 22);
+            this.lblOSValue.TabIndex = 18;
             // 
             // metroLabel15
             // 
@@ -545,10 +559,22 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.dgvRelatorios);
             this.panel1.Location = new System.Drawing.Point(3, 175);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(435, 631);
             this.panel1.TabIndex = 3;
+            // 
+            // dgvRelatorios
+            // 
+            this.dgvRelatorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRelatorios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRelatorios.Location = new System.Drawing.Point(0, 0);
+            this.dgvRelatorios.Name = "dgvRelatorios";
+            this.dgvRelatorios.RowHeadersWidth = 51;
+            this.dgvRelatorios.RowTemplate.Height = 24;
+            this.dgvRelatorios.Size = new System.Drawing.Size(435, 631);
+            this.dgvRelatorios.TabIndex = 0;
             // 
             // panel2
             // 
@@ -599,7 +625,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.lblModuloValue);
             this.groupBox2.Location = new System.Drawing.Point(444, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(356, 96);
@@ -607,13 +633,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "MÓDULO";
             // 
-            // textBox5
+            // lblModuloValue
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(54, 37);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(248, 22);
-            this.textBox5.TabIndex = 18;
+            this.lblModuloValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblModuloValue.Location = new System.Drawing.Point(54, 37);
+            this.lblModuloValue.Name = "lblModuloValue";
+            this.lblModuloValue.Size = new System.Drawing.Size(248, 22);
+            this.lblModuloValue.TabIndex = 18;
             // 
             // panel5
             // 
@@ -626,10 +652,67 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel6.Controls.Add(this.tableLayoutPanel1);
             this.panel6.Location = new System.Drawing.Point(1184, 526);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(728, 280);
             this.panel6.TabIndex = 10;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.25484F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.74515F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(722, 274);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.panel8, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btncarregar, 0, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(568, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.1791F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.8209F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(151, 268);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // panel8
+            // 
+            this.panel8.BackgroundImage = global::minas.teste.prototype.Properties.Resources.vecteezy_data_storage_vector_glyph_icon_for_personal_and_commercial_use_290938962;
+            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel8.Location = new System.Drawing.Point(3, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(145, 98);
+            this.panel8.TabIndex = 1;
+            // 
+            // btncarregar
+            // 
+            this.btncarregar.Location = new System.Drawing.Point(3, 107);
+            this.btncarregar.Name = "btncarregar";
+            this.btncarregar.Size = new System.Drawing.Size(145, 157);
+            this.btncarregar.TabIndex = 0;
+            this.btncarregar.Text = "Carregar Evidência";
+            this.btncarregar.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(558, 268);
+            this.dataGridView1.TabIndex = 1;
             // 
             // panel7
             // 
@@ -721,7 +804,7 @@
             // 
             this.button1.BackgroundImage = global::minas.teste.prototype.Properties.Resources.printerpage1;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(37, 849);
+            this.button1.Location = new System.Drawing.Point(3, 848);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 114);
             this.button1.TabIndex = 13;
@@ -731,7 +814,7 @@
             // 
             this.button2.BackgroundImage = global::minas.teste.prototype.Properties.Resources.printpdf;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(236, 849);
+            this.button2.Location = new System.Drawing.Point(155, 849);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 114);
             this.button2.TabIndex = 14;
@@ -740,7 +823,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 829);
+            this.label2.Location = new System.Drawing.Point(35, 829);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 16);
             this.label2.TabIndex = 15;
@@ -749,11 +832,30 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(262, 830);
+            this.label3.Location = new System.Drawing.Point(182, 830);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 16);
             this.label3.TabIndex = 16;
             this.label3.Text = "Salvar Pdf";
+            // 
+            // Salvarbtn
+            // 
+            this.Salvarbtn.BackgroundImage = global::minas.teste.prototype.Properties.Resources.icons8_download_100__1_;
+            this.Salvarbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Salvarbtn.Location = new System.Drawing.Point(305, 848);
+            this.Salvarbtn.Name = "Salvarbtn";
+            this.Salvarbtn.Size = new System.Drawing.Size(133, 114);
+            this.Salvarbtn.TabIndex = 17;
+            this.Salvarbtn.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(345, 829);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 16);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Salvar";
             // 
             // RelatorioTestes
             // 
@@ -763,6 +865,8 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1924, 1000);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Salvarbtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
@@ -787,12 +891,18 @@
             this.cuiGroupBox1.PerformLayout();
             this.cuiGroupBox2.ResumeLayout(false);
             this.cuiGroupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorios)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel7.ResumeLayout(false);
             this.cuiGroupBox3.ResumeLayout(false);
             this.cuiGroupBox3.PerformLayout();
@@ -812,7 +922,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox lblClienteValue;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.TextBox textBox3;
         private MetroFramework.Controls.MetroLabel metroLabel2;
@@ -837,7 +947,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox lblOSValue;
         private MetroFramework.Controls.MetroLabel metroLabel16;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
@@ -852,12 +962,20 @@
         private MetroFramework.Controls.MetroLabel metroLabel19;
         private MetroFramework.Controls.MetroLabel metroLabel22;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox lblModuloValue;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btncarregar;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button Salvarbtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvRelatorios;
     }
 }

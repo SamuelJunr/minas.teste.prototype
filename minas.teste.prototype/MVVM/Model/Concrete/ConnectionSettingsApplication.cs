@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using minas.teste.prototype.Service; // Certifique-se que este using está presente e correto
 
 // Remova qualquer using desnecessário que possa causar ambiguidade, como:
@@ -62,7 +63,7 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
         /// </summary>
         /// <param name="finder">A instância do ArduinoPortFinder do namespace minas.teste.prototype.Service.</param>
         /// <returns>True se a autoconexão e a configuração do PersistentSerialManager forem bem-sucedidas.</returns>
-        public static bool TryAutoConnect(ArduinoPortFinder finder) // <--- CORREÇÃO APLICADA AQUI
+        public static async Task<bool> TryAutoConnect(ArduinoPortFinder finder) 
         {
             if (finder == null)
             {
@@ -71,7 +72,7 @@ namespace minas.teste.prototype.MVVM.Model.Concrete
             }
 
             Debug.WriteLine("ConnectionSettingsApplication.TryAutoConnect: Chamando finder.FindArduinoAndConfirmData()...");
-            if (finder.TryFindArduinoAndConfirmData()) // finder executa a busca e validação
+            if (await finder.TryFindArduinoAndConfirmDataAsync()) 
             {
                 Debug.WriteLine($"ConnectionSettingsApplication.TryAutoConnect: Finder encontrou porta candidata: {finder.ConnectedPort}@{finder.BaudRate}. Tentando conexão persistente...");
                 // Se o finder foi bem-sucedido, usa UpdateConnection para estabelecer

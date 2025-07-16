@@ -142,7 +142,7 @@ namespace minas.teste.prototype.MVVM.View
             SetButtonState(btngravar, false);
             SetButtonState(bntFinalizar, false);
             SetButtonState(btnreset, false);
-            SetButtonState(btnrelatoriobomba, false);
+            SetButtonState(btnrelatoriobomba, true);
             InitializeSensorConfigurationSystem();
 
             InitializeSensorDisplayMap(); // NOVO: Inicializa o mapeamento de sensores
@@ -170,8 +170,8 @@ namespace minas.teste.prototype.MVVM.View
 
                 new SensorDisplayInfo("DR1", "sensor_DR1", "F2", "DR1"),
                 new SensorDisplayInfo("DR2", "sensor_DR2", "F2", "DR2"),
-                new SensorDisplayInfo("DR3", null, "F2", "DR3"), // Sem TextBox, mas pode ser usado em _currentNumericSensorReadings
-                new SensorDisplayInfo("DR4", null, "F2", "DR4"), // Sem TextBox
+                new SensorDisplayInfo("DR3", "sensor_DR3", "F2", "DR3"), // Sem TextBox, mas pode ser usado em _currentNumericSensorReadings
+                new SensorDisplayInfo("DR4", "sensor_DR4", "F2", "DR4"), // Sem TextBox
 
                 new SensorDisplayInfo("PL1", "sensor_P1", "F2", "PL1"),
                 new SensorDisplayInfo("PL2", "sensor_P2", "F2", "PL2"),
@@ -720,7 +720,7 @@ namespace minas.teste.prototype.MVVM.View
                 timerCronometro.Start();
             }
             else if (circularProgressBar1 != null) { circularProgressBar1.Value = 0; circularProgressBar1.Maximum = 100; }
-            SetButtonState(btngravar, true); SetButtonState(bntFinalizar, true); SetButtonState(btnreset, true); SetButtonState(btnrelatoriobomba, false); SetButtonState(btniniciarteste, false);
+            SetButtonState(btngravar, true); SetButtonState(bntFinalizar, true); SetButtonState(btnreset, true); SetButtonState(btnrelatoriobomba, true); SetButtonState(btniniciarteste, false);
             LogHistoricalEvent("INICIADO ENSAIO DE BOMBAS", Color.Blue);
 
             ClearCharts();
@@ -1241,15 +1241,8 @@ namespace minas.teste.prototype.MVVM.View
 
             if (dr == DialogResult.Yes)
             {
-                // Verifica se uma janela de relatório já está aberta
-                if (Application.OpenForms.OfType<Realatoriobase>().Any(f => !f.IsDisposed)) // Do btnrelatoriobomba_Click
-                {
-                    MessageBox.Show("Uma janela de relatório já está aberta. Feche-a antes de gerar um novo relatório.", "Relatório Aberto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Application.OpenForms.OfType<Realatoriobase>().First(f => !f.IsDisposed).Focus();
-                }
-                else
-                {
-                    Realatoriobase relatorioForm = new Realatoriobase();
+              
+                    RelatorioTestes relatorioForm = new RelatorioTestes();
 
                     // Coleta os dados para o relatório
                     // Nome do Teste (de textBox6, conforme solicitado)
@@ -1300,16 +1293,16 @@ namespace minas.teste.prototype.MVVM.View
                     {
                         // O método em Realatoriobase.cs que recebe esses dados precisa existir.
                         // Assumindo: public void SetDadosEnsaio(string inicio, string fim, string cliente, string nomeDoTeste, string os, List<List<string>> dadosGrid, List<EtapaData> dadosEtapasDetalhados, List<Image> imgsGraficos)
-                        relatorioForm.SetDadosEnsaio(
-                            Inicioteste,
-                            Fimteste,
-                            nomeCliente,        // De textBox5
-                            nomeTeste,          // De textBox6
-                            ordemServico,       // De textBox4
-                            tabelaDadosParaRelatorio,
-                            _dadosColetados,    // Esta é sua List<EtapaData>
-                            graficos
-                        );
+                        //relatorioForm.SetDadosEnsaio(
+                        //    Inicioteste,
+                        //    Fimteste,
+                        //    nomeCliente,        // De textBox5
+                        //    nomeTeste,          // De textBox6
+                        //    ordemServico,       // De textBox4
+                        //    tabelaDadosParaRelatorio,
+                        //    _dadosColetados,    // Esta é sua List<EtapaData>
+                        //    graficos
+                        //);
 
                         relatorioForm.Show(this.Owner ?? this); // Mostra o relatório de forma não modal
                         LogHistoricalEvent("Dados do ensaio enviados para o formulário de relatório.", Color.Green);
@@ -1318,7 +1311,7 @@ namespace minas.teste.prototype.MVVM.View
                     {
                         MessageBox.Show("Não foi possível preparar ou exibir o formulário de relatório.", "Erro de Relatório", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
+               
             }
             // else if dr == DialogResult.No (Usuário escolheu não salvar e gerar relatório agora)
             // {
@@ -1365,7 +1358,7 @@ namespace minas.teste.prototype.MVVM.View
             ClearCharts(); _viewModel.ResetChartDataLogic();
             if (Stage_box_bomba != null) _viewModel.FinalizarTesteBomba(Stage_box_bomba);
             LogHistoricalEvent("AGUARDANDO INÍCIO DO ENSAIO...", Color.DarkGreen);
-            SetButtonState(btniniciarteste, true); SetButtonState(btngravar, false); SetButtonState(bntFinalizar, false); SetButtonState(btnreset, false); SetButtonState(btnrelatoriobomba, false);
+            SetButtonState(btniniciarteste, true); SetButtonState(btngravar, false); SetButtonState(bntFinalizar, false); SetButtonState(btnreset, false); SetButtonState(btnrelatoriobomba, true);
             try
             {
                 var menuAppInstance = Menuapp.Instance;
@@ -1468,7 +1461,7 @@ namespace minas.teste.prototype.MVVM.View
                 SetButtonState(btngravar, true);
                 SetButtonState(bntFinalizar, true);
                 SetButtonState(btnreset, true);
-                SetButtonState(btnrelatoriobomba, false);
+                SetButtonState(btnrelatoriobomba, true);
                 SetButtonState(btniniciarteste, false);
 
                 MessageBox.Show("O ensaio foi resetado e um novo ciclo foi iniciado.", "Reset e Reinício Concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1682,36 +1675,52 @@ namespace minas.teste.prototype.MVVM.View
             {
                 if (rowIndex >= dataGridView1.Rows.Count) { Debug.WriteLine($"[GravarDGV] rowIndex {rowIndex} fora do intervalo."); break; }
                 ParameterRowInfo paramInfo = _staticDataGridViewParameters[rowIndex];
-                System.Windows.Forms.TextBox sourceTextBox = null;
-                Control[] foundControls = this.Controls.Find(paramInfo.SourceTextBoxName, true);
-                if (foundControls.Length > 0 && foundControls[0] is TextBox tb) { sourceTextBox = tb; }
-                else
-                {
-                    var field = this.GetType().GetField(paramInfo.SourceTextBoxName, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-                    if (field != null && field.GetValue(this) is TextBox tbInstance) { sourceTextBox = tbInstance; }
-                }
 
-                string formattedValue = "ERRO";
-                if (sourceTextBox != null && !sourceTextBox.IsDisposed)
+                // NEW LOGIC START
+                // Find the corresponding ReadingData object based on the SourceTextBoxName
+                ReadingData correspondingReading = allReadingsData.FirstOrDefault(rd => rd.ValueTextBoxName == paramInfo.SourceTextBoxName);
+
+                string formattedValue = "N/A"; // Default to N/A if not selected or an error occurs
+
+                if (correspondingReading != null && currentConfiguration.SelectedReadingIds.Contains(correspondingReading.Id))
                 {
-                    string rawValue = sourceTextBox.Text;
-                    if (string.IsNullOrWhiteSpace(rawValue) || rawValue.Equals("N/A", StringComparison.OrdinalIgnoreCase)) { formattedValue = "-"; }
+                    // Proceed with existing logic only if the sensor is selected
+                    System.Windows.Forms.TextBox sourceTextBox = null;
+                    Control[] foundControls = this.Controls.Find(paramInfo.SourceTextBoxName, true);
+                    if (foundControls.Length > 0 && foundControls[0] is TextBox tb) { sourceTextBox = tb; }
                     else
                     {
-                        if (double.TryParse(rawValue.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double numericValue))
-                        {
-                            switch (paramInfo.FormattingType.ToLower())
-                            {
-                                case "float": formattedValue = numericValue.ToString("0.00", CultureInfo.InvariantCulture); break;
-                                case "temp": formattedValue = ((int)Math.Round(numericValue)).ToString("D", CultureInfo.InvariantCulture); break;
-                                case "rpm": formattedValue = ((int)Math.Round(numericValue)).ToString("D", CultureInfo.InvariantCulture); break;
-                                default: formattedValue = numericValue.ToString(CultureInfo.InvariantCulture); break;
-                            }
-                        }
-                        else { formattedValue = "Inválido"; }
+                        var field = this.GetType().GetField(paramInfo.SourceTextBoxName, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                        if (field != null && field.GetValue(this) is TextBox tbInstance) { sourceTextBox = tbInstance; }
                     }
+
+                    if (sourceTextBox != null && !sourceTextBox.IsDisposed)
+                    {
+                        string rawValue = sourceTextBox.Text;
+                        if (string.IsNullOrWhiteSpace(rawValue) || rawValue.Equals("N/A", StringComparison.OrdinalIgnoreCase)) { formattedValue = "-"; }
+                        else
+                        {
+                            if (double.TryParse(rawValue.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double numericValue))
+                            {
+                                switch (paramInfo.FormattingType.ToLower())
+                                {
+                                    case "float": formattedValue = numericValue.ToString("0.00", CultureInfo.InvariantCulture); break;
+                                    case "temp": formattedValue = ((int)Math.Round(numericValue)).ToString("D", CultureInfo.InvariantCulture); break;
+                                    case "rpm": formattedValue = ((int)Math.Round(numericValue)).ToString("D", CultureInfo.InvariantCulture); break;
+                                    default: formattedValue = numericValue.ToString(CultureInfo.InvariantCulture); break;
+                                }
+                            }
+                            else { formattedValue = "Inválido"; }
+                        }
+                    }
+                    else { Debug.WriteLine($"[GravarDGV] TextBox '{paramInfo.SourceTextBoxName}' não encontrado."); formattedValue = "N/D"; }
                 }
-                else { Debug.WriteLine($"[GravarDGV] TextBox '{paramInfo.SourceTextBoxName}' não encontrado."); formattedValue = "N/D"; }
+                else
+                {
+                    // If the sensor is not selected or not found in allReadingsData, it remains "N/A"
+                    Debug.WriteLine($"[GravarDGV] Sensor '{paramInfo.DisplayName}' (TextBox: {paramInfo.SourceTextBoxName}) não selecionado ou não encontrado na configuração.");
+                }
+                // NEW LOGIC END
 
                 if (dataGridView1.Rows[rowIndex].Cells.Count > targetColumnIndexInDGV && dataGridView1.Rows[rowIndex].Cells[targetColumnIndexInDGV] != null)
                 {
@@ -1725,10 +1734,8 @@ namespace minas.teste.prototype.MVVM.View
 
         private void btnrelatoriobomba_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<Realatoriobase>().Any(f => !f.IsDisposed))
-            { MessageBox.Show("Uma janela de relatório já está aberta.", "Relatório Aberto", MessageBoxButtons.OK, MessageBoxIcon.Warning); Application.OpenForms.OfType<Realatoriobase>().First(f => !f.IsDisposed).Focus(); return; }
-
-            Realatoriobase relatorioForm = new Realatoriobase();
+            
+            RelatorioTestes relatorioForm = new RelatorioTestes();
             string nomeCliente = this.Controls.Find("textBox6", true).FirstOrDefault() is TextBox tbCliente ? tbCliente.Text : "N/A";
             string nomeBomba = this.Controls.Find("textBox5", true).FirstOrDefault() is TextBox tbBomba ? tbBomba.Text : "N/A";
             string ordemServico = this.Controls.Find("textBox4", true).FirstOrDefault() is TextBox tbOS ? tbOS.Text : "N/A";
@@ -1762,7 +1769,7 @@ namespace minas.teste.prototype.MVVM.View
             }
 
 
-            relatorioForm.SetDadosEnsaio(Inicioteste, Fimteste, nomeCliente, nomeBomba, ordemServico, tabelaDadosParaRelatorio, _dadosColetados, graficos);
+            //relatorioForm.SetDadosEnsaio(Inicioteste, Fimteste, nomeCliente, nomeBomba, ordemServico, tabelaDadosParaRelatorio, _dadosColetados, graficos);
             relatorioForm.Show();
         }
     }
