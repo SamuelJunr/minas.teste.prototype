@@ -1736,7 +1736,7 @@
             this.btngravar.Size = new System.Drawing.Size(164, 55);
             this.btngravar.TabIndex = 6;
             this.btngravar.TextOffset = new System.Drawing.Point(0, 0);
-            this.btngravar.Click += new System.EventHandler(this.btn_gravar_Click);
+        
             // 
             // btnreset
             // 
@@ -1773,7 +1773,7 @@
             this.btnreset.Size = new System.Drawing.Size(164, 55);
             this.btnreset.TabIndex = 4;
             this.btnreset.TextOffset = new System.Drawing.Point(0, 0);
-            this.btnreset.Click += new System.EventHandler(this.btnreset_Click);
+           
             // 
             // tableLayoutPanel12
             // 
@@ -1830,7 +1830,7 @@
             this.bntFinalizar.Size = new System.Drawing.Size(160, 52);
             this.bntFinalizar.TabIndex = 5;
             this.bntFinalizar.TextOffset = new System.Drawing.Point(0, 0);
-            this.bntFinalizar.Click += new System.EventHandler(this.btnParar_Click);
+           
             // 
             // btniniciarteste
             // 
@@ -1867,7 +1867,7 @@
             this.btniniciarteste.Size = new System.Drawing.Size(163, 52);
             this.btniniciarteste.TabIndex = 3;
             this.btniniciarteste.TextOffset = new System.Drawing.Point(0, 0);
-            this.btniniciarteste.Click += new System.EventHandler(this.btnIniciar_Click);
+            
             // 
             // btnrelatoriobomba
             // 

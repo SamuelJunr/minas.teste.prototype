@@ -399,9 +399,8 @@ namespace minas.teste.prototype.MVVM.View
                     maskedTextBoxCoeficiente.Text = ""; // Limpar se não houver coeficiente salvo
                 }
             }
-<<<<<<< HEAD
-            else
-=======
+
+
         }
 
         private void btnVoltar_Click(object sender, EventArgs e) // Renomeado de button1_Click
@@ -414,7 +413,7 @@ namespace minas.teste.prototype.MVVM.View
         private void Configuracao_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_fechamentoForcado)
->>>>>>> 16ee290 (atualizações segurança)
+
             {
                 maskedTextBoxCoeficiente.Mask = "";
                 maskedTextBoxCoeficiente.Text = "";
@@ -575,25 +574,7 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            _fechamentoForcado = true; //
-            if (Menuapp.Instance != null) Menuapp.Instance.Show(); 
-            this.Close(); //
-        }
-
-        private void Configuracao_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Salvar coeficientes ao fechar, caso não tenham sido salvos por um clique no botão Salvar.
-            // Isso pode ser opcional, dependendo do comportamento desejado.
-            // SaveCalibrationCoefficients(); 
-
-            if (!_fechamentoForcado) //
-            {
-                 Application.Exit(); 
-            }
-        }
-
+ 
         private async void btnTestarConexao_Click(object sender, EventArgs e)
         {
             string portaSelecionada = comboBoxPortaCOM.SelectedItem?.ToString(); //

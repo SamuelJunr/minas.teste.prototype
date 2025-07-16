@@ -8,13 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-<<<<<<< HEAD
-using minas.teste.prototype.MVVM.Model.Concrete;
-=======
 using Microsoft.EntityFrameworkCore;
 using minas.teste.prototype.MVVM.Model.Concrete;
 using minas.teste.prototype.MVVM.Repository.Context;
->>>>>>> 16ee290 (atualizações segurança)
 using minas.teste.prototype.MVVM.ViewModel;
 using minas.teste.prototype.Service;
 using TextBox = System.Windows.Forms.TextBox; // Especifica o TextBox do Windows Forms
@@ -136,8 +132,6 @@ namespace minas.teste.prototype.MVVM.View
             InitializeSensorConfigurationSystem();
         }
 
-<<<<<<< HEAD
-=======
         // >>> INICIO: NOVAS FUNÇÕES DE BANCO DE DADOS <<<
 
         /// <summary>
@@ -334,7 +328,7 @@ namespace minas.teste.prototype.MVVM.View
 
         // >>> FIM: NOVAS FUNÇÕES DE BANCO DE DADOS <<<
 
->>>>>>> 16ee290 (atualizações segurança)
+
         private void InitializeArduinoToSensorIdMapping()
         {
             _arduinoKeyToSensorIdMap = new Dictionary<string, string>
@@ -442,13 +436,13 @@ namespace minas.teste.prototype.MVVM.View
                 {
                     MessageBox.Show(this, "Configurações de porta serial não definidas.", "Configuração Serial Ausente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     LogHistoricalEvent("ERRO - Configurações de porta serial não definidas.", Color.Red);
-                    btnParar_Click(this, EventArgs.Empty);
+                    
                     return;
                 }
                 if (_serialManager == null)
                 {
                     LogHistoricalEvent("Erro crítico: SerialManager não inicializado.", Color.Red);
-                    btnParar_Click(this, EventArgs.Empty);
+                  
                     return;
                 }
 
@@ -477,7 +471,7 @@ namespace minas.teste.prototype.MVVM.View
                     string errorMessage = $"ERRO ao conectar à porta serial {portToConnect}.";
                     LogHistoricalEvent(errorMessage, Color.Red);
                     MessageBox.Show(this, errorMessage, "Erro de Conexão Serial", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnParar_Click(this, EventArgs.Empty);
+                   
                 }
             }
             catch (Exception ex)
@@ -485,7 +479,7 @@ namespace minas.teste.prototype.MVVM.View
                 string errorMessage = $"Erro durante a tentativa de conexão serial: {ex.Message}";
                 MessageBox.Show(this, errorMessage, "Erro de Conexão Serial Exceção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LogHistoricalEvent(errorMessage, Color.Red);
-                btnParar_Click(this, EventArgs.Empty);
+                
             }
         }
 
@@ -534,10 +528,8 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
 
-<<<<<<< HEAD
-=======
         // <<< MÉTODO PRINCIPAL ALTERADO >>> Implementa a nova regra de pacote com chaves e validação de tamanho.
->>>>>>> 16ee290 (atualizações segurança)
+
         private void ProcessSerialBuffer()
         {
             string bufferContent = serialDataBuffer.ToString();
@@ -743,13 +735,8 @@ namespace minas.teste.prototype.MVVM.View
 
         #endregion
 
-        // O restante do código (eventos de botões, cronômetro, gráficos, etc.) permanece o mesmo.
-        // ...
-        // [O código para HandleConfigButtonClick, OpenConfigModal, UpdateTelaBombasDisplay, etc. foi omitido por brevidade]
-        // ...
         #region placeholder
-<<<<<<< HEAD
-=======
+
         public void btnIniciar_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.TextBox tb6 = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
@@ -926,7 +913,7 @@ namespace minas.teste.prototype.MVVM.View
                 SetButtonState(btngravar, false);
             }
         }
->>>>>>> 16ee290 (atualizações segurança)
+
         private void HandleConfigButtonClick(Button clickedButton, string testTypeDescription)
         {
             if (clickedButton == null) return;
@@ -1641,65 +1628,8 @@ namespace minas.teste.prototype.MVVM.View
                 Environment.Exit(Environment.ExitCode);
             }
         }
-<<<<<<< HEAD
-        public void btnIniciar_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.TextBox tb6 = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
-            System.Windows.Forms.TextBox tb5 = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
-            System.Windows.Forms.TextBox tb4 = this.Controls.Find("textBox4", true).FirstOrDefault() as System.Windows.Forms.TextBox;
 
-            if (!_viewModel.cabecalhoinicial(tb6, tb5, tb4))
-            {
 
-                MessageBox.Show("Favor preencher os campos obrigatórios em DADOS DE ENSAIO.", "Campos Obrigatórios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                _viewModel.PiscarLabelsVermelhoSync(label6, label5, label4, 1000);
-                return;
-            }
-
-            _isMonitoring = true;
-            Inicioteste = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            if (Stage_box_bomba != null) _viewModel.IniciarTesteBomba(Stage_box_bomba);
-
-            InicializarMonitoramento();
-            _timeCounterSecondsRampa = 0;
-            etapaAtual = 1;
-
-            if (tempoCronometroDefinidoManualmente && valorDefinidoCronometro > 0)
-            {
-                cronometroIniciado = true;
-                int tempoTotal = valorDefinidoCronometro * 60;
-                if (circularProgressBar1 != null)
-                {
-                    circularProgressBar1.Maximum = tempoTotal > 0 ? tempoTotal : 1;
-                    circularProgressBar1.Minimum = 0;
-                    circularProgressBar1.Value = tempoTotal;
-                    circularProgressBar1.Invalidate();
-                }
-                timerCronometro.Start();
-            }
-            else
-            {
-                if (circularProgressBar1 != null)
-                {
-                    circularProgressBar1.Value = 0;
-                    circularProgressBar1.Maximum = 100;
-                }
-            }
-
-            SetButtonState(btngravar, true);
-            SetButtonState(bntFinalizar, true);
-            SetButtonState(btnreset, true);
-            SetButtonState(btnrelatoriobomba, false);
-            SetButtonState(btniniciarteste, false);
-            LogHistoricalEvent("INICIADO ENSAIO DE BOMBAS", Color.Blue);
-
-            ClearCharts();
-            _viewModel.ResetChartDataLogic();
-            ClearStaticDataGridViewCells();
-            StartSerialConnection();
-        }
-=======
->>>>>>> 16ee290 (atualizações segurança)
         private void InicializarMonitoramento()
         {
             if (monitoramentoTimer == null)
@@ -1712,27 +1642,8 @@ namespace minas.teste.prototype.MVVM.View
         {
             monitoramentoTimer?.Stop();
         }
-<<<<<<< HEAD
-        private void btnParar_Click(object sender, EventArgs e)
-        {
-            StopTimers();
-            StopSerialConnection();
 
-            cronometroIniciado = false;
-            _isMonitoring = false;
-            Fimteste = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
-            SetButtonState(btngravar, false);
-            SetButtonState(bntFinalizar, false);
-            SetButtonState(btnreset, true);
-            SetButtonState(btnrelatoriobomba, true);
-            SetButtonState(btniniciarteste, true);
-
-            LogHistoricalEvent("ENSAIO DE BOMBAS FINALIZADO", Color.Red);
-            if (Stage_box_bomba != null) _viewModel.FinalizarTesteBomba(Stage_box_bomba);
-        }
-=======
->>>>>>> 16ee290 (atualizações segurança)
         private void btnretornar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -2037,7 +1948,7 @@ namespace minas.teste.prototype.MVVM.View
                 if (_isMonitoring)
                 {
                     LogHistoricalEvent("Tempo do cronômetro esgotado. Finalizando teste automaticamente.", Color.Orange);
-                    btnParar_Click(this, EventArgs.Empty);
+                   
                 }
             }
         }
@@ -2097,96 +2008,8 @@ namespace minas.teste.prototype.MVVM.View
                 MessageBox.Show(this, "O cronômetro está em execução. Finalize o teste atual para limpar o tempo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-<<<<<<< HEAD
-        private void btn_gravar_Click(object sender, EventArgs e)
-        {
-            if (!_isMonitoring)
-            {
-                MessageBox.Show("O teste não foi iniciado. Por favor, inicie o teste para gravar os dados.", "Teste Não Iniciado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
-            if (tempoCronometroDefinidoManualmente && !cronometroIniciado && valorDefinidoCronometro > 0 && (circularProgressBar1 == null || circularProgressBar1.Value <= 0))
-            {
-                MessageBox.Show("O tempo definido para o teste encerrou ou o cronômetro não está ativo. Não é possível gravar novas etapas.", "Tempo Esgotado ou Cronômetro Inativo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                SetButtonState(btngravar, false);
-                return;
-            }
 
-            int maxEtapasTabela = 7;
-            if (etapaAtual > maxEtapasTabela)
-            {
-                MessageBox.Show($"Limite de {maxEtapasTabela} etapas para a tabela foi atingido.", "Limite de Etapas da Tabela", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                SetButtonState(btngravar, false);
-                return;
-            }
-
-            GravarDadosNoDataGridViewEstatico();
-
-            var currentEtapaData = new EtapaData
-            {
-                Etapa = etapaAtual,
-                leituras = new List<SensorData>()
-            };
-
-            Dictionary<string, double> readingsSnapshot;
-            lock (readingsLock)
-            {
-                readingsSnapshot = new Dictionary<string, double>(_currentNumericSensorReadings);
-            }
-
-            if (_staticDataGridViewParameters != null)
-            {
-                foreach (var paramInfo in _staticDataGridViewParameters)
-                {
-                    string serialKeyForParam = _arduinoKeyToSensorIdMap
-                        .FirstOrDefault(kvp =>
-                            sensorControlsMap.ContainsKey(kvp.Value) &&
-                            sensorControlsMap[kvp.Value].valueTextBox.Name == paramInfo.SourceTextBoxName)
-                        .Key;
-
-                    if (string.IsNullOrEmpty(serialKeyForParam))
-                    {
-                        serialKeyForParam = paramInfo.SourceTextBoxName.Replace("sensor_", "");
-                    }
-
-                    string valorParaRelatorio = "N/D";
-                    string unidadeParaRelatorio = "";
-
-                    if (readingsSnapshot.TryGetValue(serialKeyForParam, out double sensorNumericValue))
-                    {
-                        valorParaRelatorio = sensorNumericValue.ToString("F2", CultureInfo.InvariantCulture);
-
-                        var readingData = allReadingsData.FirstOrDefault(rd => _arduinoKeyToSensorIdMap.ContainsKey(serialKeyForParam) && _arduinoKeyToSensorIdMap[serialKeyForParam] == rd.Id);
-                        if (readingData != null)
-                        {
-                            if (readingData.Type == "pressure") unidadeParaRelatorio = currentConfiguration.SelectedPressureUnit.ToUpper();
-                            else if (readingData.Type == "flow") unidadeParaRelatorio = currentConfiguration.SelectedFlowUnit.ToUpper();
-                            else unidadeParaRelatorio = readingData.OriginalUnit;
-                        }
-                    }
-
-                    currentEtapaData.leituras.Add(new SensorData
-                    {
-                        Sensor = paramInfo.DisplayName,
-                        Valor = valorParaRelatorio,
-                        Medidas = unidadeParaRelatorio
-                    });
-                }
-            }
-            _dadosColetados.Add(currentEtapaData);
-
-            LogHistoricalEvent($"Dados da Etapa {etapaAtual} gravados.", Color.DarkCyan);
-            etapaAtual++;
-
-            if (etapaAtual > maxEtapasTabela)
-            {
-                MessageBox.Show("Todas as etapas da tabela foram preenchidas.", "Tabela Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                SetButtonState(btngravar, false);
-            }
-        }
-=======
->>>>>>> 16ee290 (atualizações segurança)
         private void GravarDadosNoDataGridViewEstatico()
         {
             if (dataGridView1 == null || dataGridView1.IsDisposed || _staticDataGridViewParameters == null) return;
@@ -2284,8 +2107,7 @@ namespace minas.teste.prototype.MVVM.View
             }
         }
         #endregion
-<<<<<<< HEAD
-=======
+
         private void btnrelatoriobomba_Click(object sender, EventArgs e)
         {
             // Verifica se o teste foi executado e finalizado
@@ -2313,7 +2135,7 @@ namespace minas.teste.prototype.MVVM.View
                 TimeSpan duracao = fim - inicio;
                 tempoTotal = $"{(int)duracao.TotalHours:D2}:{duracao.Minutes:D2}:{duracao.Seconds:D2}";
             }
->>>>>>> 16ee290 (atualizações segurança)
+
 
             // 4. Cria e exibe o formulário de relatório com os dados
             RelatorioTestes relatorioForm = new RelatorioTestes(cliente, bomba, os, modulo, numeroEtapas, tempoTotal);

@@ -4,24 +4,15 @@ using System.Drawing;
 using System.IO.Ports; // Necessário para SerialPort, mas SerialManager pode encapsular isso
 using System.Linq;
 using System.Text;
-<<<<<<< HEAD
-// using System.Threading; // CancellationTokenSource não é mais necessário
-// using System.Threading.Tasks; // Task.Delay não é mais necessário nesta capacidade
-=======
-using System.Threading;
 using System.Threading.Tasks;
->>>>>>> 16ee290 (atualizações segurança)
 using System.Windows.Forms;
 using minas.teste.prototype.MVVM.Model.Concrete; // Supondo que esta e a próxima using são necessárias
 using minas.teste.prototype.Service;
 using System.Diagnostics;
-<<<<<<< HEAD
-// using System.Text.RegularExpressions; // Não é mais necessário para ExpectedDataPattern
 using CuoreUI.Controls; // Para cuiButton, se estiver usando
-=======
-using System.Text.RegularExpressions; // Para Regex na validação
-using minas.teste.prototype.Properties; // Importar namespace para acessar Resources
->>>>>>> 16ee290 (atualizações segurança)
+using minas.teste.prototype.Properties;
+using System.Text.RegularExpressions; // Importar namespace para acessar Resources
+
 
 namespace minas.teste.prototype.MVVM.View
 {
@@ -29,17 +20,17 @@ namespace minas.teste.prototype.MVVM.View
     {
         private readonly SerialManager _serialManager;
         private readonly System.Windows.Forms.Timer _textBoxUpdateTimer;
-<<<<<<< HEAD
+
         private readonly object _bufferLock = new object();
-=======
->>>>>>> 16ee290 (atualizações segurança)
+
         private Form _ownerForm;
         private bool _fechamentoForcado = false;
-        private Regex _validationRegex;
+        private object _validationRegex;
 
-<<<<<<< HEAD
+
+
         // Campos de validação removidos: _validationCts, _dadosValidosRecebidos, ExpectedDataPattern
-=======
+
         // <<< ALTERADO >>> Introdução de dois buffers para separar o recebimento da exibição.
         private readonly StringBuilder _serialReceiveBuffer = new StringBuilder();
         private readonly object _serialReceiveLock = new object();
@@ -48,7 +39,7 @@ namespace minas.teste.prototype.MVVM.View
 
         // <<< NOVO >>> Constante para o tamanho do pacote de dados.
         private const int ARDUINO_PACKET_SIZE = 284;
->>>>>>> 16ee290 (atualizações segurança)
+
 
         public conexao(Form owner = null)
         {
@@ -56,10 +47,7 @@ namespace minas.teste.prototype.MVVM.View
             _ownerForm = owner ?? new Menuapp();
 
             _serialManager = ConnectionSettingsApplication.PersistentSerialManager;
-<<<<<<< HEAD
 
-=======
->>>>>>> 16ee290 (atualizações segurança)
             InitializeSerialManagerHandlers(true);
             ConfigureUI();
 
@@ -120,10 +108,9 @@ namespace minas.teste.prototype.MVVM.View
             comboBoxBaudRate.SelectedItem = currentBaudRate != 0 ? currentBaudRate : (object)115200;
 
             RefreshPortsList();
-<<<<<<< HEAD
-=======
 
->>>>>>> 16ee290 (atualizações segurança)
+
+
             UpdateConnectionStatusUI(_serialManager.IsConnected);
         }
 
@@ -178,12 +165,12 @@ namespace minas.teste.prototype.MVVM.View
         {
             comboBoxPortaCOM.Enabled = enabled;
             comboBoxBaudRate.Enabled = enabled;
-<<<<<<< HEAD
+
             // btnSalvarAplicarConfiguracoes agora é habilitado/desabilitado com base na conexão também
             btnSalvarAplicarConfiguracoes.Enabled = !(_serialManager.IsConnected && !enabled); // Habilitado se desconectado ou se 'enabled' for true
-=======
+
             btnSalvarAplicarConfiguracoes.Enabled = enabled;
->>>>>>> 16ee290 (atualizações segurança)
+
         }
 
         private void TextBoxUpdateTimer_Tick(object sender, EventArgs e)
@@ -233,13 +220,13 @@ namespace minas.teste.prototype.MVVM.View
         // <<< MÉTODO ALTERADO >>> Apenas adiciona dados ao buffer de recebimento e chama o processador.
         private void SerialManager_DataReceived(object sender, string data)
         {
-<<<<<<< HEAD
-            
+
+          
 
             string cleanData = FilterNonPrintableChars(data);
-=======
+
             if (string.IsNullOrEmpty(data)) return;
->>>>>>> 16ee290 (atualizações segurança)
+
 
             lock (_serialReceiveLock)
             {
@@ -263,11 +250,10 @@ namespace minas.teste.prototype.MVVM.View
                 string dataToDisplay;
 
                 // <<< VALIDAÇÃO ALTERADA >>> A validação agora ocorre no pacote completo.
-                if (_validationRegex != null && _validationRegex.IsMatch(cleanPacket))
+                if (_validationRegex != null )
                 {
-<<<<<<< HEAD
-                    _dataBuffer.Append(cleanData);
-=======
+
+
                     // Se o pacote de 284 caracteres é válido, prepara-o para exibição.
                     dataToDisplay = cleanPacket + "\r\n"; // Adiciona nova linha para legibilidade
                     Debug.WriteLine($"Pacote válido de {ARDUINO_PACKET_SIZE} caracteres detectado.");
@@ -283,7 +269,7 @@ namespace minas.teste.prototype.MVVM.View
                 lock (_displayLock)
                 {
                     _displayBuffer.Append(dataToDisplay);
->>>>>>> 16ee290 (atualizações segurança)
+
                 }
             }
         }
@@ -322,7 +308,7 @@ namespace minas.teste.prototype.MVVM.View
         {
             if (lblStatusConexao != null && !lblStatusConexao.IsDisposed)
             {
-<<<<<<< HEAD
+
                 //btnTestarConexao.Text = isConnected ? "Desconectar" : "Conectar"; // Para System.Windows.Forms.Button
                 if (btnTestarConexao is cuiButton cuiBtn) // Para CuoreUI.Controls.cuiButton
                 {
@@ -332,10 +318,10 @@ namespace minas.teste.prototype.MVVM.View
                 }
                 
 
-=======
+
                 btnTestarConexao.Content = isConnected ? "Desconectar" : "Conectar";
                 btnTestarConexao.NormalBackground = isConnected ? Color.Crimson : Color.DarkGreen;
->>>>>>> 16ee290 (atualizações segurança)
+
 
                 lblStatusConexao.Text = isConnected ?
                     $"Conectado: {ConnectionSettingsApplication.CurrentPortName} @ {ConnectionSettingsApplication.CurrentBaudRate}" :
@@ -358,11 +344,9 @@ namespace minas.teste.prototype.MVVM.View
                 // Botão Salvar habilitado se houver portas e estiver desconectado, ou sempre habilitado se quiser permitir salvar a config selecionada mesmo conectado
                 btnSalvarAplicarConfiguracoes.Enabled = enableControlsWhenDisconnected;
             }
-<<<<<<< HEAD
 
-            
-=======
->>>>>>> 16ee290 (atualizações segurança)
+
+
         }
 
         private void SerialManager_ErrorOccurred(object sender, string errorMessage)
@@ -379,19 +363,13 @@ namespace minas.teste.prototype.MVVM.View
             });
         }
 
-<<<<<<< HEAD
-        private async void btnConectarDesconectar_Click(object sender, EventArgs e) // btnTestarConexao.Click
-=======
         private void btnConectarDesconectar_Click(object sender, EventArgs e)
->>>>>>> 16ee290 (atualizações segurança)
+
         {
             if (_serialManager.IsConnected)
             {
                 _serialManager.Disconnect();
-<<<<<<< HEAD
-                // A UI será atualizada pelo evento ConnectionStatusChanged
-=======
->>>>>>> 16ee290 (atualizações segurança)
+
             }
             else
             {
@@ -413,16 +391,16 @@ namespace minas.teste.prototype.MVVM.View
 
                 lblStatusConexao.Text = $"Tentando conectar a {port}@{baudRate}...";
                 lblStatusConexao.ForeColor = Color.Orange;
-<<<<<<< HEAD
+
                 Application.DoEvents(); // Use com cautela
-=======
+
                 btnTestarConexao.Enabled = false;
                 Application.DoEvents();
->>>>>>> 16ee290 (atualizações segurança)
+
 
                 Task.Run(() =>
                 {
-<<<<<<< HEAD
+
                     // Não há mais validação de formato de dados. Apenas conectar.
                     // lblStatusConexao será atualizado por ConnectionStatusChanged
                     // para "Conectado: PORTA @ BAUDRATE"
@@ -433,67 +411,15 @@ namespace minas.teste.prototype.MVVM.View
                     ConnectionSettingsApplication.UpdateCurrentSettings(port, baudRate); // Presumindo que este método existe.
 
                     MessageBox.Show(this, $"Conectado a {port}@{baudRate}.\nAs configurações foram salvas.\nOs dados recebidos serão exibidos.", "Conexão Bem-sucedida", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // lblStatusConexao será atualizado por ConnectionStatusChanged para "Desconectado" ou SerialManager_ErrorOccurred mostrará erro
-                    // MessageBox.Show(this, $"Falha ao conectar a {port}.", "Falha na Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error); // Opcional, pois SerialManager_ErrorOccurred deve tratar
-                }
+                });
+               
 
                 if (btnTestarConexao is cuiButton cuiBtn2) cuiBtn2.Enabled = true;
                 UpdateConnectionStatusUI(_serialManager.IsConnected); // Garante que a UI reflita o estado final
             }
         }
 
-        private void btnDesconectarSeparado_Click(object sender, EventArgs e) // cuiButton2.Click
-=======
-                    bool success = ConnectionSettingsApplication.UpdateConnection(port, baudRate);
-
-                    Invoke((MethodInvoker)delegate
-                    {
-                        if (success)
-                        {
-                            lblStatusConexao.Text = $"Conectado a {port}@{baudRate}. Aguardando dados...";
-                            lblStatusConexao.ForeColor = Color.BlueViolet;
-
-                            if (textBox1 != null && !textBox1.IsDisposed && !textBox1.Disposing)
-                            {
-                                textBox1.Clear();
-                            }
-                            // Limpa ambos os buffers ao conectar
-                            lock (_serialReceiveLock) { _serialReceiveBuffer.Clear(); }
-                            lock (_displayLock) { _displayBuffer.Clear(); }
-
-
-                            SalvarConfiguracoesPersistentes(port, baudRate);
-                            MessageBox.Show(this, $"Conectado a {port}@{baudRate}. A aplicação aguardará dados.", "Conexão Bem-sucedida", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            lblStatusConexao.Text = $"Falha ao conectar a {port}.";
-                            lblStatusConexao.ForeColor = Color.Red;
-                        }
-
-                        btnTestarConexao.Enabled = true;
-                        UpdateConnectionStatusUI(_serialManager.IsConnected);
-                    });
-                });
-            }
-        }
-
-        private void btnDesconectarSeparado_Click(object sender, EventArgs e)
->>>>>>> 16ee290 (atualizações segurança)
-        {
-            if (_serialManager.IsConnected)
-            {
-                _serialManager.Disconnect();
-            }
-            else
-            {
-                MessageBox.Show(this, "Nenhuma conexão ativa para desconectar.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
+       
         private void btnSalvarConfiguracoesClick(object sender, EventArgs e)
         {
             if (comboBoxPortaCOM.SelectedItem == null || comboBoxPortaCOM.SelectedItem.ToString() == "Nenhuma porta COM encontrada")
@@ -529,12 +455,12 @@ namespace minas.teste.prototype.MVVM.View
 
             if (result == DialogResult.Yes)
             {
-<<<<<<< HEAD
+
                 SalvarConfiguracoesPersistentes(port, baudRate); // Salva nas Properties.Settings
                 ConnectionSettingsApplication.UpdateCurrentSettings(port, baudRate); // Atualiza as configurações na memória da aplicação
-=======
+
                 bool success = ConnectionSettingsApplication.UpdateConnection(port, baudRate);
->>>>>>> 16ee290 (atualizações segurança)
+
 
                 if (aplicarNovasConfig && _serialManager.IsConnected)
                 {
@@ -545,12 +471,12 @@ namespace minas.teste.prototype.MVVM.View
                 {
                     MessageBox.Show(this, "Configurações salvas com sucesso!", "Configurações Salvas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-<<<<<<< HEAD
+
                 ConfigureUI(); // Atualiza os ComboBoxes para refletir as configs salvas
-=======
+
 
                 UpdateConnectionStatusUI(_serialManager.IsConnected);
->>>>>>> 16ee290 (atualizações segurança)
+
             }
         }
 
@@ -573,67 +499,68 @@ namespace minas.teste.prototype.MVVM.View
         }
 
         private void conexao_FormClosing(object sender, FormClosingEventArgs e)
+{
+    Debug.WriteLine($"[CONEXAO.conexao_FormClosing] Formulário fechando. FechamentoForcado: {_fechamentoForcado}, Razão: {e.CloseReason}");
+
+    // Limpeza de recursos sempre que o formulário estiver fechando
+    _textBoxUpdateTimer?.Stop();
+    _textBoxUpdateTimer?.Dispose();
+
+    InitializeSerialManagerHandlers(false); // Crucial para desinscrever eventos
+
+    // Se o fechamento é devido ao Application.Exit() já ter sido chamado,
+    // ou se o fechamento foi intencionalmente forçado (pelo botão Voltar),
+    // não fazemos mais nada aqui, apenas permitimos o fechamento.
+    if (e.CloseReason == CloseReason.ApplicationExitCall)
+    {
+        Debug.WriteLine("[CONEXAO.conexao_FormClosing] Fechamento devido a ApplicationExitCall, permitindo fechar sem nova pergunta.");
+        return; // Permite o fechamento sem mais interações
+    }
+
+    if (_fechamentoForcado)
+    {
+        Debug.WriteLine("[CONEXAO.conexao_FormClosing] Fechamento forçado (ex: botão Voltar), permitindo fechar sem pergunta.");
+        return; // Permite o fechamento
+    }
+
+    // Se chegou aqui, _fechamentoForcado é false e e.CloseReason NÃO é ApplicationExitCall.
+    // Geralmente, será CloseReason.UserClosing (usuário clicou no 'X' deste formulário).
+    // Também pode ser TaskManagerClosing, WindowsShutDown, etc., onde a pergunta de salvar/sair da aplicação é válida.
+
+    // Faz a pergunta apenas se não for um fechamento forçado e não for uma consequência de Application.Exit()
+    DialogResult dr = MessageBox.Show("Deseja fechar toda a aplicação?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+    Debug.WriteLine($"[CONEXAO.conexao_FormClosing] Diálogo de Sair (UserClosing ou similar): Resultado={dr}");
+
+    if (dr == DialogResult.Yes)
+    {
+        Debug.WriteLine("[CONEXAO.conexao_FormClosing] Usuário escolheu sair da aplicação.");
+        ConnectionSettingsApplication.CloseAllConnections(); // Fecha conexões gerenciadas
+        Application.Exit(); // Inicia o processo de fechamento da aplicação.
+                            // Este e outros formulários receberão FormClosing com CloseReason.ApplicationExitCall.
+    }
+    else
+    {
+        Debug.WriteLine("[CONEXAO.conexao_FormClosing] Usuário cancelou o fechamento da aplicação.");
+        e.Cancel = true; // Cancela o fechamento DESTE formulário
+
+        InitializeSerialManagerHandlers(false);
+
+        if (!_fechamentoForcado)
         {
-            Debug.WriteLine($"[CONEXAO.conexao_FormClosing] Formulário fechando. FechamentoForcado: {_fechamentoForcado}, Razão: {e.CloseReason}");
-
-            // Limpeza de recursos sempre que o formulário estiver fechando
-            _textBoxUpdateTimer?.Stop();
-            _textBoxUpdateTimer?.Dispose();
-<<<<<<< HEAD
-            InitializeSerialManagerHandlers(false); // Crucial para desinscrever eventos
-
-            // Se o fechamento é devido ao Application.Exit() já ter sido chamado,
-            // ou se o fechamento foi intencionalmente forçado (pelo botão Voltar),
-            // não fazemos mais nada aqui, apenas permitimos o fechamento.
-            if (e.CloseReason == CloseReason.ApplicationExitCall)
+            DialogResult result = MessageBox.Show("Deseja fechar toda a aplicação?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                Debug.WriteLine("[CONEXAO.conexao_FormClosing] Fechamento devido a ApplicationExitCall, permitindo fechar sem nova pergunta.");
-                return; // Permite o fechamento sem mais interações
-            }
-
-            if (_fechamentoForcado)
-            {
-                Debug.WriteLine("[CONEXAO.conexao_FormClosing] Fechamento forçado (ex: botão Voltar), permitindo fechar sem pergunta.");
-                return; // Permite o fechamento
-            }
-
-            // Se chegou aqui, _fechamentoForcado é false e e.CloseReason NÃO é ApplicationExitCall.
-            // Geralmente, será CloseReason.UserClosing (usuário clicou no 'X' deste formulário).
-            // Também pode ser TaskManagerClosing, WindowsShutDown, etc., onde a pergunta de salvar/sair da aplicação é válida.
-
-            // Faz a pergunta apenas se não for um fechamento forçado e não for uma consequência de Application.Exit()
-            DialogResult dr = MessageBox.Show("Deseja fechar toda a aplicação?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            Debug.WriteLine($"[CONEXAO.conexao_FormClosing] Diálogo de Sair (UserClosing ou similar): Resultado={dr}");
-
-            if (dr == DialogResult.Yes)
-            {
-                Debug.WriteLine("[CONEXAO.conexao_FormClosing] Usuário escolheu sair da aplicação.");
-                ConnectionSettingsApplication.CloseAllConnections(); // Fecha conexões gerenciadas
-                Application.Exit(); // Inicia o processo de fechamento da aplicação.
-                                    // Este e outros formulários receberão FormClosing com CloseReason.ApplicationExitCall.
+                ConnectionSettingsApplication.CloseAllConnections();
+                Environment.Exit(0);
             }
             else
             {
-                Debug.WriteLine("[CONEXAO.conexao_FormClosing] Usuário cancelou o fechamento da aplicação.");
-                e.Cancel = true; // Cancela o fechamento DESTE formulário
-=======
-            InitializeSerialManagerHandlers(false);
-
-            if (!_fechamentoForcado)
-            {
-                DialogResult dr = MessageBox.Show("Deseja fechar toda a aplicação?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
-                {
-                    ConnectionSettingsApplication.CloseAllConnections();
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
->>>>>>> 16ee290 (atualizações segurança)
+                e.Cancel = true;
             }
+
         }
+    }
+}
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
@@ -650,52 +577,53 @@ namespace minas.teste.prototype.MVVM.View
         }
 
         private void conexao_Load(object sender, EventArgs e)
+{
+
+    if (lblInfoAdicional != null)
+    {
+        if (_serialManager.IsConnected)
         {
-<<<<<<< HEAD
-            if (lblInfoAdicional != null)
-            {
-                if (_serialManager.IsConnected)
-                {
-                    lblInfoAdicional.Text = $"Conexão ativa: {ConnectionSettingsApplication.CurrentPortName}";
-                }
-                else if (!string.IsNullOrEmpty(ConnectionSettingsApplication.CurrentPortName))
-                {
-                    lblInfoAdicional.Text = $"Última config salva: {ConnectionSettingsApplication.CurrentPortName}@{ConnectionSettingsApplication.CurrentBaudRate}.";
-                }
-                else
-                {
-                    lblInfoAdicional.Text = "Nenhuma configuração salva. Selecione as opções e conecte.";
-                }
-=======
-            if (_serialManager.IsConnected)
-            {
-                // UI já atualizada pelo UpdateConnectionStatusUI
-            }
-            else if (!string.IsNullOrEmpty(ConnectionSettingsApplication.CurrentPortName))
-            {
-                lblInfoAdicional.Text = $"Última config: {ConnectionSettingsApplication.CurrentPortName}@{ConnectionSettingsApplication.CurrentBaudRate}.";
-            }
-            else
-            {
-                lblInfoAdicional.Text = "Nenhuma config salva.\n Selecione e conecte.";
->>>>>>> 16ee290 (atualizações segurança)
-            }
+            lblInfoAdicional.Text = $"Conexão ativa: {ConnectionSettingsApplication.CurrentPortName}";
         }
+        else if (!string.IsNullOrEmpty(ConnectionSettingsApplication.CurrentPortName))
+        {
+            lblInfoAdicional.Text = $"Última config salva: {ConnectionSettingsApplication.CurrentPortName}@{ConnectionSettingsApplication.CurrentBaudRate}.";
+        }
+        else
+        {
+            lblInfoAdicional.Text = "Nenhuma configuração salva. Selecione as opções e conecte.";
+        }
+
+        if (_serialManager.IsConnected)
+        {
+            // UI já atualizada pelo UpdateConnectionStatusUI
+        }
+        else if (!string.IsNullOrEmpty(ConnectionSettingsApplication.CurrentPortName))
+        {
+            lblInfoAdicional.Text = $"Última config: {ConnectionSettingsApplication.CurrentPortName}@{ConnectionSettingsApplication.CurrentBaudRate}.";
+        }
+        else
+        {
+            lblInfoAdicional.Text = "Nenhuma config salva.\n Selecione e conecte.";
+
+        }
+    }
+}
 
         private void btnAtualizarPortas_Click(object sender, EventArgs e)
         {
             if (lblStatusConexao != null) lblStatusConexao.Text = "Atualizando portas...";
             Application.DoEvents();
             RefreshPortsList();
-<<<<<<< HEAD
+
             // O status da conexão não muda, então UpdateConnectionStatusUI irá restaurar o texto correto do lblStatusConexao
             UpdateConnectionStatusUI(_serialManager.IsConnected);
-=======
+
             if (comboBoxPortaCOM.Enabled)
             {
                 lblStatusConexao.Text = "Lista de portas COM atualizada.";
             }
->>>>>>> 16ee290 (atualizações segurança)
+
         }
     }
 }

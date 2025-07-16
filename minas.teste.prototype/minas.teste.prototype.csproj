@@ -424,19 +424,17 @@
     <Compile Include="MVVM\View\Configuracao.Designer.cs">
       <DependentUpon>Configuracao.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="MVVM\View\ContasW.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MVVM\View\ContasW.Designer.cs">
       <DependentUpon>ContasW.cs</DependentUpon>
-=======
+    </Compile>
     <Compile Include="MVVM\View\FormAdicionarEvidencia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MVVM\View\FormAdicionarEvidencia.Designer.cs">
       <DependentUpon>FormAdicionarEvidencia.cs</DependentUpon>
->>>>>>> 16ee290 (atualizações segurança)
     </Compile>
     <Compile Include="MVVM\View\Menuapp.cs">
       <SubType>Form</SubType>
